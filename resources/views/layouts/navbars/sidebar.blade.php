@@ -66,8 +66,8 @@
                 </a>
                 <div class="collapse show" id="laravelExamples">
                   <ul class="nav">
-                    <li class="@if ($activePage == 'profile') active @endif">
-                      <a href="{{ route('profile.edit') }}">
+                    <li class="@if ($activePage == 'kunjungan') active @endif">
+                      <a href="{{ route('category.index') }}">
                         <span class="sidebar-mini-icon">{{ __("K") }}</span>
                         <span class="sidebar-normal"> {{ __("Kunjungan") }} </span>
                       </a>
@@ -87,8 +87,8 @@
                           <span class="sidebar-normal"> {{ __("Laporan") }} </span>
                         </a>
                       </li>
-                    {{-- @endcan
-                    @can('manage-items', App\User::class)
+                    @endcan
+                    {{-- @can('manage-items', App\User::class)
                       <li class="@if ($activePage == 'categories') active @endif">
                         <a href="{{ route('category.index') }}">
                           <span class="sidebar-mini-icon">{{ __("CA") }}</span>
@@ -105,20 +105,20 @@
                       </li>
                     @endcan --}}
                     {{-- @can('manage-items', App\User::class) --}}
-                      <li class="@if ($activePage == 'items') active @endif">
+                      {{-- <li class="@if ($activePage == 'items') active @endif">
                           <a href="{{ route('item.index') }}">
                             <span class="sidebar-mini-icon">{{ __("LO") }}</span>
                             <span class="sidebar-normal"> {{ __("Log Out") }} </span>
                           </a>
-                      </li>
-                    @else
-                      <li class="nav-item">
+                      </li> --}}
+                    {{-- @else
+                      {{-- <li class="nav-item">
                           <a href="{{ route('item.index') }}">
                               <span class="sidebar-mini-icon">{{ __("L") }}</span>
                               <span class="sidebar-normal"> {{ __("Log Out") }} </span>
                             </a>
-                      </li>
-                    @endcan
+                      </li> 
+                    @endcan --}}
                   </ul>
                 </div>
             {{-- <li>

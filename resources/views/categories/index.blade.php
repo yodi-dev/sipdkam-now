@@ -1,7 +1,7 @@
 @extends('layouts.app',[
-    'namePage' => 'Categories',
+    'namePage' => 'Kunjungan',
     'class' => '',
-    'activePage' => 'categories',
+    'activePage' => 'kunjungan',
     'activeNav' => '',
 ])
 
@@ -13,8 +13,8 @@
             <div class="col-md-12" id="categories-table">
                 <div class="card">
                     <div class="card-header">
-                        <a class="btn btn-primary btn-round pull-right text-white " href="{{ route('category.create') }}" >{{ __('Add category') }}</a>
-                        <h4 class="card-title">{{ __('Categories') }}</h4>
+                        <a class="btn btn-primary btn-round pull-right text-white " href="{{ route('category.create') }}" >{{ __('Baru') }}</a>
+                        <h4 class="card-title">{{ __('Kunjungan') }}</h4>
                         <div class="col-12 mt-2">
                             @include('alerts.success')
                             @include('alerts.errors')
@@ -27,9 +27,11 @@
                         <table id="datatable" class="table table-striped table-bordered" cellspacing="0" width="100%">
                             <thead>
                                 <tr>
-                                  <th>{{ __('Name') }}</th>
-                                  <th>{{ __('Description') }}</th>
-                                  <th>{{ __('Creation date') }}</th>
+                                  <th>{{ __('Tanggal') }}</th>
+                                  <th>{{ __('shift') }}</th>
+                                  <th>{{ __('Jaminan') }}</th>
+                                  <th>{{ __('No RM') }}</th>
+                                  <th>{{ __('Nama') }}</th>
                                   @can('manage-items', App\User::class)
                                       <th class="disabled-sorting text-right">{{ __('Actions') }}</th>
                                   @endcan
@@ -40,6 +42,8 @@
                                   <th>{{ __('Name') }}</th>
                                   <th>{{ __('Description') }}</th>
                                   <th>{{ __('Creation date') }}</th>
+                                  <th>{{ __('No RM') }}</th>
+                                  <th>{{ __('Nama') }}</th>
                                   @can('manage-items', App\User::class)
                                       <th class="disabled-sorting text-right">{{ __('Actions') }}</th>
                                   @endcan
@@ -48,9 +52,11 @@
                           <tbody>
                               @foreach($categories as $category)
                                   <tr>
-                                      <td>{{$category->name}}</td>
-                                      <td>{{$category->description}}</td>
                                       <td>{{ $category->created_at->format('d/m/Y H:i') }}</td>
+                                      <td>{{$category->description}}</td>
+                                      <td>{{$category->description}}</td>
+                                      <td>{{$category->description}}</td>
+                                      <td>{{$category->name}}</td>
                                       @can('manage-items', App\User::class)
                                         <td class="text-right">
                                             @if ((auth()->user()->can('update', $category) || auth()->user()->can('delete', $category)) && $category->id > 5)
