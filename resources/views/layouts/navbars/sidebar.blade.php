@@ -73,7 +73,7 @@
                       </a>
                     </li>
                     @can('manage-users', App\User::class)
-                      <li class="@if ($activePage == 'roles') active @endif">
+                      <li class="@if ($activePage == 'rekammedis') active @endif">
                         <a href="{{ route('role.index') }}">
                           <span class="sidebar-mini-icon">{{ __("RM") }}</span>
                           <span class="sidebar-normal"> {{ __("Rekam Medis") }} </span>
@@ -81,7 +81,7 @@
                       </li>
                     @endcan
                     @can('manage-users', App\User::class)
-                      <li class="@if ($activePage == 'users') active @endif">
+                      <li class="@if ($activePage == 'laporan') active @endif">
                         <a href="{{ route('user.index') }}">
                           <span class="sidebar-mini-icon">{{ __("L") }}</span>
                           <span class="sidebar-normal"> {{ __("Laporan") }} </span>

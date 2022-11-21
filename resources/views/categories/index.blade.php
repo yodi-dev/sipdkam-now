@@ -58,24 +58,24 @@
                                       <td>{{$category->description}}</td>
                                       <td>{{$category->name}}</td>
                                       @can('manage-items', App\User::class)
-                                        <td class="text-right">
-                                            @if ((auth()->user()->can('update', $category) || auth()->user()->can('delete', $category)) && $category->id > 5)
-                                                @can('update', $category)
-                                                    <a type="button" href="{{route("category.edit",$category)}}" rel="tooltip" class="btn btn-success btn-icon btn-sm " data-original-title="" title="">
-                                                      <i class="now-ui-icons ui-2_settings-90"></i>
-                                                    </a>
-                                                @endcan
-                                                @if ($category->items->isEmpty() && auth()->user()->can('delete', $category))
-                                                    <form action="{{ route('category.destroy', $category) }}" method="post" style="display:inline-block;" class ="delete-form">
-                                                        @csrf
-                                                        @method('delete')
-                                                        <button type="button" rel="tooltip" class="btn btn-danger btn-icon btn-sm delete-button" data-original-title="" title="" onclick="demo.showSwal('warning-message-and-confirmation')">
-                                                        <i class="now-ui-icons ui-1_simple-remove"></i>
-                                                        </button>
-                                                    </form>
+                                            <td class="text-right">
+                                                @if (auth()->user()->can('update', $category) || auth()->user()->can('delete', $category))
+                                                    @can('update', $category)
+                                                        <a type="button" href="{{route("category.edit",$category)}}" rel="tooltip" class="btn btn-success btn-icon btn-sm " data-original-title="" title="">
+                                                            <i class="now-ui-icons ui-2_settings-90"></i>
+                                                        </a>
+                                                    @endcan
+                                                    @can('delete', $category)
+                                                        <form action="{{ route('category.destroy', $category) }}" method="post" style="display:inline-block;" class ="delete-form">
+                                                            @csrf
+                                                            @method('delete')
+                                                            <button type="button" rel="tooltip" class="btn btn-danger btn-icon btn-sm delete-button" data-original-title="" title="" onclick="demo.showSwal('warning-message-and-confirmation')">
+                                                                <i class="now-ui-icons ui-1_simple-remove"></i>
+                                                            </button>
+                                                        </form>
+                                                    @endcan
                                                 @endif
-                                            @endif
-                                        </td>
+                                            </td>
                                       @endcan
                                   </tr>
                               @endforeach
