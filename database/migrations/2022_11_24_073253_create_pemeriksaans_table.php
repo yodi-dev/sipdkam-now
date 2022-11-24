@@ -15,6 +15,16 @@ return new class extends Migration
     {
         Schema::create('pemeriksaans', function (Blueprint $table) {
             $table->id();
+            $table->string('sis', 10)->nullable();
+            $table->string('dias', 10)->nullable();
+            $table->string('bb', 10)->nullable();
+            $table->string('keluhan', 100)->nullable();
+            $table->string('diagnosis_utama', 100)->nullable();
+            $table->string('diagnosis_tambahan', 100)->nullable();
+            $table->string('icd', 100)->nullable();
+            $table->string('gds', 100)->nullable();
+            $table->string('au', 100)->nullable();
+            $table->string('choi', 100)->nullable();
             $table->timestamps();
         });
     }

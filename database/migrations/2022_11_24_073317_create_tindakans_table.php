@@ -15,6 +15,9 @@ return new class extends Migration
     {
         Schema::create('tindakans', function (Blueprint $table) {
             $table->id();
+            $table->string('nama_tindakan', 70);
+            $table->string('operator', 70);
+            $table->string('asisten', 70);
             $table->timestamps();
         });
     }

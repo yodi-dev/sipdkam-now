@@ -13,12 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('tags', function (Blueprint $table) {
+        Schema::create('detail_kunjungans', function (Blueprint $table) {
             $table->BigIncrements('id');
             $table->string('shift', 2);
             $table->string('jaminan', 50);
             $table->string('poli', 50);
-            $table->string('dokter', 50);
             $table->timestamps();
         });
     }
