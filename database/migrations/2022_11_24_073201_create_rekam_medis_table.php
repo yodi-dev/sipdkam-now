@@ -27,7 +27,6 @@ return new class extends Migration
             $table->string('desa', 100);
             $table->string('kecamatan', 100);
             $table->string('kota_kab', 100);
-            $table->string('kota_kab', 100);
             $table->string('no_telp', 13);
             $table->string('pemilik_no_telp', 100);
             $table->string('ppk_umum', 100);

@@ -2,10 +2,16 @@
 
 namespace App;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Kunjungan;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class RekamMedis extends Model
 {
     use HasFactory;
+
+    public function kunjungans()
+    {
+        return $this->hasmany(Kunjungan::class);
+    }
 }

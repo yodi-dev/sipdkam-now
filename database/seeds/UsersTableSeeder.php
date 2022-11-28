@@ -14,26 +14,18 @@ class UsersTableSeeder extends Seeder
     {
         factory(App\User::class)->create([
             'id' => 1,
-            'name' => 'Admin',
-            'email' => 'admin@nowui.com',
+            'name' => 'Super Admin',
+            'email' => 'admin@mail.com',
             'role_id' => 1,
-            'picture'=> '../assets/img/emilyz.jpg'
+            'picture' => '../assets/img/emilyz.jpg'
         ]);
 
         factory(App\User::class)->create([
             'id' => 2,
             'name' => 'Creator',
-            'email' => 'creator@nowui.com',
+            'email' => 'creator@mail.com',
             'role_id' => 2,
-            'picture'=> '../assets/img/mike.jpg'
-        ]);
-
-        factory(App\User::class)->create([
-            'id' => 3,
-            'name' => 'Member',
-            'email' => 'member@nowui.com',
-            'role_id' => 3,
-            'picture'=> '../assets/img/james.jpg'
+            'picture' => '../assets/img/mike.jpg'
         ]);
     }
 }
