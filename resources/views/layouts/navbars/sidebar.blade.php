@@ -96,33 +96,33 @@
               <div class="collapse @if ($activeNav ?? '' == 'pages') show @endif" id="pagesExamples">
                 <ul class="nav">
                   @can('manage-users', App\User::class)
-                      <li class="@if ($activePage == 'rekammedis') active @endif">
-                        <a href="{{ route('role.index') }}">
-                          <span class="sidebar-mini-icon">{{ __("RM") }}</span>
+                      <li class="@if ($activePage == 'diagnosis') active @endif">
+                        <a href="{{ route('diagnosis.index') }}">
+                          <span class="sidebar-mini-icon">{{ __("DD") }}</span>
                           <span class="sidebar-normal"> {{ __("Data Diagnosis") }} </span>
                         </a>
                       </li>
                     @endcan
                     @can('manage-users', App\User::class)
-                      <li class="@if ($activePage == 'laporan') active @endif">
-                        <a href="{{ route('user.index') }}">
-                          <span class="sidebar-mini-icon">{{ __("L") }}</span>
+                      <li class="@if ($activePage == 'tindakan') active @endif">
+                        <a href="{{ route('tindakan.index') }}">
+                          <span class="sidebar-mini-icon">{{ __("DT") }}</span>
                           <span class="sidebar-normal"> {{ __("Data Tindakan") }} </span>
                         </a>
                       </li>
                     @endcan
                     @can('manage-users', App\User::class)
-                      <li class="@if ($activePage == 'support') active @endif">
-                        <a href="{{ route('page.index','support') }}">
-                          <span class="sidebar-mini-icon">{{ __("RS") }}</span>
+                      <li class="@if ($activePage == 'users') active @endif">
+                        <a href="{{ route('user.index') }}">
+                          <span class="sidebar-mini-icon">{{ __("DU") }}</span>
                           <span class="sidebar-normal"> {{ __("Data User") }} </span>
                         </a>
                       </li>
                     @endcan
                   @can('manage-users', App\User::class)
-                  <li class="@if ($activePage == 'timeline') active @endif">
-                    <a href="{{ route('page.index','timeline') }}">
-                      <span class="sidebar-mini-icon">{{ __("T") }}</span>
+                  <li class="@if ($activePage == 'dokter') active @endif">
+                    <a href="{{ route('dokter.index') }}">
+                      <span class="sidebar-mini-icon">{{ __("DDo") }}</span>
                       <span class="sidebar-normal"> {{ __("Data Dokter") }} </span>
                     </a>
                   </li>

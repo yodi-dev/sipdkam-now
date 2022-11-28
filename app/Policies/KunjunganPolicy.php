@@ -50,7 +50,7 @@ class KunjunganPolicy
      * @param  \App\Tag  $tag
      * @return boolean
      */
-    public function delete(User $user, RKunjungan $kunjungan)
+    public function delete(User $user, Kunjungan $kunjungan)
     {
         return ($user->isAdmin() || $user->isCreator());
     }
