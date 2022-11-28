@@ -96,10 +96,10 @@
               <div class="collapse @if ($activeNav ?? '' == 'pages') show @endif" id="pagesExamples">
                 <ul class="nav">
                   @can('manage-users', App\User::class)
-                      <li class="@if ($activePage == 'diagnosis') active @endif">
-                        <a href="{{ route('diagnosis.index') }}">
-                          <span class="sidebar-mini-icon">{{ __("DD") }}</span>
-                          <span class="sidebar-normal"> {{ __("Data Diagnosis") }} </span>
+                      <li class="@if ($activePage == 'pemeriksaan') active @endif">
+                        <a href="{{ route('pemeriksaan.index') }}">
+                          <span class="sidebar-mini-icon">{{ __("DP") }}</span>
+                          <span class="sidebar-normal"> {{ __("Data Pemeriksaan") }} </span>
                         </a>
                       </li>
                     @endcan
