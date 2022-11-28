@@ -10,6 +10,8 @@ class RekamMedis extends Model
 {
     use HasFactory;
 
+    protected $guarded = ['id'];
+
     public function kunjungans()
     {
         return $this->hasmany(Kunjungan::class);

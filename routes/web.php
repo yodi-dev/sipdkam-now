@@ -6,7 +6,6 @@ Route::get('/', function () {
     return redirect()->route('login');
 });
 
-Route::resource('rekammedis', RekamMedisController::class);
 
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
@@ -14,8 +13,12 @@ Route::get('lock', ['as' => 'page.lock', 'uses' => 'PageController@lock']);
 Route::get('pricing', ['as' => 'page.pricing', 'uses' => 'PageController@pricing']);
 
 Route::group(['middleware' => 'auth'], function () {
-    Route::resource('user', 'UserController');
+    Route::resource('rekammedis', 'RekamMedisController');
+    Route::resource('kunjungan', 'KunjunganController');
     // Route::resource('rekammedis', 'RekamMedisController');
+    // Route::resource('rekammedis', 'RekamMedisController');
+    // Route::resource('rekammedis', 'RekamMedisController');
+    Route::resource('user', 'UserController');
     Route::resource('category', 'CategoryController');
     Route::resource('tag', 'TagController');
     Route::resource('item', 'ItemController');

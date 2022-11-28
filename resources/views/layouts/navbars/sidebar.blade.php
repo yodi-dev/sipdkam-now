@@ -67,7 +67,7 @@
                 <div class="collapse show" id="laravelExamples">
                   <ul class="nav">
                     <li class="@if ($activePage == 'kunjungan') active @endif">
-                      <a href="{{ route('category.index') }}">
+                      <a href="{{ route('kunjungan.index') }}">
                         <span class="sidebar-mini-icon">{{ __("K") }}</span>
                         <span class="sidebar-normal"> {{ __("Kunjungan") }} </span>
                       </a>

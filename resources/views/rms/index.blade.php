@@ -45,7 +45,7 @@
                                 </tr>
                             </tfoot>
                             <tbody>
-                                @foreach($roles as $role)
+                                @foreach($rekammedis as $role)
                                     <tr>
                                       <td> 1</td>
                                       <td> 1</td>
