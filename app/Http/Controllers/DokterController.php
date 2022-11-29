@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Dokter;
 use Illuminate\Http\Request;
+use Yajra\DataTables\Facades\DataTables;
 
 class DokterController extends Controller
 {
@@ -28,7 +29,7 @@ class DokterController extends Controller
     public function api()
     {
         $dokters = Dokter::all();
-        $datatables = datatables()->of($dokters)->addIndexColum();
+        $datatables = DataTables::of($dokters)->addIndexColum();
 
         return $datatables->make(true);
     }
