@@ -28,3 +28,6 @@ Route::group(['middleware' => 'auth'], function () {
     Route::put('profile/password', ['as' => 'profile.password', 'uses' => 'ProfileController@password']);
     Route::get('{page}', ['as' => 'page.index', 'uses' => 'PageController@index']);
 });
+
+Route::get('/api/dokters', 'DokterController@api')->name('api');
+// Route::get('/api/dokters', [App\Http\Controllers\DokterController::class, 'api']);

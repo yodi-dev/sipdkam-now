@@ -27,7 +27,7 @@
           <table id="datatable" class="table table-striped table-bordered" cellspacing="0" width="100%">
               <thead>
                   <tr>
-                    <th>{{ __('Tanggal') }}</th>
+                    <th>{{ __('Tanggal-Jam') }}</th>
                     <th>{{ __('shift') }}</th>
                     <th>{{ __('Jaminan') }}</th>
                     <th>{{ __('No RM') }}</th>
@@ -52,7 +52,7 @@
             <tbody>
                 @foreach($kunjungans as $kunjungan)
                     <tr>
-                        <td>{{ $kunjungan->created_at->format('d/m/Y H:i') }}</td>
+                        <td>{{ $kunjungan->created_at->format('d/m/Y - H:i') }}</td>
                         <td>{{$kunjungan->description}}</td>
                         <td>{{$kunjungan->description}}</td>
                         <td>{{$kunjungan->description}}</td>
@@ -60,13 +60,13 @@
                         @can('manage-items', App\User::class)
                               <td class="text-right">
                                   @if (auth()->user()->can('update', $kunjungan) || auth()->user()->can('delete', $kunjungan))
-                                      @can('update', $category)
-                                          <a type="button" href="{{route("category.edit",$category)}}" rel="tooltip" class="btn btn-success btn-icon btn-sm " data-original-title="" title="">
+                                      @can('update', $kunjungan)
+                                          <a type="button" href="{{route("kunjungan.edit",$kunjungan)}}" rel="tooltip" class="btn btn-success btn-icon btn-sm " data-original-title="" title="">
                                               <i class="now-ui-icons ui-2_settings-90"></i>
                                           </a>
                                       @endcan
-                                      @can('delete', $category)
-                                          <form action="{{ route('category.destroy', $category) }}" method="post" style="display:inline-block;" class ="delete-form">
+                                      @can('delete', $kunjungan)
+                                          <form action="{{ route('kunjungan.destroy', $kunjungan) }}" method="post" style="display:inline-block;" class ="delete-form">
                                               @csrf
                                               @method('delete')
                                               <button type="button" rel="tooltip" class="btn btn-danger btn-icon btn-sm delete-button" data-original-title="" title="" onclick="demo.showSwal('warning-message-and-confirmation')">

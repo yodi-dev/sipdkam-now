@@ -25,6 +25,14 @@ class DokterController extends Controller
         return view('dokter.index', ['dokters' => $model->all()]);
     }
 
+    public function api()
+    {
+        $dokters = Dokter::all();
+        $datatables = datatables()->of($dokters)->addIndexColum();
+
+        return $datatables->make(true);
+    }
+
     /**
      * Show the form for creating a new resource.
      *

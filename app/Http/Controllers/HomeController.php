@@ -15,8 +15,11 @@
 * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
 */
+
 namespace App\Http\Controllers;
 
+use App\Kunjungan;
+use App\RekamMedis;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -36,8 +39,8 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function index()
+    public function index(RekamMedis $rekam, Kunjungan $kunjung)
     {
-        return view('home');
+        return view('home', ['rekams' => $rekam->count(), 'kunjung' => $kunjung->count()]);
     }
 }

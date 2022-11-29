@@ -188,6 +188,8 @@
     <script src="{{ asset('now') }}/js/core/bootstrap.min.js"></script>
     <script src="{{ asset('now') }}/js/plugins/perfect-scrollbar.jquery.min.js"></script>
     <script src="{{ asset('now') }}/js/plugins/moment.min.js"></script>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
         <!--  Plugin for Switches, full documentation here: http://www.jque.re/plugins/version3/bootstrap.switch/ -->
     <script src="{{ asset('now') }}/js/plugins/bootstrap-switch.js"></script>
     <!--  Plugin for Sweet Alert -->

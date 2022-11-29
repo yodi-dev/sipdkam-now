@@ -1,11 +1,12 @@
 @extends('layouts.app', [
     'class' => '',
-     'namePage' => 'Dashboard',
-     'activePage' => 'home',
-     'activeNav' => '',
+    'namePage' => 'Dashboard',
+    'activePage' => 'home',
+    'activeNav' => '',
 ])
 
 @section('content')
+<div id="controller">
   <div class="panel-header panel-header-lg">
     <canvas id="bigDashboardChart"></canvas>
   </div>
@@ -21,7 +22,7 @@
                     <div class="icon icon-primary">
                       <i class="now-ui-icons education_paper"></i>
                     </div>
-                    <h3 class="info-title">859</h3>
+                    <h3 class="info-title">{{ $kunjung }}</h3>
                     <h6 class="stats-title">{{ __('Kunjungan') }}</h6>
                   </div>
                 </div>
@@ -32,7 +33,7 @@
                     <div class="icon icon-success">
                       <i class="now-ui-icons files_paper"></i>
                     </div>
-                    <h3 class="info-title">3,521</h3>
+                    <h3 class="info-title">{{ $rekams }}</h3>
                     <h6 class="stats-title">{{ __('Rekam Medis') }}</h6>
                   </div>
                 </div>
@@ -43,16 +44,32 @@
       </div>
     </div>
   </div>
+</div>
 @endsection
 
 @push('js')
-  <script>
-    $(document).ready(function() {
-      // Javascript method's body can be found in assets/js/demos.js
-      demo.initDashboardPageCharts();
+<script type="text/javascript">
+  var controller = new Vue({
+    el: '#controller',
+    data: {
+      data: {}
+    },
+    mounted: function() {
+      
+    },
+    methods: {
 
-      demo.initVectorMap();
+    } 
 
-    });
-  </script>
+  });
+</script>
+<script>
+  $(document).ready(function() {
+    // Javascript method's body can be found in assets/js/demos.js
+    demo.initDashboardPageCharts();
+
+    demo.initVectorMap();
+
+  });
+</script>
 @endpush
