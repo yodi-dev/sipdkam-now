@@ -23,7 +23,8 @@ class DokterController extends Controller
     {
         $this->authorize('manage-users', User::class);
 
-        return view('dokter.index', ['dokters' => $model->all()]);
+        return view('dokter.index');
+        // , ['dokters' => $model->all()]
     }
 
     public function api()

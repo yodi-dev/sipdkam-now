@@ -48,8 +48,8 @@
                         <tbody>
                             @foreach($rekammedis as $role)
                             <tr>
-                                <td> 1</td>
-                                <td> 1</td>
+                                <td> {{ $role->no_rm }}</td>
+                                <td>{{ $role->no_bpjs }}</td>
                                 <td> {{$role->prolanis}}</td>
                                 <td>{{$role->nama}}</td>
                                 <td>{{ $role->kelamin }}</td>

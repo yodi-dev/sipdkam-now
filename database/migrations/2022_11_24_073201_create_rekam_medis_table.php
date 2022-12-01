@@ -27,12 +27,12 @@ return new class extends Migration
             $table->string('desa', 100);
             $table->string('kecamatan', 100);
             $table->string('kota_kab', 100);
-            $table->string('no_telp', 13);
-            $table->string('pemilik_no_telp', 100);
-            $table->string('ppk_umum', 100);
-            $table->string('jenis_peserta_bpjs', 100);
-            $table->date('tgl_mutasi_bpjs');
-            $table->string('no_kk', 30);
+            $table->string('no_telp', 13)->nullable();
+            $table->string('pemilik_no_telp', 100)->nullable();
+            $table->string('ppk_umum', 100)->nullable();
+            $table->string('jenis_peserta_bpjs', 100)->nullable();
+            $table->date('tgl_mutasi_bpjs')->nullable();
+            $table->string('no_kk', 30)->nullable();
             $table->timestamps();
         });
     }

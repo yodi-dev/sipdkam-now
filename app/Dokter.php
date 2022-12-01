@@ -7,5 +7,5 @@ use Illuminate\Database\Eloquent\Model;
 
 class Dokter extends Model
 {
-    use HasFactory;
+    protected $guided = ['id'];
 }

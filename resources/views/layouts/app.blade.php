@@ -183,12 +183,13 @@
             @endif
     </div>
     <!--   Core JS Files   -->
+    {{-- <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.min.js"></script> --}}
     <script src="{{ asset('now') }}/js/core/jquery.min.js"></script>
     <script src="{{ asset('now') }}/js/core/popper.min.js"></script>
     <script src="{{ asset('now') }}/js/core/bootstrap.min.js"></script>
     <script src="{{ asset('now') }}/js/plugins/perfect-scrollbar.jquery.min.js"></script>
     <script src="{{ asset('now') }}/js/plugins/moment.min.js"></script>
-    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    {{-- <script src="https://unpkg.com/vue@next" defer></script> --}}
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
         <!--  Plugin for Switches, full documentation here: http://www.jque.re/plugins/version3/bootstrap.switch/ -->
     <script src="{{ asset('now') }}/js/plugins/bootstrap-switch.js"></script>
@@ -230,6 +231,10 @@
     @endif
     <!-- Sharrre libray -->
     <script src="{{asset('now')}}/demo/jquery.sharrre.js"></script>
+
+    {{-- <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script> --}}
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/vue/3.2.45/vue.global.min.js' integrity='sha512-Pdnl+dKWHA0jEnmhogUHlOw3FqDeujiEc3XQDkvMrPUAvytiU2cZiknw2xDPgDS+u2prg2n+6eKz3CPG588gTQ==' crossorigin='anonymous'></script>
+    {{-- <script src="https://unpkg.com/vue@next"></script> --}}
 
     <script>
     $(document).ready(function(){

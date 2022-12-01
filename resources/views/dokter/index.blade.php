@@ -23,6 +23,9 @@
                 <div class="card-body">
                     <div class="toolbar">
                         <!--        Here you can write extra buttons/actions for the toolbar              -->
+                        {{-- <h1 v-html="counter"></h1>
+                        <h1 v-html="actUrl"></h1>
+                        <h1 v-html="apiUrl"></h1> --}}
                     </div>
                     <table id="datatable" class="table table-striped table-bordered" cellspacing="0" width="100%">
                         <thead>
@@ -32,45 +35,14 @@
                                 <th class="disabled-sorting text-right">{{ __('Actions') }}</th>
                             </tr>
                         </thead>
-                        <tfoot>
+                        {{-- <tfoot>
                             <tr>
                                 <th>{{ __('No') }}</th>
-                                <th>{{ __('Nama') }}</th>
-                                <th class="disabled-sorting text-right">{{ __('Actions') }}</th>
-                            </tr>
-                        </tfoot>
+                                <th>{{ __('Nama') }}</th> --}}
+                                {{-- <th class="disabled-sorting text-right">{{ __('Actions') }}</th> --}}
+                            {{-- </tr>
+                        </tfoot> --}}
                         <tbody>
-                            {{-- @foreach($dokters as $dokter)
-                            <tr>
-                                <td> </td>
-                                <td>{{$dokter->nama_dokter}}</td>
-                                @can('manage-items', App\User::class)
-                                <td class="text-right">
-                                    @if (auth()->user()->can('update', $dokter) || auth()->user()->can('delete',
-                                    $dokter))
-                                    @can('update', $dokter)
-                                    <a type="button" href="{{route("dokter.edit",$dokter)}}" rel="tooltip"
-                                        class="btn btn-success btn-icon btn-sm " data-original-title="" title="">
-                                        <i class="now-ui-icons ui-2_settings-90"></i>
-                                    </a>
-                                    @endcan
-                                    @can('delete', $dokter)
-                                    <form action="{{ route('dokter.destroy', $dokter) }}" method="post"
-                                        style="display:inline-block;" class="delete-form">
-                                        @csrf
-                                        @method('delete')
-                                        <button type="button" rel="tooltip"
-                                            class="btn btn-danger btn-icon btn-sm delete-button" data-original-title=""
-                                            title="" onclick="demo.showSwal('warning-message-and-confirmation')">
-                                            <i class="now-ui-icons ui-1_simple-remove"></i>
-                                        </button>
-                                    </form>
-                                    @endcan
-                                    @endif
-                                </td>
-                                @endcan
-                            </tr>
-                            @endforeach --}}
                         </tbody>
                     </table>
                 </div>
@@ -90,8 +62,8 @@
     var apiUrl = '{{ url('api/dokters') }}';
 
     var columns = [
-        {data: 'DT_RowIndex', class: 'text-center', orderable: true},   
-        {data: 'id', class: 'text-center', orderable: true},
+        {data: 'DT_RowIndex', class: 'text-center', orderable: true},
+        // {data: 'id', class: 'text-center', orderable: true},
         {data: 'nama_dokter', class: 'text-center', orderable: true},
         {render: function (index, row, data, meta) {
             return `
@@ -121,19 +93,19 @@
             })
 
         })
-        $('#datatable').DataTable({
-            "pagingType": "full_numbers",
-            "lengthMenu": [
-                [10, 25, 50, -1],
-                [10, 25, 50, "All"]
-            ],
-            responsive: true,
-            language: {
-                search: "_INPUT_",
-                searchPlaceholder: "Search records",
-            }
+        // $('#datatable').DataTable({
+        //     "pagingType": "full_numbers",
+        //     "lengthMenu": [
+        //         [10, 25, 50, -1],
+        //         [10, 25, 50, "All"]
+        //     ],
+        //     responsive: true,
+        //     language: {
+        //         search: "_INPUT_",
+        //         searchPlaceholder: "Search records",
+        //     }
 
-        });
+        // });
 
         var table = $('#datatable').DataTable();
 
