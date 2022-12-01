@@ -13,7 +13,7 @@ var controller = new Vue({
     methods: {
         datatable(){
             const _this = this;
-            _this.table = $('#dataTable').DataTable({
+            _this.table = $('#datatable').DataTable({
                 ajax: {
                     url: _this.apiUrl,
                     type: 'GET',

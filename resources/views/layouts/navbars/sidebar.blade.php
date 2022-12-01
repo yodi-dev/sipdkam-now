@@ -72,14 +72,12 @@
                                 <span class="sidebar-normal"> {{ __("Kunjungan") }} </span>
                             </a>
                         </li>
-                        @can('manage-users', App\User::class)
                         <li class="@if ($activePage == 'rekammedis') active @endif">
                             <a href="{{ route('rekammedis.index') }}">
                                 <span class="sidebar-mini-icon">{{ __("RM") }}</span>
                                 <span class="sidebar-normal"> {{ __("Rekam Medis") }} </span>
                             </a>
                         </li>
-                        @endcan
                     </ul>
                 </div>
             </li>

@@ -8,7 +8,7 @@
 @section('content')
 <div class="panel-header">
 </div>
-<div class="content">
+<div class="content" id="controller">
     <div class="row">
         <div class="col-md-12" id="roles-table">
             <div class="card">
@@ -86,16 +86,13 @@
 
 @push('js')
 <script>
-    var actUrl = '{{ url('dokters') }}';
+    var actUrl = '{{ url('dokter') }}';
     var apiUrl = '{{ url('api/dokters') }}';
 
     var columns = [
         {data: 'DT_RowIndex', class: 'text-center', orderable: true},   
-        {data: 'name', class: 'text-center', orderable: true},
-        {data: 'email', class: 'text-center', orderable: true},
-        {data: 'phone_number', class: 'text-center', orderable: true},
-        {data: 'address', class: 'text-center', orderable: true},
-        {data: 'date', class: 'text-center', orderable: true},
+        {data: 'id', class: 'text-center', orderable: true},
+        {data: 'nama_dokter', class: 'text-center', orderable: true},
         {render: function (index, row, data, meta) {
             return `
             <a href="#" onclick="controller.editData(event, ${meta.row})" class="btn btn-sm btn-warning">Edit</a>
@@ -103,7 +100,7 @@
         }, orderable: false, width: '110px', class: 'text-center'},
     ];
 </script>
-<script src="{{ asset('js/data.js') }}"></script>
+<script src="{{ asset('js') }}/data.js"></script>
 <script>
     $(document).ready(function () {
         $(".delete-button").click(function () {

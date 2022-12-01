@@ -20,8 +20,6 @@ class KunjunganController extends Controller
 
     public function index(Kunjungan $model)
     {
-        $this->authorize('manage-users', User::class);
-
         return view('kunjungan.index', ['kunjungans' => $model->all()]);
     }
 

@@ -29,7 +29,7 @@ class DokterController extends Controller
     public function api()
     {
         $dokters = Dokter::all();
-        $datatables = DataTables::of($dokters)->addIndexColum();
+        $datatables = datatables()->of($dokters)->addIndexColumn();
 
         return $datatables->make(true);
     }
