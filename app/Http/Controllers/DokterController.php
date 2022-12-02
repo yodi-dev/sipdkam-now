@@ -23,7 +23,7 @@ class DokterController extends Controller
     {
         $this->authorize('manage-users', User::class);
 
-        return view('dokter.index');
+        return view('dokter.index', ['dokters' => $model->all()]);
         // , ['dokters' => $model->all()]
     }
 
@@ -42,7 +42,7 @@ class DokterController extends Controller
      */
     public function create()
     {
-        //
+        return view('dokter.create');
     }
 
     /**
@@ -51,9 +51,13 @@ class DokterController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, Dokter $model)
     {
-        //
+        $request['created_at'] = now();
+        $request['updated_at'] = now();
+        $model->create($request->all());
+        // return $request;
+        return redirect()->route('dokter.index')->withStatus(__('Dokter successfully created.'));
     }
 
     /**
@@ -75,7 +79,7 @@ class DokterController extends Controller
      */
     public function edit(Dokter $dokter)
     {
-        //
+        return view('dokter.edit', compact('dokter'));
     }
 
     /**
@@ -87,7 +91,9 @@ class DokterController extends Controller
      */
     public function update(Request $request, Dokter $dokter)
     {
-        //
+        $dokter->update($request->all());
+
+        return redirect()->route('dokter.index')->withStatus(__('Dokter successfully updated.'));
     }
 
     /**
@@ -98,6 +104,8 @@ class DokterController extends Controller
      */
     public function destroy(Dokter $dokter)
     {
-        //
+        $dokter->delete();
+
+        return redirect()->route('dokter.index')->withStatus(__('Dokter successfully deleted.'));
     }
 }

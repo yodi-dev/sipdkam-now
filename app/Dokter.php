@@ -7,5 +7,5 @@ use Illuminate\Database\Eloquent\Model;
 
 class Dokter extends Model
 {
-    protected $guided = ['id'];
+    protected $fillable = ['nama_dokter'];
 }

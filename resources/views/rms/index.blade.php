@@ -13,7 +13,8 @@
         <div class="col-md-12" id="roles-table">
             <div class="card">
                 <div class="card-header">
-                    <a class="btn btn-primary btn-round pull-right text-white " href="{{ route('category.create') }}" >{{ __('Baru') }}</a>
+                    <a class="btn btn-primary btn-round pull-right text-white "
+                        href="{{ route('category.create') }}">{{ __('Baru') }}</a>
                     <h4 class="card-title">{{ __('Rekam Medis') }}</h4>
                     <div class="col-12 mt-2">
                         @include('alerts.success')
@@ -46,24 +47,23 @@
                             </tr>
                         </tfoot>
                         <tbody>
-                            @foreach($rekammedis as $role)
+                            @foreach($rekammedis as $rms)
                             <tr>
-                                <td> {{ $role->no_rm }}</td>
-                                <td>{{ $role->no_bpjs }}</td>
-                                <td> {{$role->prolanis}}</td>
-                                <td>{{$role->nama}}</td>
-                                <td>{{ $role->kelamin }}</td>
+                                <td> {{ $rms->no_rm }}</td>
+                                <td>{{ $rms->no_bpjs }}</td>
+                                <td> {{$rms->prolanis}}</td>
+                                <td>{{$rms->nama}}</td>
+                                <td>{{ $rms->kelamin }}</td>
                                 @can('manage-items', App\User::class)
                                 <td class="text-right">
-                                    @if (auth()->user()->can('update', $role) || auth()->user()->can('delete', $role))
-                                    @can('update', $role)
-                                    <a type="button" href="{{route("role.edit",$role)}}" rel="tooltip"
+                                    @if (auth()->user()->can('update', $rms) || auth()->user()->can('delete', $rms))
+                                    @can('update', $rms)
+                                    <a type="button" href="{{route("rekammedis.edit",$rms)}}" rel="tooltip"
                                         class="btn btn-success btn-icon btn-sm " data-original-title="" title="">
                                         <i class="now-ui-icons ui-2_settings-90"></i>
                                     </a>
                                     @endcan
-                                    @can('delete', $role)
-                                    <form action="{{ route('role.destroy', $role) }}" method="post"
+                                    <form action="{{ route('rekammedis.destroy', $rms) }}" method="post"
                                         style="display:inline-block;" class="delete-form">
                                         @csrf
                                         @method('delete')
@@ -73,7 +73,6 @@
                                             <i class="now-ui-icons ui-1_simple-remove"></i>
                                         </button>
                                     </form>
-                                    @endcan
                                     @endif
                                 </td>
                                 @endcan

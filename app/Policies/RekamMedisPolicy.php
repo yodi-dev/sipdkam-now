@@ -55,4 +55,9 @@ class RekamMedisPolicy
     {
         return ($user->isAdmin() || $user->isCreator());
     }
+
+    public function forceDelete(User $user, RekamMedis $rekammedis)
+    {
+        return $user->isAdmin() || $user->isCreator();
+    }
 }

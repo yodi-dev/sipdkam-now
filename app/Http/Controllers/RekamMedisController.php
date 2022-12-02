@@ -20,6 +20,7 @@ class RekamMedisController extends Controller
 
     public function index(RekamMedis $model)
     {
+        $this->authorize('manage-users', User::class);
         return view('rms.index', ['rekammedis' => $model->all()]);
     }
 
@@ -86,6 +87,8 @@ class RekamMedisController extends Controller
      */
     public function destroy(RekamMedis $rekamMedis)
     {
-        //
+        $rekamMedis->delete();
+
+        return redirect()->route('rekammedis.index')->withStatus(__('Rekam Medis successfully deleted.'));
     }
 }
