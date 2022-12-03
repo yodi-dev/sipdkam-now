@@ -12,6 +12,8 @@ use App\Policies\ItemPolicy;
 use App\Policies\RolePolicy;
 use App\Policies\UserPolicy;
 use App\Policies\CategoryPolicy;
+use App\Policies\RekamMedisPolicy;
+use App\RekamMedis;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 
@@ -28,6 +30,7 @@ class AuthServiceProvider extends ServiceProvider
         Item::class => ItemPolicy::class,
         Role::class => RolePolicy::class,
         Tag::class => TagPolicy::class,
+        RekamMedis::class => RekamMedisPolicy::class,
     ];
 
     /**

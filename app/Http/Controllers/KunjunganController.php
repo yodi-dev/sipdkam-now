@@ -30,7 +30,7 @@ class KunjunganController extends Controller
      */
     public function create()
     {
-        //
+        return view('kunjungan.create');
     }
 
     /**

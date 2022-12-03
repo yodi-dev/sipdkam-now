@@ -13,7 +13,7 @@
     <div class="col-md-12" id="categories-table">
       <div class="card">
         <div class="card-header">
-            <a class="btn btn-primary btn-round pull-right text-white " href="{{ route('category.create') }}" >{{ __('Baru') }}</a>
+            <a class="btn btn-primary btn-round pull-right text-white " href="{{ route('kunjungan.create') }}" >{{ __('Baru') }}</a>
             <h4 class="card-title">{{ __('Kunjungan') }}</h4>
             <div class="col-12 mt-2">
                 @include('alerts.success')
