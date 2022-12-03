@@ -2,8 +2,8 @@
 
 namespace App\Policies;
 
-use App\User;
 use App\RekamMedis;
+use App\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
 class RekamMedisPolicy
@@ -11,10 +11,10 @@ class RekamMedisPolicy
     use HandlesAuthorization;
 
     /**
-     * Determine whether the user can see the tags.
+     * Determine whether the user can view any models.
      *
      * @param  \App\User  $user
-     * @return boolean
+     * @return \Illuminate\Auth\Access\Response|bool
      */
     public function viewAny(User $user)
     {
@@ -22,10 +22,22 @@ class RekamMedisPolicy
     }
 
     /**
-     * Determine whether the user can create tags.
+     * Determine whether the user can view the model.
      *
      * @param  \App\User  $user
-     * @return boolean
+     * @param  \App\RekamMedis  $rekamMedis
+     * @return \Illuminate\Auth\Access\Response|bool
+     */
+    public function view(User $user, RekamMedis $rekamMedis)
+    {
+        return $user->isAdmin() || $user->isCreator();
+    }
+
+    /**
+     * Determine whether the user can create models.
+     *
+     * @param  \App\User  $user
+     * @return \Illuminate\Auth\Access\Response|bool
      */
     public function create(User $user)
     {
@@ -33,30 +45,49 @@ class RekamMedisPolicy
     }
 
     /**
-     * Determine whether the user can update the tag.
+     * Determine whether the user can update the model.
      *
      * @param  \App\User  $user
-     * @param  \App\Tag  $tag
-     * @return boolean
+     * @param  \App\RekamMedis  $rekamMedis
+     * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function update(User $user, RekamMedis $rekammedis)
+    public function update(User $user, RekamMedis $rekamMedis)
     {
-        return ($user->isAdmin() || $user->isCreator());
+        return $user->isAdmin() || $user->isCreator();
     }
 
     /**
-     * Determine whether the user can delete the tag.
+     * Determine whether the user can delete the model.
      *
      * @param  \App\User  $user
-     * @param  \App\Tag  $tag
-     * @return boolean
+     * @param  \App\RekamMedis  $rekamMedis
+     * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function delete(User $user, RekamMedis $rekammedis)
+    public function delete(User $user, RekamMedis $rekamMedis)
     {
-        return ($user->isAdmin() || $user->isCreator());
+        return $user->isAdmin() || $user->isCreator();
     }
 
-    public function forceDelete(User $user, RekamMedis $rekammedis)
+    /**
+     * Determine whether the user can restore the model.
+     *
+     * @param  \App\User  $user
+     * @param  \App\RekamMedis  $rekamMedis
+     * @return \Illuminate\Auth\Access\Response|bool
+     */
+    public function restore(User $user, RekamMedis $rekamMedis)
+    {
+        return $user->isAdmin() || $user->isCreator();
+    }
+
+    /**
+     * Determine whether the user can permanently delete the model.
+     *
+     * @param  \App\User  $user
+     * @param  \App\RekamMedis  $rekamMedis
+     * @return \Illuminate\Auth\Access\Response|bool
+     */
+    public function forceDelete(User $user, RekamMedis $rekamMedis)
     {
         return $user->isAdmin() || $user->isCreator();
     }

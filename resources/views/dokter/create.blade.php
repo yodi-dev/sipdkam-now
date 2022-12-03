@@ -33,7 +33,7 @@
                                     class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}"
                                     placeholder="{{ __('Name') }}" value="{{ old('name') }}" required autofocus>
                                 @include('alerts.feedback', ['field' => 'name'])
-                                <input type="hidden" name="created_at">
+                                {{-- <input type="hidden" name="created_at"> --}}
                             </div>
                             <div class="text-center">
                                 <button type="submit" class="btn btn-success mt-4">{{ __('Save') }}</button>

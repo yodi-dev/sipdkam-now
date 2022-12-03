@@ -14,7 +14,7 @@
             <div class="card">
                 <div class="card-header">
                     <a class="btn btn-primary btn-round pull-right text-white "
-                        href="{{ route('category.create') }}">{{ __('Baru') }}</a>
+                        href="{{ route('rekammedis.create') }}">{{ __('Baru') }}</a>
                     <h4 class="card-title">{{ __('Rekam Medis') }}</h4>
                     <div class="col-12 mt-2">
                         @include('alerts.success')
@@ -63,6 +63,7 @@
                                         <i class="now-ui-icons ui-2_settings-90"></i>
                                     </a>
                                     @endcan
+                                    @can('delete', $rms)
                                     <form action="{{ route('rekammedis.destroy', $rms) }}" method="post"
                                         style="display:inline-block;" class="delete-form">
                                         @csrf
@@ -73,6 +74,7 @@
                                             <i class="now-ui-icons ui-1_simple-remove"></i>
                                         </button>
                                     </form>
+                                    @endcan
                                     @endif
                                 </td>
                                 @endcan

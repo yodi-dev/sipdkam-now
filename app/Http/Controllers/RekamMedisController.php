@@ -20,7 +20,7 @@ class RekamMedisController extends Controller
 
     public function index(RekamMedis $model)
     {
-        $this->authorize('manage-users', User::class);
+        // $this->authorize('manage-users', User::class);
         return view('rms.index', ['rekammedis' => $model->all()]);
     }
 
@@ -31,7 +31,7 @@ class RekamMedisController extends Controller
      */
     public function create()
     {
-        //
+        return view('rms.create');
     }
 
     /**
@@ -40,9 +40,13 @@ class RekamMedisController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, RekamMedis $model)
     {
-        //
+        $request['created_at'] = now();
+        $request['updated_at'] = now();
+        $model->create($request->all());
+        // return $request;
+        return redirect()->route('rekammedis.index')->withStatus(__('Rekam Medis successfully created.'));
     }
 
     /**
@@ -87,8 +91,9 @@ class RekamMedisController extends Controller
      */
     public function destroy(RekamMedis $rekamMedis)
     {
-        $rekamMedis->delete();
+        return $rekamMedis;
+        // $rekamMedis->delete();
 
-        return redirect()->route('rekammedis.index')->withStatus(__('Rekam Medis successfully deleted.'));
+        // return redirect()->route('rekammedis.index')->withStatus(__('Rekam Medis successfully deleted.'));
     }
 }
