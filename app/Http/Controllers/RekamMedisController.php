@@ -20,7 +20,8 @@ class RekamMedisController extends Controller
 
     public function index(RekamMedis $model)
     {
-        // $this->authorize('manage-users', User::class);
+        $this->authorize('manage-users', User::class);
+
         return view('rms.index', ['rekammedis' => $model->all()]);
     }
 

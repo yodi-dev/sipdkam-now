@@ -13,7 +13,8 @@
     <div class="col-md-12" id="categories-table">
       <div class="card">
         <div class="card-header">
-            <a class="btn btn-primary btn-round pull-right text-white " href="{{ route('kunjungan.create') }}" >{{ __('Baru') }}</a>
+          <a class="btn btn-primary btn-round pull-right text-white " href="{{ route('rekammedis.create') }}" >{{ __('RM Baru') }}</a>
+            <a class="btn btn-primary btn-round pull-right text-white " href="{{ route('kunjungan.create') }}" >{{ __('Kunjunga Baru') }}</a>
             <h4 class="card-title">{{ __('Kunjungan') }}</h4>
             <div class="col-12 mt-2">
                 @include('alerts.success')
@@ -27,7 +28,7 @@
           <table id="datatable" class="table table-striped table-bordered" cellspacing="0" width="100%">
               <thead>
                   <tr>
-                    <th>{{ __('Tanggal-Jam') }}</th>
+                    <th>{{ __('Waktu') }}</th>
                     <th>{{ __('shift') }}</th>
                     <th>{{ __('Jaminan') }}</th>
                     <th>{{ __('No RM') }}</th>
@@ -52,11 +53,11 @@
             <tbody>
                 @foreach($kunjungans as $kunjungan)
                     <tr>
-                        <td>{{ $kunjungan->created_at->format('d/m/Y - H:i') }}</td>
-                        <td>{{$kunjungan->description}}</td>
-                        <td>{{$kunjungan->description}}</td>
-                        <td>{{$kunjungan->description}}</td>
-                        <td>{{$kunjungan->name}}</td>
+                        <td>{{$kunjungan->created_at->format('d/m/Y - H:i') }}</td>
+                        <td>{{ $rekam }}</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
                         @can('manage-items', App\User::class)
                               <td class="text-right">
                                   @if (auth()->user()->can('update', $kunjungan) || auth()->user()->can('delete', $kunjungan))

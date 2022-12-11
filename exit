@@ -1,0 +1,101 @@
+[33mcommit 98ee738d312726c9dd5edc92d781ff918b1ecffd[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m)[m
+Author: aiwantDev <irawanyodi06@gmail.com>
+Date:   Sat Dec 3 18:14:46 2022 +0700
+
+    Rekam medis is not clear
+
+[33mcommit 63a26ba80619da67207108995ca916abdd9498f8[m
+Author: aiwantDev <irawanyodi06@gmail.com>
+Date:   Sat Dec 3 12:34:13 2022 +0700
+
+    Proses membuat crud Rekam Medis
+
+[33mcommit d6908bea50cbd6cb3ca33f226c6910664f191d4b[m
+Author: aiwantDev <irawanyodi06@gmail.com>
+Date:   Fri Dec 2 18:46:15 2022 +0700
+
+    Crud Dokter done
+
+[33mcommit ce0948d191ec77b966e400cad6113c7d36e402ce[m
+Author: aiwantDev <irawanyodi06@gmail.com>
+Date:   Thu Dec 1 16:35:27 2022 +0700
+
+    read data with vue page dokter done
+
+[33mcommit 7a4d2682bddc7e409686b863032801a2df9ccce7[m
+Author: aiwantDev <irawanyodi06@gmail.com>
+Date:   Thu Dec 1 10:30:36 2022 +0700
+
+    data dokter belum muncul
+
+[33mcommit fffbc7df9a1de9a92b4efcb8c642dd662b1ccebc[m
+Author: aiwantDev <irawanyodi06@gmail.com>
+Date:   Tue Nov 29 21:07:26 2022 +0700
+
+    masih belum solve
+
+[33mcommit b4e4e7e0bb787e13e7e427ec5b0a29e1de2b3306[m
+Author: aiwantDev <irawanyodi06@gmail.com>
+Date:   Tue Nov 29 20:25:48 2022 +0700
+
+    yajra masih problem
+
+[33mcommit 1a52083fb4811c480f52615da07292afef3e1bce[m
+Author: aiwantDev <irawanyodi06@gmail.com>
+Date:   Mon Nov 28 19:53:43 2022 +0700
+
+    Route selesai
+
+[33mcommit dc398749ca13968749f335b108f6ff0d0343c8f8[m
+Author: aiwantDev <irawanyodi06@gmail.com>
+Date:   Mon Nov 28 17:24:14 2022 +0700
+
+    Memperbaiki route, sidebar
+
+[33mcommit 02050ee65e57208dbea339aa93176c0f0f11a45f[m
+Author: aiwantDev <irawanyodi06@gmail.com>
+Date:   Mon Nov 28 16:26:18 2022 +0700
+
+    memperbaiki route
+
+[33mcommit 1442b6171e1cf4f2d87b5158b51ef6501cbbd23d[m
+Author: aiwantDev <irawanyodi06@gmail.com>
+Date:   Mon Nov 28 13:41:30 2022 +0700
+
+    Route belum kelar
+
+[33mcommit c8e5e3cfed4bc2a9d238d5583f42b97f11fbc96a[m
+Author: aiwantDev <irawanyodi06@gmail.com>
+Date:   Thu Nov 24 21:29:27 2022 +0700
+
+    Membuat database (belum relasi)
+
+[33mcommit c1770dcc0565a8b00b2fffa81984ff924a090609[m
+Author: aiwantDev <irawanyodi06@gmail.com>
+Date:   Thu Nov 24 14:35:03 2022 +0700
+
+    Membuat model, controller, migrasi database
+
+[33mcommit 6715ebb58bedf06be7d164d82d30c374c911a22d[m
+Author: aiwantDev <irawanyodi06@gmail.com>
+Date:   Mon Nov 21 12:38:34 2022 +0700
+
+    tampilan awal semua halaman
+
+[33mcommit 37fe74c7f934182d3743231d3d8e3d30b5b66223[m
+Author: aiwantDev <irawanyodi06@gmail.com>
+Date:   Mon Nov 21 03:45:57 2022 +0700
+
+    updated
+
+[33mcommit 5452264e9d735e82f32d76b59dce4eadb3409e73[m
+Author: aiwantDev <irawanyodi06@gmail.com>
+Date:   Sun Nov 20 04:47:48 2022 +0700
+
+    install laravel dengan template now ui dan edit login, sidebar, dashboard page
+
+[33mcommit a3d14dd62df0a9a14de82c1c8ff1969e592a27e4[m
+Author: aiwantDev <irawanyodi06@gmail.com>
+Date:   Sun Nov 20 04:41:59 2022 +0700
+
+    first commit

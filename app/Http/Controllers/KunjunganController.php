@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\DetailKunjungan;
 use App\Kunjungan;
+use App\RekamMedis;
 use Illuminate\Http\Request;
 
 class KunjunganController extends Controller
@@ -18,9 +20,20 @@ class KunjunganController extends Controller
         $this->authorizeResource(Kunjungan::class);
     }
 
-    public function index(Kunjungan $model)
+    public function index(Kunjungan $kunjungans)
     {
-        return view('kunjungan.index', ['kunjungans' => $model->all()]);
+        $rekammedis = Kunjungan::with('rekam_medis')->get();
+        $kunjunganss = RekamMedis::with('kunjungans')->get();
+
+        $rekam = Kunjungan::select('no_rm')->leftJoin('rekam_medis', 'kunjungans.rekam_medis_id', '=', 'rekam_medis.id')->get();
+
+        return view(
+            'kunjungan.index',
+            [
+                'kunjungans' => $kunjungans->all(),
+                'rekam' => $rekam
+            ]
+        );
     }
 
     /**

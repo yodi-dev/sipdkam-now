@@ -21,10 +21,6 @@ class DatabaseSeeder extends Seeder
         DB::table('item_tag')->truncate();
         DB::table('categories')->truncate();
         DB::table('items')->truncate();
-        DB::table('dokters')->truncate();
-        DB::table('rekam_medis')->truncate();
-
-
 
         $this->call([RolesTableSeeder::class, UsersTableSeeder::class]);
         $this->call([TagsTableSeeder::class, CategoriesTableSeeder::class, ItemsTableSeeder::class]);

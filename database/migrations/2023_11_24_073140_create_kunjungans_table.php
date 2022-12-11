@@ -17,9 +17,9 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('detail_id');
             $table->unsignedBigInteger('rekam_medis_id');
-            $table->unsignedBigInteger('biaya_id');
-            $table->unsignedBigInteger('pemeriksaan_id');
-            $table->unsignedBigInteger('tindakan_id');
+            $table->unsignedBigInteger('biaya_id')->nullable();
+            $table->unsignedBigInteger('pemeriksaan_id')->nullable();
+            $table->unsignedBigInteger('tindakan_id')->nullable();
             $table->unsignedBigInteger('dokter_id');
             $table->timestamps();
 

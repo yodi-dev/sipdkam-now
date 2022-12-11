@@ -1,6 +1,7 @@
 <?php
 
-use App\Http\Controllers\RekamMedisController;
+// use Illuminate\Routing\Route;
+// use Illuminate\Support\Facades\Auth;
 
 Route::get('/', function () {
     return redirect()->route('login');
@@ -12,8 +13,10 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('lock', ['as' => 'page.lock', 'uses' => 'PageController@lock']);
 Route::get('pricing', ['as' => 'page.pricing', 'uses' => 'PageController@pricing']);
 
+
 Route::group(['middleware' => 'auth'], function () {
     Route::resource('rekammedis', 'RekamMedisController');
+    // Route::resource('rekam', 'RekamController');
     Route::resource('kunjungan', 'KunjunganController');
     Route::resource('pemeriksaan', 'PemeriksaanController');
     Route::resource('tindakan', 'TindakanController');

@@ -12,6 +12,6 @@ class Kunjungan extends Model
 
     public function rekam_medis()
     {
-        return $this->hasmany(RekamMedis::class);
+        return $this->belongsTo(RekamMedis::class);
     }
 }
