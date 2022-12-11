@@ -69,7 +69,7 @@ class RekamMedisController extends Controller
      */
     public function edit(RekamMedis $rekamMedis)
     {
-        //
+        return view('rms.edit', compact('rekamMedis'));
     }
 
     /**
@@ -81,7 +81,9 @@ class RekamMedisController extends Controller
      */
     public function update(Request $request, RekamMedis $rekamMedis)
     {
-        //
+        $rekamMedis->update($request->all());
+
+        return redirect()->route('rekammedis.index')->withStatus(__('Rekam Medis successfully updated.'));
     }
 
     /**
@@ -92,9 +94,9 @@ class RekamMedisController extends Controller
      */
     public function destroy(RekamMedis $rekamMedis)
     {
-        return $rekamMedis;
-        // $rekamMedis->delete();
+        // return $rekamMedis;
+        $rekamMedis->delete();
 
-        // return redirect()->route('rekammedis.index')->withStatus(__('Rekam Medis successfully deleted.'));
+        return redirect()->route('rekammedis.index')->withStatus(__('Rekam Medis successfully deleted.'));
     }
 }
