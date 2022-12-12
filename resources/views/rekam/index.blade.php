@@ -13,7 +13,7 @@
         <div class="col-md-12" id="roles-table">
             <div class="card">
                 <div class="card-header">
-                    <a class="btn btn-primary btn-round pull-right text-white" href="{{ route('rekammedis.create') }}">{{ __('Baru') }}</a>
+                    <a class="btn btn-primary btn-round pull-right text-white" href="{{ route('rekam.create') }}">{{ __('Baru') }}</a>
                     <h4 class="card-title">{{ __('Rekam Medis') }}</h4>
                     <div class="col-12 mt-2">
                         @include('alerts.success')
@@ -46,7 +46,7 @@
                             </tr>
                         </tfoot>
                         <tbody>
-                            @foreach($rekammedis as $rms)
+                            @foreach($rekams as $rms)
                             <tr>
                                 <td> {{ $rms->no_rm }}</td>
                                 <td>{{ $rms->no_bpjs }}</td>
@@ -55,14 +55,14 @@
                                 <td>{{ $rms->kelamin }}</td>
                                 @can('manage-items', App\User::class)
                                 <td class="text-right">
-                                    {{-- @if (auth()->user()->can('update', $rms) || auth()->user()->can('delete', $rms)) --}}
+                                    @if (auth()->user()->can('update', $rms) || auth()->user()->can('delete', $rms))
                                     @can('update', $rms)
-                                    <a type="button" href="{{route("rekammedis.edit",$rms)}}" rel="tooltip"
+                                    <a type="button" href="{{route("rekam.edit",$rms)}}" rel="tooltip"
                                         class="btn btn-success btn-icon btn-sm " data-original-title="" title="">
                                         <i class="now-ui-icons ui-2_settings-90"></i>
                                     </a>
                                     @endcan
-                                    <form action="{{ route('rekammedis.destroy', $rms) }}" method="post"
+                                    <form action="{{ route('rekam.destroy', $rms) }}" method="post"
                                         style="display:inline-block;" class="delete-form">
                                         @csrf
                                         @method('delete')
@@ -72,7 +72,7 @@
                                             <i class="now-ui-icons ui-1_simple-remove"></i>
                                         </button>
                                     </form>
-                                    {{-- @endif --}}
+                                    @endif
                                 </td>
                                 @endcan
                             </tr>

@@ -15,8 +15,8 @@ Route::get('pricing', ['as' => 'page.pricing', 'uses' => 'PageController@pricing
 
 
 Route::group(['middleware' => 'auth'], function () {
-    Route::resource('rekammedis', 'RekamMedisController');
-    // Route::resource('rekam', 'RekamController');
+    // Route::resource('rekammedis', 'RekamMedisController');
+    Route::resource('rekam', 'RekamController');
     Route::resource('kunjungan', 'KunjunganController');
     Route::resource('pemeriksaan', 'PemeriksaanController');
     Route::resource('tindakan', 'TindakanController');

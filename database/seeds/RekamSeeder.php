@@ -6,7 +6,7 @@ use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
-class RekamMedisSeeder extends Seeder
+class RekamSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -15,7 +15,7 @@ class RekamMedisSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('rekam_medis')->insert([
+        DB::table('rekams')->insert([
             'no_rm' => '222',
             'nama' => 'rizku',
             'kelamin' => 'laki-laki',
@@ -29,7 +29,7 @@ class RekamMedisSeeder extends Seeder
             'created_at' => now(),
             'updated_at' => now()
         ]);
-        DB::table('rekam_medis')->insert([
+        DB::table('rekams')->insert([
             'no_rm' => '23',
             'nama' => 'rizku',
             'kelamin' => 'laki-laki',
@@ -43,7 +43,7 @@ class RekamMedisSeeder extends Seeder
             'created_at' => now(),
             'updated_at' => now()
         ]);
-        DB::table('rekam_medis')->insert([
+        DB::table('rekams')->insert([
             'no_rm' => '2222432',
             'nama' => 'rizku',
             'kelamin' => 'laki-laki',
@@ -57,7 +57,7 @@ class RekamMedisSeeder extends Seeder
             'created_at' => now(),
             'updated_at' => now()
         ]);
-        DB::table('rekam_medis')->insert([
+        DB::table('rekams')->insert([
             'no_rm' => '2212',
             'nama' => 'roso',
             'kelamin' => 'laki-laki',
@@ -71,7 +71,7 @@ class RekamMedisSeeder extends Seeder
             'created_at' => now(),
             'updated_at' => now()
         ]);
-        DB::table('rekam_medis')->insert([
+        DB::table('rekams')->insert([
             'no_rm' => '33254',
             'nama' => 'tono',
             'kelamin' => 'laki-laki',

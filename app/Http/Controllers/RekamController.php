@@ -2,12 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\DetailKunjungan;
-use App\Kunjungan;
-use App\RekamMedis;
+use App\Rekam;
 use Illuminate\Http\Request;
 
-class KunjunganController extends Controller
+class RekamController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,24 +15,15 @@ class KunjunganController extends Controller
 
     public function __construct()
     {
-        $this->authorizeResource(Kunjungan::class);
+        $this->authorizeResource(Rekam::class);
     }
 
-    public function index(Kunjungan $kunjungans)
+    public function index(Rekam $model)
     {
-        $this->authorize('manage-items', User::class);
-        $rekammedis = Kunjungan::with('rekam_medis')->get();
-        $kunjunganss = RekamMedis::with('kunjungans')->get();
 
-        $rekam = Kunjungan::select('no_rm')->leftJoin('rekam_medis', 'kunjungans.rekam_medis_id', '=', 'rekam_medis.id')->get();
+        $this->authorize('manage-users', User::class);
 
-        return view(
-            'kunjungan.index',
-            [
-                'kunjungans' => $kunjungans->all(),
-                'rekam' => $rekam
-            ]
-        );
+        return view('rekam.index', ['rekams' => $model->all()]);
     }
 
     /**
@@ -44,7 +33,7 @@ class KunjunganController extends Controller
      */
     public function create()
     {
-        return view('kunjungan.create');
+        //
     }
 
     /**
@@ -61,10 +50,10 @@ class KunjunganController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Rekam  $rekam
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Rekam $rekam)
     {
         //
     }
@@ -72,22 +61,22 @@ class KunjunganController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Rekam  $rekam
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Rekam $rekam)
     {
-        return view('kunjungan.edit');
+        //
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\Rekam  $rekam
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Rekam $rekam)
     {
         //
     }
@@ -95,10 +84,10 @@ class KunjunganController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\Rekam  $rekam
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Rekam $rekam)
     {
         //
     }

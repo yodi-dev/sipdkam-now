@@ -73,7 +73,7 @@
                             </a>
                         </li>
                         <li class="@if ($activePage == 'rekammedis') active @endif">
-                            <a href="{{ route('rekammedis.index') }}">
+                            <a href="{{ route('rekam.index') }}">
                                 <span class="sidebar-mini-icon">{{ __("RM") }}</span>
                                 <span class="sidebar-normal"> {{ __("Rekam Medis") }} </span>
                             </a>

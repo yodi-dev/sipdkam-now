@@ -41,7 +41,7 @@ class RekamPolicy
      */
     public function create(User $user)
     {
-        //
+        return $user->isAdmin() || $user->isCreator();
     }
 
     /**
@@ -53,7 +53,7 @@ class RekamPolicy
      */
     public function update(User $user, Rekam $rekam)
     {
-        //
+        return $user->isAdmin() || $user->isCreator();
     }
 
     /**
@@ -65,7 +65,7 @@ class RekamPolicy
      */
     public function delete(User $user, Rekam $rekam)
     {
-        //
+        return $user->isAdmin() || $user->isCreator();
     }
 
     /**
@@ -77,7 +77,7 @@ class RekamPolicy
      */
     public function restore(User $user, Rekam $rekam)
     {
-        //
+        return $user->isAdmin() || $user->isCreator();
     }
 
     /**
@@ -89,6 +89,6 @@ class RekamPolicy
      */
     public function forceDelete(User $user, Rekam $rekam)
     {
-        //
+        return $user->isAdmin() || $user->isCreator();
     }
 }

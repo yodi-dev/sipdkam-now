@@ -13,7 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('rekam_medis', function (Blueprint $table) {
+        Schema::create('rekams', function (Blueprint $table) {
             $table->id();
             $table->string('no_rm', 10)->unique();
             $table->string('no_bpjs', 20)->unique()->nullable();
@@ -44,6 +44,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('rekam_medis');
+        Schema::dropIfExists('rekams');
     }
 };
