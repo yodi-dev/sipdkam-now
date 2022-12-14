@@ -8,4 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class Rekam extends Model
 {
     use HasFactory;
+    protected $fillabel = ['no_rm', 'no_bpjs', 'prolanis', 'nama', 'kelamin', 'tgl_lahir', 'dusun', 'rt', 'rw', 'desa', 'kecamatan', 'kota_kab', 'no_telp', 'pemilik_no_telp', 'ppk_umum', 'jenis_peserta_bpjs', 'tgl_mutasi_bpjs', 'no_kk'];
+
+    public function kunjungans()
+    {
+        return $this->hasMany(Kunjungan::class);
+    }
 }

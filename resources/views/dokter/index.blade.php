@@ -21,8 +21,8 @@
                     @endcan
                     <h4 class="card-title">{{ __('Dokter') }}</h4>
                     <div class="col-12 mt-2">
-                        @include('alerts.success')
-                        @include('alerts.errors')
+                        {{-- @include('alerts.success')
+                        @include('alerts.errors') --}}
                     </div>
                 </div>
                 <div class="card-body">

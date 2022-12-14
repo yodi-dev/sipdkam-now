@@ -16,8 +16,8 @@
               <a class="btn btn-primary btn-round text-white pull-right" href="{{ route('user.create') }}">{{ __('Add user') }}</a>
             <h4 class="card-title">{{ __('Users') }}</h4>
             <div class="col-12 mt-2">
-              @include('alerts.success')
-              @include('alerts.errors')
+              {{-- @include('alerts.success')
+              @include('alerts.errors') --}}
             </div>
           </div>
           <div class="card-body">

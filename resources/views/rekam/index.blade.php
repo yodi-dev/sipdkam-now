@@ -16,8 +16,8 @@
                     <a class="btn btn-primary btn-round pull-right text-white" href="{{ route('rekam.create') }}">{{ __('Baru') }}</a>
                     <h4 class="card-title">{{ __('Rekam Medis') }}</h4>
                     <div class="col-12 mt-2">
-                        @include('alerts.success')
-                        @include('alerts.errors')
+                        {{-- @include('alerts.success')
+                        @include('alerts.errors') --}}
                     </div>
                 </div>
                 <div class="card-body">
@@ -27,6 +27,7 @@
                     <table id="datatable" class="table table-striped table-bordered" cellspacing="0" width="100%">
                         <thead>
                             <tr>
+                                <th>{{ __('No') }}</th>
                                 <th>{{ __('No RM') }}</th>
                                 <th>{{ __('No BPJS') }}</th>
                                 <th>{{ __('Prolanis') }}</th>
@@ -37,6 +38,7 @@
                         </thead>
                         <tfoot>
                             <tr>
+                                <th>{{ __('No') }}</th>
                                 <th>{{ __('No RM') }}</th>
                                 <th>{{ __('No BPJS') }}</th>
                                 <th>{{ __('Prolanis') }}</th>
@@ -46,8 +48,12 @@
                             </tr>
                         </tfoot>
                         <tbody>
+                            @php
+                                $no = 1;
+                            @endphp
                             @foreach($rekams as $rms)
                             <tr>
+                                <td>{{ $no++ }}</td>
                                 <td> {{ $rms->no_rm }}</td>
                                 <td>{{ $rms->no_bpjs }}</td>
                                 <td> {{$rms->prolanis}}</td>

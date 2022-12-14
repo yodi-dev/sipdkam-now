@@ -28,61 +28,48 @@
                         @csrf
                         <div class="col-lg-12">
                             <h6 class="heading-small text-muted mb-4">{{ __('Detail Kunjungan') }}</h6>
-                            <div class="form-group{{ $errors->has('No RM') ? ' has-danger' : '' }}">
-                                <label class="form-control-label" for="No RM">{{ __('No RM') }}</label><br>
-                                <select title="{{ __('No RM') }}" data-style="btn btn-info btn-round" name="No RM" id="input-No RM" data-size="7" class="selectpicker{{ $errors->has('No RM') ? ' is-invalid' : '' }}" placeholder="{{ __('No RM') }}" required>
-                                    <option value="">-</option>
-                                    <option value="">-</option>
+                            <div class="form-group{{ $errors->has('rekam_id') ? ' has-danger' : '' }}">
+                                <label class="form-control-label" for="input-NoRM">{{ __('No RM') }}</label><br>
+                                <select title="{{ __('No RM') }}" data-style="btn btn-info btn-round" name="rekam_id" id="input-NoRM" data-size="7" class="selectpicker{{ $errors->has('rekam_id') ? ' is-invalid' : '' }}" placeholder="{{ __('No RM') }}" required>
+                                    @foreach ($rekams as $rms)
+                                        <option value="{{ $rms->id }}" {{ $rms->id == old('id') ? 'selected' : '' }}>{{ $rms->no_rm }} - {{ $rms->nama }}</option>
+                                    @endforeach
+                                    {{-- <option value="">-</option>
+                                    <option value="">-</option> --}}
                                 </select>
-                                @include('alerts.feedback', ['field' => 'No RM'])
+                                @include('alerts.feedback', ['field' => 'rekam_id'])
                             </div>
-                            <div class="form-group{{ $errors->has('Dokter') ? ' has-danger' : '' }}">
-                                <label class="form-control-label" for="Dokter">{{ __('Dokter') }}</label><br>
-                                <select title="{{ __('Dokter') }}" data-style="btn btn-info btn-round" name="Dokter" id="input-Dokter" data-size="7" class="selectpicker{{ $errors->has('Dokter') ? ' is-invalid' : '' }}" placeholder="{{ __('Dokter') }}" required>
-                                    <option value="">-</option>
-                                    <option value="">-</option>
+                            <div class="form-group{{ $errors->has('dokter_id') ? ' has-danger' : '' }}">
+                                <label class="form-control-label" for="input-Dokter">{{ __('Dokter') }}</label><br>
+                                <select title="{{ __('Dokter') }}" data-style="btn btn-info btn-round" name="dokter_id" id="input-Dokter" data-size="7" class="selectpicker{{ $errors->has('dokter_id') ? ' is-invalid' : '' }}" placeholder="{{ __('Dokter') }}" required>
+                                    @foreach ($dokters as $dokter)
+                                        <option value="{{ $dokter->id }}" {{ $dokter->id == old('id') ? 'selected' : '' }}>{{ $dokter->nama_dokter }}</option>
+                                    @endforeach
+                                    {{-- <option value="">-</option>
+                                    <option value="">-</option> --}}
                                 </select>
-                                @include('alerts.feedback', ['field' => 'Dokter'])
+                                @include('alerts.feedback', ['field' => 'dokter_id'])
                             </div>
-                            <div class="form-group{{ $errors->has('Shift') ? ' has-danger' : '' }}">
-                                <label class="form-control-label" for="Shift">{{ __('Shift') }}</label>
-                                <input type="text" name="Shift" id="input-Shift"
-                                    class="form-control{{ $errors->has('Shift') ? ' is-invalid' : '' }}"
-                                    placeholder="{{ __('Shift') }}" value="{{ old('Shift') }}" autofocus>
-                                @include('alerts.feedback', ['field' => 'Shift'])
+                            <div class="form-group{{ $errors->has('shift') ? ' has-danger' : '' }}">
+                                <label class="form-control-label" for="input-Shift">{{ __('Shift') }}</label>
+                                <input type="text" name="shift" id="input-Shift"
+                                    class="form-control{{ $errors->has('shift') ? ' is-invalid' : '' }}"
+                                    placeholder="{{ __('Shift') }}" value="{{ old('shift') }}" autofocus>
+                                @include('alerts.feedback', ['field' => 'shift'])
                             </div>
-                            <div class="form-group{{ $errors->has('Jaminan') ? ' has-danger' : '' }}">
-                                <label class="form-control-label" for="Jaminan">{{ __('Jaminan') }}</label>
-                                <input type="text" name="Jaminan" id="input-Jaminan"
-                                class="form-control{{ $errors->has('Jaminan') ? ' is-invalid' : '' }}"
-                                placeholder="{{ __('Jaminan') }}" value="{{ old('Jaminan') }}" required autofocus>
-                                @include('alerts.feedback', ['field' => 'Jaminan'])
+                            <div class="form-group{{ $errors->has('jaminan') ? ' has-danger' : '' }}">
+                                <label class="form-control-label" for="input-Jaminan">{{ __('Jaminan') }}</label>
+                                <input type="text" name="jaminan" id="input-Jaminan"
+                                class="form-control{{ $errors->has('jaminan') ? ' is-invalid' : '' }}"
+                                placeholder="{{ __('Jaminan') }}" value="{{ old('jaminan') }}" required autofocus>
+                                @include('alerts.feedback', ['field' => 'jaminan'])
                             </div>
-                            {{-- <div class="form-group{{ $errors->has('kelamin') ? ' has-danger' : '' }}">
-                                <label class="form-control-label" for="kelamin">{{ __('Jenis Kelamin') }}</label><br>
-                                <select title="{{ __('Kelamin') }}" data-style="btn btn-info btn-round" name="kelamin" id="input-kelamin" data-size="7" class="selectpicker{{ $errors->has('kelamin') ? ' is-invalid' : '' }}" placeholder="{{ __('Kelamin') }}" required>
-                                    <option value="laki-laki">Laki-laki</option>
-                                    <option value="perempuan">Perempuan</option>
-                                </select>
-                                @include('alerts.feedback', ['field' => 'kelamin'])
-                            </div> --}}
-                            {{-- <div class="form-group{{ $errors->has('tgl_lahir') ? ' has-danger' : '' }}">
-                                <label class="form-control-label" for="tgl_lahir">{{ __('Tanggal Lahir') }}</label>
-                                <input class="form-control datepicker" name="tgl_lahir" id="tgl_lahir"
-                                                placeholder="Select Tanggal Lahir" type="text" data-date-format="YYYY-MM-DD"
-                                                value="{{ old('tgl_lahir', now()->format('d/m/Y')) }}">
-                                {{-- <label class="form-control-label" for="tgl_lahir">{{ __('Tanggal Lahir') }}</label>
-                                <input type="text" name="tgl_lahir" id="input-tgl_lahir"
-                                    class="form-control{{ $errors->has('tgl_lahir') ? ' is-invalid' : '' }}"
-                                    placeholder="{{ __('Tanggal Lahir') }}" value="{{ old('tgl_lahir') }}" required autofocus>
-                                @include('alerts.feedback', ['field' => 'tgl_lahir']) --}}
-                            {{-- </div>  --}}
-                            <div class="form-group{{ $errors->has('Poli') ? ' has-danger' : '' }}">
-                                <label class="form-control-label" for="Poli">{{ __('Poli') }}</label>
-                                <input type="text" name="Poli" id="input-Poli"
-                                    class="form-control{{ $errors->has('Poli') ? ' is-invalid' : '' }}"
-                                    placeholder="{{ __('Poli') }}" value="{{ old('Poli') }}" required autofocus>
-                                @include('alerts.feedback', ['field' => 'Poli'])
+                            <div class="form-group{{ $errors->has('poli') ? ' has-danger' : '' }}">
+                                <label class="form-control-label" for="input-Poli">{{ __('Poli') }}</label>
+                                <input type="text" name="poli" id="input-Poli"
+                                    class="form-control{{ $errors->has('poli') ? ' is-invalid' : '' }}"
+                                    placeholder="{{ __('Poli') }}" value="{{ old('poli', $kunjungs->poli) }}" required autofocus>
+                                @include('alerts.feedback', ['field' => 'poli'])
                             </div>
                             <div class="text-center">
                                 <button type="submit" class="btn btn-success mt-4">{{ __('Save') }}</button>

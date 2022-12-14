@@ -31,6 +31,11 @@ class KunjunganPolicy
         return $user->isAdmin() || $user->isCreator();
     }
 
+    public function show(User $user)
+    {
+        return $user->isAdmin() || $user->isCreator();
+    }
+
     /**
      * Determine whether the user can update the tag.
      *

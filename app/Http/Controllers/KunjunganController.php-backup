@@ -6,6 +6,7 @@ use App\DetailKunjungan;
 use App\Dokter;
 use App\Kunjungan;
 use App\Rekam;
+use App\RekamMedis;
 use Illuminate\Http\Request;
 
 class KunjunganController extends Controller
@@ -20,23 +21,22 @@ class KunjunganController extends Controller
     {
         $this->authorizeResource(Kunjungan::class);
     }
-    public function index(Kunjungan $model)
+
+    public function index(Kunjungan $kunjungans)
     {
         $this->authorize('manage-items', User::class);
-
-        return view('kunjungan.index', ['kunjungans' => $model->all()]);
-        // $rekams = Kunjungan::with('rekams')->get();
-        // $kunjungans = Rekam::with('kunjungans')->get();
+        $rekams = Kunjungan::with('rekams')->get();
+        $kunjunganss = Rekam::with('kunjungans')->get();
 
         // $rekam = Kunjungan::select('no_rm')->leftJoin('rekam', 'kunjungans.rekam_medis_id', '=', 'rekam_medis.id')->get();
 
-        // return view(
-        //     'kunjungan.index',
-        //     [
-        //         'kunjungans' => $kunjungans->all(),
-        //         'rekam' => $rekams
-        //     ]
-        // );
+        return view(
+            'kunjungan.index',
+            [
+                'kunjungans' => $kunjungans->all(),
+                'rekam' => $rekams
+            ]
+        );
     }
 
     /**
@@ -46,6 +46,7 @@ class KunjunganController extends Controller
      */
     public function create(Rekam $rekamModel, Dokter $dokterModel)
     {
+        // return view('kunjungan.create');
         return view('kunjungan.create', [
             'rekams' => $rekamModel->get(['id', 'no_rm', 'nama']),
             'dokters' => $dokterModel->get(['id', 'nama_dokter'])
@@ -58,45 +59,59 @@ class KunjunganController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, Kunjungan $model, DetailKunjungan $detail)
     {
-        //
+        $request['created_at'] = now();
+        $request['updated_at'] = now();
+
+        $detail->create($request);
+
+        $model->create($request->merge([
+            'options' => $request->options ? $request->options : null
+        ])->all());
+        // return $request;
+        return redirect()->route('kunjungan.index')->withStatus(__('Kunjungan successfully created.'));
+
+        // $item = $model->create($request->merge([
+        //     'picture' => $request->photo->store('pictures', 'public'),
+        //     'show_on_homepage' => $request->show_on_homepage ? 1 : 0,
+        //     'options' => $request->options ? $request->options : null,
+        //     'date' => $request->date ? Carbon::parse($request->date)->format('Y-m-d') : null
+        // ])->all());
+
+        // $item->tags()->sync($request->get('tags'));
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Kunjungan  $kunjungan
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Kunjungan $kunjungan)
+    public function show($id)
     {
-        return $kunjungan;
+        //
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Kunjungan  $kunjungan
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Kunjungan $kunjungan, Rekam $rekamModel, Dokter $dokterModel, DetailKunjungan $kunjungs)
+    public function edit($id)
     {
-        // return $rekamModel;
-        return view('kunjungan.edit', compact('kunjungan', 'kunjungs'), [
-            'rekams' => $rekamModel->get(['id', 'no_rm', 'nama']),
-            'dokters' => $dokterModel->get(['id', 'nama_dokter'])
-        ]);
+        return view('kunjungan.edit');
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Kunjungan  $kunjungan
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Kunjungan $kunjungan)
+    public function update(Request $request, $id)
     {
         //
     }
@@ -104,10 +119,10 @@ class KunjunganController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Kunjungan  $kunjungan
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Kunjungan $kunjungan)
+    public function destroy($id)
     {
         //
     }

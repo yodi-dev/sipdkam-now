@@ -33,7 +33,7 @@ class RekamController extends Controller
      */
     public function create()
     {
-        //
+        return view('rekam.create');
     }
 
     /**
@@ -42,9 +42,13 @@ class RekamController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, Rekam $model)
     {
-        //
+        $request['created_at'] = now();
+        $request['updated_at'] = now();
+        $model->create($request->all());
+        // return $request;
+        return redirect()->route('rekam.index')->withStatus(__('Rekam Medis successfully created.'));
     }
 
     /**
@@ -66,7 +70,7 @@ class RekamController extends Controller
      */
     public function edit(Rekam $rekam)
     {
-        //
+        return view('rekam.edit', compact('rekam'));
     }
 
     /**
@@ -78,7 +82,9 @@ class RekamController extends Controller
      */
     public function update(Request $request, Rekam $rekam)
     {
-        //
+        $rekam->update($request->all());
+
+        return redirect()->route('rekam.index')->withStatus(__('Rekam Medis successfully updated.'));
     }
 
     /**
@@ -89,6 +95,8 @@ class RekamController extends Controller
      */
     public function destroy(Rekam $rekam)
     {
-        //
+        $rekam->delete();
+
+        return redirect()->route('rekam.index')->withStatus(__('Rekam Medis successfully deleted.'));
     }
 }

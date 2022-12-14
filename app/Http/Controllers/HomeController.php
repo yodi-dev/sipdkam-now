@@ -19,6 +19,7 @@
 namespace App\Http\Controllers;
 
 use App\Kunjungan;
+use App\Rekam;
 use App\RekamMedis;
 use Illuminate\Http\Request;
 
@@ -39,7 +40,7 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function index(RekamMedis $rekam, Kunjungan $kunjung)
+    public function index(Rekam $rekam, Kunjungan $kunjung)
     {
         return view('home', ['rekams' => $rekam->count(), 'kunjung' => $kunjung->count()]);
     }
