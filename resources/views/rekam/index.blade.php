@@ -61,6 +61,10 @@
                                 <td>{{ $rms->kelamin }}</td>
                                 @can('manage-items', App\User::class)
                                 <td class="text-right">
+                                    <a type="button" href="{{route("rekam.show",$rms)}}" rel="tooltip"
+                                        class="btn btn-info btn-icon btn-sm " data-original-title="" title="">
+                                        <i class="now-ui-icons design_bullet-list-67"></i>
+                                    </a>
                                     @if (auth()->user()->can('update', $rms) || auth()->user()->can('delete', $rms))
                                     @can('update', $rms)
                                     <a type="button" href="{{route("rekam.edit",$rms)}}" rel="tooltip"

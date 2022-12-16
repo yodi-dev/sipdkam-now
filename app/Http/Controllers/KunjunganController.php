@@ -71,7 +71,8 @@ class KunjunganController extends Controller
      */
     public function show(Kunjungan $kunjungan)
     {
-        return $kunjungan;
+        // return $kunjungan;
+        return view('kunjungan.show');
     }
 
     /**

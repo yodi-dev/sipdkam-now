@@ -24,76 +24,141 @@
                     </div>
                 </div>
                 <div class="card-body">
-                    <form method="post" action="{{ route('kunjungan.store') }}" autocomplete="off">
-                        @csrf
-                        <div class="col-lg-12">
-                            <h6 class="heading-small text-muted mb-4">{{ __('Detail Kunjungan') }}</h6>
+                    <form class="form-horizontal" method="post" action="{{ route('kunjungan.store') }}" autocomplete="off">
+                    @csrf
+                    <h6 class="heading-small text-muted mb-4">{{ __('Detail Kunjungan') }}</h6>
+                    
+                    <div class="row">
+                        <label class="col-md-2 col-form-label" for="input-NoRM">{{ __('No RM') }}</label>
+                        <div class="col-md-9">
                             <div class="form-group{{ $errors->has('rekam_id') ? ' has-danger' : '' }}">
-                                <label class="form-control-label" for="input-NoRM">{{ __('No RM') }}</label><br>
-                                <select title="{{ __('No RM') }}" data-style="btn btn-info btn-round" name="rekam_id" id="input-NoRM" data-size="7" class="selectpicker{{ $errors->has('rekam_id') ? ' is-invalid' : '' }}" placeholder="{{ __('No RM') }}" required>
+                                <select title="{{ __('Pilih No RM') }}" data-style="btn btn-info btn-round" name="rekam_id"
+                                id="input-NoRM" data-size="7"
+                                class="selectpicker{{ $errors->has('rekam_id') ? ' is-invalid' : '' }}"
+                                placeholder="{{ __('Pilih No RM') }}" required>
                                     @foreach ($rekams as $rms)
-                                        <option value="{{ $rms->id }}" {{ $rms->id == old('id') ? 'selected' : '' }}>{{ $rms->no_rm }} - {{ $rms->nama }}</option>
+                                    <option value="{{ $rms->id }}" {{ $rms->id == old('id') ? 'selected' : '' }}>
+                                        {{ $rms->no_rm }} - {{ $rms->nama }}</option>
                                     @endforeach
-                                    {{-- <option value="">-</option>
-                                    <option value="">-</option> --}}
                                 </select>
                                 @include('alerts.feedback', ['field' => 'rekam_id'])
                             </div>
-                            <div class="form-group{{ $errors->has('dokter_id') ? ' has-danger' : '' }}">
-                                <label class="form-control-label" for="input-Dokter">{{ __('Dokter') }}</label><br>
-                                <select title="{{ __('Dokter') }}" data-style="btn btn-info btn-round" name="dokter_id" id="input-Dokter" data-size="7" class="selectpicker{{ $errors->has('dokter_id') ? ' is-invalid' : '' }}" placeholder="{{ __('Dokter') }}" required>
-                                    @foreach ($dokters as $dokter)
-                                        <option value="{{ $dokter->id }}" {{ $dokter->id == old('id') ? 'selected' : '' }}>{{ $dokter->nama_dokter }}</option>
-                                    @endforeach
-                                    {{-- <option value="">-</option>
-                                    <option value="">-</option> --}}
-                                </select>
-                                @include('alerts.feedback', ['field' => 'dokter_id'])
+                        </div>
+                    </div>
+                    <div class="row">
+                        <label class="col-md-2 col-form-label">Username</label>
+                        <div class="col-md-9">
+                            <div class="form-group">
+                                <input type="text" class="form-control">
                             </div>
-                            <div class="form-group{{ $errors->has('shift') ? ' has-danger' : '' }}">
-                                <label class="form-control-label" for="input-Shift">{{ __('Shift') }}</label>
-                                <input type="text" name="shift" id="input-Shift"
-                                    class="form-control{{ $errors->has('shift') ? ' is-invalid' : '' }}"
-                                    placeholder="{{ __('Shift') }}" value="{{ old('shift') }}" autofocus>
-                                @include('alerts.feedback', ['field' => 'shift'])
-                            </div>
-                            <div class="form-group{{ $errors->has('jaminan') ? ' has-danger' : '' }}">
-                                <label class="form-control-label" for="input-Jaminan">{{ __('Jaminan') }}</label>
-                                <input type="text" name="jaminan" id="input-Jaminan"
+                        </div>
+                    </div>
+                    <div class="col-lg-12">
+                        <div class="form-group{{ $errors->has('dokter_id') ? ' has-danger' : '' }}">
+                            <label class="form-control-label" for="input-Dokter">{{ __('Dokter') }}</label><br>
+                            <select title="{{ __('Pilih Dokter') }}" data-style="btn btn-info btn-round"
+                                name="dokter_id" id="input-Dokter" data-size="7"
+                                class="selectpicker{{ $errors->has('dokter_id') ? ' is-invalid' : '' }}"
+                                placeholder="{{ __('Pilih Dokter') }}" required>
+                                @foreach ($dokters as $dokter)
+                                <option value="{{ $dokter->id }}" {{ $dokter->id == old('id') ? 'selected' : '' }}>
+                                    {{ $dokter->nama_dokter }}</option>
+                                @endforeach
+                            </select>
+                            @include('alerts.feedback', ['field' => 'dokter_id'])
+                        </div>
+                        <div class="form-group{{ $errors->has('shift') ? ' has-danger' : '' }}">
+                            <label class="form-control-label" for="input-Shift">{{ __('Shift') }}</label>
+                            <input type="text" name="shift" id="input-Shift"
+                                class="form-control{{ $errors->has('shift') ? ' is-invalid' : '' }}"
+                                placeholder="{{ __('Shift') }}" value="{{ old('shift') }}" autofocus>
+                            @include('alerts.feedback', ['field' => 'shift'])
+                        </div>
+                        <div class="form-group{{ $errors->has('jaminan') ? ' has-danger' : '' }}">
+                            <label class="form-control-label" for="input-Jaminan">{{ __('Jaminan') }}</label>
+                            <input type="text" name="jaminan" id="input-Jaminan"
                                 class="form-control{{ $errors->has('jaminan') ? ' is-invalid' : '' }}"
                                 placeholder="{{ __('Jaminan') }}" value="{{ old('jaminan') }}" required autofocus>
-                                @include('alerts.feedback', ['field' => 'jaminan'])
+                            @include('alerts.feedback', ['field' => 'jaminan'])
+                        </div>
+                        <div class="form-group{{ $errors->has('poli') ? ' has-danger' : '' }}">
+                            <label class="form-control-label" for="input-Poli">{{ __('Poli') }}</label>
+                            <input type="text" name="poli" id="input-Poli"
+                                class="form-control{{ $errors->has('poli') ? ' is-invalid' : '' }}"
+                                placeholder="{{ __('Poli') }}" value="{{ old('poli') }}" required autofocus>
+                            @include('alerts.feedback', ['field' => 'poli'])
+                        </div>
+                        <div class="text-center">
+                            <button type="submit" class="btn btn-success mt-4">{{ __('Save') }}</button>
+                        </div>
+                    </div>
+                    </form>
+                {{-- <div class="card-body ">
+                    <form class="form-horizontal">
+                        <div class="row">
+                            <label class="col-md-3 col-form-label">Username</label>
+                            <div class="col-md-9">
+                                <div class="form-group">
+                                    <input type="text" class="form-control">
+                                </div>
                             </div>
-                            <div class="form-group{{ $errors->has('poli') ? ' has-danger' : '' }}">
-                                <label class="form-control-label" for="input-Poli">{{ __('Poli') }}</label>
-                                <input type="text" name="poli" id="input-Poli"
-                                    class="form-control{{ $errors->has('poli') ? ' is-invalid' : '' }}"
-                                    placeholder="{{ __('Poli') }}" value="{{ old('poli', $kunjungs->poli) }}" required autofocus>
-                                @include('alerts.feedback', ['field' => 'poli'])
+                        </div>
+                        <div class="row">
+                            <label class="col-md-3 col-form-label">Email</label>
+                            <div class="col-md-9">
+                                <div class="form-group">
+                                    <input type="email" class="form-control">
+                                </div>
                             </div>
-                            <div class="text-center">
-                                <button type="submit" class="btn btn-success mt-4">{{ __('Save') }}</button>
+                        </div>
+                        <div class="row">
+                            <label class="col-md-3 col-form-label">Password</label>
+                            <div class="col-md-9">
+                                <div class="form-group">
+                                    <input type="password" class="form-control">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <label class="col-md-3"></label>
+                            <div class="col-md-9">
+                                <div class="form-check">
+                                    <label class="form-check-label">
+                                        <input class="form-check-input" type="checkbox">
+                                        <span class="form-check-sign"></span>
+                                        Remember me
+                                    </label>
+                                </div>
                             </div>
                         </div>
                     </form>
                 </div>
+                <div class="card-footer ">
+                    <div class="row">
+                        <label class="col-md-3"></label>
+                        <div class="col-md-9">
+                            <button type="submit" class="btn btn-fill btn-primary">Sign in</button>
+                        </div>
+                    </div>
+                </div> --}}
             </div>
         </div>
     </div>
+</div>
+</div>
+</div>
 </div>
 @endsection
 @push('js')
 <script src="https://cdn.ckeditor.com/ckeditor5/19.1.1/classic/ckeditor.js"></script>
 <script>
-$(document).ready(function () {
-    demo.initDateTimePicker();
-    ClassicEditor
-        .create( document.querySelector( '#editor' ) )
-        .then( editor => {
-        } )
-        .catch( error => {
-    } );
-});
+    $(document).ready(function () {
+        demo.initDateTimePicker();
+        ClassicEditor
+            .create(document.querySelector('#editor'))
+            .then(editor => {})
+            .catch(error => {});
+    });
+
 </script>
 @endpush
-

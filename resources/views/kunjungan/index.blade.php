@@ -42,9 +42,9 @@
                         </thead>
                         <tfoot>
                             <tr>
-                                <th>{{ __('Name') }}</th>
-                                <th>{{ __('Description') }}</th>
-                                <th>{{ __('Creation date') }}</th>
+                                <th>{{ __('Waktu') }}</th>
+                                <th>{{ __('shift') }}</th>
+                                <th>{{ __('Jaminan') }}</th>
                                 <th>{{ __('No RM') }}</th>
                                 <th>{{ __('Nama') }}</th>
                                 @can('manage-items', App\User::class)

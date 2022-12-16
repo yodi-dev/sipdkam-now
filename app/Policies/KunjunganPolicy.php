@@ -20,6 +20,11 @@ class KunjunganPolicy
         return $user->isAdmin() || $user->isCreator();
     }
 
+    public function view(User $user, Kunjungan $kunjungan)
+    {
+        return $user->isAdmin() || $user->isCreator();
+    }
+
     /**
      * Determine whether the user can create tags.
      *
@@ -27,11 +32,6 @@ class KunjunganPolicy
      * @return boolean
      */
     public function create(User $user)
-    {
-        return $user->isAdmin() || $user->isCreator();
-    }
-
-    public function show(User $user)
     {
         return $user->isAdmin() || $user->isCreator();
     }

@@ -22,14 +22,14 @@
         <a class="btn btn-success mt-2 mr-3" id="docs" target="_blank" href="https://now-ui-dashboard-pro-laravel.creative-tim.com/docs/getting-started/laravel-setup.html?_ga=2.124096394.1444048996.1606126698-1702452109.1586172448"><i class="tim-icons icon-book-bookmark"></i> Documentation</a>
       @endif --}}
       <form>
-        <div class="input-group no-border">
+        {{-- <div class="input-group no-border">
           <input type="text" value="" class="form-control" placeholder="Search...">
           <div class="input-group-append">
             <div class="input-group-text">
               <i class="now-ui-icons ui-1_zoom-bold"></i>
             </div>
           </div>
-        </div>
+        </div> --}}
       </form>
       <ul class="navbar-nav" id="logout">
         <li class="nav-item">
