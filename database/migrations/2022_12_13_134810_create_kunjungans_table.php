@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('kunjungans', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('detail_id');
+            $table->unsignedBigInteger('detail_kunjungan_id');
             $table->unsignedBigInteger('rekam_id');
             $table->unsignedBigInteger('biaya_id')->nullable();
             $table->unsignedBigInteger('pemeriksaan_id')->nullable();
@@ -23,7 +23,7 @@ return new class extends Migration
             $table->unsignedBigInteger('dokter_id');
             $table->timestamps();
 
-            $table->foreign('detail_id')->references('id')->on('detail_kunjungans');
+            $table->foreign('detail_kunjungan_id')->references('id')->on('detail_kunjungans');
             $table->foreign('rekam_id')->references('id')->on('rekams');
             $table->foreign('biaya_id')->references('id')->on('biayas');
             $table->foreign('pemeriksaan_id')->references('id')->on('pemeriksaans');

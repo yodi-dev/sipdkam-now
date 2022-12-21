@@ -20,11 +20,34 @@ class KunjunganController extends Controller
     {
         $this->authorizeResource(Kunjungan::class);
     }
-    public function index(Kunjungan $model)
+    public function index(Kunjungan $model, Rekam $rekamModel, Dokter $dokterModel)
     {
         $this->authorize('manage-items', User::class);
 
-        return view('kunjungan.index', ['kunjungans' => $model->all()]);
+        // $members = Member::with('user')->get();
+        // $details = Kunjungan::with('details')->get();
+        $details = Kunjungan::with('details')->get();
+        $rekamms =  Rekam::with('kunjungans')->get();
+        $kunjungans = $model->all();
+        $rekams = $rekamModel->get(['id', 'no_rm', 'nama']);
+        $dokters = $dokterModel->get(['id', 'nama_dokter']);
+
+        $data = Kunjungan::select('*')
+            ->Join('detail_kunjungans', 'kunjungans.detail_kunjungan_id', '=', 'detail_kunjungans.id')
+            ->Join('rekams', 'kunjungans.rekam_id', '=', 'rekams.id')
+            ->Join('dokters', 'kunjungans.dokter_id', '=', 'dokters.id')
+            ->orderBy('kunjungans.id', 'asc')->get();
+
+        return $data;
+        // return $kunjungans;
+
+        // return view('kunjungan.index', compact('data', 'details', 'kunjungans', 'rekams', 'dokters'));
+
+        // return view('kunjungan.index', [
+        //     'kunjungans' => $model->all(),
+        //     'rekams' => $rekamModel->get(['id', 'no_rm', 'nama']),
+        //     'dokters' => $dokterModel->get(['id', 'nama_dokter'])
+        // ]);
         // $rekams = Kunjungan::with('rekams')->get();
         // $kunjungans = Rekam::with('kunjungans')->get();
 
@@ -81,13 +104,11 @@ class KunjunganController extends Controller
      * @param  \App\Kunjungan  $kunjungan
      * @return \Illuminate\Http\Response
      */
-    public function edit(Kunjungan $kunjungan, Rekam $rekamModel, Dokter $dokterModel, DetailKunjungan $kunjungs)
+    public function edit(Kunjungan $kunjungan)
     {
         // return $rekamModel;
-        return view('kunjungan.edit', compact('kunjungan', 'kunjungs'), [
-            'rekams' => $rekamModel->get(['id', 'no_rm', 'nama']),
-            'dokters' => $dokterModel->get(['id', 'nama_dokter'])
-        ]);
+        // return 'tes';
+        return view('kunjungan.edit', compact('kunjungan'));
     }
 
     /**

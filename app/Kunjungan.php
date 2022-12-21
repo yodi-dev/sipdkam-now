@@ -10,4 +10,14 @@ class Kunjungan extends Model
     use HasFactory;
 
     protected $guarded = 'id';
+
+    public function details()
+    {
+        return $this->belongsTo(DetailKunjungan::class);
+    }
+
+    public function rekams()
+    {
+        return $this->belongsTo(Rekam::class);
+    }
 }

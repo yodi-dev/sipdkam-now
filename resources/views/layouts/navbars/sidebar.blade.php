@@ -58,7 +58,7 @@
             </li>
             <li>
                 <a data-toggle="collapse" href="#laravelExamples">
-                    <i class="fab fa-laravel"></i>
+                    <i class="now-ui-icons education_agenda-bookmark"></i>
                     <p>
                         {{ __("Data Pasien") }}
                         <b class="caret"></b>
@@ -84,7 +84,7 @@
             <li>
                 @can('manage-users', App\User::class)
                 <a data-toggle="collapse" href="#pagesExamples">
-                    <i class="now-ui-icons design_image"></i>
+                    <i class="now-ui-icons files_box"></i>
                     <p>
                         {{ __("Data Master") }}
                         <b class="caret"></b>

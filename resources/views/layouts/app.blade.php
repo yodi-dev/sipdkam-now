@@ -74,7 +74,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>{{__(" SIPD Klinik Al Mubarok")}}</title>
-    <link rel="icon" type="image/png" href="{{ asset('now') }}/img/favicon.png">
+    <link rel="icon" type="image/png" href="{{ asset('assets') }}/img/logo-kam.png">
     <!-- Favicon -->
     <link href="{{ asset('now') }}/img/brand/favicon.png" rel="icon" type="image/png">
     <!-- Fonts -->
@@ -115,7 +115,7 @@
     <script src="{{ asset('now') }}/js/core/jquery.min.js"></script>
     <script src="{{ asset('now') }}/js/core/popper.min.js"></script>
     <script src="{{ asset('now') }}/js/core/bootstrap.min.js"></script>
-    <script src="{{ asset('now') }}/js/plugins/perfect-scrollbar.jquery.min.js"></script>
+    {{-- <script src="{{ asset('now') }}/js/plugins/perfect-scrollbar.jquery.min.js"></script> --}}
     <script src="{{ asset('now') }}/js/plugins/moment.min.js"></script>
     {{-- <script src="https://unpkg.com/vue@next" defer></script> --}}
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
@@ -151,7 +151,7 @@
     <!--  Notifications Plugin    -->
     <script src="{{ asset('now') }}/js/plugins/bootstrap-notify.js"></script>
     <!-- Control Center for Now Ui Dashboard: parallax effects, scripts for the example pages etc -->
-    <script src="{{ asset('now') }}/js/now-ui-dashboard.js?v=1.4.1"></script>
+    {{-- <script src="{{ asset('now') }}/js/now-ui-dashboard.js?v=1.4.1"></script> --}}
     <!-- JS Just for demo purpose, don't include it in your project -->
     <script src="{{asset('now')}}/demo/demo.js?v=1.0"></script>
     @if (config('app.is_demo'))
