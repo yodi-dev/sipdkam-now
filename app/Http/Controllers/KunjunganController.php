@@ -149,4 +149,18 @@ class KunjunganController extends Controller
     {
         //
     }
+
+    public function api()
+    {
+
+        $data = Kunjungan::select('kunjungans.id', 'kunjungans.created_at', 'detail_kunjungans.shift', 'detail_kunjungans.jaminan', 'rekams.no_rm', 'rekams.nama')
+        ->Join('detail_kunjungans', 'kunjungans.detail_kunjungan_id', '=', 'detail_kunjungans.id')
+        ->Join('rekams', 'kunjungans.rekam_id', '=', 'rekams.id')
+        ->Join('dokters', 'kunjungans.dokter_id', '=', 'dokters.id')
+        ->orderBy('kunjungans.id', 'asc')->get();
+        $datatables = datatables()->of($data)->addIndexColumn();
+
+        return $datatables->make(true);
+    }
+
 }
