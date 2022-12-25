@@ -7,11 +7,8 @@
 
 @section('content')
 <div class="panel-header">
-
-
-
 </div>
-<div class="content">
+<div class="content" id="controller" style="margin-top: -100px;">
     <div class="row">
         <div class="col-md-12" id="categories-table">
             <div class="card">
@@ -68,38 +65,39 @@
                                 <td>{{ $item->nama }}</td>
                                 @can('manage-items', App\User::class)
                                 <td class="text-right">
-                                    <a type="button" href="{{route("kunjungan.index",$item)}}" rel="tooltip"
-                                        class="btn btn-info btn-icon btn-sm " data-toggle="modal" data-target="#exampleModal">
+                                    {{-- <form method="post" action="{{ route("kunjungan.index") }}">
+                                        <input type="hidden" name="shift" value="{{ $item->shift }}">
+                                        <input type="submit">
+                                    </form> --}}
+                                    <a type="button" href="#" @click="showData()" rel="tooltip"
+                                        class="btn btn-info btn-icon btn-sm" data-toggle="modal" data-target="#exampleModal">
                                         <i class="now-ui-icons design_bullet-list-67"></i>
                                     </a>
-                                    {{-- <button type="button" class="btn btn-sm btn-info btn-icon" data-toggle="modal" data-target="#exampleModal">
-                                        <i class="now-ui-icons design_bullet-list-67"></i>
-                                    </button> --}}
-                                <a type="button" href="{{route("kunjungan.show",$item)}}" rel="tooltip"
-                                class="btn btn-info btn-icon btn-sm " data-original-title="" title="">
-                                    <i class="now-ui-icons business_money-coins"></i>
-                                </a>
-                                @if (auth()->user()->can('update', $item) || auth()->user()->can('delete',
-                                    $item))
-                                    @can('update', $item)
-                                    <a type="button" href="{{route("kunjungan.edit",$item->id)}}" rel="tooltip"
-                                    class="btn btn-success btn-icon btn-sm " data-original-title="" title="">
-                                        <i class="now-ui-icons ui-2_settings-90"></i>
+                                    <a type="button" href="{{route("kunjungan.show",$item)}}" rel="tooltip"
+                                    class="btn btn-info btn-icon btn-sm " data-original-title="" title="">
+                                        <i class="now-ui-icons business_money-coins"></i>
                                     </a>
-                                @endcan
-                                @can('delete', $item)
-                                <form action="{{ route('kunjungan.destroy', $item) }}" method="post"
-                                style="display:inline-block;" class="delete-form">
-                                @csrf
-                                @method('delete')
-                                <button type="button" rel="tooltip"
-                                class="btn btn-danger btn-icon btn-sm delete-button" data-original-title=""
-                                title="" onclick="demo.showSwal('warning-message-and-confirmation')">
-                                    <i class="now-ui-icons ui-1_simple-remove"></i>
-                                </button>
-                                </form>
-                                @endcan
-                                @endif
+                                    @if (auth()->user()->can('update', $item) || auth()->user()->can('delete',
+                                        $item))
+                                        @can('update', $item)
+                                        <a type="button" href="{{route("kunjungan.edit",$item->id)}}" rel="tooltip"
+                                        class="btn btn-success btn-icon btn-sm " data-original-title="" title="">
+                                            <i class="now-ui-icons ui-2_settings-90"></i>
+                                        </a>
+                                    @endcan
+                                    @can('delete', $item)
+                                    <form action="{{ route('kunjungan.destroy', $item) }}" method="post"
+                                    style="display:inline-block;" class="delete-form">
+                                    @csrf
+                                    @method('delete')
+                                    <button type="button" rel="tooltip"
+                                    class="btn btn-danger btn-icon btn-sm delete-button" data-original-title=""
+                                    title="" onclick="demo.showSwal('warning-message-and-confirmation')">
+                                        <i class="now-ui-icons ui-1_simple-remove"></i>
+                                    </button>
+                                    </form>
+                                    @endcan
+                                    @endif
                                 </td>
                             @endcan
                             </tr>
@@ -108,8 +106,6 @@
                             @endforeach
                         </tbody>
                     </table>
-
-                   
                 </div>
             </div>
         </div>
@@ -123,7 +119,7 @@
 </div>
 
 <!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
+<div class="modal fade" id="showModal" tabindex="-1" role="dialog"
     aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -134,18 +130,22 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form class="item-form"
-                    enctype="multipart/form-data">
-                    @csrf
-                    @method('put')
-
+                <form class="item-form" enctype="multipart/form-data">
+                    @foreach ($data as $item)
+                        
+                    
                     <h6 class="heading-small text-muted mb-3">{{ __('Kunjungan information') }}</h6>
                     <div class="pl-lg-4 mb-4">
                         @include('alerts.feedback', ['field' => 'name'])
+
+                        {{-- @if ($_POST == true)
+                            $shift = $_POST['shift'];
+                            
+                            <input type="text" class="form-control{{ $errors->has('shift') ? ' is-invalid' : '' }}" value="{{ $shift }}>
+                        @endif --}}
                         {{-- </div> --}}
                         <div class="form-group{{ $errors->has('rekam_id') ? ' has-danger' : '' }}">
-                            <label class="form-control-label"
-                                for="input-NoRM">{{ __('No RM') }}</label><br>
+                            <label class="form-control-label" for="input-NoRM">{{ __('No RM') }}</label><br>
                             <select title="{{ __('No RM') }}" data-style="btn btn-info btn-round"
                                 name="rekam_id" id="input-NoRM" data-size="7"
                                 class="selectpicker{{ $errors->has('rekam_id') ? ' is-invalid' : '' }}"
@@ -155,8 +155,6 @@
                                     {{ $rms->id == old('id') ? 'selected' : '' }}>{{ $rms->no_rm }}
                                     - {{ $rms->nama }}</option>
                                 @endforeach
-                                {{-- <option value="">-</option>
-                    <option value="">-</option> --}}
                             </select>
                             @include('alerts.feedback', ['field' => 'rekam_id'])
                         </div>
@@ -172,17 +170,14 @@
                                     {{ $dokter->id == old('id') ? 'selected' : '' }}>
                                     {{ $dokter->nama_dokter }}</option>
                                 @endforeach
-                                {{-- <option value="">-</option>
-                    <option value="">-</option> --}}
                             </select>
                             @include('alerts.feedback', ['field' => 'dokter_id'])
                         </div>
                         <div class="form-group{{ $errors->has('shift') ? ' has-danger' : '' }}">
                             <label class="form-control-label"
                                 for="input-Shift">{{ __('Shift') }}</label>
-                            <input type="text" name="shift" id="input-Shift"
-                                class="form-control{{ $errors->has('shift') ? ' is-invalid' : '' }}"
-                                value="{{ old('shift') }}" autofocus>
+                            <input type="text" class="form-control{{ $errors->has('shift') ? ' is-invalid' : '' }}"
+                                value="{{ $item->shift }} {{ old($item->shift) }}" autofocus>
                             @include('alerts.feedback', ['field' => 'shift'])
                         </div>
                         <div class="form-group{{ $errors->has('jaminan') ? ' has-danger' : '' }}">
@@ -323,6 +318,7 @@
                         </div>
                     </div>
             </div>
+            @endforeach
             </form>
         <div class="modal-footer justify-content-center">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -332,6 +328,57 @@
 @endsection
 
 @push('js')
+<script src="https://cdn.jsdelivr.net/npm/vue@2.6.0"></script>
+<script>
+    var actUrl = '{{ url('kunjungans') }}';
+    var apiUrl = '{{ url('api/kunjungans') }}';
+    var columns = [
+        {data: 'DT_RowIndex', class: 'text-center', orderable: true},   
+        {data: 'name', class: 'text-center', orderable: true},
+        {data: 'email', class: 'text-center', orderable: true},
+        {data: 'phone_number', class: 'text-center', orderable: true},
+        {data: 'address', class: 'text-center', orderable: true},
+        {data: 'date', class: 'text-center', orderable: true},
+        {render: function (index, row, data, meta) {
+            return `
+            <a href="#" onclick="controller.editData(event, ${meta.row})" class="btn btn-sm btn-warning">Edit</a>
+            <a href="#" onclick="controller.deleteData(event, ${data.id})" class="btn btn-sm btn-danger">Delete</a>`;
+        }, orderable: false, width: '110px', class: 'text-center'},
+    ];
+</script>
+<script>
+var controller = new Vue({
+    el: '#controller',
+    data: {
+        datas: [],
+        data: {},
+        actUrl,
+        apiUrl,
+    },
+    mounted: function() {
+        this.datatable();
+    },
+    methods: {
+        datatable(){
+            const _this = this;
+            _this.table = $('#dataTable').DataTable({
+                ajax: {
+                    url: _this.apiUrl,
+                    type: 'GET',
+                },
+                columns
+            }).on('xhr', function() {
+                _this.datas = _this.table.ajax.json().data;
+            });
+        },
+        showData(event, row) {
+            this.data = this.datas[row];
+            $('#showModal').modal('show');    
+            console.log(row)
+        }
+    }
+});
+</script>
 <script>
     $(document).ready(function () {
         $(".delete-button").click(function () {

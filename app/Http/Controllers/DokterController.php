@@ -55,6 +55,10 @@ class DokterController extends Controller
     {
         $request['created_at'] = now();
         $request['updated_at'] = now();
+
+        $this->validate($request, [
+            'nama_dokter' => ['required']
+        ]);
         $model->create($request->all());
         // return $request;
         return redirect()->route('dokter.index')->withStatus(__('Dokter successfully created.'));

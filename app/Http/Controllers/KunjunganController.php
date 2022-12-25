@@ -26,22 +26,24 @@ class KunjunganController extends Controller
 
         // $members = Member::with('user')->get();
         // $details = Kunjungan::with('details')->get();
-        $details = Kunjungan::with('details')->get();
+        $details = Kunjungan::with('details', 'rekams')->get();
         $rekamms =  Rekam::with('kunjungans')->get();
         $kunjungans = $model->all();
         $rekams = $rekamModel->get(['id', 'no_rm', 'nama']);
         $dokters = $dokterModel->get(['id', 'nama_dokter']);
 
-        $data = Kunjungan::select('*')
+        $data = Kunjungan::select('kunjungans.id', 'kunjungans.created_at', 'detail_kunjungans.shift', 'detail_kunjungans.jaminan', 'rekams.no_rm', 'rekams.nama')
             ->Join('detail_kunjungans', 'kunjungans.detail_kunjungan_id', '=', 'detail_kunjungans.id')
             ->Join('rekams', 'kunjungans.rekam_id', '=', 'rekams.id')
             ->Join('dokters', 'kunjungans.dokter_id', '=', 'dokters.id')
             ->orderBy('kunjungans.id', 'asc')->get();
 
-        return $data;
+        // return $data;
+        // return $details;
+        // return $rekamms;
         // return $kunjungans;
 
-        // return view('kunjungan.index', compact('data', 'details', 'kunjungans', 'rekams', 'dokters'));
+        return view('kunjungan.index', compact('data', 'details', 'kunjungans', 'rekams', 'dokters'));
 
         // return view('kunjungan.index', [
         //     'kunjungans' => $model->all(),
@@ -81,9 +83,23 @@ class KunjunganController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, Kunjungan $kunjungan, DetailKunjungan $detail)
     {
-        //
+        $request['created_at'] = now();
+        $request['updated_at'] = now();
+
+        $detail['_token'] = $request['_token'];
+        $detail['shift'] = $request['shift'];
+        $detail['jaminan'] = $request['jaminan'];
+        $detail['poli'] = $request['poli'];
+        $detail['created_at'] = $request['created_at'];
+        $detail['updated_at'] = $request['updated_at'];
+
+        // $detail->create(['$detail->_token', '$detail->shift', '$detail->jaminan', '$detail->poli', '$detail->created_at', '$detail->updated_at']);
+        // return redirect()->route('kunjungan.index')->withStatus(__('detail successfully created.'));
+        // $model->create($request->all());
+        // return $detail;
+        // return redirect()->route('rekam.index')->withStatus(__('Rekam Medis successfully created.'));
     }
 
     /**

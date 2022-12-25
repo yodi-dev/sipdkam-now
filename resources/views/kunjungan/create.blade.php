@@ -8,7 +8,7 @@
 @section('content')
 <div class="panel-header">
 </div>
-<div class="content">
+<div class="content" style="margin-top: -100px;">
     <div class="row">
         <div class="col-xl-12 order-xl-1">
             <div class="card">
