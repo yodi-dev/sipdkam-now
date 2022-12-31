@@ -27,7 +27,6 @@
                     <form class="form-horizontal" method="post" action="{{ route('kunjungan.store') }}" autocomplete="off">
                         @csrf
                         <h6 class="heading-small text-muted mb-4">{{ __('Detail Kunjungan') }}</h6>
-                        
                         <div class="row">
                             <label class="col-md-2 col-form-label" for="input-NoRM">{{ __('No RM') }}</label>
                             <div class="col-md-9">
@@ -101,54 +100,6 @@
                             </div>
                         </div>
                     </form>
-                {{-- <div class="card-body ">
-                    <form class="form-horizontal">
-                        <div class="row">
-                            <label class="col-md-3 col-form-label">Username</label>
-                            <div class="col-md-9">
-                                <div class="form-group">
-                                    <input type="text" class="form-control">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <label class="col-md-3 col-form-label">Email</label>
-                            <div class="col-md-9">
-                                <div class="form-group">
-                                    <input type="email" class="form-control">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <label class="col-md-3 col-form-label">Password</label>
-                            <div class="col-md-9">
-                                <div class="form-group">
-                                    <input type="password" class="form-control">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <label class="col-md-3"></label>
-                            <div class="col-md-9">
-                                <div class="form-check">
-                                    <label class="form-check-label">
-                                        <input class="form-check-input" type="checkbox">
-                                        <span class="form-check-sign"></span>
-                                        Remember me
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-                <div class="card-footer ">
-                    <div class="row">
-                        <label class="col-md-3"></label>
-                        <div class="col-md-9">
-                            <button type="submit" class="btn btn-fill btn-primary">Sign in</button>
-                        </div>
-                    </div>
-                </div> --}}
             </div>
         </div>
     </div>

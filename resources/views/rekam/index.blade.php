@@ -8,7 +8,7 @@
 @section('content')
 <div class="panel-header">
 </div>
-<div class="content">
+<div class="content" style="margin-top: -150px;">
     <div class="row">
         <div class="col-md-12" id="roles-table">
             <div class="card">
@@ -62,14 +62,10 @@
                                 <td>{{ $rms->kelamin }}</td>
                                 @can('manage-items', App\User::class)
                                 <td class="text-right">
-                                    <button type="button" href="{{route("rekam.index",$rms)}}" class="btn btn-sm btn-info btn-icon" data-toggle="modal"
-                                        data-target="#exampleModal">
-                                        <i class="now-ui-icons design_bullet-list-67"></i>
-                                    </button>
-                                    {{-- <a type="button" href="{{route("rekam.show",$rms)}}" rel="tooltip"
+                                    <a type="button" href="{{route("rekam.show",$rms)}}" rel="tooltip"
                                     class="btn btn-info btn-icon btn-sm " data-original-title="" title="">
                                     <i class="now-ui-icons design_bullet-list-67"></i>
-                                    </a> --}}
+                                    </a>
                                     @if (auth()->user()->can('update', $rms) || auth()->user()->can('delete', $rms))
                                     @can('update', $rms)
                                     <a type="button" href="{{route("rekam.edit",$rms)}}" rel="tooltip"

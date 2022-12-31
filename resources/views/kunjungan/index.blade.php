@@ -8,7 +8,7 @@
 @section('content')
 <div class="panel-header">
 </div>
-<div class="content" id="controller" style="margin-top: -100px;">
+<div class="content" id="controller" style="margin-top: -120px;">
     <div class="row">
         <div class="col-md-12" id="categories-table">
             <div class="card">
@@ -69,11 +69,10 @@
                                         <input type="hidden" name="shift" value="{{ $item->shift }}">
                                         <input type="submit">
                                     </form> --}}
-                                    <a type="button" href="#" @click="showData()" rel="tooltip"
-                                        class="btn btn-info btn-icon btn-sm" data-toggle="modal" data-target="#exampleModal">
+                                    <a type="button" href="{{route("kunjungan.show",$item->id)}}" rel="tooltip" class="btn btn-info btn-icon btn-sm">
                                         <i class="now-ui-icons design_bullet-list-67"></i>
                                     </a>
-                                    <a type="button" href="{{route("kunjungan.show",$item)}}" rel="tooltip"
+                                    <a type="button" href="{{ url("kunjungans/biaya") }}" rel="tooltip"
                                     class="btn btn-info btn-icon btn-sm " data-original-title="" title="">
                                         <i class="now-ui-icons business_money-coins"></i>
                                     </a>
