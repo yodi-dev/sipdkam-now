@@ -16,74 +16,74 @@ class RekamSeeder extends Seeder
     public function run()
     {
         DB::table('rekams')->insert([
-            'no_rm' => '222',
-            'nama' => 'rizku',
+            'no_rm' => '000001',
+            'nama' => 'Wibowo',
             'kelamin' => 'laki-laki',
             'tgl_lahir' => '2000-10-10',
             'dusun' => '1',
             'rt' => '2',
             'rw' => '3',
-            'desa' => 'gatau',
-            'kecamatan' => 'gajuga',
-            'kota_kab' => 'apalagi',
+            'desa' => 'Simpang',
+            'kecamatan' => 'Singkut',
+            'kota_kab' => 'Sarolangun',
             'created_at' => now(),
             'updated_at' => now()
         ]);
         DB::table('rekams')->insert([
-            'no_rm' => '23',
-            'nama' => 'rizku',
-            'kelamin' => 'laki-laki',
+            'no_rm' => '0000002',
+            'nama' => 'Putri',
+            'kelamin' => 'perempuan',
             'tgl_lahir' => '2000-10-10',
             'dusun' => '1',
             'rt' => '2',
             'rw' => '3',
-            'desa' => 'gatau',
-            'kecamatan' => 'gajuga',
-            'kota_kab' => 'apalagi',
+            'desa' => 'Ranting',
+            'kecamatan' => 'Bangunharjo',
+            'kota_kab' => 'Gunung Kidul',
             'created_at' => now(),
             'updated_at' => now()
         ]);
         DB::table('rekams')->insert([
-            'no_rm' => '2222432',
-            'nama' => 'rizku',
+            'no_rm' => '0000003',
+            'nama' => 'Aldi',
             'kelamin' => 'laki-laki',
-            'tgl_lahir' => '2000-10-10',
+            'tgl_lahir' => '2000-03-10',
             'dusun' => '1',
             'rt' => '2',
             'rw' => '3',
-            'desa' => 'gatau',
-            'kecamatan' => 'gajuga',
-            'kota_kab' => 'apalagi',
+            'desa' => 'Penari',
+            'kecamatan' => 'kentana',
+            'kota_kab' => 'Gunung',
             'created_at' => now(),
             'updated_at' => now()
         ]);
-        DB::table('rekams')->insert([
-            'no_rm' => '2212',
-            'nama' => 'roso',
-            'kelamin' => 'laki-laki',
-            'tgl_lahir' => '2000-10-10',
-            'dusun' => '1',
-            'rt' => '2',
-            'rw' => '3',
-            'desa' => 'gatau',
-            'kecamatan' => 'gajuga',
-            'kota_kab' => 'apalagi',
-            'created_at' => now(),
-            'updated_at' => now()
-        ]);
-        DB::table('rekams')->insert([
-            'no_rm' => '33254',
-            'nama' => 'tono',
-            'kelamin' => 'laki-laki',
-            'tgl_lahir' => '2000-10-10',
-            'dusun' => '1',
-            'rt' => '2',
-            'rw' => '3',
-            'desa' => 'gatau',
-            'kecamatan' => 'gajuga',
-            'kota_kab' => 'apalagi',
-            'created_at' => now(),
-            'updated_at' => now()
-        ]);
+        // DB::table('rekams')->insert([
+        //     'no_rm' => '2212',
+        //     'nama' => 'roso',
+        //     'kelamin' => 'laki-laki',
+        //     'tgl_lahir' => '2000-10-10',
+        //     'dusun' => '1',
+        //     'rt' => '2',
+        //     'rw' => '3',
+        //     'desa' => 'gatau',
+        //     'kecamatan' => 'gajuga',
+        //     'kota_kab' => 'apalagi',
+        //     'created_at' => now(),
+        //     'updated_at' => now()
+        // ]);
+        // DB::table('rekams')->insert([
+        //     'no_rm' => '33254',
+        //     'nama' => 'tono',
+        //     'kelamin' => 'laki-laki',
+        //     'tgl_lahir' => '2000-10-10',
+        //     'dusun' => '1',
+        //     'rt' => '2',
+        //     'rw' => '3',
+        //     'desa' => 'gatau',
+        //     'kecamatan' => 'gajuga',
+        //     'kota_kab' => 'apalagi',
+        //     'created_at' => now(),
+        //     'updated_at' => now()
+        // ]);
     }
 }

@@ -16,25 +16,25 @@ class DokterSeeder extends Seeder
     public function run()
     {
         DB::table('dokters')->insert([
-            'nama_dokter' => 'awann',
+            'nama_dokter' => 'Dr. Anton',
             'created_at' => now(),
             'updated_at' => now()
         ]);
 
         DB::table('dokters')->insert([
-            'nama_dokter' => 'uwun',
+            'nama_dokter' => 'Dr. Bagus',
             'created_at' => now(),
             'updated_at' => now()
         ]);
 
         DB::table('dokters')->insert([
-            'nama_dokter' => 'ann',
+            'nama_dokter' => 'Dr. Ana',
             'created_at' => now(),
             'updated_at' => now()
         ]);
 
         DB::table('dokters')->insert([
-            'nama_dokter' => 'wann',
+            'nama_dokter' => 'Dr. Ratna',
             'created_at' => now(),
             'updated_at' => now()
         ]);

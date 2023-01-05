@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\DetailKunjungan;
 use App\Dokter;
 use App\Kunjungan;
 use App\Rekam;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class KunjunganController extends Controller
@@ -26,24 +26,24 @@ class KunjunganController extends Controller
 
         // $members = Member::with('user')->get();
         // $details = Kunjungan::with('details')->get();
-        $details = Kunjungan::with('details', 'rekams')->get();
+        // $details = Kunjungan::with('details', 'rekams')->get();
         $rekamms =  Rekam::with('kunjungans')->get();
         $kunjungans = $model->all();
         $rekams = $rekamModel->get(['id', 'no_rm', 'nama']);
         $dokters = $dokterModel->get(['id', 'nama_dokter']);
 
-        $data = Kunjungan::select('kunjungans.id', 'kunjungans.created_at', 'detail_kunjungans.shift', 'detail_kunjungans.jaminan', 'rekams.no_rm', 'rekams.nama')
-            ->Join('detail_kunjungans', 'kunjungans.detail_kunjungan_id', '=', 'detail_kunjungans.id')
+        $data = Kunjungan::select('kunjungans.id', 'kunjungans.created_at', 'kunjungans.shift', 'kunjungans.jaminan', 'rekams.no_rm', 'rekams.nama')
             ->Join('rekams', 'kunjungans.rekam_id', '=', 'rekams.id')
             ->Join('dokters', 'kunjungans.dokter_id', '=', 'dokters.id')
-            ->orderBy('kunjungans.id', 'asc')->get();
+            ->orderBy('kunjungans.id', 'asc')
+            ->get();
 
         // return $data;
         // return $details;
         // return $rekamms;
         // return $kunjungans;
 
-        return view('kunjungan.index', compact('data', 'details', 'kunjungans', 'rekams', 'dokters'));
+        return view('kunjungan.index', compact('data', 'kunjungans', 'rekams', 'dokters'));
 
         // return view('kunjungan.index', [
         //     'kunjungans' => $model->all(),
@@ -83,23 +83,30 @@ class KunjunganController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request, Kunjungan $kunjungan, DetailKunjungan $detail)
+    public function store(Request $request, Kunjungan $model)
     {
         $request['created_at'] = now();
         $request['updated_at'] = now();
+        // $request['rekam_id'] = (int)$request['rekam_id'];
+        // $request['dokter_id'] = (int)$request['dokter_id'];
+        // foreach ($request as $item) {
+        //     $tes = (int)$item->rekam_id;
+        // }
+        $model->create($request->all());
 
-        $detail['_token'] = $request['_token'];
-        $detail['shift'] = $request['shift'];
-        $detail['jaminan'] = $request['jaminan'];
-        $detail['poli'] = $request['poli'];
-        $detail['created_at'] = $request['created_at'];
-        $detail['updated_at'] = $request['updated_at'];
+        // $detail['_token'] = $request['_token'];
+        // $detail['shift'] = $request['shift'];
+        // $detail['jaminan'] = $request['jaminan'];
+        // $detail['poli'] = $request['poli'];
+        // $detail['created_at'] = $request['created_at'];
+        // $detail['updated_at'] = $request['updated_at'];
 
         // $detail->create(['$detail->_token', '$detail->shift', '$detail->jaminan', '$detail->poli', '$detail->created_at', '$detail->updated_at']);
         // return redirect()->route('kunjungan.index')->withStatus(__('detail successfully created.'));
         // $model->create($request->all());
         // return $detail;
-        // return redirect()->route('rekam.index')->withStatus(__('Rekam Medis successfully created.'));
+        // return $request;
+        return redirect()->route('kunjungan.index')->withStatus(__('Rekam Medis successfully created.'));
     }
 
     /**
@@ -110,17 +117,21 @@ class KunjunganController extends Controller
      */
     public function show(Kunjungan $kunjungan)
     {
-        $data = Kunjungan::select('kunjungans.id', 'kunjungans.created_at', 'detail_kunjungans.shift', 'detail_kunjungans.jaminan', 'rekams.no_rm', 'rekams.nama')
-            ->Join('detail_kunjungans', 'kunjungans.detail_kunjungan_id', '=', 'detail_kunjungans.id')
+
+
+        $data = Kunjungan::select('kunjungans.id', 'kunjungans.created_at', 'kunjungans.shift', 'kunjungans.jaminan', 'kunjungans.poli', 'dokters.nama_dokter', 'rekams.no_rm', 'rekams.nama', 'rekams.kelamin', 'rekams.dusun', 'rekams.desa', 'rekams.kecamatan', 'rekams.tgl_lahir')
             ->Join('rekams', 'kunjungans.rekam_id', '=', 'rekams.id')
             ->Join('dokters', 'kunjungans.dokter_id', '=', 'dokters.id')
             ->orderBy('kunjungans.id', 'asc')
-            ->where('kunjungans.id', $kunjungan->id)
-            ->get();
+            ->where('kunjungans.id', $kunjungan->id)->get();
+
+        foreach ($data as $tgl) {
+            $years = Carbon::parse($tgl->tgl_lahir)->age;
+        }
 
         // return $data;
-        // return $kunjungan;
-        return view('kunjungan.show', compact('data'));
+        // return $years;
+        return view('kunjungan.show', compact('data', 'years'));
     }
 
     public function biaya(Kunjungan $kunjungan)
@@ -135,11 +146,18 @@ class KunjunganController extends Controller
      * @param  \App\Kunjungan  $kunjungan
      * @return \Illuminate\Http\Response
      */
-    public function edit(Kunjungan $kunjungan)
+    public function edit(Kunjungan $kunjungan, Rekam $rekamModel, Dokter $dokterModel)
     {
-        // return $rekamModel;
+        // return $kunjungan;
         // return 'tes';
-        return view('kunjungan.edit', compact('kunjungan'));
+        return view(
+            'kunjungan.edit',
+            compact('kunjungan'),
+            [
+                'rekams' => $rekamModel->get(['id', 'no_rm', 'nama']),
+                'dokters' => $dokterModel->get(['id', 'nama_dokter'])
+            ]
+        );
     }
 
     /**
@@ -162,6 +180,8 @@ class KunjunganController extends Controller
      */
     public function destroy(Kunjungan $kunjungan)
     {
-        //
+        $kunjungan->delete();
+
+        return redirect()->route('kunjungan.index')->withStatus(__('Rekam Medis successfully deleted.'));
     }
 }

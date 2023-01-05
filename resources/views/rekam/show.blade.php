@@ -8,7 +8,7 @@
 @section('content')
     <div class="panel-header">
     </div>
-    <div class="content" style="margin-top: -150px;">
+    <div class="content" style="margin-top: -120px;">
         <div class="row">
             <div class="col-xl-12 order-xl-1">
                 <div class="card">
@@ -206,14 +206,14 @@
 <script src="https://cdn.ckeditor.com/ckeditor5/19.1.1/classic/ckeditor.js"></script>
 <script>
 $(document).ready(function () {
-    demo.initDateTimePicker();
-      ClassicEditor
-          .create( document.querySelector( '#editor' ) )
-          .then( editor => {
-          } )
-          .catch( error => {
-      } );
+demo.initDateTimePicker();
+    ClassicEditor
+        .create( document.querySelector( '#editor' ) )
+        .then( editor => {
+        } )
+        .catch( error => {
+    } );
 
-  });
+});
 </script>
 @endpush

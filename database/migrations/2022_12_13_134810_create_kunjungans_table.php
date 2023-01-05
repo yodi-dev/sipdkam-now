@@ -15,20 +15,30 @@ return new class extends Migration
     {
         Schema::create('kunjungans', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('detail_kunjungan_id');
             $table->unsignedBigInteger('rekam_id');
-            $table->unsignedBigInteger('biaya_id')->nullable();
-            $table->unsignedBigInteger('pemeriksaan_id')->nullable();
-            $table->unsignedBigInteger('tindakan_id')->nullable();
             $table->unsignedBigInteger('dokter_id');
+            $table->string('shift', 10);
+            $table->string('jaminan', 50);
+            $table->string('poli', 50);
+            $table->string('sis', 10)->nullable();
+            $table->string('dias', 10)->nullable();
+            $table->string('bb', 10)->nullable();
+            $table->string('keluhan', 100)->nullable();
+            $table->string('diagnosis_utama', 100)->nullable();
+            $table->string('diagnosis_tambahan', 100)->nullable();
+            $table->string('icd', 100)->nullable();
+            $table->string('gds', 100)->nullable();
+            $table->string('au', 100)->nullable();
+            $table->string('choi', 100)->nullable();
+            $table->string('nama_tindakan', 70);
+            $table->string('operator', 70);
+            $table->string('asisten', 70);
+            $table->unsignedBigInteger('biaya_id')->nullable();
             $table->timestamps();
 
-            $table->foreign('detail_kunjungan_id')->references('id')->on('detail_kunjungans');
             $table->foreign('rekam_id')->references('id')->on('rekams');
-            $table->foreign('biaya_id')->references('id')->on('biayas');
-            $table->foreign('pemeriksaan_id')->references('id')->on('pemeriksaans');
-            $table->foreign('tindakan_id')->references('id')->on('tindakans');
             $table->foreign('dokter_id')->references('id')->on('dokters');
+            $table->foreign('biaya_id')->references('id')->on('biayas');
         });
     }
 

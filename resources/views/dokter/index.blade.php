@@ -8,7 +8,7 @@
 @section('content')
 <div class="panel-header">
 </div>
-<div class="content" id="controller">
+<div class="content" id="controller" style="margin-top: -120px">
     <div class="row">
         <div class="col-md-12" id="roles-table">
             <div class="card">
@@ -16,21 +16,13 @@
                     @can('manage-items', App\User::class)
                     <a class="btn btn-primary btn-round text-white pull-right"
                         href="{{ route('dokter.create') }}">{{ __('Add Dokter')}}</a>
-                    {{-- <a class="btn btn-primary btn-round pull-right text-white " @click="addData()">{{ __('Baru') }}</a>
-                    --}}
                     @endcan
                     <h4 class="card-title">{{ __('Dokter') }}</h4>
                     <div class="col-12 mt-2">
-                        {{-- @include('alerts.success')
-                        @include('alerts.errors') --}}
-                    </div>
+                </div>
                 </div>
                 <div class="card-body">
                     <div class="toolbar">
-                        <!--        Here you can write extra buttons/actions for the toolbar              -->
-                        {{-- <h1 v-html="counter"></h1>
-                        <h1 v-html="actUrl"></h1>
-                        <h1 v-html="apiUrl"></h1> --}}
                     </div>
                     <table id="datatable" class="table table-striped table-bordered" cellspacing="0" width="100%">
                         <thead>
@@ -42,13 +34,6 @@
                                 <th class="disabled-sorting text-right">{{ __('Actions') }}</th>
                             </tr>
                         </thead>
-                        {{-- <tfoot>
-                            <tr>
-                                <th>{{ __('No') }}</th>
-                        <th>{{ __('Nama') }}</th> --}}
-                        {{-- <th class="disabled-sorting text-right">{{ __('Actions') }}</th> --}}
-                        {{-- </tr>
-                        </tfoot> --}}
                         <tbody>
                             @php
                                 $no = 1;
@@ -56,7 +41,6 @@
                             @foreach($dokters as $dokter)
                             <tr>
                                 <td>{{ $no++ }}</td>
-                                {{-- <td>{{$dokter->name}}</td> --}}
                                 <td>{{$dokter->nama_dokter}}</td>
                                 <td>{{ format_tanggal($dokter->created_at) }}</td>
                                 <td>{{ format_tanggal($dokter->updated_at) }}</td>
@@ -119,45 +103,6 @@
 @endsection
 
 @push('js')
-{{-- <script>
-    var actUrl = '{{ url('dokter') }}';
-var apiUrl = '{{ url('api/dokters') }}';
-
-var columns = [{
-data: 'DT_RowIndex',
-class: 'text-center',
-orderable: true
-},
-// {data: 'id', class: 'text-center', orderable: true},
-{
-data: 'nama_dokter',
-class: 'text-center',
-orderable: true
-},
-{
-data: 'created_at',
-class: 'text-center',
-orderable: true
-},
-{
-data: 'updated_at',
-class: 'text-center',
-orderable: true
-},
-{
-render: function (index, row, data, meta) {
-return `
-<a href="#" onclick="controller.editData(event, ${meta.row})" class="btn btn-sm btn-warning">Edit</a>
-<a href="#" onclick="controller.deleteData(event, ${data.id})" class="btn btn-sm btn-danger">Delete</a>`;
-},
-orderable: false,
-width: '110px',
-class: 'text-center'
-},
-];
-
-</script> --}}
-{{-- <script src="{{ asset('js') }}/data.js"></script> --}}
 <script>
     $(document).ready(function () {
         $(".delete-button").click(function () {
@@ -178,20 +123,7 @@ class: 'text-center'
             })
 
         })
-        // $('#datatable').DataTable({
-        //     "pagingType": "full_numbers",
-        //     "lengthMenu": [
-        //         [10, 25, 50, -1],
-        //         [10, 25, 50, "All"]
-        //     ],
-        //     responsive: true,
-        //     language: {
-        //         search: "_INPUT_",
-        //         searchPlaceholder: "Search records",
-        //     }
-
-        // });
-
+            
         var table = $('#datatable').DataTable();
 
         // Edit record

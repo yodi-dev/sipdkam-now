@@ -1,5 +1,5 @@
 @extends('layouts.app', [
-    'namePage' => 'Biaya Kunjungan',
+    'namePage' => 'Detail Kunjungan',
     'class' => '',
     'activePage' => 'kunjungan',
     'activeNav' => '',
@@ -24,7 +24,12 @@
                     </div>
                     <div class="card-body">
                         @foreach ($data as $item)
-                        <form class="form-horizontal mt-4">
+                        <form class="form-horizontal">
+                            <div class="row">
+                                <div class="offset-md-2 col-md-3">
+                                    <legend>Kunjungan</legend>
+                                </div>
+                            </div>
                             <div class="row">
                                 <label class="col-md-2 col-form-label">{{ __('Tanggal') }}</label>
                                 <div class="col-md-9">
@@ -53,6 +58,29 @@
                                 </div>
                             </div>
                             <div class="row">
+                                <label class="col-md-2 col-form-label">{{ __('Poli') }}</label>
+                                <div class="col-md-9">
+                                    <div class="form-group">
+                                        <input type="text" class="form-control"
+                                        value="{{ $item->poli }}" readonly>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <label class="col-md-2 col-form-label">{{ __('Dokter') }}</label>
+                                <div class="col-md-9">
+                                    <div class="form-group">
+                                        <input type="text" class="form-control"
+                                        value="{{ $item->nama_dokter }}" readonly>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="offset-md-2 col-md-3">
+                                    <legend>Pasien</legend>
+                                </div>
+                            </div>
+                            <div class="row">
                                 <label class="col-md-2 col-form-label">{{ __('No RM') }}</label>
                                 <div class="col-md-9">
                                     <div class="form-group">
@@ -67,6 +95,178 @@
                                     <div class="form-group">
                                         <input type="text" class="form-control"
                                         value="{{ $item->nama }}" readonly>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <label class="col-md-2 col-form-label">{{ __('Jenis Kelamin') }}</label>
+                                <div class="col-md-9">
+                                    <div class="form-group">
+                                        <input type="text" class="form-control"
+                                        value="{{ $item->kelamin }}" readonly>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <label class="col-md-2 col-form-label">{{ __('Usia') }}</label>
+                                <div class="col-md-9">
+                                    <div class="form-group">
+                                        <input type="text" class="form-control"
+                                        value="{{ $years }} tahun" readonly>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <label class="col-md-2 col-form-label">{{ __('Dusun') }}</label>
+                                <div class="col-md-9">
+                                    <div class="form-group">
+                                        <input type="text" class="form-control"
+                                        value="{{ $item->dusun }}" readonly>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <label class="col-md-2 col-form-label">{{ __('Desa') }}</label>
+                                <div class="col-md-9">
+                                    <div class="form-group">
+                                        <input type="text" class="form-control"
+                                        value="{{ $item->desa }}" readonly>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <label class="col-md-2 col-form-label">{{ __('Kecamatan') }}</label>
+                                <div class="col-md-9">
+                                    <div class="form-group">
+                                        <input type="text" class="form-control"
+                                        value="{{ $item->kecamatan }}" readonly>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="offset-md-2 col-md-3">
+                                    <legend>Pemeriksaan</legend>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <label class="col-md-2 col-form-label">{{ __('sis') }}</label>
+                                <div class="col-md-9">
+                                    <div class="form-group">
+                                        <input type="text" class="form-control"
+                                        value="" readonly>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <label class="col-md-2 col-form-label">{{ __('dias') }}</label>
+                                <div class="col-md-9">
+                                    <div class="form-group">
+                                        <input type="text" class="form-control"
+                                        value="" readonly>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <label class="col-md-2 col-form-label">{{ __('bb') }}</label>
+                                <div class="col-md-9">
+                                    <div class="form-group">
+                                        <input type="text" class="form-control"
+                                        value="" readonly>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <label class="col-md-2 col-form-label">{{ __('keluhan') }}</label>
+                                <div class="col-md-9">
+                                    <div class="form-group">
+                                        <input type="text" class="form-control"
+                                        value="" readonly>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <label class="col-md-2 col-form-label">{{ __('diagnosis utama') }}</label>
+                                <div class="col-md-9">
+                                    <div class="form-group">
+                                        <input type="text" class="form-control"
+                                        value="" readonly>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <label class="col-md-2 col-form-label">{{ __('diagnosis tambahan') }}</label>
+                                <div class="col-md-9">
+                                    <div class="form-group">
+                                        <input type="text" class="form-control"
+                                        value="" readonly>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <label class="col-md-2 col-form-label">{{ __('icd') }}</label>
+                                <div class="col-md-9">
+                                    <div class="form-group">
+                                        <input type="text" class="form-control"
+                                        value="" readonly>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <label class="col-md-2 col-form-label">{{ __('gds') }}</label>
+                                <div class="col-md-9">
+                                    <div class="form-group">
+                                        <input type="text" class="form-control"
+                                        value="" readonly>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <label class="col-md-2 col-form-label">{{ __('au') }}</label>
+                                <div class="col-md-9">
+                                    <div class="form-group">
+                                        <input type="text" class="form-control"
+                                        value="" readonly>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <label class="col-md-2 col-form-label">{{ __('choi') }}</label>
+                                <div class="col-md-9">
+                                    <div class="form-group">
+                                        <input type="text" class="form-control"
+                                        value="" readonly>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="offset-md-2 col-md-3">
+                                    <legend>Tindakan</legend>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <label class="col-md-2 col-form-label">{{ __('Tindakan') }}</label>
+                                <div class="col-md-9">
+                                    <div class="form-group">
+                                        <input type="text" class="form-control"
+                                        value="" readonly>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <label class="col-md-2 col-form-label">{{ __('Operator') }}</label>
+                                <div class="col-md-9">
+                                    <div class="form-group">
+                                        <input type="text" class="form-control"
+                                        value="" readonly>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <label class="col-md-2 col-form-label">{{ __('Asisten') }}</label>
+                                <div class="col-md-9">
+                                    <div class="form-group">
+                                        <input type="text" class="form-control"
+                                        value="" readonly>
                                     </div>
                                 </div>
                             </div>

@@ -9,15 +9,21 @@ class Kunjungan extends Model
 {
     use HasFactory;
 
-    protected $guarded = 'id';
-
-    public function details()
-    {
-        return $this->belongsTo(DetailKunjungan::class);
-    }
+    // protected $guarded = 'id';
+    protected $fillable = ['shift', 'jaminan', 'poli', 'rekam_id', 'dokter_id', 'pemeriksaan_id', 'tindakan_id', 'biaya_id'];
 
     public function rekams()
     {
         return $this->belongsTo(Rekam::class);
+    }
+
+    public function pemeriksaans()
+    {
+        return $this->belongsTo(Pemeriksaan::class);
+    }
+
+    public function tindakans()
+    {
+        return $this->belongsTo(Tindakan::class);
     }
 }
