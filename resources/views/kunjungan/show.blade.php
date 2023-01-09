@@ -13,17 +13,26 @@
             <div class="col-xl-12 order-xl-1">
                 <div class="card">
                     <div class="card-header">
+                        @foreach ($data as $item)
                         <div class="row align-items-center">
                             <div class="col-8">
                                 <h3 class="mb-0">{{ __('Detail Kunjungan') }}</h3>
                             </div>
                             <div class="col-4 text-right">
+                                @if (auth()->user()->can('update', $item) || auth()->user()->can('delete',
+                                        $item))
+                                    @can('update', $item)
+                                    <a type="button" href="{{route("kunjungan.edit",$item->id)}}" rel="tooltip"
+                                    class="btn btn-success btn-icon btn-sm " data-original-title="" title="">
+                                        <i class="now-ui-icons ui-2_settings-90"></i>
+                                    </a>
+                                    @endcan
+                                @endif
                                 <a href="{{ route('kunjungan.index') }}" class="btn btn-primary btn-round">{{ __('Back to list') }}</a>
                             </div>
                         </div>
                     </div>
                     <div class="card-body">
-                        @foreach ($data as $item)
                         <form class="form-horizontal">
                             <div class="row">
                                 <div class="offset-md-2 col-md-3">
@@ -153,7 +162,7 @@
                                 <div class="col-md-9">
                                     <div class="form-group">
                                         <input type="text" class="form-control"
-                                        value="" readonly>
+                                        value="{{ $item->sis }}" readonly>
                                     </div>
                                 </div>
                             </div>
@@ -162,7 +171,7 @@
                                 <div class="col-md-9">
                                     <div class="form-group">
                                         <input type="text" class="form-control"
-                                        value="" readonly>
+                                        value="{{ $item->dias }}" readonly>
                                     </div>
                                 </div>
                             </div>
@@ -171,7 +180,7 @@
                                 <div class="col-md-9">
                                     <div class="form-group">
                                         <input type="text" class="form-control"
-                                        value="" readonly>
+                                        value="{{ $item->bb }}" readonly>
                                     </div>
                                 </div>
                             </div>
@@ -180,7 +189,7 @@
                                 <div class="col-md-9">
                                     <div class="form-group">
                                         <input type="text" class="form-control"
-                                        value="" readonly>
+                                        value="{{ $item->keluhan }}" readonly>
                                     </div>
                                 </div>
                             </div>
@@ -189,7 +198,7 @@
                                 <div class="col-md-9">
                                     <div class="form-group">
                                         <input type="text" class="form-control"
-                                        value="" readonly>
+                                        value="{{ $item->diagnosis_utama }}" readonly>
                                     </div>
                                 </div>
                             </div>
@@ -198,7 +207,7 @@
                                 <div class="col-md-9">
                                     <div class="form-group">
                                         <input type="text" class="form-control"
-                                        value="" readonly>
+                                        value="{{ $item->diagnosis_tambahan }}" readonly>
                                     </div>
                                 </div>
                             </div>
@@ -207,7 +216,7 @@
                                 <div class="col-md-9">
                                     <div class="form-group">
                                         <input type="text" class="form-control"
-                                        value="" readonly>
+                                        value="{{ $item->icd }}" readonly>
                                     </div>
                                 </div>
                             </div>
@@ -216,7 +225,7 @@
                                 <div class="col-md-9">
                                     <div class="form-group">
                                         <input type="text" class="form-control"
-                                        value="" readonly>
+                                        value="{{ $item->gds }}" readonly>
                                     </div>
                                 </div>
                             </div>
@@ -225,7 +234,7 @@
                                 <div class="col-md-9">
                                     <div class="form-group">
                                         <input type="text" class="form-control"
-                                        value="" readonly>
+                                        value="{{ $item->au }}" readonly>
                                     </div>
                                 </div>
                             </div>
@@ -234,7 +243,7 @@
                                 <div class="col-md-9">
                                     <div class="form-group">
                                         <input type="text" class="form-control"
-                                        value="" readonly>
+                                        value="{{ $item->choi }}" readonly>
                                     </div>
                                 </div>
                             </div>
@@ -248,7 +257,7 @@
                                 <div class="col-md-9">
                                     <div class="form-group">
                                         <input type="text" class="form-control"
-                                        value="" readonly>
+                                        value="{{ $item->tindakan }}" readonly>
                                     </div>
                                 </div>
                             </div>
@@ -257,7 +266,7 @@
                                 <div class="col-md-9">
                                     <div class="form-group">
                                         <input type="text" class="form-control"
-                                        value="" readonly>
+                                        value="{{ $item->operator }}" readonly>
                                     </div>
                                 </div>
                             </div>
@@ -266,7 +275,7 @@
                                 <div class="col-md-9">
                                     <div class="form-group">
                                         <input type="text" class="form-control"
-                                        value="" readonly>
+                                        value="{{ $item->asisten }}" readonly>
                                     </div>
                                 </div>
                             </div>

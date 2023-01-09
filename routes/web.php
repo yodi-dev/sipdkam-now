@@ -34,5 +34,5 @@ Route::group(['middleware' => 'auth'], function () {
 
 Route::get('/api/dokters', 'DokterController@api')->name('api');
 // Route::get('/api/kunjungans', 'KunjunganController@api')->name('api.kunjungan');
-Route::get('/kunjungans/biaya', 'KunjunganController@biaya')->name('biaya.kunjungan');
+Route::get('/kunjungans/biaya/{id}', 'KunjunganController@biaya')->name('biaya.kunjungan');
 // Route::get('/api/dokters', [App\Http\Controllers\DokterController::class, 'api']);

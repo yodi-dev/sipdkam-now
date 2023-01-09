@@ -19,8 +19,9 @@ class KunjunganSeeder extends Seeder
             'shift' => '1',
             'jaminan' => 'regular',
             'poli' => 'umum',
-            'rekam_id' => '5',
-            'dokter_id' => '5',
+            'rekam_id' => '1',
+            'dokter_id' => '1',
+            'sis' => 'tes',
             'created_at' => now(),
             'updated_at' => now()
         ]);

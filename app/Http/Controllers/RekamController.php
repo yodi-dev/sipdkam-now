@@ -71,6 +71,7 @@ class RekamController extends Controller
      */
     public function edit(Rekam $rekam)
     {
+        // return $rekam;
         return view('rekam.edit', compact('rekam'));
     }
 

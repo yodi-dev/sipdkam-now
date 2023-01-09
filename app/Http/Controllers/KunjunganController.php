@@ -119,7 +119,7 @@ class KunjunganController extends Controller
     {
 
 
-        $data = Kunjungan::select('kunjungans.id', 'kunjungans.created_at', 'kunjungans.shift', 'kunjungans.jaminan', 'kunjungans.poli', 'dokters.nama_dokter', 'rekams.no_rm', 'rekams.nama', 'rekams.kelamin', 'rekams.dusun', 'rekams.desa', 'rekams.kecamatan', 'rekams.tgl_lahir')
+        $data = Kunjungan::select('kunjungans.*', 'dokters.nama_dokter', 'rekams.no_rm', 'rekams.nama', 'rekams.kelamin', 'rekams.dusun', 'rekams.desa', 'rekams.kecamatan', 'rekams.tgl_lahir')
             ->Join('rekams', 'kunjungans.rekam_id', '=', 'rekams.id')
             ->Join('dokters', 'kunjungans.dokter_id', '=', 'dokters.id')
             ->orderBy('kunjungans.id', 'asc')
@@ -136,8 +136,8 @@ class KunjunganController extends Controller
 
     public function biaya(Kunjungan $kunjungan)
     {
-        // return "tes";
-        return view('kunjungan.biaya');
+        return $kunjungan;
+        return view('kunjungan.biaya', ['kunjungans' => $kunjungan]);
     }
 
     /**
@@ -169,7 +169,10 @@ class KunjunganController extends Controller
      */
     public function update(Request $request, Kunjungan $kunjungan)
     {
-        //
+        // return $request;
+        $kunjungan->update($request->all());
+
+        return redirect()->route('kunjungan.show', $kunjungan)->withStatus(__('Kunjungan successfully updated.'));
     }
 
     /**

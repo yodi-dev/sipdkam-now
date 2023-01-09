@@ -38,18 +38,6 @@
                                 @endcan
                             </tr>
                         </thead>
-                        <tfoot>
-                            <tr>
-                                <th>{{ __('Tanggal') }}</th>
-                                <th>{{ __('shift') }}</th>
-                                <th>{{ __('Jaminan') }}</th>
-                                <th>{{ __('No RM') }}</th>
-                                <th>{{ __('Nama') }}</th>
-                                @can('manage-items', App\User::class)
-                                <th class="disabled-sorting text-right">{{ __('Actions') }}</th>
-                                @endcan
-                            </tr>
-                        </tfoot>
                         <tbody>
                             {{-- @foreach($kunjungans as $kunjungan) --}}
                             {{-- @foreach ($details as $detail) --}}
@@ -70,7 +58,7 @@
                                     <a type="button" href="{{route("kunjungan.show",$item->id)}}" rel="tooltip" class="btn btn-info btn-icon btn-sm">
                                         <i class="now-ui-icons design_bullet-list-67"></i>
                                     </a>
-                                    <a type="button" href="{{ url("kunjungans/biaya") }}" rel="tooltip"
+                                    <a type="button" href="{{ url("kunjungans/biaya", $item->id) }}" rel="tooltip"
                                     class="btn btn-info btn-icon btn-sm " data-original-title="" title="">
                                         <i class="now-ui-icons business_money-coins"></i>
                                     </a>

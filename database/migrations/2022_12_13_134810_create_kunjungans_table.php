@@ -15,11 +15,11 @@ return new class extends Migration
     {
         Schema::create('kunjungans', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('rekam_id');
-            $table->unsignedBigInteger('dokter_id');
-            $table->string('shift', 10);
+            $table->enum('shift', ['1', '2', '3']);
             $table->string('jaminan', 50);
             $table->string('poli', 50);
+            $table->unsignedBigInteger('rekam_id');
+            $table->unsignedBigInteger('dokter_id');
             $table->string('sis', 10)->nullable();
             $table->string('dias', 10)->nullable();
             $table->string('bb', 10)->nullable();
@@ -30,9 +30,9 @@ return new class extends Migration
             $table->string('gds', 100)->nullable();
             $table->string('au', 100)->nullable();
             $table->string('choi', 100)->nullable();
-            $table->string('nama_tindakan', 70);
-            $table->string('operator', 70);
-            $table->string('asisten', 70);
+            $table->string('nama_tindakan', 70)->nullable();
+            $table->string('operator', 70)->nullable();
+            $table->string('asisten', 70)->nullable();
             $table->unsignedBigInteger('biaya_id')->nullable();
             $table->timestamps();
 

@@ -71,8 +71,8 @@
                                 <div class="col-md-9">
                                     <div class="form-group{{ $errors->has('kelamin') ? ' has-danger' : '' }}">
                                         <select title="{{ __('Kelamin') }}" data-style="btn btn-info btn-round" name="kelamin" id="input_kelamin" data-size="7" class="selectpicker{{ $errors->has('kelamin') ? ' is-invalid' : '' }}" required>
-                                            <option value="laki-laki" {{ $rekam->kelamin == old('kelamin', $rekam->kelamin) ? 'selected' : '' }}>Laki-laki</option>
-                                            <option value="perempuan" {{ $rekam->kelamin == old('kelamin', $rekam->kelamin) ? 'selected' : '' }}>Perempuan</option>
+                                            <option value="laki-laki"  {{ old('kelamin', $rekam->kelamin) === 'laki-laki' ? 'selected' : '' }}>Laki-laki</option>
+                                            <option value="perempuan" {{ old('kelamin', $rekam->kelamin) === 'perempuan' ? 'selected' : '' }}>Perempuan</option>
                                         </select>
                                         @include('alerts.feedback', ['field' => 'kelamin'])
                                     </div>
