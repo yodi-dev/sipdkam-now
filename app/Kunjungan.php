@@ -17,13 +17,8 @@ class Kunjungan extends Model
         return $this->belongsTo(Rekam::class);
     }
 
-    public function pemeriksaans()
+    public function biayas()
     {
-        return $this->belongsTo(Pemeriksaan::class);
-    }
-
-    public function tindakans()
-    {
-        return $this->belongsTo(Tindakan::class);
+        return $this->belongsTo(Biaya::class);
     }
 }

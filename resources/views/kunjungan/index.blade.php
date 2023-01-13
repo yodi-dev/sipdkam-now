@@ -58,7 +58,7 @@
                                     <a type="button" href="{{route("kunjungan.show",$item->id)}}" rel="tooltip" class="btn btn-info btn-icon btn-sm">
                                         <i class="now-ui-icons design_bullet-list-67"></i>
                                     </a>
-                                    <a type="button" href="{{ url("kunjungans/biaya", $item->id) }}" rel="tooltip"
+                                    <a type="button" href="{{ url("kunjungan/biaya", $item->id) }}" rel="tooltip"
                                     class="btn btn-info btn-icon btn-sm " data-original-title="" title="">
                                         <i class="now-ui-icons business_money-coins"></i>
                                     </a>

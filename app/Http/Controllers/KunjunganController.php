@@ -117,8 +117,6 @@ class KunjunganController extends Controller
      */
     public function show(Kunjungan $kunjungan)
     {
-
-
         $data = Kunjungan::select('kunjungans.*', 'dokters.nama_dokter', 'rekams.no_rm', 'rekams.nama', 'rekams.kelamin', 'rekams.dusun', 'rekams.desa', 'rekams.kecamatan', 'rekams.tgl_lahir')
             ->Join('rekams', 'kunjungans.rekam_id', '=', 'rekams.id')
             ->Join('dokters', 'kunjungans.dokter_id', '=', 'dokters.id')
@@ -134,10 +132,12 @@ class KunjunganController extends Controller
         return view('kunjungan.show', compact('data', 'years'));
     }
 
-    public function biaya(Kunjungan $kunjungan)
+    public function biaya(Kunjungan $kunjungan, $id)
     {
-        return $kunjungan;
-        return view('kunjungan.biaya', ['kunjungans' => $kunjungan]);
+        $kunjungan = Kunjungan::select('*')->where('id', $id)->get();
+
+        // return $kunjungan;
+        return view('kunjungan.biaya', compact('kunjungan', 'id'));
     }
 
     /**

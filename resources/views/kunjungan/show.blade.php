@@ -257,7 +257,7 @@
                                 <div class="col-md-9">
                                     <div class="form-group">
                                         <input type="text" class="form-control"
-                                        value="{{ $item->tindakan }}" readonly>
+                                        value="{{ $item->nama_tindakan }}" readonly>
                                     </div>
                                 </div>
                             </div>
