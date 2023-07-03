@@ -30,7 +30,7 @@ class BiayaController extends Controller
         $kunjungan->where('id', $request->id)->update(['biaya_id' => $request->id]);
 
         // return $kunjungan;
-        return redirect()->route('biaya.show', $request->id)->withStatus(__('Biaya successfully created.'));
+        return redirect()->route('biaya.kunjungan', $request->id)->withStatus(__('Biaya successfully created.'));
     }
 
     public function show(Biaya $biaya)

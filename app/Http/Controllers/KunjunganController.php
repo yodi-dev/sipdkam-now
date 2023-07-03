@@ -136,8 +136,26 @@ class KunjunganController extends Controller
     {
         $kunjungan = Kunjungan::select('*')->where('id', $id)->get();
 
+        $biaya = Kunjungan::select('biayas.*')
+            ->Join('biayas', 'kunjungans.biaya_id', '=', 'biayas.id')
+            ->where('biayas.id', $id)
+            ->get();
+
         // return $kunjungan;
-        return view('kunjungan.biaya', compact('kunjungan', 'id'));
+        return view('kunjungan.biaya', compact('kunjungan', 'biaya', 'id'));
+    }
+
+    public function Printbiaya(Kunjungan $kunjungan, $id)
+    {
+        $kunjungan = Kunjungan::select('*')->where('id', $id)->get();
+
+        $biaya = Kunjungan::select('biayas.*')
+            ->Join('biayas', 'kunjungans.biaya_id', '=', 'biayas.id')
+            ->where('biayas.id', $id)
+            ->get();
+
+        // return $kunjungan;
+        return view('kunjungan.Printbiaya', compact('kunjungan', 'biaya', 'id'));
     }
 
     /**

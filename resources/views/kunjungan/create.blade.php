@@ -88,7 +88,7 @@
                             <label class="col-md-2 col-form-label" for="input-NoRM">{{ __('No RM') }}</label>
                             <div class="col-md-9">
                                 <div class="form-group{{ $errors->has('rekam_id') ? ' has-danger' : '' }}">
-                                    <select title="{{ __('Pilih RM') }}" data-style="btn btn-info btn-round" name="rekam_id"
+                                    <select id="selectrm" title="{{ __('Pilih RM') }}" data-style="btn btn-info btn-round" name="rekam_id"
                                     id="input-NoRM" data-size="7"
                                     class="selectpicker{{ $errors->has('rekam_id') ? ' is-invalid' : '' }}"
                                     required>
@@ -139,6 +139,12 @@
             .create(document.querySelector('#editor'))
             .then(editor => {})
             .catch(error => {});
+    });
+
+    $('#selectrm').select2({
+        width: '14rem',
+        placeholder: "Pilih RM",
+        allowClear: true
     });
 
 </script>

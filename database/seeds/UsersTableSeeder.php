@@ -16,14 +16,16 @@ class UsersTableSeeder extends Seeder
             'id' => 1,
             'name' => 'Super Admin',
             'email' => 'admin@mail.com',
+            'password' => Hash::make('secret'),
             'role_id' => 1,
             'picture' => '../assets/img/emilyz.jpg'
         ]);
 
         factory(App\User::class)->create([
             'id' => 2,
-            'name' => 'Creator',
-            'email' => 'creator@mail.com',
+            'name' => 'User',
+            'email' => 'user@mail.com',
+            'password' => Hash::make('secret'),
             'role_id' => 2,
             'picture' => '../assets/img/mike.jpg'
         ]);

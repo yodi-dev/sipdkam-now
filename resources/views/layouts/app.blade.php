@@ -83,6 +83,9 @@
     <!-- CSS Just for demo purpose, don't include it in your project -->
     <link href="{{ asset('now') }}/demo/demo.css" rel="stylesheet" />
 
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.10/css/select2.min.css" rel="stylesheet"/>
+    {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> --}}
+
     <!-- Bootstrap -->
     <link type="text/css" href="{{ asset('now') }}/css/bootstrap-tourist.css" rel="stylesheet">
     <link type="text/css" href="{{ asset('now') }}/css/bootstrap.min.css?v=1.0.0" rel="stylesheet">
@@ -163,6 +166,8 @@
     {{-- <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script> --}}
     <script src='https://cdnjs.cloudflare.com/ajax/libs/vue/3.2.45/vue.global.min.js' integrity='sha512-Pdnl+dKWHA0jEnmhogUHlOw3FqDeujiEc3XQDkvMrPUAvytiU2cZiknw2xDPgDS+u2prg2n+6eKz3CPG588gTQ==' crossorigin='anonymous'></script>
     {{-- <script src="https://unpkg.com/vue@next"></script> --}}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.10/js/select2.min.js"></script>
+
 
     <script>
     $(document).ready(function(){

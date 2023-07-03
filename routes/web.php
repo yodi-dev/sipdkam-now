@@ -33,6 +33,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('{page}', ['as' => 'page.index', 'uses' => 'PageController@index']);
     Route::get('/api/dokters', 'DokterController@api')->name('api');
     Route::get('/kunjungan/biaya/{id}', 'KunjunganController@biaya')->name('biaya.kunjungan');
+    Route::get('/kunjungan/Printbiaya/{id}', 'KunjunganController@Printbiaya')->name('Printbiaya.kunjungan');
     Route::post('biaya', 'BiayaController@store')->name('biaya.store');
 });
 
