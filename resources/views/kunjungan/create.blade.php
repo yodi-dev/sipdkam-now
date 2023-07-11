@@ -8,7 +8,7 @@
 @section('content')
 <div class="panel-header">
 </div>
-<div class="content" style="margin-top: -120px;">
+<div class="content" style="margin-top: -170px;">
     <div class="row">
         <div class="col-xl-12 order-xl-1">
             <div class="card">
@@ -32,7 +32,7 @@
                                 <div class="form-group{{ $errors->has('shift') ? ' has-danger' : '' }}">
                                     <select title="{{ __('Pilih Shift') }}" data-style="btn btn-info btn-round"
                                     name="shift" data-size="7"
-                                    class="selectpicker{{ $errors->has('shift') ? ' is-invalid' : '' }}"
+                                    class="selectpicker{{ $errors->has('shift') ? ' is-invalid' : '' }} select2"
                                     required>
                                         <option value="1">1</option>
                                         <option value="2">2</option>

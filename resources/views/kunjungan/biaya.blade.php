@@ -8,7 +8,7 @@
 @section('content')
     <div class="panel-header">
     </div>
-    <div class="content" style="margin-top: -120px">
+    <div class="content" style="margin-top: -170px">
         <div class="row">
             <div class="col-xl-12 order-xl-1">
                 <div class="card">
@@ -149,11 +149,6 @@
                                     </div>
                                 </div>
                             </div>
-                            {{-- <div class="pl-lg-4">
-                                <div class="text-center">
-                                    <button type="submit" class="btn btn-success mt-4">{{ __('Save & Print') }}</button>
-                                </div>
-                            </div> --}}
                         </form>
                         @else
                         <p>Belum ada data biaya.</p>
