@@ -40,7 +40,7 @@
                         </li>
                         <li>
                             <a href="{{ route('logout') }}" onclick="event.preventDefault();
-                                  document.getElementById('logout-form').submit();">
+                                document.getElementById('logout-form').submit();">
                                 <span class="sidebar-mini-icon">{{ __("LG") }}</span>
                                 <span class="sidebar-normal">{{ __("Logout") }}</span>
                             </a>
@@ -98,14 +98,6 @@
                             <a href="{{ route('user.index') }}">
                                 <span class="sidebar-mini-icon">{{ __("DU") }}</span>
                                 <span class="sidebar-normal"> {{ __("Data User") }} </span>
-                            </a>
-                        </li>
-                        @endcan
-                        @can('manage-users', App\User::class)
-                        <li class="@if ($activePage == 'dokter') active @endif">
-                            <a href="{{ route('dokter.index') }}">
-                                <span class="sidebar-mini-icon">{{ __("DD") }}</span>
-                                <span class="sidebar-normal"> {{ __("Data Dokter") }} </span>
                             </a>
                         </li>
                         @endcan

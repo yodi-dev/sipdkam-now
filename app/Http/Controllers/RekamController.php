@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Rekam;
 use Illuminate\Http\Request;
+use App\Http\Requests\RekamRequest;
 
 class RekamController extends Controller
 {
@@ -42,7 +43,7 @@ class RekamController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request, Rekam $model)
+    public function store(RekamRequest $request, Rekam $model)
     {
         $request['created_at'] = now();
         $request['updated_at'] = now();

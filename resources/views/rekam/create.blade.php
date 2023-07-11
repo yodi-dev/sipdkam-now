@@ -27,7 +27,7 @@
                     <form class="form-horizontal" method="post" action="{{ route('rekam.store') }}" autocomplete="off">
                         @csrf
                         <div class="row">
-                            <label class="col-md-2 col-form-label" for="input_no_rm">{{ __('No RM') }}</label>
+                            <label class="col-md-2 col-form-label required" for="input_no_rm">{{ __('No RM') }}</label>
                             <div class="col-md-9">
                                 <div class="form-group{{ $errors->has('no_rm') ? ' has-danger' : '' }}">
                                     <input type="text" name="no_rm" id="input_no_rm"
@@ -57,17 +57,17 @@
                             </div>
                         </div>
                         <div class="row">
-                            <label class="col-md-2 col-form-label" for="input_nama">{{ __('Nama') }}</label>
+                            <label class="col-md-2 col-form-label required" for="input_nama">{{ __('Nama') }}</label>
                             <div class="col-md-9">
                                 <div class="form-group{{ $errors->has('nama') ? ' has-danger' : '' }}">
-                                    <input type="text" name="nama" id="input_nama"
+                                    <input type="text" name="nama" id="input_nama" required
                                     class="form-control{{ $errors->has('nama') ? ' is-invalid' : '' }}" autofocus>
                                     @include('alerts.feedback', ['field' => 'nama'])
                                 </div>
                             </div>
                         </div>
                         <div class="row">
-                            <label class="col-md-2 col-form-label" for="input_kelamin">{{ __('Kelamin') }}</label>
+                            <label class="col-md-2 col-form-label required" for="input_kelamin">{{ __('Kelamin') }}</label>
                             <div class="col-md-9">
                                 <div class="form-group{{ $errors->has('kelamin') ? ' has-danger' : '' }}">
                                     <select title="{{ __('Kelamin') }}" data-style="btn btn-info btn-round" name="kelamin" id="input_kelamin" data-size="7" class="selectpicker{{ $errors->has('kelamin') ? ' is-invalid' : '' }}" required>
@@ -79,69 +79,69 @@
                             </div>
                         </div>
                         <div class="row">
-                            <label class="col-md-2 col-form-label" for="input_tgl_lahir">{{ __('Tanggal Lahir') }}</label>
+                            <label class="col-md-2 col-form-label required" for="input_tgl_lahir">{{ __('Tanggal Lahir') }}</label>
                             <div class="col-md-9">
                                 <div class="form-group{{ $errors->has('tgl_lahir') ? ' has-danger' : '' }}">
-                                    <input class="form-control datepicker" name="tgl_lahir" id="input_tgl_lahir" placeholder="Select Tanggal Lahir" type="text" data-date-format="YYYY-MM-DD" value="{{ now()->format('Y/m/d') }}">
+                                    <input class="form-control datepicker" name="tgl_lahir" id="input_tgl_lahir" placeholder="Select Tanggal Lahir" type="text" data-date-format="YYYY-MM-DD" value="{{ now()->format('Y/m/d') }}" required>
                                     @include('alerts.feedback', ['field' => 'tgl_lahir'])
                                 </div>
                             </div>
                         </div>
                         <div class="row">
-                            <label class="col-md-2 col-form-label" for="input_dusun">{{ __('Dusun') }}</label>
+                            <label class="col-md-2 col-form-label required" for="input_dusun">{{ __('Dusun') }}</label>
                             <div class="col-md-9">
                                 <div class="form-group{{ $errors->has('dusun') ? ' has-danger' : '' }}">
-                                    <input type="text" name="dusun" id="input_dusun"
+                                    <input type="text" name="dusun" id="input_dusun" required
                                     class="form-control{{ $errors->has('dusun') ? ' is-invalid' : '' }}" autofocus>
                                     @include('alerts.feedback', ['field' => 'dusun'])
                                 </div>
                             </div>
                         </div>
                         <div class="row">
-                            <label class="col-md-2 col-form-label" for="input_rt">{{ __('RT') }}</label>
+                            <label class="col-md-2 col-form-label required" for="input_rt">{{ __('RT') }}</label>
                             <div class="col-md-9">
                                 <div class="form-group{{ $errors->has('rt') ? ' has-danger' : '' }}">
-                                    <input type="text" name="rt" id="input_rt"
+                                    <input type="text" name="rt" id="input_rt" required
                                     class="form-control{{ $errors->has('rt') ? ' is-invalid' : '' }}" autofocus>
                                     @include('alerts.feedback', ['field' => 'rt'])
                                 </div>
                             </div>
                         </div>
                         <div class="row">
-                            <label class="col-md-2 col-form-label" for="input_rw">{{ __('RW') }}</label>
+                            <label class="col-md-2 col-form-label required" for="input_rw">{{ __('RW') }}</label>
                             <div class="col-md-9">
                                 <div class="form-group{{ $errors->has('rw') ? ' has-danger' : '' }}">
-                                    <input type="text" name="rw" id="input_rw"
+                                    <input type="text" name="rw" id="input_rw" required
                                     class="form-control{{ $errors->has('rw') ? ' is-invalid' : '' }}" autofocus>
                                     @include('alerts.feedback', ['field' => 'rw'])
                                 </div>
                             </div>
                         </div>
                         <div class="row">
-                            <label class="col-md-2 col-form-label" for="input_desa">{{ __('Desa') }}</label>
+                            <label class="col-md-2 col-form-label required" for="input_desa">{{ __('Desa') }}</label>
                             <div class="col-md-9">
                                 <div class="form-group{{ $errors->has('desa') ? ' has-danger' : '' }}">
-                                    <input type="text" name="desa" id="input_desa"
+                                    <input type="text" name="desa" id="input_desa" required
                                     class="form-control{{ $errors->has('desa') ? ' is-invalid' : '' }}" autofocus>
                                     @include('alerts.feedback', ['field' => 'desa'])
                                 </div>
                             </div>
                         </div>
                         <div class="row">
-                            <label class="col-md-2 col-form-label" for="input_kecamatan">{{ __('Kecamatan') }}</label>
+                            <label class="col-md-2 col-form-label required" for="input_kecamatan">{{ __('Kecamatan') }}</label>
                             <div class="col-md-9">
                                 <div class="form-group{{ $errors->has('kecamatan') ? ' has-danger' : '' }}">
-                                    <input type="text" name="kecamatan" id="input_kecamatan"
+                                    <input type="text" name="kecamatan" id="input_kecamatan" required
                                     class="form-control{{ $errors->has('kecamatan') ? ' is-invalid' : '' }}" autofocus>
                                     @include('alerts.feedback', ['field' => 'kecamatan'])
                                 </div>
                             </div>
                         </div>
                         <div class="row">
-                            <label class="col-md-2 col-form-label" for="input_kota_kab">{{ __('Kota/Kab') }}</label>
+                            <label class="col-md-2 col-form-label required" for="input_kota_kab">{{ __('Kota/Kab') }}</label>
                             <div class="col-md-9">
                                 <div class="form-group{{ $errors->has('kota_kab') ? ' has-danger' : '' }}">
-                                    <input type="text" name="kota_kab" id="input_kota_kab"
+                                    <input type="text" name="kota_kab" id="input_kota_kab" required
                                     class="form-control{{ $errors->has('kota_kab') ? ' is-invalid' : '' }}" autofocus>
                                     @include('alerts.feedback', ['field' => 'kota_kab'])
                                 </div>

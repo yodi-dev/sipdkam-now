@@ -23,11 +23,20 @@ class UsersTableSeeder extends Seeder
 
         factory(App\User::class)->create([
             'id' => 2,
-            'name' => 'User',
-            'email' => 'user@mail.com',
+            'name' => 'Petugas',
+            'email' => 'petugas@mail.com',
             'password' => Hash::make('secret'),
             'role_id' => 2,
             'picture' => '../assets/img/mike.jpg'
+        ]);
+
+        factory(App\User::class)->create([
+            'id' => 3,
+            'name' => 'Dokter',
+            'email' => 'dokter@mail.com',
+            'password' => Hash::make('secret'),
+            'role_id' => 3,
+            'picture' => '../assets/img/james.jpg'
         ]);
     }
 }

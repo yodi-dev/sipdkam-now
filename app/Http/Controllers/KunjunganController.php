@@ -71,10 +71,20 @@ class KunjunganController extends Controller
      */
     public function create(Rekam $rekamModel, Dokter $dokterModel)
     {
+        $date = now()->format('H:i:s');
+        if ($date >= '00:00:00' && $date <= '08:00:00') {
+            $shift = 1;
+        } else if ($date >= '08:00:01' && $date <= '16:00:00') {
+            $shift = 2;
+        } else {
+            $shift = 3;
+        }
+
+        // return $shift;
         return view('kunjungan.create', [
             'rekams' => $rekamModel->get(['id', 'no_rm', 'nama']),
-            'dokters' => $dokterModel->get(['id', 'nama_dokter'])
-        ]);
+            'dokters' => $dokterModel->get(['id', 'nama_dokter']),
+        ], compact('shift'));
     }
 
     /**
@@ -87,25 +97,8 @@ class KunjunganController extends Controller
     {
         $request['created_at'] = now();
         $request['updated_at'] = now();
-        // $request['rekam_id'] = (int)$request['rekam_id'];
-        // $request['dokter_id'] = (int)$request['dokter_id'];
-        // foreach ($request as $item) {
-        //     $tes = (int)$item->rekam_id;
-        // }
         $model->create($request->all());
 
-        // $detail['_token'] = $request['_token'];
-        // $detail['shift'] = $request['shift'];
-        // $detail['jaminan'] = $request['jaminan'];
-        // $detail['poli'] = $request['poli'];
-        // $detail['created_at'] = $request['created_at'];
-        // $detail['updated_at'] = $request['updated_at'];
-
-        // $detail->create(['$detail->_token', '$detail->shift', '$detail->jaminan', '$detail->poli', '$detail->created_at', '$detail->updated_at']);
-        // return redirect()->route('kunjungan.index')->withStatus(__('detail successfully created.'));
-        // $model->create($request->all());
-        // return $detail;
-        // return $request;
         return redirect()->route('kunjungan.index')->withStatus(__('Rekam Medis successfully created.'));
     }
 

@@ -34,9 +34,9 @@
                                     name="shift" data-size="7"
                                     class="selectpicker{{ $errors->has('shift') ? ' is-invalid' : '' }} select2"
                                     required>
-                                        <option value="1">1</option>
-                                        <option value="2">2</option>
-                                        <option value="3">3</option>
+                                        <option {{ $shift == 1 ? 'selected' : '' }} value="1">1</option>
+                                        <option {{ $shift == 2 ? 'selected' : '' }} value="2">2</option>
+                                        <option {{ $shift == 3 ? 'selected' : '' }} value="3">3</option>
                                     </select>
                                     {{-- <input type="text" name="shift" id="input-Shift"
                                     class="form-control{{ $errors->has('shift') ? ' is-invalid' : '' }}"
