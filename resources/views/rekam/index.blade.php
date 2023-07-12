@@ -57,16 +57,18 @@
                                         <i class="now-ui-icons ui-2_settings-90"></i>
                                     </a>
                                     @endcan
+                                    @can('delete', $rms)
                                     <form action="{{ route('rekam.destroy', $rms) }}" method="post"
-                                        style="display:inline-block;" class="delete-form">
-                                        @csrf
-                                        @method('delete')
-                                        <button type="button" rel="tooltip"
-                                            class="btn btn-danger btn-icon btn-sm delete-button" data-original-title=""
-                                            title="" onclick="demo.showSwal('warning-message-and-confirmation')">
-                                            <i class="now-ui-icons ui-1_simple-remove"></i>
-                                        </button>
+                                    style="display:inline-block;" class="delete-form">
+                                    @csrf
+                                    @method('delete')
+                                    <button type="button" rel="tooltip"
+                                    class="btn btn-danger btn-icon btn-sm delete-button" data-original-title=""
+                                    title="" onclick="demo.showSwal('warning-message-and-confirmation')">
+                                        <i class="now-ui-icons ui-1_simple-remove"></i>
+                                    </button>
                                     </form>
+                                    @endcan
                                     @endif
                                 </td>
                                 @endcan
@@ -88,6 +90,25 @@
 @push('js')
 <script>
     $(document).ready(function () {
+        $(".delete-button").click(function () {
+            var clickedButton = $(this);
+            Swal.fire({
+                title: 'Are you sure?',
+                text: "You won't be able to revert this!",
+                type: 'warning',
+                showCancelButton: true,
+                confirmButtonClass: 'btn btn-success',
+                cancelButtonClass: 'btn btn-danger',
+                confirmButtonText: 'Yes, delete it!',
+                buttonsStyling: false
+            }).then((result) => {
+                if (result.value) {
+                    clickedButton.parents(".delete-form").submit();
+                }
+            })
+
+        })
+        
         $('#datatable').DataTable({
             "pagingType": "full_numbers",
             "lengthMenu": [
@@ -101,6 +122,8 @@
             }
 
         });
+
+        
 
         var table = $('#datatable').DataTable();
     });

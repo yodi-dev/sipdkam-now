@@ -15,16 +15,10 @@ Route::get('pricing', ['as' => 'page.pricing', 'uses' => 'PageController@pricing
 
 
 Route::group(['middleware' => 'auth'], function () {
-    // Route::resource('rekammedis', 'RekamMedisController');
     Route::resource('rekam', 'RekamController');
     Route::resource('kunjungan', 'KunjunganController');
-    // Route::resource('pemeriksaan', 'PemeriksaanController');
-    // Route::resource('tindakan', 'TindakanController');
     Route::resource('dokter', 'DokterController');
     Route::resource('user', 'UserController');
-    Route::resource('category', 'CategoryController');
-    Route::resource('tag', 'TagController');
-    Route::resource('item', 'ItemController');
     Route::resource('role', 'RoleController');
     Route::resource('biaya', 'BiayaController');
     Route::get('profile', ['as' => 'profile.edit', 'uses' => 'ProfileController@edit']);

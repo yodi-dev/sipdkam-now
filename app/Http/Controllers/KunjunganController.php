@@ -24,9 +24,6 @@ class KunjunganController extends Controller
     {
         $this->authorize('manage-items', User::class);
 
-        // $members = Member::with('user')->get();
-        // $details = Kunjungan::with('details')->get();
-        // $details = Kunjungan::with('details', 'rekams')->get();
         $rekamms =  Rekam::with('kunjungans')->get();
         $kunjungans = $model->all();
         $rekams = $rekamModel->get(['id', 'no_rm', 'nama']);
@@ -38,30 +35,7 @@ class KunjunganController extends Controller
             ->orderBy('kunjungans.id', 'asc')
             ->get();
 
-        // return $data;
-        // return $details;
-        // return $rekamms;
-        // return $kunjungans;
-
         return view('kunjungan.index', compact('data', 'kunjungans', 'rekams', 'dokters'));
-
-        // return view('kunjungan.index', [
-        //     'kunjungans' => $model->all(),
-        //     'rekams' => $rekamModel->get(['id', 'no_rm', 'nama']),
-        //     'dokters' => $dokterModel->get(['id', 'nama_dokter'])
-        // ]);
-        // $rekams = Kunjungan::with('rekams')->get();
-        // $kunjungans = Rekam::with('kunjungans')->get();
-
-        // $rekam = Kunjungan::select('no_rm')->leftJoin('rekam', 'kunjungans.rekam_medis_id', '=', 'rekam_medis.id')->get();
-
-        // return view(
-        //     'kunjungan.index',
-        //     [
-        //         'kunjungans' => $kunjungans->all(),
-        //         'rekam' => $rekams
-        //     ]
-        // );
     }
 
     /**
@@ -99,7 +73,7 @@ class KunjunganController extends Controller
         $request['updated_at'] = now();
         $model->create($request->all());
 
-        return redirect()->route('kunjungan.index')->withStatus(__('Rekam Medis successfully created.'));
+        return redirect()->route('kunjungan.index')->withStatus(__('Kunjungan successfully created.'));
     }
 
     /**
@@ -201,6 +175,6 @@ class KunjunganController extends Controller
     {
         $kunjungan->delete();
 
-        return redirect()->route('kunjungan.index')->withStatus(__('Rekam Medis successfully deleted.'));
+        return redirect()->route('kunjungan.index')->withStatus(__('Kunjungan successfully deleted.'));
     }
 }

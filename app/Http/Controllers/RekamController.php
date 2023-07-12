@@ -83,7 +83,7 @@ class RekamController extends Controller
      * @param  \App\Rekam  $rekam
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Rekam $rekam)
+    public function update(RekamRequest $request, Rekam $rekam)
     {
         $rekam->update($request->all());
 

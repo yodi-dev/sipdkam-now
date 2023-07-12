@@ -27,7 +27,7 @@
                             @csrf
                             @method('put')
                             <div class="row">
-                                <label class="col-md-2 col-form-label" for="input_no_rm">{{ __('No RM') }}</label>
+                                <label class="col-md-2 col-form-label required" for="input_no_rm">{{ __('No RM') }}</label>
                                 <div class="col-md-9">
                                     <div class="form-group{{ $errors->has('no_rm') ? ' has-danger' : '' }}">
                                         <input type="text" name="no_rm" id="input_no_rm"
@@ -57,7 +57,7 @@
                                 </div>
                             </div>
                             <div class="row">
-                                <label class="col-md-2 col-form-label" for="input_nama">{{ __('Nama') }}</label>
+                                <label class="col-md-2 col-form-label required" for="input_nama">{{ __('Nama') }}</label>
                                 <div class="col-md-9">
                                     <div class="form-group{{ $errors->has('nama') ? ' has-danger' : '' }}">
                                         <input type="text" name="nama" id="input_nama"
@@ -67,7 +67,7 @@
                                 </div>
                             </div>
                             <div class="row">
-                                <label class="col-md-2 col-form-label" for="input_kelamin">{{ __('Kelamin') }}</label>
+                                <label class="col-md-2 col-form-label required" for="input_kelamin">{{ __('Kelamin') }}</label>
                                 <div class="col-md-9">
                                     <div class="form-group{{ $errors->has('kelamin') ? ' has-danger' : '' }}">
                                         <select title="{{ __('Kelamin') }}" data-style="btn btn-info btn-round" name="kelamin" id="input_kelamin" data-size="7" class="selectpicker{{ $errors->has('kelamin') ? ' is-invalid' : '' }}" required>
@@ -79,7 +79,7 @@
                                 </div>
                             </div>
                             <div class="row">
-                                <label class="col-md-2 col-form-label" for="input_tgl_lahir">{{ __('Tangal Lahir') }}</label>
+                                <label class="col-md-2 col-form-label required" for="input_tgl_lahir">{{ __('Tangal Lahir') }}</label>
                                 <div class="col-md-9">
                                     <div class="form-group{{ $errors->has('nama') ? ' has-danger' : '' }}">
                                         <input class="form-control datepicker" name="tgl_lahir" id="input_tgl_lahir" placeholder="Select Tanggal Lahir" type="text" data-date-format="YYYY-MM-DD" value="{{ now()->format('d/m/Y') }}">
@@ -88,7 +88,7 @@
                                 </div>
                             </div>
                             <div class="row">
-                                <label class="col-md-2 col-form-label" for="input_dusun">{{ __('Dusun') }}</label>
+                                <label class="col-md-2 col-form-label required" for="input_dusun">{{ __('Dusun') }}</label>
                                 <div class="col-md-9">
                                     <div class="form-group{{ $errors->has('dusun') ? ' has-danger' : '' }}">
                                         <input type="text" name="dusun" id="input_dusun"
@@ -98,7 +98,7 @@
                                 </div>
                             </div>
                             <div class="row">
-                                <label class="col-md-2 col-form-label" for="input_rt">{{ __('RT') }}</label>
+                                <label class="col-md-2 col-form-label required" for="input_rt">{{ __('RT') }}</label>
                                 <div class="col-md-9">
                                     <div class="form-group{{ $errors->has('rt') ? ' has-danger' : '' }}">
                                         <input type="text" name="rt" id="input_rt"
@@ -108,7 +108,7 @@
                                 </div>
                             </div>
                             <div class="row">
-                                <label class="col-md-2 col-form-label" for="input_rw">{{ __('RW') }}</label>
+                                <label class="col-md-2 col-form-label required" for="input_rw">{{ __('RW') }}</label>
                                 <div class="col-md-9">
                                     <div class="form-group{{ $errors->has('rw') ? ' has-danger' : '' }}">
                                         <input type="text" name="rw" id="input_rw"
@@ -118,7 +118,7 @@
                                 </div>
                             </div>
                             <div class="row">
-                                <label class="col-md-2 col-form-label" for="input_desa">{{ __('Desa') }}</label>
+                                <label class="col-md-2 col-form-label required" for="input_desa">{{ __('Desa') }}</label>
                                 <div class="col-md-9">
                                     <div class="form-group{{ $errors->has('desa') ? ' has-danger' : '' }}">
                                         <input type="text" name="desa" id="input_desa"
@@ -128,7 +128,7 @@
                                 </div>
                             </div>
                             <div class="row">
-                                <label class="col-md-2 col-form-label" for="input_kecamatan">{{ __('Kecamatan') }}</label>
+                                <label class="col-md-2 col-form-label required" for="input_kecamatan">{{ __('Kecamatan') }}</label>
                                 <div class="col-md-9">
                                     <div class="form-group{{ $errors->has('kecamatan') ? ' has-danger' : '' }}">
                                         <input type="text" name="kecamatan" id="input_kecamatan"
@@ -138,7 +138,7 @@
                                 </div>
                             </div>
                             <div class="row">
-                                <label class="col-md-2 col-form-label" for="input_kota_kab">{{ __('Kota/Kab') }}</label>
+                                <label class="col-md-2 col-form-label required" for="input_kota_kab">{{ __('Kota/Kab') }}</label>
                                 <div class="col-md-9">
                                     <div class="form-group{{ $errors->has('kota_kab') ? ' has-danger' : '' }}">
                                         <input type="text" name="kota_kab" id="input_kota_kab"

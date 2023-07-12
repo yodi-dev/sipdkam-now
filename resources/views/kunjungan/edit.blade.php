@@ -110,6 +110,7 @@
                                 </div>
                             </div>
 
+                            @can('dokter')
                             {{-- Bagian Pemeriksaan --}}
                             <div class="row">
                                 <div class="offset-md-2 col-md-3">
@@ -253,6 +254,7 @@
                                     </div>
                                 </div>
                             </div>
+                            @endcan
                             <div class="row">
                                 <div class="col-md-12 text-center">
                                     <button type="submit" class="btn btn-success mt-4">{{ __('Save') }}</button>
