@@ -83,4 +83,9 @@ class UserPolicy
     {
         return $user->isAdmin() || $user->isCreator();
     }
+
+    public function manageDokter(User $user)
+    {
+        return $user->isMember();
+    }
 }

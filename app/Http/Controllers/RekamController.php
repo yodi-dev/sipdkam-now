@@ -22,7 +22,7 @@ class RekamController extends Controller
     public function index(Rekam $model)
     {
 
-        $this->authorize('manage-users', User::class);
+        $this->authorize('manage-items', User::class);
 
         return view('rekam.index', ['rekams' => $model->all()]);
     }

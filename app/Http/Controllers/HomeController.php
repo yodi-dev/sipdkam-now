@@ -42,6 +42,10 @@ class HomeController extends Controller
      */
     public function index(Rekam $rekam, Kunjungan $kunjung)
     {
+        // return auth()->user()->role_id;
+        if (auth()->user()->role_id == 3) {
+            return redirect('kunjungan');
+        }
         return view('home', ['rekams' => $rekam->count(), 'kunjung' => $kunjung->count()]);
     }
 }

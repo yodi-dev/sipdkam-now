@@ -22,7 +22,7 @@ class KunjunganController extends Controller
     }
     public function index(Kunjungan $model, Rekam $rekamModel, Dokter $dokterModel)
     {
-        $this->authorize('manage-items', User::class);
+        // $this->authorize('manage-items', User::class);
 
         $rekamms =  Rekam::with('kunjungans')->get();
         $kunjungans = $model->all();

@@ -17,12 +17,12 @@ class KunjunganPolicy
      */
     public function viewAny(User $user)
     {
-        return $user->isAdmin() || $user->isCreator();
+        return $user->isAdmin() || $user->isCreator() || $user->isMember();
     }
 
     public function view(User $user, Kunjungan $kunjungan)
     {
-        return $user->isAdmin() || $user->isCreator();
+        return $user->isAdmin() || $user->isCreator() || $user->isCreator();
     }
 
     /**
@@ -45,7 +45,7 @@ class KunjunganPolicy
      */
     public function update(User $user, Kunjungan $kunjungan)
     {
-        return ($user->isAdmin() || $user->isCreator());
+        return ($user->isAdmin() || $user->isCreator() || $user->isMember());
     }
 
     /**

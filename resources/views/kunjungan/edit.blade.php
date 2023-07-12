@@ -110,7 +110,7 @@
                                 </div>
                             </div>
 
-                            @can('dokter')
+                            @can('manage-dokter', App\User::class)
                             {{-- Bagian Pemeriksaan --}}
                             <div class="row">
                                 <div class="offset-md-2 col-md-3">

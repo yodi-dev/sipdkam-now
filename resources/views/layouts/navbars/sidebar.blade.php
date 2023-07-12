@@ -50,12 +50,14 @@
             </div>
         </div>
         <ul class="nav">
+            @can('manage-items', App\User::class)
             <li class="@if ($activePage == 'home') active @endif">
                 <a href="{{ route('home') }}">
                     <i class="now-ui-icons design_app"></i>
                     <p>{{ __("Dashboard") }}</p>
                 </a>
             </li>
+            @endcan
             <li>
                 <a data-toggle="collapse" href="#laravelExamples">
                     <i class="now-ui-icons education_agenda-bookmark"></i>
@@ -72,12 +74,14 @@
                                 <span class="sidebar-normal"> {{ __("Kunjungan") }} </span>
                             </a>
                         </li>
+                        @can('manage-items', App\User::class)
                         <li class="@if ($activePage == 'rekammedis') active @endif">
                             <a href="{{ route('rekam.index') }}">
                                 <span class="sidebar-mini-icon">{{ __("RM") }}</span>
                                 <span class="sidebar-normal"> {{ __("Rekam Medis") }} </span>
                             </a>
                         </li>
+                        @endcan
                     </ul>
                 </div>
             </li>

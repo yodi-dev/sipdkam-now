@@ -13,10 +13,11 @@
         <div class="col-md-12" id="categories-table">
             <div class="card">
                 <div class="card-header">
-                    <a class="btn btn-primary btn-round pull-right text-white "
-                        href="{{ route('rekam.create') }}">{{ __('RM Baru') }}</a>
-                    <a class="btn btn-primary btn-round pull-right text-white "
+                    @can('manage-items', App\User::class)
+                        <a class="btn btn-primary btn-round pull-right text-white" href="{{ route('rekam.create') }}">{{ __('RM Baru') }}</a>
+                        <a class="btn btn-primary btn-round pull-right text-white "
                         href="{{ route('kunjungan.create') }}">{{ __('Kunjungan Baru') }}</a>
+                    @endcan
                     <h4 class="card-title">{{ __('Kunjungan') }}</h4>
                     <div class="col-12 mt-2">
                     </div>
@@ -34,15 +35,14 @@
                                 <th>{{ __('No RM') }}</th>
                                 <th>{{ __('Nama') }}</th>
                                 @can('manage-items', App\User::class)
-                                <th class="disabled-sorting text-right">{{ __('Actions') }}</th>
+                                    <th class="disabled-sorting text-right">{{ __('Actions') }}</th>
+                                @elsecan('manage-dokter', App\User::class)
+                                    <th class="disabled-sorting">{{ __('Actions') }}</th>
                                 @endcan
                             </tr>
                         </thead>
                         <tbody>
-                            {{-- @foreach($kunjungans as $kunjungan) --}}
-                            {{-- @foreach ($details as $detail) --}}
                             @foreach ($data as $item)
-                                
                             <tr>
                                 <td>{{ $item->created_at->format('d/m/Y') }}</td>
                                 <td>{{ $item->shift }}</td>
@@ -51,10 +51,6 @@
                                 <td>{{ $item->nama }}</td>
                                 @can('manage-items', App\User::class)
                                 <td class="text-right">
-                                    {{-- <form method="post" action="{{ route("kunjungan.index") }}">
-                                        <input type="hidden" name="shift" value="{{ $item->shift }}">
-                                        <input type="submit">
-                                    </form> --}}
                                     <a type="button" href="{{route("kunjungan.show",$item->id)}}" rel="tooltip" class="btn btn-info btn-icon btn-sm">
                                         <i class="now-ui-icons design_bullet-list-67"></i>
                                     </a>
@@ -64,7 +60,8 @@
                                     </a>
                                     @if (auth()->user()->can('update', $item) || auth()->user()->can('delete',
                                         $item))
-                                        @can('update', $item)
+                                    
+                                    @can('update', $item)
                                         <a type="button" href="{{route("kunjungan.edit",$item->id)}}" rel="tooltip"
                                         class="btn btn-success btn-icon btn-sm " data-original-title="" title="">
                                             <i class="now-ui-icons ui-2_settings-90"></i>
@@ -84,10 +81,15 @@
                                     @endcan
                                     @endif
                                 </td>
+                            @elsecan('manage-dokter', App\User::class)
+                                <td>
+                                    <a type="button" href="{{route("kunjungan.edit",$item->id)}}" rel="tooltip"
+                                    class="btn btn-success btn-icon btn-sm " data-original-title="" title="">
+                                        <i class="now-ui-icons ui-2_settings-90"></i>
+                                    </a>
+                                </td>
                             @endcan
                             </tr>
-                            {{-- @endforeach --}}
-                            {{-- @endforeach --}}
                             @endforeach
                         </tbody>
                     </table>
