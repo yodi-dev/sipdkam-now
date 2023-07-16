@@ -23,7 +23,7 @@
               @include('alerts.success')
               @include('alerts.error_self_update', ['key' => 'not_allow_profile'])
               <div class="row">
-                <div class="col-md-6">
+                <div class="col-md-">
                   <div class="fileinput fileinput-new text-center" data-provides="fileinput">
                     <div class="fileinput-new thumbnail img-circle">
                       <img src="{{asset('now')}}/img/placeholder.jpg" alt="...">
@@ -108,7 +108,7 @@
           </form>
         </div>
       </div>
-      <div class="col-md-4">
+      {{-- <div class="col-md-4">
         <div class="card card-user">
           <div class="image">
             <img src="{{asset('now')}}/img/bg5.jpg" alt="...">
@@ -137,7 +137,7 @@
             </button>
           </div>
         </div>
-      </div>
+      </div> --}}
     </div>
   </div>
 @endsection
