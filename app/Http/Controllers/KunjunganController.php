@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\User;
 use App\Rekam;
-use App\Dokter;
 use App\Kunjungan;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -21,18 +20,17 @@ class KunjunganController extends Controller
     {
         $this->authorizeResource(Kunjungan::class);
     }
-    public function index(Kunjungan $model, Rekam $rekamModel, Dokter $dokterModel)
+    public function index(Kunjungan $model, Rekam $rekamModel, User $dokterModel)
     {
         // $this->authorize('manage-items', User::class);
 
         $rekamms =  Rekam::with('kunjungans')->get();
         $kunjungans = $model->all();
         $rekams = $rekamModel->get(['id', 'no_rm', 'nama']);
-        $dokters = $dokterModel->get(['id', 'nama_dokter']);
+        $dokters = $dokterModel->where('role_id', 3)->get(['id', 'name']);
 
         $data = Kunjungan::select('kunjungans.id', 'kunjungans.created_at', 'kunjungans.shift', 'kunjungans.jaminan', 'rekams.no_rm', 'rekams.nama')
             ->Join('rekams', 'kunjungans.rekam_id', '=', 'rekams.id')
-            ->Join('dokters', 'kunjungans.dokter_id', '=', 'dokters.id')
             ->orderBy('kunjungans.id', 'asc')
             ->get();
 
@@ -137,7 +135,7 @@ class KunjunganController extends Controller
      * @param  \App\Kunjungan  $kunjungan
      * @return \Illuminate\Http\Response
      */
-    public function edit(Kunjungan $kunjungan, Rekam $rekamModel, Dokter $dokterModel)
+    public function edit(Kunjungan $kunjungan, Rekam $rekamModel, User $dokterModel)
     {
         // return $kunjungan;
         // return 'tes';
@@ -146,7 +144,7 @@ class KunjunganController extends Controller
             compact('kunjungan'),
             [
                 'rekams' => $rekamModel->get(['id', 'no_rm', 'nama']),
-                'dokters' => $dokterModel->get(['id', 'nama_dokter'])
+                'dokters' => $dokterModel->where('role_id', 3)->get(['id', 'name'])
             ]
         );
     }

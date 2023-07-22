@@ -37,7 +37,6 @@ return new class extends Migration
             $table->timestamps();
 
             $table->foreign('rekam_id')->references('id')->on('rekams');
-            $table->foreign('dokter_id')->references('id')->on('dokters');
             $table->foreign('biaya_id')->references('id')->on('biayas');
         });
     }

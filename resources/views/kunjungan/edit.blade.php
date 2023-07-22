@@ -102,7 +102,7 @@
                                         required>
                                             @foreach ($dokters as $dokter)
                                             <option value="{{ $dokter->id }}" {{ $dokter->id === old('dokter_id', $kunjungan->dokter_id) ? 'selected' : '' }}>
-                                                {{ $dokter->nama_dokter }}</option>
+                                                {{ $dokter->name }}</option>
                                             @endforeach
                                         </select>
                                         @include('alerts.feedback', ['field' => 'dokter_id'])

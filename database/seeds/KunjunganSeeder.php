@@ -20,7 +20,7 @@ class KunjunganSeeder extends Seeder
             'jaminan' => 'regular',
             'poli' => 'umum',
             'rekam_id' => '1',
-            'dokter_id' => '1',
+            'dokter_id' => '3',
             'sis' => 'tes',
             'created_at' => now(),
             'updated_at' => now()
