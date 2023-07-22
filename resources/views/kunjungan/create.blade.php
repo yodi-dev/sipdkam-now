@@ -38,9 +38,6 @@
                                         <option {{ $shift == 2 ? 'selected' : '' }} value="2">2</option>
                                         <option {{ $shift == 3 ? 'selected' : '' }} value="3">3</option>
                                     </select>
-                                    {{-- <input type="text" name="shift" id="input-Shift"
-                                    class="form-control{{ $errors->has('shift') ? ' is-invalid' : '' }}"
-                                    value="{{ old('shift') }}" autofocus> --}}
                                     @include('alerts.feedback', ['field' => 'shift'])
                                 </div>
                             </div>
@@ -56,9 +53,6 @@
                                         <option value="bpjs">BPJS</option>
                                         <option value="regular">Regular</option>
                                     </select>
-                                    {{-- <input type="text" name="jaminan" id="input-Jaminan"
-                                    class="form-control{{ $errors->has('jaminan') ? ' is-invalid' : '' }}"
-                                    value="{{ old('jaminan') }}" required autofocus> --}}
                                     @include('alerts.feedback', ['field' => 'jaminan'])
                                 </div>
                             </div>
@@ -77,9 +71,6 @@
                                         <option value="observasi">Observasi</option>
                                         <option value="umum">Umum</option>
                                     </select>
-                                    {{-- <input type="text" name="poli" id="input-Poli"
-                                    class="form-control{{ $errors->has('poli') ? ' is-invalid' : '' }}"
-                                    value="{{ old('poli') }}" required autofocus> --}}
                                     @include('alerts.feedback', ['field' => 'poli'])
                                 </div>
                             </div>
@@ -111,7 +102,7 @@
                                     required>
                                         @foreach ($dokters as $dokter)
                                         <option value="{{ $dokter->id }}" {{ $dokter->id == old('id') ? 'selected' : '' }}>
-                                            {{ $dokter->nama_dokter }}</option>
+                                            {{ $dokter->name }}</option>
                                         @endforeach
                                     </select>
                                     @include('alerts.feedback', ['field' => 'dokter_id'])

@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
+use App\Rekam;
 use App\Dokter;
 use App\Kunjungan;
-use App\Rekam;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 
@@ -43,7 +44,7 @@ class KunjunganController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create(Rekam $rekamModel, Dokter $dokterModel)
+    public function create(Rekam $rekamModel, User $userModel)
     {
         $date = now()->format('H:i:s');
         if ($date >= '00:00:00' && $date <= '08:00:00') {
@@ -57,7 +58,7 @@ class KunjunganController extends Controller
         // return $shift;
         return view('kunjungan.create', [
             'rekams' => $rekamModel->get(['id', 'no_rm', 'nama']),
-            'dokters' => $dokterModel->get(['id', 'nama_dokter']),
+            'dokters' => $userModel->where('role_id', 3)->get(['id', 'name']),
         ], compact('shift'));
     }
 
