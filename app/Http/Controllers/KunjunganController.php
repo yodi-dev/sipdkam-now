@@ -85,9 +85,9 @@ class KunjunganController extends Controller
      */
     public function show(Kunjungan $kunjungan)
     {
-        $data = Kunjungan::select('kunjungans.*', 'dokters.nama_dokter', 'rekams.no_rm', 'rekams.nama', 'rekams.kelamin', 'rekams.dusun', 'rekams.desa', 'rekams.kecamatan', 'rekams.tgl_lahir')
+        $data = Kunjungan::select('kunjungans.*', 'users.name as nama_dokter', 'rekams.no_rm', 'rekams.nama', 'rekams.kelamin', 'rekams.dusun', 'rekams.desa', 'rekams.kecamatan', 'rekams.tgl_lahir')
             ->Join('rekams', 'kunjungans.rekam_id', '=', 'rekams.id')
-            ->Join('dokters', 'kunjungans.dokter_id', '=', 'dokters.id')
+            ->Join('users', 'kunjungans.dokter_id', '=', 'users.id')
             ->orderBy('kunjungans.id', 'asc')
             ->where('kunjungans.id', $kunjungan->id)->get();
 
