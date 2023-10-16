@@ -59,14 +59,14 @@
             </li>
             @endcan
             <li>
-                <a data-toggle="collapse" href="#laravelExamples">
+                <a data-toggle="collapse" href="#dataPasien">
                     <i class="now-ui-icons education_agenda-bookmark"></i>
                     <p>
-                        {{ __("Data Pasien") }}
+                        {{ __("Pasien") }}
                         <b class="caret"></b>
                     </p>
                 </a>
-                <div class="collapse show" id="laravelExamples">
+                <div class="collapse" id="dataPasien">
                     <ul class="nav">
                         <li class="@if ($activePage == 'kunjungan') active @endif">
                             <a href="{{ route('kunjungan.index') }}">
@@ -86,8 +86,116 @@
                 </div>
             </li>
             <li>
+                <a data-toggle="collapse" href="#dataInventaris">
+                    <i class="now-ui-icons design-2_ruler-pencil"></i>
+                    <p>
+                        {{ __("Inventaris") }}
+                        <b class="caret"></b>
+                    </p>
+                </a>
+                <div class="collapse" id="dataInventaris">
+                    <ul class="nav">
+                        <li class="@if ($activePage == 'kunjungan') active @endif">
+                            <a href="{{ route('kunjungan.index') }}">
+                                <span class="sidebar-mini-icon">{{ __("DO") }}</span>
+                                <span class="sidebar-normal"> {{ __("Data Obat") }} </span>
+                            </a>
+                        </li>
+                        @can('manage-items', App\User::class)
+                        <li class="@if ($activePage == 'rekammedis') active @endif">
+                            <a href="{{ route('rekam.index') }}">
+                                <span class="sidebar-mini-icon">{{ __("AM") }}</span>
+                                <span class="sidebar-normal"> {{ __("Alat Medis") }} </span>
+                            </a>
+                        </li>
+                        @endcan
+                    </ul>
+                </div>
+            </li>
+            <li>
+                <a data-toggle="collapse" href="#dataOperasional">
+                    <i class="now-ui-icons health_ambulance"></i>
+                    <p>
+                        {{ __("Operasinal") }}
+                        <b class="caret"></b>
+                    </p>
+                </a>
+                <div class="collapse" id="dataOperasional">
+                    <ul class="nav">
+                        <li class="@if ($activePage == 'kunjungan') active @endif">
+                            <a href="{{ route('kunjungan.index') }}">
+                                <span class="sidebar-mini-icon">{{ __("J") }}</span>
+                                <span class="sidebar-normal"> {{ __("Jadwal") }} </span>
+                            </a>
+                        </li>
+                        @can('manage-items', App\User::class)
+                        <li class="@if ($activePage == 'rekammedis') active @endif">
+                            <a href="{{ route('rekam.index') }}">
+                                <span class="sidebar-mini-icon">{{ __("U") }}</span>
+                                <span class="sidebar-normal"> {{ __("Utang") }} </span>
+                            </a>
+                        </li>
+                        @endcan
+                    </ul>
+                </div>
+            </li>
+            <li>
+                <a data-toggle="collapse" href="#analisis">
+                    <i class="now-ui-icons business_chart-bar-32"></i>
+                    <p>
+                        {{ __("Analisis") }}
+                        <b class="caret"></b>
+                    </p>
+                </a>
+                <div class="collapse" id="analisis">
+                    <ul class="nav">
+                        <li class="@if ($activePage == 'kunjungan') active @endif">
+                            <a href="{{ route('kunjungan.index') }}">
+                                <span class="sidebar-mini-icon">{{ __("SK") }}</span>
+                                <span class="sidebar-normal"> {{ __("Statistik Kunjungan") }} </span>
+                            </a>
+                        </li>
+                        {{-- @can('manage-items', App\User::class)
+                        <li class="@if ($activePage == 'rekammedis') active @endif">
+                            <a href="{{ route('rekam.index') }}">
+                                <span class="sidebar-mini-icon">{{ __("U") }}</span>
+                                <span class="sidebar-normal"> {{ __("Utang") }} </span>
+                            </a>
+                        </li>
+                        @endcan --}}
+                    </ul>
+                </div>
+            </li>
+            <li>
+                <a data-toggle="collapse" href="#laporan">
+                    <i class="now-ui-icons business_briefcase-24"></i>
+                    <p>
+                        {{ __("Laporan") }}
+                        <b class="caret"></b>
+                    </p>
+                </a>
+                <div class="collapse" id="laporan">
+                    <ul class="nav">
+                        <li class="@if ($activePage == 'kunjungan') active @endif">
+                            <a href="{{ route('kunjungan.index') }}">
+                                <span class="sidebar-mini-icon">{{ __("LK") }}</span>
+                                <span class="sidebar-normal"> {{ __("Laporan Kunjungan") }} </span>
+                            </a>
+                        </li>
+                        @can('manage-items', App\User::class)
+                        <li class="@if ($activePage == 'rekammedis') active @endif">
+                            <a href="{{ route('rekam.index') }}">
+                                <span class="sidebar-mini-icon">{{ __("LKU") }}</span>
+                                <span class="sidebar-normal"> {{ __("Laporan Keuangan") }} </span>
+                            </a>
+                        </li>
+                        @endcan
+                    </ul>
+                </div>
+            </li>
+            <li>
                 @can('manage-users', App\User::class)
-                <a data-toggle="collapse" href="#pagesExamples">
+                <a data-toggle="collapse" href="#dataMaster">
                     <i class="now-ui-icons files_box"></i>
                     <p>
                         {{ __("Data Master") }}
@@ -95,7 +203,7 @@
                     </p>
                 </a>
                 @endcan
-                <div class="collapse @if ($activeNav ?? '' == 'pages') show @endif" id="pagesExamples">
+                <div class="collapse @if ($activeNav ?? '' == 'pages') show @endif" id="dataMaster">
                     <ul class="nav">
                         @can('manage-users', App\User::class)
                         <li class="@if ($activePage == 'users') active @endif">
