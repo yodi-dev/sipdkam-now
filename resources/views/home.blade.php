@@ -7,8 +7,19 @@
 
 @section('content')
 <div id="controller">
-  <div class="panel-header">
+  <div class="panel-header pt-5">
     {{-- <canvas id="bigDashboardChart"></canvas> --}}
+    <div class="container text-center">
+      <div class="row justify-content-end">
+        <div class="col-md-2">
+          <div class="card ">
+            <div class="card-body">
+              {{ $tgl }}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
   <div class="content" >
     <div class="row">

@@ -21,6 +21,7 @@ namespace App\Http\Controllers;
 use App\Kunjungan;
 use App\Rekam;
 use App\RekamMedis;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -46,6 +47,9 @@ class HomeController extends Controller
         if (auth()->user()->role_id == 3) {
             return redirect('kunjungan');
         }
-        return view('home', ['rekams' => $rekam->count(), 'kunjung' => $kunjung->count()]);
+
+        $tgl = Carbon::now()->format('d-M-Y');
+
+        return view('home', compact('tgl'), ['rekams' => $rekam->count(), 'kunjung' => $kunjung->count()]);
     }
 }
