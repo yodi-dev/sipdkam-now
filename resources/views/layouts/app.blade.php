@@ -104,6 +104,11 @@
             content:" *";
             color: red;
         }
+
+        .tab { 
+            display: inline-block; 
+            margin-left: 50px; 
+        } 
         </style>
 </head>
 <body class="{{ $class ?? '' }}">
