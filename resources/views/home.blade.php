@@ -31,46 +31,83 @@
           <div class="row">
             <div class="col-md-3">
               <div class="card">
-                <div class="card-header bg-secondary text-center">
+                <div class="card-header bg-secondary text-center text-white d-flex align-items-center justify-content-center" style="height: 5em">
                   <h5 class="card-title" style="margin-top: -0.5em">Dokter Umum</h5>
                 </div>
-                <div class="card-body">
-                  <p class="card-text">Shift 1 <span class="tab">Dr. Ana</span></p>
-                  <hr>
-                  <p class="card-text">Shift 2 <span class="tab">Dr. Ani</p>
-                  <hr>
-                  <p class="card-text">Shift 3 <span class="tab">Dr. Anu</p>
-                  <hr>
+                <div class="card-body" style="height: 15em">
+                  <table class="table">
+                    <tr>
+                      <th>Shift 1</th>
+                      <td> Dr. Wahid</td>
+                    </tr>
+                    <tr>
+                      <th>Shift 2</th>
+                      <td> Dr. Citra</td>
+                    </tr>
+                    <tr>
+                      <th>Shift 1</th>
+                      <td> Dr. Rendy</td>
+                    </tr>
+                  </table>
                 </div>
               </div>
             </div>
             <div class="col-md-3">
               <div class="card">
-                <div class="card-header bg-secondary text-center">
+                <div class="card-header bg-secondary text-center text-white d-flex align-items-center justify-content-center" style="height: 5em">
                   <h5 class="card-title" style="margin-top: -0.5em">Petugas</h5>
                 </div>
-                <div class="card-body">
-
+                <div class="card-body" style="height: 15em">
+                  <table class="table">
+                    <tr>
+                      <th>Shift 1</th>
+                      <td>
+                        Luthfi <br>
+                        Tika
+                      </td>
+                    </tr>
+                    <tr>
+                      <th>Shift 2</th>
+                      <td>
+                        Tika <br>
+                        Luthfi
+                      </td>
+                    </tr>
+                    <tr>
+                      <th>Shift 3</th>
+                      <td>Tika</td>
+                    </tr>
+                  </table>
                 </div>
               </div>
             </div>
             <div class="col-md-3">
               <div class="card">
-                <div class="card-header bg-secondary text-center">
-                  <h5 class="card-title" style="margin-top: -0.5em">Kerumahtanggaan</h5>
+                <div class="card-header bg-secondary text-center text-white d-flex align-items-center justify-content-center" style="height: 5em">
+                  <h5 class="card-title" style="margin-top: -0.5em; width: 95%;">Kerumahtanggaan</h5>
                 </div>
-                <div class="card-body">
-
+                <div class="card-body" style="height: 15em">
+                  <table class="table">
+                    <tr>
+                      <th>Shift 2</th>
+                      <td>Warsinah</td>
+                    </tr>
+                  </table>
                 </div>
               </div>
             </div>
             <div class="col-md-3">
               <div class="card">
-                <div class="card-header bg-secondary text-center">
+                <div class="card-header bg-secondary text-center text-white d-flex align-items-center justify-content-center" style="height: 5em">
                   <h5 class="card-title" style="margin-top: -0.5em">Keamanan</h5>
                 </div>
-                <div class="card-body">
-
+                <div class="card-body" style="height: 15em">
+                  <table class="table">
+                    <tr>
+                      <th>Shift 3</th>
+                      <td>Surawat</td>
+                    </tr>
+                  </table>
                 </div>
               </div>
             </div>

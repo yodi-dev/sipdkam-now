@@ -109,6 +109,10 @@
             display: inline-block; 
             margin-left: 50px; 
         } 
+
+        th, td {
+            border-bottom: 1px solid #ddd;
+        }
         </style>
 </head>
 <body class="{{ $class ?? '' }}">
