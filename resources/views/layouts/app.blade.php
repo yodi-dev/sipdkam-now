@@ -141,6 +141,7 @@
     <script src="{{ asset('now') }}/js/core/bootstrap.min.js"></script>
     <script src="{{ asset('now') }}/js/plugins/perfect-scrollbar.jquery.min.js"></script>
     <script src="{{ asset('now') }}/js/plugins/moment.min.js"></script>
+    <script src="{{ asset('now') }}/demo/demo.js"></script>
     {{-- <script src="https://unpkg.com/vue@next" defer></script> --}}
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
         <!--  Plugin for Switches, full documentation here: http://www.jque.re/plugins/version3/bootstrap.switch/ -->
@@ -177,7 +178,7 @@
     <!-- Control Center for Now Ui Dashboard: parallax effects, scripts for the example pages etc -->
     <script src="{{ asset('now') }}/js/now-ui-dashboard.js?v=1.4.1"></script>
     <!-- JS Just for demo purpose, don't include it in your project -->
-    <script src="{{asset('now')}}/demo/demo.js?v=1.0"></script>
+    {{-- <script src="{{asset('now')}}/demo/demo.js?v=1.0"></script> --}}
     @if (config('app.is_demo'))
         <script src="{{asset('now')}}/demo/tour.js?v=1.1"></script>
     @endif

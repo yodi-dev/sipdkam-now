@@ -118,6 +118,43 @@
   </div>
   <div class="row">
     <div class="col-md-12">
+      <div class="card">
+        <div class="card-header">
+          <h4 class="card-title">{{ __('Laporan Harian') }}</h4>
+        </div>
+        <div class="card-body">
+          <div class="row">
+            <div class="col-md-6">
+              <div class="card card-chart">
+                <div class="card-header bg-secondary text-center text-white d-flex align-items-center justify-content-center" style="height: 5em">
+                  <h5 class="card-title" style="margin-top: -0.5em">Kunjugan Pasien</h5>
+                </div>
+                <div class="card-body" style="height: 15em">
+                  <div class="chart-area">
+                    <canvas id="barChartMultipleBarsNoGradient"></canvas>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="card card-chart">
+                <div class="card-header bg-secondary text-center text-white d-flex align-items-center justify-content-center" style="height: 5em">
+                  <h5 class="card-title" style="margin-top: -0.5em">Kunjungan per Shift</h5>
+                </div>
+                <div class="card-body" style="height: 15em">
+                  <div class="chart-area">
+                    <canvas id="kunjunganPerShift"></canvas>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
       <div class="card card-stats">
         <div class="card-body">
           <div class="row">
@@ -152,7 +189,7 @@
 @endsection
 
 @push('js')
-<script type="text/javascript">
+{{-- <script type="text/javascript">
   var controller = new Vue({
     el: '#controller',
     data: {
@@ -166,14 +203,159 @@
     } 
 
   });
-</script>
-<script>
+</script> --}}
+{{-- <script>
   $(document).ready(function() {
     // Javascript method's body can be found in assets/js/demos.js
-    demo.initDashboardPageCharts();
+    // demo.initDashboardPageCharts();
 
-    demo.initVectorMap();
+    // demo.initVectorMap();
+
+    demo.initChartPageCharts();
 
   });
+</script> --}}
+<script>
+  var e = document.getElementById("barChartMultipleBarsNoGradient").getContext("2d");
+
+  var a = {
+      type: "bar",
+      data: {
+          labels: [
+              "Poli Umum", "Poli Gigi", "KB", "Home Care", "Total"
+          ],
+          datasets: [{
+                label: 'Reguler',
+                backgroundColor: "#f96332",
+                data: [40, 56, 28, 45, 20 ]
+              },
+              {
+                label: 'BPJS',
+                backgroundColor: "#2CA8FF",
+                data: [15, 20, 25, 30, 25]
+              }
+          ]
+      },
+      options: {
+          maintainAspectRatio: false,
+          legend: {
+              display: false
+          },
+          tooltips: {
+              bodySpacing: 4,
+              mode: "nearest",
+              intersect: 0,
+              position: "nearest",
+              xPadding: 10,
+              yPadding: 10,
+              caretPadding: 10
+          },
+          responsive: true,
+          scales: {
+              yAxes: [{
+                  gridLines: 0,
+                  gridLines: {
+                      zeroLineColor: "transparent",
+                      drawBorder: false
+                  }
+              }],
+              xAxes: [{
+                  gridLines: 0,
+                  ticks: {
+                      display: false
+                  },
+                  gridLines: {
+                      zeroLineColor: "transparent",
+                      drawTicks: false,
+                      drawBorder: false
+                  }
+              }]
+          },
+          layout: {
+              padding: {
+                  left: 0,
+                  right: 0,
+                  top: 15,
+                  bottom: 15
+              }
+          }
+      }
+  };
+
+  var viewsChart = new Chart(e, a);
+
+  // kunjungan per shift
+  var e = document.getElementById("kunjunganPerShift").getContext("2d");
+
+  var a = {
+      type: "bar",
+      data: {
+          labels: [
+              "Poli Umum", "Poli Gigi", "KB", "Home Care", "Total"
+          ],
+          datasets: [{
+                label: 'Reguler',
+                backgroundColor: "#48dbfb",
+                data: [40, 56, 28, 45, 20 ]
+              },
+              {
+                label: 'BPJS',
+                backgroundColor: "#1B9CFC",
+                data: [15, 20, 25, 30, 25]
+              },
+              {
+                label: 'BPJS',
+                backgroundColor: "#3B3B98",
+                data: [25, 40, 15, 10, 05]
+              }
+          ]
+      },
+      options: {
+          maintainAspectRatio: false,
+          legend: {
+              display: false
+          },
+          tooltips: {
+              bodySpacing: 4,
+              mode: "nearest",
+              intersect: 0,
+              position: "nearest",
+              xPadding: 10,
+              yPadding: 10,
+              caretPadding: 10
+          },
+          responsive: true,
+          scales: {
+              yAxes: [{
+                  gridLines: 0,
+                  gridLines: {
+                      zeroLineColor: "transparent",
+                      drawBorder: false
+                  }
+              }],
+              xAxes: [{
+                  gridLines: 0,
+                  ticks: {
+                      display: false
+                  },
+                  gridLines: {
+                      zeroLineColor: "transparent",
+                      drawTicks: false,
+                      drawBorder: false
+                  }
+              }]
+          },
+          layout: {
+              padding: {
+                  left: 0,
+                  right: 0,
+                  top: 15,
+                  bottom: 15
+              }
+          }
+      }
+  };
+
+  var viewsChart = new Chart(e, a);
 </script>
 @endpush
