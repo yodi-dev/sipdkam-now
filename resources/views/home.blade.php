@@ -134,6 +134,9 @@
                     <canvas id="barChartMultipleBarsNoGradient"></canvas>
                   </div>
                 </div>
+                <div class="card-footer">
+                  <p><span class="box"></span>Reguler  <span class="boxx"></span>BPJS</p>
+                </div>
               </div>
             </div>
             <div class="col-md-6">
@@ -145,6 +148,13 @@
                   <div class="chart-area">
                     <canvas id="kunjunganPerShift"></canvas>
                   </div>
+                </div>
+                <div class="card-footer">
+                  <p>
+                    <span class="box1"></span>Shift 1  
+                    <span class="box2"></span>Shift 2
+                    <span class="box3"></span>Shift 3
+                  </p>
                 </div>
               </div>
             </div>

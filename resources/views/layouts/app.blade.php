@@ -113,6 +113,46 @@
         th, td {
             border-bottom: 1px solid #ddd;
         }
+
+        .box {
+            margin-right: 0.5em;
+            display: inline-block;
+            width: 2em;
+            height: 1em;
+            background-color: #f96332;
+        }
+
+        .boxx {
+            margin-left: 2em;
+            margin-right: 0.5em;
+            display: inline-block;
+            width: 2em;
+            height: 1em;
+            background-color: #2CA8FF;
+        }
+        .box1 {
+            margin-right: 0.5em;
+            display: inline-block;
+            width: 2em;
+            height: 1em;
+            background-color: #48dbfb;
+        }
+        .box2 {
+            margin-left: 2em;
+            margin-right: 0.5em;
+            display: inline-block;
+            width: 2em;
+            height: 1em;
+            background-color: #1B9CFC;
+        }
+        .box3 {
+            margin-left: 2em;
+            margin-right: 0.5em;
+            display: inline-block;
+            width: 2em;
+            height: 1em;
+            background-color: #3B3B98;
+        }
         </style>
 </head>
 <body class="{{ $class ?? '' }}">
