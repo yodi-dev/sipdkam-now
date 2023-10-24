@@ -66,7 +66,7 @@
                         <b class="caret"></b>
                     </p>
                 </a>
-                <div class="collapse" id="dataPasien">
+                <div class="collapse @if ($activeNav == 'datapasien') show @endif" id="dataPasien">
                     <ul class="nav">
                         <li class="@if ($activePage == 'kunjungan') active @endif">
                             <a href="{{ route('kunjungan.index') }}">
@@ -93,17 +93,17 @@
                         <b class="caret"></b>
                     </p>
                 </a>
-                <div class="collapse" id="dataInventaris">
+                <div class="collapse @if ($activeNav == 'inventaris') show @endif" id="dataInventaris">
                     <ul class="nav">
-                        <li class="@if ($activePage == 'kunjungan') active @endif">
-                            <a href="{{ route('kunjungan.index') }}">
+                        <li class="@if ($activePage == 'dataObat') active @endif">
+                            <a href="{{ route('obat.index') }}">
                                 <span class="sidebar-mini-icon">{{ __("DO") }}</span>
                                 <span class="sidebar-normal"> {{ __("Data Obat") }} </span>
                             </a>
                         </li>
                         @can('manage-items', App\User::class)
-                        <li class="@if ($activePage == 'rekammedis') active @endif">
-                            <a href="{{ route('rekam.index') }}">
+                        <li class="@if ($activePage == 'alatMedis') active @endif">
+                            <a href="{{ route('alatmedis.index') }}">
                                 <span class="sidebar-mini-icon">{{ __("AM") }}</span>
                                 <span class="sidebar-normal"> {{ __("Alat Medis") }} </span>
                             </a>
@@ -120,17 +120,17 @@
                         <b class="caret"></b>
                     </p>
                 </a>
-                <div class="collapse" id="dataOperasional">
+                <div class="collapse @if ($activeNav == 'operasional') show @endif" id="dataOperasional">
                     <ul class="nav">
-                        <li class="@if ($activePage == 'kunjungan') active @endif">
-                            <a href="{{ route('kunjungan.index') }}">
+                        <li class="@if ($activePage == 'jadwal') active @endif">
+                            <a href="{{ route('jadwal.index') }}">
                                 <span class="sidebar-mini-icon">{{ __("J") }}</span>
                                 <span class="sidebar-normal"> {{ __("Jadwal") }} </span>
                             </a>
                         </li>
                         @can('manage-items', App\User::class)
-                        <li class="@if ($activePage == 'rekammedis') active @endif">
-                            <a href="{{ route('rekam.index') }}">
+                        <li class="@if ($activePage == 'utang') active @endif">
+                            <a href="{{ route('utang.index') }}">
                                 <span class="sidebar-mini-icon">{{ __("U") }}</span>
                                 <span class="sidebar-normal"> {{ __("Utang") }} </span>
                             </a>
@@ -149,7 +149,7 @@
                 </a>
                 <div class="collapse" id="analisis">
                     <ul class="nav">
-                        <li class="@if ($activePage == 'kunjungan') active @endif">
+                        <li class="@if ($activePage == 'statistikKunjungan') active @endif">
                             <a href="{{ route('kunjungan.index') }}">
                                 <span class="sidebar-mini-icon">{{ __("SK") }}</span>
                                 <span class="sidebar-normal"> {{ __("Statistik Kunjungan") }} </span>
@@ -176,14 +176,14 @@
                 </a>
                 <div class="collapse" id="laporan">
                     <ul class="nav">
-                        <li class="@if ($activePage == 'kunjungan') active @endif">
+                        <li class="@if ($activePage == 'laporanKunjungan') active @endif">
                             <a href="{{ route('kunjungan.index') }}">
                                 <span class="sidebar-mini-icon">{{ __("LK") }}</span>
                                 <span class="sidebar-normal"> {{ __("Laporan Kunjungan") }} </span>
                             </a>
                         </li>
                         @can('manage-items', App\User::class)
-                        <li class="@if ($activePage == 'rekammedis') active @endif">
+                        <li class="@if ($activePage == 'laporanKeuangan') active @endif">
                             <a href="{{ route('rekam.index') }}">
                                 <span class="sidebar-mini-icon">{{ __("LKU") }}</span>
                                 <span class="sidebar-normal"> {{ __("Laporan Keuangan") }} </span>

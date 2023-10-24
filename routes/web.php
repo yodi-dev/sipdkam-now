@@ -1,5 +1,8 @@
 <?php
 
+use App\Alatmedis;
+use App\Jadwal;
+
 Route::get('/', function () {
     return redirect()->route('login');
 });
@@ -12,11 +15,17 @@ Route::get('pricing', ['as' => 'page.pricing', 'uses' => 'PageController@pricing
 
 
 Route::group(['middleware' => 'auth'], function () {
-    Route::resource('rekam', 'RekamController');
-    Route::resource('kunjungan', 'KunjunganController');
-    Route::resource('user', 'UserController');
-    Route::resource('role', 'RoleController');
-    Route::resource('biaya', 'BiayaController');
+    Route::resources([
+        'rekam' => RekamController::class,
+        'kunjungan' => KunjunganController::class,
+        'user' => UserController::class,
+        'role' => RoleController::class,
+        'biaya' => BiayaController::class,
+        'obat' => ObatController::class,
+        'alatmedis' => AlatmedisController::class,
+        'jadwal' => JadwalController::class,
+        'utang' => UtangController::class,
+    ]);
     Route::get('profile', ['as' => 'profile.edit', 'uses' => 'ProfileController@edit']);
     Route::put('profile', ['as' => 'profile.update', 'uses' => 'ProfileController@update']);
     Route::put('profile/password', ['as' => 'profile.password', 'uses' => 'ProfileController@password']);

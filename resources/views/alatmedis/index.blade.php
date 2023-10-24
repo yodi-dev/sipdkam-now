@@ -1,8 +1,8 @@
 @extends('layouts.app', [
-'namePage' => 'Rekam Medis',
+'namePage' => 'Alat Medis',
 'class' => '',
-'activePage' => 'rekammedis',
-'activeNav' => 'datapasien',
+'activePage' => 'alatMedis',
+'activeNav' => 'inventaris',
 ])
 
 @section('content')
@@ -13,9 +13,8 @@
         <div class="col-md-12" id="roles-table">
             <div class="card">
                 <div class="card-header">
-                    <a class="btn btn-primary btn-round pull-right text-white"
-                        href="{{ route('rekam.create') }}">{{ __('Baru') }}</a>
-                    <h4 class="card-title">{{ __('Rekam Medis') }}</h4>
+                    {{-- <a class="btn btn-primary btn-round pull-right text-white" href="{{ route('rekam.create') }}">{{ __('Baru') }}</a> --}}
+                    <h4 class="card-title">{{ __('Alat Medis') }}</h4>
                     <div class="col-12 mt-2">
                         {{-- @include('alerts.success')
                         @include('alerts.errors') --}}
@@ -25,7 +24,7 @@
                     <div class="toolbar">
                         <!--        Here you can write extra buttons/actions for the toolbar              -->
                     </div>
-                    <table id="datatable" class="table table-striped table-bordered" cellspacing="0" width="100%">
+                    {{-- <table id="datatable" class="table table-striped table-bordered" cellspacing="0" width="100%">
                         <thead>
                             <tr>
                                 <th>{{ __('No RM') }}</th>
@@ -75,7 +74,7 @@
                             </tr>
                             @endforeach
                         </tbody>
-                    </table>
+                    </table> --}}
                 </div>
                 <!-- end content-->
             </div>
