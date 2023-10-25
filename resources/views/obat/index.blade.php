@@ -24,26 +24,22 @@
                     <div class="toolbar">
                         <!--        Here you can write extra buttons/actions for the toolbar              -->
                     </div>
-                    {{-- <table id="datatable" class="table table-striped table-bordered" cellspacing="0" width="100%">
+                    <table id="datatable" class="table table-striped table-bordered" cellspacing="0" width="100%">
                         <thead>
                             <tr>
-                                <th>{{ __('No RM') }}</th>
-                                <th>{{ __('Nama') }}</th>
-                                <th>{{ __('Jenis Kelamin') }}</th>
-                                <th>{{ __('Tanggal Lahir') }}</th>
-                                <th>{{ __('Desa') }}</th>
-                                <th class="disabled-sorting text-right">{{ __('Actions') }}</th>
+                                <th>{{ __('Nama Obat') }}</th>
+                                <th>{{ __('Harga') }}</th>
+                                <th>{{ __('Stok') }}</th>
+                                {{-- <th class="disabled-sorting text-right">{{ __('Actions') }}</th> --}}
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach($rekams as $rms)
+                            @foreach($data as $item)
                             <tr>
-                                <td> {{ $rms->no_rm }}</td>
-                                <td>{{$rms->nama}}</td>
-                                <td>{{ $rms->kelamin }}</td>
-                                <td>{{ $rms->tgl_lahir }}</td>
-                                <td> {{$rms->desa}}</td>
-                                @can('manage-items', App\User::class)
+                                <td> {{ $item->nama_obat }}</td>
+                                <td>{{$item->harga_obat}}</td>
+                                <td>{{ $item->stok }}</td>
+                                {{-- @can('manage-items', App\User::class)
                                 <td class="text-right">
                                     <a type="button" href="{{route("rekam.show",$rms)}}" rel="tooltip"
                                     class="btn btn-info btn-icon btn-sm " data-original-title="" title="">
@@ -70,11 +66,11 @@
                                     @endcan
                                     @endif
                                 </td>
-                                @endcan
+                                @endcan --}}
                             </tr>
                             @endforeach
                         </tbody>
-                    </table> --}}
+                    </table>
                 </div>
                 <!-- end content-->
             </div>

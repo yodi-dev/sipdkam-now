@@ -15,14 +15,16 @@ class ObatController extends Controller
 
     public function __construct()
     {
-        $this->authorizeResource(Rekam::class);
+        $this->authorizeResource(Obat::class);
     }
 
-    public function index()
+    public function index(Obat $data)
     {
-        $this->authorize('manage-items', User::class);
 
-        return view('obat.index');
+        $this->authorize('manage-items', User::class);
+        return view('obat.index', ['data' => $data->all()]);
+        // return $data;
+        // return view('obat.index', compact('data'));
     }
 
     /**
