@@ -2,6 +2,7 @@
 
 use Database\Seeders\DokterSeeder;
 use Database\Seeders\KunjunganSeeder;
+use Database\Seeders\ObatSeeder;
 use Database\Seeders\RekamSeeder;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
@@ -22,9 +23,11 @@ class DatabaseSeeder extends Seeder
         DB::table('users')->truncate();
         DB::table('rekams')->truncate();
         DB::table('kunjungans')->truncate();
+        DB::table('obats')->truncate();
 
         $this->call([RolesTableSeeder::class, UsersTableSeeder::class]);
         $this->call([RekamSeeder::class, KunjunganSeeder::class]);
+        $this->call([ObatSeeder::class]);
 
         DB::statement('SET FOREIGN_KEY_CHECKS=1');
     }

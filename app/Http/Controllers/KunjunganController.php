@@ -31,7 +31,7 @@ class KunjunganController extends Controller
 
         $data = Kunjungan::select('kunjungans.id', 'kunjungans.created_at', 'kunjungans.shift', 'kunjungans.jaminan', 'rekams.no_rm', 'rekams.nama')
             ->Join('rekams', 'kunjungans.rekam_id', '=', 'rekams.id')
-            ->orderBy('kunjungans.id', 'asc')
+            ->orderBy('kunjungans.created_at', 'asc')
             ->get();
 
         return view('kunjungan.index', compact('data', 'kunjungans', 'rekams', 'dokters'));
