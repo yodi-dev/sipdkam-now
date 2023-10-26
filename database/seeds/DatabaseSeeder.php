@@ -5,6 +5,7 @@ use Database\Seeders\DokterSeeder;
 use Database\Seeders\KunjunganSeeder;
 use Database\Seeders\ObatSeeder;
 use Database\Seeders\RekamSeeder;
+use Database\Seeders\UtangSeeder;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Foundation\Auth\User;
@@ -26,10 +27,11 @@ class DatabaseSeeder extends Seeder
         DB::table('kunjungans')->truncate();
         DB::table('obats')->truncate();
         DB::table('alatmedis')->truncate();
+        DB::table('utangs')->truncate();
 
         $this->call([RolesTableSeeder::class, UsersTableSeeder::class]);
         $this->call([RekamSeeder::class, KunjunganSeeder::class]);
-        $this->call([ObatSeeder::class, AlatmedisSeeder::class]);
+        $this->call([ObatSeeder::class, AlatmedisSeeder::class, UtangSeeder::class]);
 
         DB::statement('SET FOREIGN_KEY_CHECKS=1');
     }

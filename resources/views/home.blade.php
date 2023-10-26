@@ -45,7 +45,7 @@
                       <td> Dr. Citra</td>
                     </tr>
                     <tr>
-                      <th>Shift 1</th>
+                      <th>Shift 3</th>
                       <td> Dr. Rendy</td>
                     </tr>
                   </table>

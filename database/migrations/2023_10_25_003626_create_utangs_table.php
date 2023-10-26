@@ -15,6 +15,9 @@ return new class extends Migration
     {
         Schema::create('utangs', function (Blueprint $table) {
             $table->id();
+            $table->date('tanggal');
+            $table->string('nama', 100);
+            $table->integer('utang');
             $table->timestamps();
         });
     }

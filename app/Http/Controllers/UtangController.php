@@ -18,11 +18,10 @@ class UtangController extends Controller
         $this->authorizeResource(Rekam::class);
     }
 
-    public function index()
+    public function index(Utang $data)
     {
         $this->authorize('manage-items', User::class);
-
-        return view('utang.index');
+        return view('utang.index', ['data' => $data->all()]);
     }
 
     /**

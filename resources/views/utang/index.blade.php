@@ -24,6 +24,35 @@
                     <div class="toolbar">
                         <!--        Here you can write extra buttons/actions for the toolbar              -->
                     </div>
+                    <table id="datatable" class="table table-striped table-bordered" cellspacing="0" width="100%">
+                        <thead>
+                            <tr>
+                                <th>{{ __('Tanggal') }}</th>
+                                <th>{{ __('Nama') }}</th>
+                                <th>{{ __('Utang') }}</th>
+                                <th class="disabled-sorting text-right">{{ __('Actions') }}</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach($data as $item)
+                            <tr>
+                                <td> {{ $item->tanggal }}</td>
+                                <td>{{$item->nama}}</td>
+                                <td>{{ $item->utang }}</td>
+                                <td class="text-right">
+                                    <a type="button" href="#" rel="tooltip"
+                                    class="btn btn-info btn-icon btn-sm " data-original-title="" title="">
+                                    <i class="now-ui-icons design_bullet-list-67"></i>
+                                    </a>
+                                    <a type="button" href="#" rel="tooltip"
+                                        class="btn btn-success btn-icon btn-sm " data-original-title="" title="">
+                                        <i class="now-ui-icons ui-2_settings-90"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
                     {{-- <table id="datatable" class="table table-striped table-bordered" cellspacing="0" width="100%">
                         <thead>
                             <tr>
