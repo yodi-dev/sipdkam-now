@@ -23,5 +23,37 @@ class ObatSeeder extends Seeder
             'created_at' => now(),
             'updated_at' => now(),
         ]);
+
+        DB::table('obats')->insert([
+            'nama_obat' => 'aspirin',
+            'harga_obat' => 2000,
+            'stok' => 100,
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
+
+        DB::table('obats')->insert([
+            'nama_obat' => 'Betadine',
+            'harga_obat' => 2000,
+            'stok' => 100,
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
+
+        DB::table('obats')->insert([
+            'nama_obat' => 'Biotin',
+            'harga_obat' => 1000,
+            'stok' => 100,
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
+
+        DB::table('obats')->insert([
+            'nama_obat' => 'Decolgen',
+            'harga_obat' => 3000,
+            'stok' => 100,
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
     }
 }

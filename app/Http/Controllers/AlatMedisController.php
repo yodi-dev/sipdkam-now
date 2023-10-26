@@ -18,11 +18,10 @@ class AlatMedisController extends Controller
         $this->authorizeResource(Rekam::class);
     }
 
-    public function index()
+    public function index(Alatmedis $data)
     {
         $this->authorize('manage-items', User::class);
-
-        return view('alatmedis.index');
+        return view('alatmedis.index', ['data' => $data->all()]);
     }
 
     /**

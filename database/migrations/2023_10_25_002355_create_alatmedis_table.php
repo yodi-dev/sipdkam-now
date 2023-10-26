@@ -15,6 +15,8 @@ return new class extends Migration
     {
         Schema::create('alatmedis', function (Blueprint $table) {
             $table->id();
+            $table->string('nama', 100);
+            $table->integer('stok');
             $table->timestamps();
         });
     }
