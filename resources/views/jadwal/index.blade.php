@@ -76,6 +76,9 @@
                         </tbody>
                     </table>
                 </div>
+                <div class="card-footer">
+                    <a class="btn btn-sm btn-primary btn-round pull-right text-white mb-2" href="#">{{ __('All') }}</a>
+                </div>
                 <!-- end content-->
             </div>
             <!--  end card  -->

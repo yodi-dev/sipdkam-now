@@ -13,8 +13,8 @@
         <div class="col-md-12" id="roles-table">
             <div class="card">
                 <div class="card-header">
-                    {{-- <a class="btn btn-primary btn-round pull-right text-white" href="{{ route('rekam.create') }}">{{ __('Baru') }}</a> --}}
-                    <h4 class="card-title">{{ __('Utang') }}</h4>
+                    <a class="btn btn-primary btn-round pull-right text-white" href="{{ route('rekam.create') }}">{{ __('Baru') }}</a>
+                    <h4 class="card-title">{{ __('Oktober 2023') }}</h4>
                     <div class="col-12 mt-2">
                         {{-- @include('alerts.success')
                         @include('alerts.errors') --}}
@@ -104,6 +104,9 @@
                             @endforeach
                         </tbody>
                     </table> --}}
+                </div>
+                <div class="card-footer">
+                    <a class="btn btn-sm btn-primary btn-round pull-right text-white mb-2" href="#">{{ __('All') }}</a>
                 </div>
                 <!-- end content-->
             </div>

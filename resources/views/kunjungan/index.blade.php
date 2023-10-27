@@ -18,7 +18,7 @@
                         <a class="btn btn-primary btn-round pull-right text-white "
                         href="{{ route('kunjungan.create') }}">{{ __('Kunjungan Baru') }}</a>
                     @endcan
-                    <h4 class="card-title">{{ __('Kunjungan') }}</h4>
+                    <h4 class="card-title">{{ __('Oktober 2023') }}</h4>
                     <div class="col-12 mt-2">
                     </div>
                 </div>
@@ -93,6 +93,9 @@
                             @endforeach
                         </tbody>
                     </table>
+                </div>
+                <div class="card-footer">
+                    <a class="btn btn-sm btn-primary btn-round pull-right text-white mb-2" href="#">{{ __('All') }}</a>
                 </div>
             </div>
         </div>
