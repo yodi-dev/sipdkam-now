@@ -13,8 +13,7 @@
         <div class="col-md-12" id="roles-table">
             <div class="card">
                 <div class="card-header">
-                    <a class="btn btn-primary btn-round pull-right text-white"
-                        href="{{ route('rekam.create') }}">{{ __('Baru') }}</a>
+                    <a class="btn btn-primary btn-round pull-right text-white" href="{{ route('rekam.create') }}">{{ __('Baru') }}</a>
                     <h4 class="card-title">{{ __('Rekam Medis') }}</h4>
                     <div class="col-12 mt-2">
                         {{-- @include('alerts.success')

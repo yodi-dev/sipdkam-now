@@ -13,8 +13,9 @@
         <div class="col-md-12" id="roles-table">
             <div class="card">
                 <div class="card-header">
-                    {{-- <a class="btn btn-primary btn-round pull-right text-white" href="{{ route('rekam.create') }}">{{ __('Baru') }}</a> --}}
-                    <h4 class="card-title">{{ __('Jadwal') }}</h4>
+                    <a class="btn btn-info btn-round pull-right text-white" href="#">{{ __('Tambah Jadwal') }}</a>
+                    <a class="btn btn-primary btn-round pull-right text-white" href="#">{{ __('impor Jadwal') }}</a>
+                    <h4 class="card-title">Oktober 2023</h4>
                     <div class="col-12 mt-2">
                         {{-- @include('alerts.success')
                         @include('alerts.errors') --}}
@@ -24,40 +25,39 @@
                     <div class="toolbar">
                         <!--        Here you can write extra buttons/actions for the toolbar              -->
                     </div>
-                    {{-- <table id="datatable" class="table table-striped table-bordered" cellspacing="0" width="100%">
+                    <table id="datatable" class="table table-striped table-bordered" cellspacing="0" width="100%">
                         <thead>
                             <tr>
-                                <th>{{ __('No RM') }}</th>
+                                <th>{{ __('Tanggal') }}</th>
+                                <th>{{ __('Bagian') }}</th>
+                                <th>{{ __('Shift') }}</th>
                                 <th>{{ __('Nama') }}</th>
-                                <th>{{ __('Jenis Kelamin') }}</th>
-                                <th>{{ __('Tanggal Lahir') }}</th>
-                                <th>{{ __('Desa') }}</th>
                                 <th class="disabled-sorting text-right">{{ __('Actions') }}</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach($rekams as $rms)
+                            {{-- @foreach($rekams as $rms) --}}
                             <tr>
-                                <td> {{ $rms->no_rm }}</td>
-                                <td>{{$rms->nama}}</td>
-                                <td>{{ $rms->kelamin }}</td>
-                                <td>{{ $rms->tgl_lahir }}</td>
-                                <td> {{$rms->desa}}</td>
-                                @can('manage-items', App\User::class)
+                                <td>1</td>
+                                <td>Dokter Umum</td>
+                                <td>1</td>
+                                <td>Dr. Wahid</td>
+                                {{-- <td> {{$rms->desa}}</td> --}}
+                                {{-- @can('manage-items', App\User::class) --}}
                                 <td class="text-right">
-                                    <a type="button" href="{{route("rekam.show",$rms)}}" rel="tooltip"
+                                    <a type="button" href="#" rel="tooltip"
                                     class="btn btn-info btn-icon btn-sm " data-original-title="" title="">
                                     <i class="now-ui-icons design_bullet-list-67"></i>
                                     </a>
-                                    @if (auth()->user()->can('update', $rms) || auth()->user()->can('delete', $rms))
-                                    @can('update', $rms)
-                                    <a type="button" href="{{route("rekam.edit",$rms)}}" rel="tooltip"
+                                    {{-- @if (auth()->user()->can('update', $rms) || auth()->user()->can('delete', $rms))
+                                    @can('update', $rms) --}}
+                                    <a type="button" href="#" rel="tooltip"
                                         class="btn btn-success btn-icon btn-sm " data-original-title="" title="">
                                         <i class="now-ui-icons ui-2_settings-90"></i>
                                     </a>
-                                    @endcan
-                                    @can('delete', $rms)
-                                    <form action="{{ route('rekam.destroy', $rms) }}" method="post"
+                                    {{-- @endcan
+                                    @can('delete', $rms) --}}
+                                    {{-- <form action="{{ route('rekam.destroy', $rms) }}" method="post"
                                     style="display:inline-block;" class="delete-form">
                                     @csrf
                                     @method('delete')
@@ -68,13 +68,13 @@
                                     </button>
                                     </form>
                                     @endcan
-                                    @endif
+                                    @endif --}}
                                 </td>
-                                @endcan
+                                {{-- @endcan --}}
                             </tr>
-                            @endforeach
+                            {{-- @endforeach --}}
                         </tbody>
-                    </table> --}}
+                    </table>
                 </div>
                 <!-- end content-->
             </div>
