@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Rekam;
 use Illuminate\Http\Request;
 use App\Http\Requests\RekamRequest;
+use App\Kunjungan;
 
 class RekamController extends Controller
 {
@@ -23,6 +24,7 @@ class RekamController extends Controller
     {
 
         $this->authorize('manage-items', User::class);
+
 
         return view('rekam.index', ['rekams' => $model->all()]);
     }
@@ -61,7 +63,12 @@ class RekamController extends Controller
     public function show(Rekam $rekam)
     {
         // return $rekam;
-        return view('rekam.show', compact('rekam'));
+        $data = Kunjungan::select('kunjungans.id', 'kunjungans.created_at', 'kunjungans.shift', 'kunjungans.jaminan', 'rekams.no_rm', 'rekams.nama')
+            ->Join('rekams', 'kunjungans.rekam_id', '=', 'rekams.id')
+            ->orderBy('kunjungans.created_at', 'asc')
+            ->get();
+
+        return view('rekam.show', compact('rekam', 'data'));
     }
 
     /**

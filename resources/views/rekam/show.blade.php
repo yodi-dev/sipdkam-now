@@ -2,7 +2,7 @@
     'namePage' => 'Detail Rekam Medis',
     'class' => '',
     'activePage' => 'rekammedis',
-    'activeNav' => 'page',
+    'activeNav' => 'datapasien',
 ])
 
 @section('content')
@@ -196,6 +196,53 @@
                                 </div>
                             </div>
                         </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        {{-- Bagian Riwayat Kunjungan --}}
+        <div class="row">
+            <div class="col-xl-12 order-xl-1">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="row align-items-center">
+                            <div class="col-8">
+                                <h3 class="mb-0">{{ __('Riwayat Kunjungan') }}</h3>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <table id="datatable" class="table table-striped table-bordered" cellspacing="0" width="100%">
+                        <thead>
+                            <tr>
+                                <th>{{ __('Tanggal') }}</th>
+                                <th>{{ __('shift') }}</th>
+                                <th>{{ __('Jaminan') }}</th>
+                                <th>{{ __('No RM') }}</th>
+                                <th>{{ __('Nama') }}</th>
+                                <th class="disabled-sorting text-right">{{ __('Actions') }}</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($data as $item)
+                            <tr>
+                                <td>{{ $item->created_at->format('d/m/Y') }}</td>
+                                <td>{{ $item->shift }}</td>
+                                <td>{{ $item->jaminan }}</td>
+                                <td>{{ $item->no_rm }}</td>
+                                <td>{{ $item->nama }}</td>
+                                @can('manage-items', App\User::class)
+                                    <td class="text-right">
+                                        <a type="button" href="{{route("kunjungan.show",$item->id)}}" rel="tooltip" class="btn btn-info btn-icon btn-sm">
+                                            <i class="now-ui-icons design_bullet-list-67"></i>
+                                        </a>
+                                    </td>
+                                @endcan
+                            </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
                     </div>
                 </div>
             </div>

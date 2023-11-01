@@ -98,6 +98,11 @@ class KunjunganController extends Controller
         return view('kunjungan.show', compact('data', 'years'));
     }
 
+    public function statistik(Kunjungan $kunjungan)
+    {
+        return view('kunjungan.statistik');
+    }
+
     public function biaya(Kunjungan $kunjungan, $id)
     {
         $kunjungan = Kunjungan::select('*')->where('id', $id)->get();

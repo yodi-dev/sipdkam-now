@@ -150,7 +150,7 @@
                 <div class="collapse" id="analisis">
                     <ul class="nav">
                         <li class="@if ($activePage == 'statistikKunjungan') active @endif">
-                            <a href="{{ route('kunjungan.index') }}">
+                            <a href="{{ route('statistik.kunjungan') }}">
                                 <span class="sidebar-mini-icon">{{ __("SK") }}</span>
                                 <span class="sidebar-normal"> {{ __("Statistik Kunjungan") }} </span>
                             </a>

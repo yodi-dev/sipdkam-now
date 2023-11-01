@@ -15,6 +15,7 @@ Route::get('pricing', ['as' => 'page.pricing', 'uses' => 'PageController@pricing
 
 
 Route::group(['middleware' => 'auth'], function () {
+    Route::get('/kunjungan/statistik', 'KunjunganController@statistik')->name('statistik.kunjungan');
     Route::resources([
         'rekam' => RekamController::class,
         'kunjungan' => KunjunganController::class,
