@@ -147,7 +147,7 @@
                         <b class="caret"></b>
                     </p>
                 </a>
-                <div class="collapse" id="analisis">
+                <div class="collapse  @if ($activeNav == 'analisis') show @endif" id="analisis">
                     <ul class="nav">
                         <li class="@if ($activePage == 'statistikKunjungan') active @endif">
                             <a href="{{ route('statistik.kunjungan') }}">
@@ -174,10 +174,10 @@
                         <b class="caret"></b>
                     </p>
                 </a>
-                <div class="collapse" id="laporan">
+                <div class="collapse @if ($activeNav == 'laporan') show @endif" id="laporan">
                     <ul class="nav">
                         <li class="@if ($activePage == 'laporanKunjungan') active @endif">
-                            <a href="{{ route('kunjungan.index') }}">
+                            <a href="{{ route('laporan.kunjungan') }}">
                                 <span class="sidebar-mini-icon">{{ __("LK") }}</span>
                                 <span class="sidebar-normal"> {{ __("Laporan Kunjungan") }} </span>
                             </a>
