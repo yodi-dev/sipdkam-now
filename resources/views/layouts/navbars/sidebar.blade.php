@@ -184,7 +184,7 @@
                         </li>
                         @can('manage-items', App\User::class)
                         <li class="@if ($activePage == 'laporanKeuangan') active @endif">
-                            <a href="{{ route('rekam.index') }}">
+                            <a href="{{ route('laporanKeuangan.kunjungan') }}">
                                 <span class="sidebar-mini-icon">{{ __("LKU") }}</span>
                                 <span class="sidebar-normal"> {{ __("Laporan Keuangan") }} </span>
                             </a>

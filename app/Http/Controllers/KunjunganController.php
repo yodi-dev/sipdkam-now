@@ -108,6 +108,11 @@ class KunjunganController extends Controller
         return view('kunjungan.laporan');
     }
 
+    public function laporanKeuangan(Kunjungan $kunjungan)
+    {
+        return view('kunjungan.laporanKeuangan');
+    }
+
     public function biaya(Kunjungan $kunjungan, $id)
     {
         $kunjungan = Kunjungan::select('*')->where('id', $id)->get();
