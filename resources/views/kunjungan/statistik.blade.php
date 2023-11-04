@@ -13,72 +13,17 @@
         <div class="col-md-12" id="roles-table">
             <div class="card">
                 <div class="card-header">
-                    {{-- <a class="btn btn-primary btn-round pull-right text-white" href="{{ route('rekam.create') }}">{{ __('Baru') }}</a> --}}
                     <h4 class="card-title">{{ __('Oktober 2023') }}</h4>
-                    <div class="col-12 mt-2">
-                        {{-- @include('alerts.success')
-                        @include('alerts.errors') --}}
-                    </div>
                 </div>
                 <div class="card-body">
                     <div class="toolbar">
                         <!--        Here you can write extra buttons/actions for the toolbar              -->
                     </div>
-                    
-                    {{-- <table id="datatable" class="table table-striped table-bordered" cellspacing="0" width="100%">
-                        <thead>
-                            <tr>
-                                <th>{{ __('No RM') }}</th>
-                                <th>{{ __('Nama') }}</th>
-                                <th>{{ __('Jenis Kelamin') }}</th>
-                                <th>{{ __('Tanggal Lahir') }}</th>
-                                <th>{{ __('Desa') }}</th>
-                                <th class="disabled-sorting text-right">{{ __('Actions') }}</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach($rekams as $rms)
-                            <tr>
-                                <td> {{ $rms->no_rm }}</td>
-                                <td>{{$rms->nama}}</td>
-                                <td>{{ $rms->kelamin }}</td>
-                                <td>{{ $rms->tgl_lahir }}</td>
-                                <td> {{$rms->desa}}</td>
-                                @can('manage-items', App\User::class)
-                                <td class="text-right">
-                                    <a type="button" href="{{route("rekam.show",$rms)}}" rel="tooltip"
-                                    class="btn btn-info btn-icon btn-sm " data-original-title="" title="">
-                                    <i class="now-ui-icons design_bullet-list-67"></i>
-                                    </a>
-                                    @if (auth()->user()->can('update', $rms) || auth()->user()->can('delete', $rms))
-                                    @can('update', $rms)
-                                    <a type="button" href="{{route("rekam.edit",$rms)}}" rel="tooltip"
-                                        class="btn btn-success btn-icon btn-sm " data-original-title="" title="">
-                                        <i class="now-ui-icons ui-2_settings-90"></i>
-                                    </a>
-                                    @endcan
-                                    @can('delete', $rms)
-                                    <form action="{{ route('rekam.destroy', $rms) }}" method="post"
-                                    style="display:inline-block;" class="delete-form">
-                                    @csrf
-                                    @method('delete')
-                                    <button type="button" rel="tooltip"
-                                    class="btn btn-danger btn-icon btn-sm delete-button" data-original-title=""
-                                    title="" onclick="demo.showSwal('warning-message-and-confirmation')">
-                                        <i class="now-ui-icons ui-1_simple-remove"></i>
-                                    </button>
-                                    </form>
-                                    @endcan
-                                    @endif
-                                </td>
-                                @endcan
-                            </tr>
-                            @endforeach
-                        </tbody>
-                    </table> --}}
+                    <div class="chart-area">
+                        <canvas id="statistikBulanan"></canvas>
+                    </div>
                 </div>
                 <div class="card-footer">
-                    {{-- <a class="btn btn-sm btn-primary btn-round pull-right text-white mb-2" href="#">{{ __('All') }}</a> --}}
                 </div>
                 <!-- end content-->
             </div>
@@ -92,43 +37,81 @@
 
 @push('js')
 <script>
-    $(document).ready(function () {
-        $(".delete-button").click(function () {
-            var clickedButton = $(this);
-            Swal.fire({
-                title: 'Are you sure?',
-                text: "You won't be able to revert this!",
-                type: 'warning',
-                showCancelButton: true,
-                confirmButtonClass: 'btn btn-success',
-                cancelButtonClass: 'btn btn-danger',
-                confirmButtonText: 'Yes, delete it!',
-                buttonsStyling: false
-            }).then((result) => {
-                if (result.value) {
-                    clickedButton.parents(".delete-form").submit();
-                }
-            })
+    chartColor = "#FFFFFF";
 
-        })
-        
-        $('#datatable').DataTable({
-            "pagingType": "full_numbers",
-            "lengthMenu": [
-                [10, 25, 50, -1],
-                [10, 25, 50, "All"]
-            ],
-            responsive: true,
-            language: {
-                search: "_INPUT_",
-                searchPlaceholder: "Search records",
+    gradientChartOptionsConfigurationWithNumbersAndGrid = {
+        maintainAspectRatio: false,
+        legend: {
+            display: false
+        },
+        tooltips: {
+        bodySpacing: 4,
+        mode:"nearest",
+        intersect: 0,
+        position:"nearest",
+        xPadding:10,
+        yPadding:10,
+        caretPadding:10
+        },
+        responsive: true,
+        scales: {
+            yAxes: [{
+            gridLines:0,
+            gridLines: {
+                zeroLineColor: "transparent",
+                drawBorder: false
             }
+            }],
+            xAxes: [{
+            display:0,
+            gridLines:0,
+            ticks: {
+                display: false
+            },
+            gridLines: {
+                zeroLineColor: "transparent",
+                drawTicks: false,
+                display: false,
+                drawBorder: false
+            }
+            }]
+        },
+        layout:{
+        padding:{left:0,right:0,top:15,bottom:15}
+        }
+    };
 
-        });
+    ctx = document.getElementById('statistikBulanan').getContext("2d");
 
-        
+    gradientStroke = ctx.createLinearGradient(500, 0, 100, 0);
+    gradientStroke.addColorStop(0, '#18ce0f');
+    gradientStroke.addColorStop(1, chartColor);
 
-        var table = $('#datatable').DataTable();
+    gradientFill = ctx.createLinearGradient(0, 170, 0, 50);
+    gradientFill.addColorStop(0, "rgba(128, 182, 244, 0)");
+    gradientFill.addColorStop(1, hexToRGB('#18ce0f',0.4));
+
+    myChart = new Chart(ctx, {
+        type: 'line',
+        responsive: true,
+        data: {
+            labels: ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30"],
+            datasets: [{
+                label: "Total kunjungan",
+                borderColor: "#18ce0f",
+                pointBorderColor: "#FFF",
+                pointBackgroundColor: "#18ce0f",
+                pointBorderWidth: 2,
+                pointHoverRadius: 4,
+                pointHoverBorderWidth: 1,
+                pointRadius: 4,
+                fill: true,
+                backgroundColor: gradientFill,
+                borderWidth: 2,
+                data: [40, 30, 10, 70, 12, 25, 13, 90, 30,40,10,30,91,22,12,45,33,55,88,12,43,90,43,17, 29,31,63,11,90,10,]
+            }]
+        },
+        options: gradientChartOptionsConfigurationWithNumbersAndGrid
     });
 
 </script>
