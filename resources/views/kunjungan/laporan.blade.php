@@ -24,43 +24,50 @@
                     <div class="toolbar">
                         <!--        Here you can write extra buttons/actions for the toolbar              -->
                     </div>
-                        <table class="table table-striped mb-5">
+                        <table class="table table-hover mb-5">
                             <thead>
                                 <tr class="table-primary">
-                                <th scope="col"><strong># Reguler</strong></th>
-                                <th scope="col">Harian</th>
-                                <th scope="col">Periode</th>
-                                <th scope="col">Growth</th>
+                                    <th scope="col"><strong># Reguler</strong></th>
+                                    <th scope="col">Harian</th>
+                                    <th scope="col">Periode</th>
+                                    <th scope="col">Growth</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
-                                <th scope="row">Poli Umum</th>
-                                <td>13</td>
-                                <td>100</td>
-                                <td>1%</td>
+                                    <th scope="row">Poli Umum</th>
+                                    <td>13</td>
+                                    <td>100</td>
+                                    <td>1%</td>
                                 </tr>
                                 <tr>
-                                <th scope="row">KB</th>
-                                <td>30</td>
-                                <td>213</td>
-                                <td>2%</td>
+                                    <th scope="row">KB</th>
+                                    <td>30</td>
+                                    <td>213</td>
+                                    <td>2%</td>
                                 </tr>
                                 <tr>
-                                <th scope="row">Home Care</th>
-                                <td >34</td>
-                                <td>290</td>
-                                <td>2%</td>
+                                    <th scope="row">Home Care</th>
+                                    <td >34</td>
+                                    <td>290</td>
+                                    <td>2%</td>
                                 </tr>
-                                <th scope="row">Poli Gigi</th>
-                                <td >15</td>
-                                <td>100</td>
-                                <td>-1%</td>
+                                <tr>
+                                    <th scope="row">Poli Gigi</th>
+                                    <td >15</td>
+                                    <td>100</td>
+                                    <td>-1%</td>
+                                </tr>
+                                <tr class="table-primary">
+                                    <th scope="row">Total</th>
+                                    <td >134</td>
+                                    <td>675</td>
+                                    <td>4%</td>
                                 </tr>
                             </tbody>
                         </table>
 
-                        <table class="table table-striped">
+                        <table class="table table-hover">
                             <thead>
                                 <tr class="table-primary">
                                 <th scope="col"><strong># BPJS</strong></th>
@@ -71,27 +78,34 @@
                             </thead>
                             <tbody>
                                 <tr>
-                                <th scope="row">Poli Umum</th>
-                                <td>13</td>
-                                <td>100</td>
-                                <td>1%</td>
+                                    <th scope="row">Poli Umum</th>
+                                    <td>13</td>
+                                    <td>100</td>
+                                    <td>1%</td>
                                 </tr>
                                 <tr>
-                                <th scope="row">KB</th>
-                                <td>30</td>
-                                <td>213</td>
-                                <td>2%</td>
+                                    <th scope="row">KB</th>
+                                    <td>30</td>
+                                    <td>213</td>
+                                    <td>2%</td>
                                 </tr>
                                 <tr>
-                                <th scope="row">Home Care</th>
-                                <td >34</td>
-                                <td>290</td>
-                                <td>2%</td>
+                                    <th scope="row">Home Care</th>
+                                    <td >34</td>
+                                    <td>290</td>
+                                    <td>2%</td>
                                 </tr>
-                                <th scope="row">Poli Gigi</th>
-                                <td >15</td>
-                                <td>100</td>
-                                <td>-1%</td>
+                                <tr>
+                                    <th scope="row">Poli Gigi</th>
+                                    <td >15</td>
+                                    <td>100</td>
+                                    <td>-1%</td>
+                                </tr>
+                                <tr class="table-primary">
+                                    <th scope="row">Total</th>
+                                    <td >134</td>
+                                    <td>675</td>
+                                    <td>4%</td>
                                 </tr>
                             </tbody>
                         </table>
