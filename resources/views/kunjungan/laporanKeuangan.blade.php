@@ -36,33 +36,76 @@
                         <tbody>
                             <tr>
                                 <th scope="row">Poli Umum</th>
-                                <td>13</td>
-                                <td>100</td>
+                                <td>Rp. 300.000</td>
+                                <td>Rp. 1.000.000</td>
                                 <td>1%</td>
                             </tr>
                             <tr>
                                 <th scope="row">KB</th>
-                                <td>30</td>
-                                <td>213</td>
+                                <td>Rp. 100.000</td>
+                                <td>Rp. 500.000</td>
                                 <td>2%</td>
                             </tr>
                             <tr>
                                 <th scope="row">Home Care</th>
-                                <td >34</td>
-                                <td>290</td>
-                                <td>2%</td>
+                                <td >-</td>
+                                <td>-</td>
+                                <td>0%</td>
                             </tr>
                             <tr>
                                 <th scope="row">Poli Gigi</th>
-                                <td >15</td>
-                                <td>100</td>
+                                <td >Rp. 15.000</td>
+                                <td>Rp. 100.000</td>
                                 <td>-1%</td>
                             </tr>
                             <tr class="table-primary">
                                 <th scope="row">Total</th>
-                                <td >134</td>
-                                <td>675</td>
-                                <td>4%</td>
+                                <td >Rp. 415.000</td>
+                                <td>Rp. 1.600.000</td>
+                                <td>2%</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <table class="table table-hover mb-5">
+                        <thead>
+                            <tr class="table-primary">
+                                <th scope="col"><strong># BPJS</strong></th>
+                                <th scope="col">Harian</th>
+                                <th scope="col">Periode</th>
+                                <th scope="col">Growth</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th scope="row">Poli Umum</th>
+                                <td>Rp. 300.000</td>
+                                <td>Rp. 1.000.000</td>
+                                <td>1%</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">KB</th>
+                                <td>Rp. 100.000</td>
+                                <td>Rp. 500.000</td>
+                                <td>2%</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Home Care</th>
+                                <td >-</td>
+                                <td>-</td>
+                                <td>0%</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Poli Gigi</th>
+                                <td >Rp. 15.000</td>
+                                <td>Rp. 100.000</td>
+                                <td>-1%</td>
+                            </tr>
+                            <tr class="table-primary">
+                                <th scope="row">Total</th>
+                                <td >Rp. 415.000</td>
+                                <td>Rp. 1.600.000</td>
+                                <td>2%</td>
                             </tr>
                         </tbody>
                     </table>
