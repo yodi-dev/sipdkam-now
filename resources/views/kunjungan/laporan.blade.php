@@ -24,7 +24,78 @@
                     <div class="toolbar">
                         <!--        Here you can write extra buttons/actions for the toolbar              -->
                     </div>
-                    
+                        <table class="table table-striped mb-5">
+                            <thead>
+                                <tr class="table-primary">
+                                <th scope="col"><strong># Reguler</strong></th>
+                                <th scope="col">Harian</th>
+                                <th scope="col">Periode</th>
+                                <th scope="col">Growth</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                <th scope="row">Poli Umum</th>
+                                <td>13</td>
+                                <td>100</td>
+                                <td>1%</td>
+                                </tr>
+                                <tr>
+                                <th scope="row">KB</th>
+                                <td>30</td>
+                                <td>213</td>
+                                <td>2%</td>
+                                </tr>
+                                <tr>
+                                <th scope="row">Home Care</th>
+                                <td >34</td>
+                                <td>290</td>
+                                <td>2%</td>
+                                </tr>
+                                <th scope="row">Poli Gigi</th>
+                                <td >15</td>
+                                <td>100</td>
+                                <td>-1%</td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <table class="table table-striped">
+                            <thead>
+                                <tr class="table-primary">
+                                <th scope="col"><strong># BPJS</strong></th>
+                                <th scope="col">Harian</th>
+                                <th scope="col">Periode</th>
+                                <th scope="col">Growth</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                <th scope="row">Poli Umum</th>
+                                <td>13</td>
+                                <td>100</td>
+                                <td>1%</td>
+                                </tr>
+                                <tr>
+                                <th scope="row">KB</th>
+                                <td>30</td>
+                                <td>213</td>
+                                <td>2%</td>
+                                </tr>
+                                <tr>
+                                <th scope="row">Home Care</th>
+                                <td >34</td>
+                                <td>290</td>
+                                <td>2%</td>
+                                </tr>
+                                <th scope="row">Poli Gigi</th>
+                                <td >15</td>
+                                <td>100</td>
+                                <td>-1%</td>
+                                </tr>
+                            </tbody>
+                        </table>
+
                     {{-- <table id="datatable" class="table table-striped table-bordered" cellspacing="0" width="100%">
                         <thead>
                             <tr>
@@ -37,43 +108,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach($rekams as $rms)
-                            <tr>
-                                <td> {{ $rms->no_rm }}</td>
-                                <td>{{$rms->nama}}</td>
-                                <td>{{ $rms->kelamin }}</td>
-                                <td>{{ $rms->tgl_lahir }}</td>
-                                <td> {{$rms->desa}}</td>
-                                @can('manage-items', App\User::class)
-                                <td class="text-right">
-                                    <a type="button" href="{{route("rekam.show",$rms)}}" rel="tooltip"
-                                    class="btn btn-info btn-icon btn-sm " data-original-title="" title="">
-                                    <i class="now-ui-icons design_bullet-list-67"></i>
-                                    </a>
-                                    @if (auth()->user()->can('update', $rms) || auth()->user()->can('delete', $rms))
-                                    @can('update', $rms)
-                                    <a type="button" href="{{route("rekam.edit",$rms)}}" rel="tooltip"
-                                        class="btn btn-success btn-icon btn-sm " data-original-title="" title="">
-                                        <i class="now-ui-icons ui-2_settings-90"></i>
-                                    </a>
-                                    @endcan
-                                    @can('delete', $rms)
-                                    <form action="{{ route('rekam.destroy', $rms) }}" method="post"
-                                    style="display:inline-block;" class="delete-form">
-                                    @csrf
-                                    @method('delete')
-                                    <button type="button" rel="tooltip"
-                                    class="btn btn-danger btn-icon btn-sm delete-button" data-original-title=""
-                                    title="" onclick="demo.showSwal('warning-message-and-confirmation')">
-                                        <i class="now-ui-icons ui-1_simple-remove"></i>
-                                    </button>
-                                    </form>
-                                    @endcan
-                                    @endif
-                                </td>
-                                @endcan
-                            </tr>
-                            @endforeach
+                        
                         </tbody>
                     </table> --}}
                 </div>
