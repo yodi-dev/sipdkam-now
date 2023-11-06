@@ -1,7 +1,7 @@
 @extends('layouts.app', [
 'namePage' => 'Laporan Keuangan',
 'class' => '',
-'activePage' => 'laporankeuangan',
+'activePage' => 'laporanKeuangan',
 'activeNav' => 'laporan',
 ])
 

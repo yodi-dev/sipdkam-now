@@ -13,8 +13,8 @@
         <div class="col-md-12" id="roles-table">
             <div class="card">
                 <div class="card-header">
-                    <a class="btn btn-primary btn-round pull-right text-white" href="{{ route('utang.create') }}">{{ __('Baru') }}</a>
-                    <h4 class="card-title">{{ bulan_now() }} {{ tahun_now() }}</h4>
+                    <a class="btn btn-primary btn-round pull-right text-white" href="{{ route('utang.index') }}">{{ __('back to list') }}</a>
+                    <h4 class="card-title">Semua data utang</h4>
                     <div class="col-12 mt-2">
                         {{-- @include('alerts.success')
                         @include('alerts.errors') --}}
@@ -36,11 +36,11 @@
                         <tbody>
                             @foreach($data as $item)
                             <tr>
-                                <td> {{ cuma_tanggal($item->tanggal) }}</td>
+                                <td> {{ $item->tanggal }}</td>
                                 <td>{{$item->nama}}</td>
                                 <td>{{ $item->utang }}</td>
                                 <td class="text-right">
-                                    <a type="button" href="{{ route('utang.edit',$item) }}" rel="tooltip"
+                                    <a type="button" href="#" rel="tooltip"
                                         class="btn btn-success btn-icon btn-sm " data-original-title="" title="">
                                         <i class="now-ui-icons ui-2_settings-90"></i>
                                     </a>
@@ -63,7 +63,7 @@
                     </table>
                 </div>
                 <div class="card-footer">
-                    <a class="btn btn-sm btn-primary btn-round pull-right text-white mb-2" href="{{ route('alldata.utang',) }}">{{ __('All') }}</a>
+                    {{-- <a class="btn btn-sm btn-primary btn-round pull-right text-white mb-2" href="{{ route('utang.show') }}">{{ __('All') }}</a> --}}
                 </div>
                 <!-- end content-->
             </div>

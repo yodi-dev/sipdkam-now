@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Utang;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class UtangController extends Controller
 {
@@ -15,13 +16,20 @@ class UtangController extends Controller
 
     public function __construct()
     {
-        $this->authorizeResource(Rekam::class);
+        $this->authorizeResource(Utang::class);
     }
 
-    public function index(Utang $data)
+    public function index(Utang $utang)
     {
+        $bulan = bulan_angka();
+        // return $bulan;
+
+        $data = Utang::whereMonth('tanggal', $bulan)->get();
+        // return $data;
+
         $this->authorize('manage-items', User::class);
-        return view('utang.index', ['data' => $data->all()]);
+
+        return view('utang.index', compact('data', 'bulan'));
     }
 
     /**
@@ -31,7 +39,7 @@ class UtangController extends Controller
      */
     public function create()
     {
-        //
+        return view('utang.create');
     }
 
     /**
@@ -40,9 +48,15 @@ class UtangController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, Utang $model)
     {
-        //
+        // return $request;
+        $request['created_at'] = now();
+        $request['updated_at'] = now();
+        $model->create($request->all());
+        // return $request;
+
+        return redirect()->route('utang.index')->withStatus(__('Utang successfully created.'));
     }
 
     /**
@@ -51,9 +65,16 @@ class UtangController extends Controller
      * @param  \App\Utang  $utang
      * @return \Illuminate\Http\Response
      */
+    public function alldata(Utang $utang)
+    {
+        // return $utang->all();
+        return view('utang.show', ['data' => $utang->all()]);
+    }
+
     public function show(Utang $utang)
     {
-        //
+        // return $utang;
+        // return view('utang.show');
     }
 
     /**
@@ -64,7 +85,7 @@ class UtangController extends Controller
      */
     public function edit(Utang $utang)
     {
-        //
+        return view('utang.edit', compact('utang'));
     }
 
     /**
@@ -76,7 +97,9 @@ class UtangController extends Controller
      */
     public function update(Request $request, Utang $utang)
     {
-        //
+        $utang->update($request->all());
+
+        return redirect()->route('utang.index')->withStatus(__('Utang successfully updated.'));
     }
 
     /**
@@ -87,6 +110,8 @@ class UtangController extends Controller
      */
     public function destroy(Utang $utang)
     {
-        //
+        $utang->delete();
+
+        return redirect()->route('utang.index')->withStatus(__('Utang successfully deleted.'));
     }
 }

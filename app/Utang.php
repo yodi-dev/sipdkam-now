@@ -8,4 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class Utang extends Model
 {
     use HasFactory;
+
+    protected $fillable = ['tanggal', 'nama', 'utang'];
 }
