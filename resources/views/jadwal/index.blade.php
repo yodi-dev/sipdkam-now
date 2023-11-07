@@ -2,7 +2,7 @@
 'namePage' => 'Jadwal',
 'class' => '',
 'activePage' => 'jadwal',
-'activeNav' => 'operasional',
+'activeNav' => 'klinik',
 ])
 
 @section('content')

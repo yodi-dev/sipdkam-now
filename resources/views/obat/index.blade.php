@@ -2,7 +2,7 @@
 'namePage' => 'Data Obat',
 'class' => '',
 'activePage' => 'dataObat',
-'activeNav' => 'inventaris',
+'activeNav' => 'klinik',
 ])
 
 @section('content')

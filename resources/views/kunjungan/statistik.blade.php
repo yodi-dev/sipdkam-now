@@ -2,7 +2,7 @@
 'namePage' => 'Statistik Kunjungan',
 'class' => '',
 'activePage' => 'statistikKunjungan',
-'activeNav' => 'analisis',
+'activeNav' => 'klinik',
 ])
 
 @section('content')

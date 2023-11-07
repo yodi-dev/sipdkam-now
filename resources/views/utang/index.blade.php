@@ -2,7 +2,7 @@
 'namePage' => 'Utang',
 'class' => '',
 'activePage' => 'utang',
-'activeNav' => 'operasional',
+'activeNav' => 'klinik',
 ])
 
 @section('content')

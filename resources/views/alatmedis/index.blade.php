@@ -2,7 +2,7 @@
 'namePage' => 'Alat Medis',
 'class' => '',
 'activePage' => 'alatMedis',
-'activeNav' => 'inventaris',
+'activeNav' => 'klinik',
 ])
 
 @section('content')

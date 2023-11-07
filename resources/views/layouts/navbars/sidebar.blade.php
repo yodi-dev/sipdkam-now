@@ -86,14 +86,14 @@
                 </div>
             </li>
             <li>
-                <a data-toggle="collapse" href="#dataInventaris">
-                    <i class="now-ui-icons design-2_ruler-pencil"></i>
+                <a data-toggle="collapse" href="#klinik">
+                    <i class="now-ui-icons health_ambulance"></i>
                     <p>
-                        {{ __("Inventaris") }}
+                        {{ __("Klinik") }}
                         <b class="caret"></b>
                     </p>
                 </a>
-                <div class="collapse @if ($activeNav == 'inventaris') show @endif" id="dataInventaris">
+                <div class="collapse @if ($activeNav == 'klinik') show @endif" id="klinik">
                     <ul class="nav">
                         <li class="@if ($activePage == 'dataObat') active @endif">
                             <a href="{{ route('obat.index') }}">
@@ -109,19 +109,6 @@
                             </a>
                         </li>
                         @endcan
-                    </ul>
-                </div>
-            </li>
-            <li>
-                <a data-toggle="collapse" href="#dataOperasional">
-                    <i class="now-ui-icons health_ambulance"></i>
-                    <p>
-                        {{ __("Operasinal") }}
-                        <b class="caret"></b>
-                    </p>
-                </a>
-                <div class="collapse @if ($activeNav == 'operasional') show @endif" id="dataOperasional">
-                    <ul class="nav">
                         <li class="@if ($activePage == 'jadwal') active @endif">
                             <a href="{{ route('jadwal.index') }}">
                                 <span class="sidebar-mini-icon">{{ __("J") }}</span>
@@ -136,33 +123,12 @@
                             </a>
                         </li>
                         @endcan
-                    </ul>
-                </div>
-            </li>
-            <li>
-                <a data-toggle="collapse" href="#analisis">
-                    <i class="now-ui-icons business_chart-bar-32"></i>
-                    <p>
-                        {{ __("Analisis") }}
-                        <b class="caret"></b>
-                    </p>
-                </a>
-                <div class="collapse  @if ($activeNav == 'analisis') show @endif" id="analisis">
-                    <ul class="nav">
                         <li class="@if ($activePage == 'statistikKunjungan') active @endif">
                             <a href="{{ route('statistik.kunjungan') }}">
                                 <span class="sidebar-mini-icon">{{ __("SK") }}</span>
                                 <span class="sidebar-normal"> {{ __("Statistik Kunjungan") }} </span>
                             </a>
                         </li>
-                        {{-- @can('manage-items', App\User::class)
-                        <li class="@if ($activePage == 'rekammedis') active @endif">
-                            <a href="{{ route('rekam.index') }}">
-                                <span class="sidebar-mini-icon">{{ __("U") }}</span>
-                                <span class="sidebar-normal"> {{ __("Utang") }} </span>
-                            </a>
-                        </li>
-                        @endcan --}}
                     </ul>
                 </div>
             </li>
