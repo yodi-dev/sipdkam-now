@@ -12,13 +12,9 @@
     <div class="row">
         <div class="col-md-12" id="roles-table">
             <div class="card">
-                <div class="card-header">
-                    <a class="btn btn-primary btn-round text-white" href="{{ route('rekam.create') }}">{{ __('Baru') }}</a>
-                    {{-- <h4 class="card-title">{{ __('Alat Medis') }}</h4> --}}
-                    <div class="col-12 mt-2">
-                        {{-- @include('alerts.success')
-                        @include('alerts.errors') --}}
-                    </div>
+                <div class="card-header d-flex justify-content-md-end">
+                    <a class="btn btn-primary btn-round text-white" href="{{ route('alatmedik.create') }}">{{ __('Baru') }}</a>
+                    {{-- <h4 class="card-title">{{ __('Management Alat Medis') }}</h4> --}}
                 </div>
                 <div class="card-body">
                     <div class="toolbar">
@@ -38,70 +34,27 @@
                                 <td> {{ $item->nama }}</td>
                                 <td>{{ $item->stok }}</td>
                                 <td class="text-right">
-                                    <a type="button" href="#" rel="tooltip"
-                                    class="btn btn-info btn-icon btn-sm " data-original-title="" title="">
-                                    <i class="now-ui-icons design_bullet-list-67"></i>
-                                    </a>
-                                    <a type="button" href="#" rel="tooltip"
+                                    <a type="button" href="{{ route('alatmedik.edit',$item) }}" rel="tooltip"
                                         class="btn btn-success btn-icon btn-sm " data-original-title="" title="">
                                         <i class="now-ui-icons ui-2_settings-90"></i>
                                     </a>
+                                    @can('delete', $item)
+                                    <form action="{{ route('alatmedik.destroy', $item) }}" method="post"
+                                    style="display:inline-block;" class="delete-form">
+                                        @csrf
+                                        @method('delete')
+                                        <button type="button" rel="tooltip"
+                                        class="btn btn-danger btn-icon btn-sm delete-button" data-original-title=""
+                                        title="" onclick="demo.showSwal('warning-message-and-confirmation')">
+                                            <i class="now-ui-icons ui-1_simple-remove"></i>
+                                        </button>
+                                    </form>
+                                    @endcan
                                 </td>
                             </tr>
                             @endforeach
                         </tbody>
                     </table>
-                    {{-- <table id="datatable" class="table table-striped table-bordered" cellspacing="0" width="100%">
-                        <thead>
-                            <tr>
-                                <th>{{ __('No RM') }}</th>
-                                <th>{{ __('Nama') }}</th>
-                                <th>{{ __('Jenis Kelamin') }}</th>
-                                <th>{{ __('Tanggal Lahir') }}</th>
-                                <th>{{ __('Desa') }}</th>
-                                <th class="disabled-sorting text-right">{{ __('Actions') }}</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach($rekams as $rms)
-                            <tr>
-                                <td> {{ $rms->no_rm }}</td>
-                                <td>{{$rms->nama}}</td>
-                                <td>{{ $rms->kelamin }}</td>
-                                <td>{{ $rms->tgl_lahir }}</td>
-                                <td> {{$rms->desa}}</td>
-                                @can('manage-items', App\User::class)
-                                <td class="text-right">
-                                    <a type="button" href="{{route("rekam.show",$rms)}}" rel="tooltip"
-                                    class="btn btn-info btn-icon btn-sm " data-original-title="" title="">
-                                    <i class="now-ui-icons design_bullet-list-67"></i>
-                                    </a>
-                                    @if (auth()->user()->can('update', $rms) || auth()->user()->can('delete', $rms))
-                                    @can('update', $rms)
-                                    <a type="button" href="{{route("rekam.edit",$rms)}}" rel="tooltip"
-                                        class="btn btn-success btn-icon btn-sm " data-original-title="" title="">
-                                        <i class="now-ui-icons ui-2_settings-90"></i>
-                                    </a>
-                                    @endcan
-                                    @can('delete', $rms)
-                                    <form action="{{ route('rekam.destroy', $rms) }}" method="post"
-                                    style="display:inline-block;" class="delete-form">
-                                    @csrf
-                                    @method('delete')
-                                    <button type="button" rel="tooltip"
-                                    class="btn btn-danger btn-icon btn-sm delete-button" data-original-title=""
-                                    title="" onclick="demo.showSwal('warning-message-and-confirmation')">
-                                        <i class="now-ui-icons ui-1_simple-remove"></i>
-                                    </button>
-                                    </form>
-                                    @endcan
-                                    @endif
-                                </td>
-                                @endcan
-                            </tr>
-                            @endforeach
-                        </tbody>
-                    </table> --}}
                 </div>
                 <!-- end content-->
             </div>

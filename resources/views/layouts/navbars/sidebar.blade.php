@@ -103,7 +103,7 @@
                         </li>
                         @can('manage-items', App\User::class)
                         <li class="@if ($activePage == 'alatMedis') active @endif">
-                            <a href="{{ route('alatmedis.index') }}">
+                            <a href="{{ route('alatmedik.index') }}">
                                 <span class="sidebar-mini-icon">{{ __("AM") }}</span>
                                 <span class="sidebar-normal"> {{ __("Alat Medis") }} </span>
                             </a>

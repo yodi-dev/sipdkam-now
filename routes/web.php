@@ -1,8 +1,5 @@
 <?php
 
-use App\Alatmedis;
-use App\Jadwal;
-
 Route::get('/', function () {
     return redirect()->route('login');
 });
@@ -26,7 +23,7 @@ Route::group(['middleware' => 'auth'], function () {
         'role' => RoleController::class,
         'biaya' => BiayaController::class,
         'obat' => ObatController::class,
-        'alatmedis' => AlatmedisController::class,
+        'alatmedik' => AlatmedikController::class,
         'jadwal' => JadwalController::class,
         'utang' => UtangController::class,
     ]);
