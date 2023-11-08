@@ -41,7 +41,7 @@ class ObatPolicy
      */
     public function create(User $user)
     {
-        //
+        return $user->isAdmin() || $user->isCreator();
     }
 
     /**
@@ -53,7 +53,7 @@ class ObatPolicy
      */
     public function update(User $user, Obat $obat)
     {
-        //
+        return $user->isAdmin() || $user->isCreator();
     }
 
     /**
@@ -65,7 +65,7 @@ class ObatPolicy
      */
     public function delete(User $user, Obat $obat)
     {
-        //
+        return $user->isAdmin() || $user->isCreator();
     }
 
     /**

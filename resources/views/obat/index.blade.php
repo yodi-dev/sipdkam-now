@@ -12,13 +12,9 @@
     <div class="row">
         <div class="col-md-12" id="roles-table">
             <div class="card">
-                <div class="card-header">
-                    <a class="btn btn-primary btn-round text-white" href="{{ route('rekam.create') }}">{{ __('Baru') }}</a>
+                <div class="card-header d-flex justify-content-md-end">
+                    <a class="btn btn-primary btn-round text-white" href="{{ route('obat.create') }}">{{ __('Baru') }}</a>
                     {{-- <h4 class="card-title">{{ __('Data Obat') }}</h4> --}}
-                    <div class="col-12 mt-2">
-                        {{-- @include('alerts.success')
-                        @include('alerts.errors') --}}
-                    </div>
                 </div>
                 <div class="card-body">
                     <div class="toolbar">
@@ -40,14 +36,22 @@
                                 <td>{{$item->harga_obat}}</td>
                                 <td>{{ $item->stok }}</td>
                                 <td class="text-right">
-                                    <a type="button" href="#" rel="tooltip"
-                                    class="btn btn-info btn-icon btn-sm " data-original-title="" title="">
-                                    <i class="now-ui-icons design_bullet-list-67"></i>
-                                    </a>
-                                    <a type="button" href="#" rel="tooltip"
+                                    <a type="button" href="{{ route('obat.edit',$item) }}" rel="tooltip"
                                         class="btn btn-success btn-icon btn-sm " data-original-title="" title="">
                                         <i class="now-ui-icons ui-2_settings-90"></i>
                                     </a>
+                                    @can('delete', $item)
+                                    <form action="{{ route('obat.destroy', $item) }}" method="post"
+                                    style="display:inline-block;" class="delete-form">
+                                        @csrf
+                                        @method('delete')
+                                        <button type="button" rel="tooltip"
+                                        class="btn btn-danger btn-icon btn-sm delete-button" data-original-title=""
+                                        title="" onclick="demo.showSwal('warning-message-and-confirmation')">
+                                            <i class="now-ui-icons ui-1_simple-remove"></i>
+                                        </button>
+                                    </form>
+                                    @endcan
                                 </td>
                             </tr>
                             @endforeach

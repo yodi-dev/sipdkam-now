@@ -34,7 +34,7 @@ class ObatController extends Controller
      */
     public function create()
     {
-        //
+        return view('obat.create');
     }
 
     /**
@@ -43,9 +43,14 @@ class ObatController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, Obat $model)
     {
-        //
+        $request['created_at'] = now();
+        $request['updated_at'] = now();
+        $model->create($request->all());
+        // return $request;
+
+        return redirect()->route('obat.index')->withStatus(__('Obat successfully created.'));
     }
 
     /**
@@ -67,7 +72,7 @@ class ObatController extends Controller
      */
     public function edit(Obat $obat)
     {
-        //
+        return view('obat.edit', compact('obat'));
     }
 
     /**
@@ -79,7 +84,9 @@ class ObatController extends Controller
      */
     public function update(Request $request, Obat $obat)
     {
-        //
+        $obat->update($request->all());
+
+        return redirect()->route('obat.index')->withStatus(__('Obat successfully updated.'));
     }
 
     /**
@@ -90,6 +97,8 @@ class ObatController extends Controller
      */
     public function destroy(Obat $obat)
     {
-        //
+        $obat->delete();
+
+        return redirect()->route('obat.index')->withStatus(__('Obat successfully deleted.'));
     }
 }
