@@ -8,6 +8,7 @@
 @section('content')
 <div class="panel-header">
 </div>
+
 <div class="content" id="controller" style="margin-top: -170px;">
     <div class="row">
         <div class="col-md-12" id="categories-table">
@@ -18,7 +19,7 @@
                         <a class="btn btn-primary btn-round pull-right text-white "
                         href="{{ route('kunjungan.create') }}">{{ __('Kunjungan Baru') }}</a>
                     @endcan
-                    <h4 class="card-title">{{ __('Oktober 2023') }}</h4>
+                    <h4 class="card-title">{{ bulan_now() }} {{ tahun_now() }}</h4>
                     <div class="col-12 mt-2">
                     </div>
                 </div>
@@ -95,7 +96,7 @@
                     </table>
                 </div>
                 <div class="card-footer">
-                    <a class="btn btn-sm btn-primary btn-round pull-right text-white mb-2" href="#">{{ __('All') }}</a>
+                    <a class="btn btn-sm btn-primary btn-round pull-right text-white mb-2" href="{{ route('alldata.kunjungan') }}">{{ __('All') }}</a>
                 </div>
             </div>
         </div>
@@ -103,10 +104,7 @@
     </div>
     <!--  end card  -->
 </div>
-<!-- end col-md-12 -->
-</div>
-<!-- end row -->
-</div>
+
 
 <!-- Modal -->
 <div class="modal fade" id="showModal" tabindex="-1" role="dialog"
@@ -403,7 +401,7 @@ var controller = new Vue({
 
         });
 
-        var table = $('#datatable').DataTable();
+        var table = $('#datatable').DataTable();z
 
         // // Edit record
         // table.on('click', '.edit', function () {

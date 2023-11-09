@@ -23,18 +23,19 @@ class KunjunganController extends Controller
     public function index(Kunjungan $model, Rekam $rekamModel, User $dokterModel)
     {
         // $this->authorize('manage-items', User::class);
+        $bulan = bulan_angka();
 
         $rekamms =  Rekam::with('kunjungans')->get();
-        $kunjungans = $model->all();
         $rekams = $rekamModel->get(['id', 'no_rm', 'nama']);
         $dokters = $dokterModel->where('role_id', 3)->get(['id', 'name']);
 
         $data = Kunjungan::select('kunjungans.id', 'kunjungans.created_at', 'kunjungans.shift', 'kunjungans.jaminan', 'rekams.no_rm', 'rekams.nama')
             ->Join('rekams', 'kunjungans.rekam_id', '=', 'rekams.id')
             ->orderBy('kunjungans.created_at', 'asc')
+            ->whereMonth('kunjungans.created_at', $bulan)
             ->get();
 
-        return view('kunjungan.index', compact('data', 'kunjungans', 'rekams', 'dokters'));
+        return view('kunjungan.index', compact('data', 'rekams', 'dokters'));
     }
 
     /**
@@ -81,6 +82,18 @@ class KunjunganController extends Controller
      * @param  \App\Kunjungan  $kunjungan
      * @return \Illuminate\Http\Response
      */
+    public function alldata(Kunjungan $kunjungan)
+    {
+        $data = Kunjungan::select('kunjungans.id', 'kunjungans.created_at', 'kunjungans.shift', 'kunjungans.jaminan', 'rekams.no_rm', 'rekams.nama')
+            ->Join('rekams', 'kunjungans.rekam_id', '=', 'rekams.id')
+            ->orderBy('kunjungans.created_at', 'asc')
+            ->get();
+
+        // $data = Kunjungan::with('rekams')->get();
+        // return $data;
+        return view('kunjungan.all', compact('data'));
+    }
+
     public function show(Kunjungan $kunjungan)
     {
         $data = Kunjungan::select('kunjungans.*', 'users.name as nama_dokter', 'rekams.no_rm', 'rekams.nama', 'rekams.kelamin', 'rekams.dusun', 'rekams.desa', 'rekams.kecamatan', 'rekams.tgl_lahir')
