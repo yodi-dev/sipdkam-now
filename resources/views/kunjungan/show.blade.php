@@ -152,7 +152,7 @@
                                     </div>
                                 </div>
                             </div>
-                            @can('dokter')
+                            {{-- @can('dokter') --}}
                             <div class="row">
                                 <div class="offset-md-2 col-md-3">
                                     <legend>Pemeriksaan</legend>
@@ -280,7 +280,7 @@
                                     </div>
                                 </div>
                             </div>
-                            @endcan
+                            {{-- @endcan --}}
                         </form>
                         @endforeach
                     </div>
