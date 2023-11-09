@@ -62,10 +62,11 @@ class RekamController extends Controller
      */
     public function show(Rekam $rekam)
     {
-        // return $rekam;
+        // return $rekam->id;
         $data = Kunjungan::select('kunjungans.id', 'kunjungans.created_at', 'kunjungans.shift', 'kunjungans.jaminan', 'rekams.no_rm', 'rekams.nama')
             ->Join('rekams', 'kunjungans.rekam_id', '=', 'rekams.id')
             ->orderBy('kunjungans.created_at', 'asc')
+            ->where('kunjungans.rekam_id', '=', $rekam->id)
             ->get();
 
         return view('rekam.show', compact('rekam', 'data'));
