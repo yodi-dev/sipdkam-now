@@ -113,7 +113,28 @@ class KunjunganController extends Controller
 
     public function statistik(Kunjungan $kunjungan)
     {
-        return view('kunjungan.statistik');
+        $kal = CAL_GREGORIAN;
+        $bln = bulan_angka();
+        $thn = tahun_now();
+        $jml_hari = cal_days_in_month($kal, $bln, $thn);
+
+        $labels = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31"];
+
+        if ($jml_hari == 31) {
+            $labels = $labels;
+        } else if ($jml_hari == 30) {
+            array_pop($labels);
+        } else if ($jml_hari == 29) {
+            array_pop($labels);
+            array_pop($labels);
+        } else if ($jml_hari == 28) {
+            array_pop($labels);
+            array_pop($labels);
+            array_pop($labels);
+        }
+
+        // return $jml_hari;
+        return view('kunjungan.statistik', compact('labels'));
     }
 
     public function laporan(Kunjungan $kunjungan)

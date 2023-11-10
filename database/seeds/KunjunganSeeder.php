@@ -16,6 +16,7 @@ class KunjunganSeeder extends Seeder
     public function run()
     {
         DB::table('kunjungans')->insert([
+            'tanggal' => now(),
             'shift' => '1',
             'jaminan' => 'regular',
             'poli' => 'umum',

@@ -13,7 +13,7 @@
         <div class="col-md-12" id="roles-table">
             <div class="card">
                 <div class="card-header">
-                    <h4 class="card-title">{{ __('Oktober 2023') }}</h4>
+                    <h4 class="card-title">{{ bulan_now()}} {{ tahun_now() }}</h4>
                 </div>
                 <div class="card-body">
                     <div class="toolbar">
@@ -37,6 +37,7 @@
 
 @push('js')
 <script>
+    var labels = '{!! json_encode($labels) !!}';
     chartColor = "#FFFFFF";
 
     gradientChartOptionsConfigurationWithNumbersAndGrid = {
@@ -95,7 +96,7 @@
         type: 'line',
         responsive: true,
         data: {
-            labels: ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30"],
+            labels: JSON.parse(labels),
             datasets: [{
                 label: "Total kunjungan",
                 borderColor: "#18ce0f",

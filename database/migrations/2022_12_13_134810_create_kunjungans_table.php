@@ -15,6 +15,7 @@ return new class extends Migration
     {
         Schema::create('kunjungans', function (Blueprint $table) {
             $table->id();
+            $table->date('tanggal');
             $table->enum('shift', ['1', '2', '3']);
             $table->string('jaminan', 50);
             $table->string('poli', 50);
