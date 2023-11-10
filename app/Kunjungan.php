@@ -10,7 +10,7 @@ class Kunjungan extends Model
     use HasFactory;
 
     // protected $guarded = 'id';
-    protected $fillable = ['shift', 'jaminan', 'poli', 'rekam_id', 'dokter_id', 'sis', 'dias', 'bb', 'keluhan', 'diagnosis_utama', 'diagnosis_tambahan', 'icd', 'gds', 'au', 'choi', 'nama_tindakan', 'operator', 'asisten', 'biaya_id'];
+    protected $fillable = ['tanggal', 'shift', 'jaminan', 'poli', 'rekam_id', 'dokter_id', 'sis', 'dias', 'bb', 'keluhan', 'diagnosis_utama', 'diagnosis_tambahan', 'icd', 'gds', 'au', 'choi', 'nama_tindakan', 'operator', 'asisten', 'biaya_id'];
 
     public function rekams()
     {

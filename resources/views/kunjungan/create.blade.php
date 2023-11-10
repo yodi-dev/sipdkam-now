@@ -26,6 +26,7 @@
                 <div class="card-body">
                     <form class="form-horizontal" method="post" action="{{ route('kunjungan.store') }}" autocomplete="off">
                         @csrf
+                        {{-- <input type="hidden" name="tanggal" value=""> --}}
                         <div class="row">
                             <label class="col-md-2 col-form-label">Shift</label>
                             <div class="col-md-9">

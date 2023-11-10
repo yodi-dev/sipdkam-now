@@ -7,6 +7,7 @@ use App\Rekam;
 use App\Kunjungan;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class KunjunganController extends Controller
 {
@@ -69,6 +70,7 @@ class KunjunganController extends Controller
      */
     public function store(Request $request, Kunjungan $model)
     {
+        $request['tanggal'] = now();
         $request['created_at'] = now();
         $request['updated_at'] = now();
         $model->create($request->all());
@@ -133,8 +135,24 @@ class KunjunganController extends Controller
             array_pop($labels);
         }
 
-        // return $jml_hari;
-        return view('kunjungan.statistik', compact('labels'));
+        $jml = Kunjungan::select(DB::raw('count(*) as jml_kunjungan'))
+            // ->where('tanggal', '=', 1)
+            ->groupBy('tanggal')
+            ->get();
+
+        $data = [];
+
+        // for ($i = 0; $i < $jml->count(); $i++) {
+        //     array_push($data, $jml['jml_kunjungan']);
+        // }
+
+        foreach ($jml as $item) {
+            array_push($data, $item->jml_kunjungan);
+        }
+
+
+        // return $data;
+        return view('kunjungan.statistik', compact('labels', 'data'));
     }
 
     public function laporan(Kunjungan $kunjungan)
@@ -210,7 +228,7 @@ class KunjunganController extends Controller
         // return $request;
         $kunjungan->update($request->all());
 
-        return redirect()->route('kunjungan.show', $kunjungan)->withStatus(__('Kunjungan successfully updated.'));
+        return redirect()->route('kunjungan.index', $kunjungan)->withStatus(__('Kunjungan successfully updated.'));
     }
 
     /**

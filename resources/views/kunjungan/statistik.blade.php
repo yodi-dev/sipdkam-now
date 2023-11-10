@@ -38,6 +38,7 @@
 @push('js')
 <script>
     var labels = '{!! json_encode($labels) !!}';
+    var datas = '{!! json_encode($data) !!}';
     chartColor = "#FFFFFF";
 
     gradientChartOptionsConfigurationWithNumbersAndGrid = {
@@ -109,7 +110,7 @@
                 fill: true,
                 backgroundColor: gradientFill,
                 borderWidth: 2,
-                data: [40, 30, 10, 70, 12, 25, 13, 90, 30,40,10,30,91,22,12,45,33,55,88,12,43,90,43,17, 29,31,63,11,90,10,]
+                data: JSON.parse(datas)
             }]
         },
         options: gradientChartOptionsConfigurationWithNumbersAndGrid
