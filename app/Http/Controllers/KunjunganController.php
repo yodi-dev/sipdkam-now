@@ -157,6 +157,17 @@ class KunjunganController extends Controller
 
     public function laporan(Kunjungan $kunjungan)
     {
+        $data_regular = Kunjungan::select(DB::raw('count(*) as jumlah'), 'poli', 'tanggal')
+            // ->where('tanggal', '=', 1)
+            ->groupBy('tanggal')
+            ->groupBy('poli')
+            ->whereDay('tanggal', tanggal_now())
+            ->whereMonth('tanggal', bulan_angka())
+            ->where('jaminan', 'regular')
+            ->get();
+
+
+        return $data_regular;
         return view('kunjungan.laporan');
     }
 
