@@ -28,3 +28,8 @@ function tahun_now()
 {
     return now()->format('Y');
 }
+
+function tgl()
+{
+    return now()->format('d-M-Y');
+}

@@ -11,9 +11,9 @@
   <div class="container text-center">
     <div class="row justify-content-end">
       <div class="col-md-2">
-        <div class="card ">
+        <div class="card">
           <div class="card-body">
-            {{ $tgl }}
+            {{ tgl() }}
           </div>
         </div>
       </div>

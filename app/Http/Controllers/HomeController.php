@@ -48,8 +48,6 @@ class HomeController extends Controller
             return redirect('kunjungan');
         }
 
-        $tgl = Carbon::now()->format('d-M-Y');
-
-        return view('home', compact('tgl'), ['rekams' => $rekam->count(), 'kunjung' => $kunjung->count()]);
+        return view('home', ['rekams' => $rekam->count(), 'kunjung' => $kunjung->count()]);
     }
 }

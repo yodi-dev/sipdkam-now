@@ -18,6 +18,28 @@ class KunjunganSeeder extends Seeder
         DB::table('kunjungans')->insert([
             'tanggal' => now(),
             'shift' => '1',
+            'jaminan' => 'bpjs',
+            'poli' => 'gigi',
+            'rekam_id' => '1',
+            'dokter_id' => '3',
+            'sis' => 'tes',
+            'created_at' => now(),
+            'updated_at' => now()
+        ]);
+        DB::table('kunjungans')->insert([
+            'tanggal' => now(),
+            'shift' => '1',
+            'jaminan' => 'bpjs',
+            'poli' => 'kb',
+            'rekam_id' => '1',
+            'dokter_id' => '3',
+            'sis' => 'tes',
+            'created_at' => now(),
+            'updated_at' => now()
+        ]);
+        DB::table('kunjungans')->insert([
+            'tanggal' => now(),
+            'shift' => '1',
             'jaminan' => 'regular',
             'poli' => 'gigi',
             'rekam_id' => '1',
@@ -30,7 +52,7 @@ class KunjunganSeeder extends Seeder
             'tanggal' => now(),
             'shift' => '1',
             'jaminan' => 'regular',
-            'poli' => 'KB',
+            'poli' => 'kb',
             'rekam_id' => '1',
             'dokter_id' => '3',
             'sis' => 'tes',
