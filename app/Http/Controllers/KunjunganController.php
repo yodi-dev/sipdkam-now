@@ -166,9 +166,47 @@ class KunjunganController extends Controller
             ->where('jaminan', 'regular')
             ->get();
 
+        $data_perbulan = Kunjungan::select(DB::raw('count(*) as jumlah_perbulan'), 'poli')
+            ->groupBy('poli')
+            ->whereMonth('tanggal', bulan_angka())
+            ->where('jaminan', 'regular')
+            ->get();
 
-        return $data_regular;
-        return view('kunjungan.laporan');
+        $jumlah_perhari = Kunjungan::select(DB::raw('count(*) as jumlah'))
+            ->whereDay('tanggal', tanggal_now())
+            ->whereMonth('tanggal', bulan_angka())
+            ->where('jaminan', 'regular')
+            ->first();
+
+        $jumlah_perbulan = Kunjungan::select(DB::raw('count(*) as jumlah'))
+            ->whereMonth('tanggal', bulan_angka())
+            ->where('jaminan', 'regular')
+            ->first();
+        // return $jumlah_perbulan;
+
+        // return count($data_regular);
+        for ($i = 0; $i < count($data_regular); $i++) {
+            $data_regular[$i]['perbulan'] = '';
+            foreach ($data_perbulan as $item) {
+                if ($item->poli == $data_regular[$i]['poli']) {
+                    $data_regular[$i]['perbulan'] = $item->jumlah_perbulan;
+                    // array_push($data_regular[$i], $item->jumlah_perbulan);
+                }
+            }
+            // return "tes";
+        }
+        // $data = array_merge($data_regular, $data_perbulan);
+        // foreach ($data_perbulan as $item) {
+        //     if ($item->poli == $data_regular['poli']) {
+        //         return "res";
+        //     }
+        //     // array_push($data_regular['perbulan'], $item->jumlah_perbulan);
+        // }
+
+
+        // return $item;
+        // return $data_regular;
+        return view('kunjungan.laporan', compact('data_regular', 'data_perbulan', 'jumlah_perhari', 'jumlah_perbulan'));
     }
 
     public function laporanKeuangan(Kunjungan $kunjungan)

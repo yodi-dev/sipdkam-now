@@ -34,13 +34,15 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <th scope="row">Poli Umum</th>
-                                    <td>13</td>
-                                    <td>100</td>
-                                    <td>1%</td>
-                                </tr>
-                                <tr>
+                                @foreach ($data_regular as $item)
+                                    <tr>
+                                        <th scope="row">{{ ucfirst(trans($item->poli)) }}</th>
+                                        <td>{{ $item->jumlah }}</td>
+                                        <td>{{ $item->perbulan }}</td>
+                                        <td></td>
+                                    </tr>
+                                @endforeach
+                                {{-- <tr>
                                     <th scope="row">KB</th>
                                     <td>30</td>
                                     <td>213</td>
@@ -57,11 +59,12 @@
                                     <td >15</td>
                                     <td>100</td>
                                     <td>-1%</td>
-                                </tr>
+                                </tr> --}}
+                                
                                 <tr class="table-primary">
                                     <th scope="row">Total</th>
-                                    <td >134</td>
-                                    <td>675</td>
+                                    <td >{{ $jumlah_perhari->jumlah }}</td>
+                                    <td>{{ $jumlah_perbulan->jumlah }}</td>
                                     <td>4%</td>
                                 </tr>
                             </tbody>
