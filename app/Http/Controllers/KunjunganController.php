@@ -405,6 +405,9 @@ class KunjunganController extends Controller
 
         // memasukkan data perbulan ke data perhari
         for ($i = 0; $i < count($data_perbulan); $i++) {
+            if ($data_regular == null) {
+                $data_regular[0]['perbulan'] = '';
+            }
             $data_regular[$i]['perbulan'] = '';
             for ($j = 0; $j < count($data_regular); $j++) {
                 if ($data_perbulan[$i]['poli'] == $data_regular[$j]['poli']) {
@@ -524,7 +527,8 @@ class KunjunganController extends Controller
 
 
         $pdf = App::make('dompdf.wrapper');
-        $pdf->loadView('kunjungan.cetakLaporan', ['regular' => $regular, 'jumlah_perhari' => $jumlah_perhari, 'jumlah_perhari_bpjs' => $jumlah_perhari_bpjs, 'jumlah_perbulan' => $jumlah_perbulan, 'jumlah_perbulan_bpjs' => $jumlah_perbulan_bpjs, 'bpjs' => $bpjs])->setPaper('a4', 'portrait');;
+        $pdf->loadView('kunjungan.cetakLaporan', ['regular' => $regular, 'jumlah_perhari' => $jumlah_perhari, 'jumlah_perhari_bpjs' => $jumlah_perhari_bpjs, 'jumlah_perbulan' => $jumlah_perbulan, 'jumlah_perbulan_bpjs' => $jumlah_perbulan_bpjs, 'bpjs' => $bpjs])->setPaper('a4', 'portrait');
+        $pdf->setOption(['dpi' => 150, 'defaultFont' => 'sans-serif']);
         // $pdf->loadHTML('<h1>Test</h1>');
         return $pdf->stream();
 
