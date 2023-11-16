@@ -24,6 +24,8 @@ function tanggal_now()
     return now()->format('d');
 }
 
+
+
 function tahun_now()
 {
     return now()->format('Y');

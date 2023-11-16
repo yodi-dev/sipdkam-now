@@ -135,20 +135,27 @@ class KunjunganController extends Controller
             array_pop($labels);
         }
 
-        $jml = Kunjungan::select(DB::raw('count(*) as jml_kunjungan'))
+        $jml = Kunjungan::select(DB::raw('count(*) as jml_kunjungan'), 'tanggal')
             // ->where('tanggal', '=', 1)
             ->groupBy('tanggal')
             ->get();
 
-        $data = [];
+        // return cuma_tanggal($jml['0']['tanggal']);
 
-        // for ($i = 0; $i < $jml->count(); $i++) {
-        //     array_push($data, $jml['jml_kunjungan']);
-        // }
+        $data = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,];
+        // return $data[1];
 
-        foreach ($jml as $item) {
-            array_push($data, $item->jml_kunjungan);
+        for ($i = 0; $i < count($jml); $i++) {
+            for ($j = 1; $j <= 31; $j++) {
+                if (cuma_tanggal($jml['0']['tanggal']) == $j) {
+                    $data[$j] = $jml[$i]['jml_kunjungan'];
+                }
+            }
         }
+
+        // foreach ($jml as $item) {
+        //     array_push($data, $item->jml_kunjungan);
+        // }
 
 
         // return $data;
