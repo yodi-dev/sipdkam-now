@@ -157,6 +157,7 @@ class KunjunganController extends Controller
 
     public function laporan(Kunjungan $kunjungan)
     {
+        // template data regular
         $regular = [
             [
                 'jumlah' => 0,
@@ -186,6 +187,8 @@ class KunjunganController extends Controller
 
         // return $regular;
 
+        // input data regular dimulai
+        // input data regular perhari
         $data_regular = Kunjungan::select(DB::raw('count(*) as jumlah'), 'poli', 'tanggal')
             // ->where('tanggal', '=', 1)
             ->groupBy('tanggal')
@@ -195,25 +198,31 @@ class KunjunganController extends Controller
             ->where('jaminan', 'regular')
             ->get();
 
+        // return $data_regular;
+
+        // input data regular perbulan
         $data_perbulan = Kunjungan::select(DB::raw('count(*) as jumlah_perbulan'), 'poli')
             ->groupBy('poli')
             ->whereMonth('tanggal', bulan_angka())
             ->where('jaminan', 'regular')
             ->get();
 
-        for ($i = 0; $i < count($data_regular); $i++) {
+        // return $data_perbulan;
+
+        // memasukkan data perbulan ke data perhari
+        for ($i = 0; $i < count($data_perbulan); $i++) {
             $data_regular[$i]['perbulan'] = '';
-            foreach ($data_perbulan as $item) {
-                if ($item->poli == $data_regular[$i]['poli']) {
-                    $data_regular[$i]['perbulan'] = $item->jumlah_perbulan;
-                    // array_push($data_regular[$i], $item->jumlah_perbulan);
+            for ($j = 0; $j < count($data_regular); $j++) {
+                if ($data_perbulan[$i]['poli'] == $data_regular[$j]['poli']) {
+                    // $regular[$j] = $data_regular[$i];
+                    $data_regular[$j]['perbulan'] = $data_perbulan[$i]['jumlah_perbulan'];
                 }
             }
-            // return "tes";
         }
 
         // return $data_regular;
 
+        // memasukkan data perhari ke template
         for ($i = 0; $i < count($data_regular); $i++) {
             for ($j = 0; $j < count($regular); $j++) {
                 if ($data_regular[$i]['poli'] == $regular[$j]['poli']) {
@@ -224,7 +233,39 @@ class KunjunganController extends Controller
 
         // return $regular;
 
+        // end input data regular
 
+
+        // input data bpjs dimulai
+        // template data bpjs
+        $bpjs = [
+            [
+                'jumlah' => 0,
+                'poli' => 'home care',
+                'perbulan' => 0,
+                'tanggal' => ''
+            ],
+            [
+                'jumlah' => 0,
+                'poli' => 'umum',
+                'perbulan' => 0,
+                'tanggal' => ''
+            ],
+            [
+                'jumlah' => 0,
+                'poli' => 'kb',
+                'perbulan' => 0,
+                'tanggal' => ''
+            ],
+            [
+                'jumlah' => 0,
+                'poli' => 'gigi',
+                'perbulan' => 0,
+                'tanggal' => ''
+            ]
+        ];
+
+        // input data bpjs perhari
         $data_bpjs = Kunjungan::select(DB::raw('count(*) as jumlah'), 'poli', 'tanggal')
             // ->where('tanggal', '=', 1)
             ->groupBy('tanggal')
@@ -235,11 +276,7 @@ class KunjunganController extends Controller
             ->get();
         // return $data_bpjs;
 
-
-
-
-        // return $regular;
-
+        // input data perbulan bpjs
         $data_perbulan_bpjs = Kunjungan::select(DB::raw('count(*) as jumlah_perbulan'), 'poli')
             ->groupBy('poli')
             ->whereMonth('tanggal', bulan_angka())
@@ -247,6 +284,26 @@ class KunjunganController extends Controller
             ->get();
 
         // return $data_perbulan_bpjs;
+
+        // memasukkan data perbulan ke data perhari bpjs
+        for ($i = 0; $i < count($data_perbulan_bpjs); $i++) {
+            $data_bpjs[$i]['perbulan'] = '';
+            for ($j = 0; $j < count($data_bpjs); $j++) {
+                if ($data_perbulan_bpjs[$i]['poli'] == $data_bpjs[$j]['poli']) {
+                    $data_bpjs[$j]['perbulan'] = $data_perbulan_bpjs[$i]['jumlah_perbulan'];
+                }
+            }
+        }
+
+        // memasukkan data perhari bpjs ke template
+        for ($i = 0; $i < count($data_bpjs); $i++) {
+            for ($j = 0; $j < count($bpjs); $j++) {
+                if ($data_bpjs[$i]['poli'] == $bpjs[$j]['poli']) {
+                    $bpjs[$j] = $data_bpjs[$i];
+                }
+            }
+        }
+        // return $bpjs;
 
         $jumlah_perhari = Kunjungan::select(DB::raw('count(*) as jumlah'))
             ->whereDay('tanggal', tanggal_now())
@@ -276,29 +333,10 @@ class KunjunganController extends Controller
 
         // return $data_regular;
 
-        for ($i = 0; $i < count($data_bpjs); $i++) {
-            $data_bpjs[$i]['perbulan'] = '';
-            foreach ($data_perbulan_bpjs as $item) {
-                if ($item->poli == $data_bpjs[$i]['poli']) {
-                    $data_bpjs[$i]['perbulan'] = $item->jumlah_perbulan;
-                    // array_push($data_regular[$i], $item->jumlah_perbulan);
-                }
-            }
-            // return "tes";
-        }
-        // return $data_bpjs;
-        // $data = array_merge($data_regular, $data_perbulan);
-        // foreach ($data_perbulan as $item) {
-        //     if ($item->poli == $data_regular['poli']) {
-        //         return "res";
-        //     }
-        //     // array_push($data_regular['perbulan'], $item->jumlah_perbulan);
-        // }
-
 
         // return $item;
         // return $data_regular;
-        return view('kunjungan.laporan', compact('regular', 'data_perbulan', 'jumlah_perhari', 'jumlah_perhari_bpjs', 'jumlah_perbulan', 'jumlah_perbulan_bpjs', 'data_bpjs'));
+        return view('kunjungan.laporan', compact('regular', 'jumlah_perhari', 'jumlah_perhari_bpjs', 'jumlah_perbulan', 'jumlah_perbulan_bpjs', 'bpjs'));
     }
 
     public function laporanKeuangan(Kunjungan $kunjungan)
