@@ -1,11 +1,4 @@
-@extends('layouts.app', [
-'namePage' => 'Laporan Kunjungan',
-'class' => '',
-'activePage' => 'laporanKunjungan',
-'activeNav' => 'laporan',
-])
 
-@section('content')
 <div class="panel-header pt-5">
     {{-- <canvas id="bigDashboardChart"></canvas> --}}
     <div class="container text-center">
@@ -117,48 +110,3 @@
     </div>
     <!-- end row -->
 </div>
-@endsection
-
-@push('js')
-<script>
-    $(document).ready(function () {
-        $(".delete-button").click(function () {
-            var clickedButton = $(this);
-            Swal.fire({
-                title: 'Are you sure?',
-                text: "You won't be able to revert this!",
-                type: 'warning',
-                showCancelButton: true,
-                confirmButtonClass: 'btn btn-success',
-                cancelButtonClass: 'btn btn-danger',
-                confirmButtonText: 'Yes, delete it!',
-                buttonsStyling: false
-            }).then((result) => {
-                if (result.value) {
-                    clickedButton.parents(".delete-form").submit();
-                }
-            })
-
-        })
-        
-        $('#datatable').DataTable({
-            "pagingType": "full_numbers",
-            "lengthMenu": [
-                [10, 25, 50, -1],
-                [10, 25, 50, "All"]
-            ],
-            responsive: true,
-            language: {
-                search: "_INPUT_",
-                searchPlaceholder: "Search records",
-            }
-
-        });
-
-        
-
-        var table = $('#datatable').DataTable();
-    });
-
-</script>
-@endpush

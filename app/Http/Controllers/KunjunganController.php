@@ -5,8 +5,10 @@ namespace App\Http\Controllers;
 use App\User;
 use App\Rekam;
 use App\Kunjungan;
+use Barryvdh\DomPDF\PDF;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\DB;
 
 class KunjunganController extends Controller
@@ -161,6 +163,8 @@ class KunjunganController extends Controller
         // return $data;
         return view('kunjungan.statistik', compact('labels', 'data'));
     }
+
+
 
     public function laporan(Kunjungan $kunjungan)
     {
@@ -344,6 +348,187 @@ class KunjunganController extends Controller
         // return $item;
         // return $data_regular;
         return view('kunjungan.laporan', compact('regular', 'jumlah_perhari', 'jumlah_perhari_bpjs', 'jumlah_perbulan', 'jumlah_perbulan_bpjs', 'bpjs'));
+    }
+
+    public function laporanCetak()
+    {
+        $regular = [
+            [
+                'jumlah' => 0,
+                'poli' => 'home care',
+                'perbulan' => 0,
+                'tanggal' => ''
+            ],
+            [
+                'jumlah' => 0,
+                'poli' => 'umum',
+                'perbulan' => 0,
+                'tanggal' => ''
+            ],
+            [
+                'jumlah' => 0,
+                'poli' => 'kb',
+                'perbulan' => 0,
+                'tanggal' => ''
+            ],
+            [
+                'jumlah' => 0,
+                'poli' => 'gigi',
+                'perbulan' => 0,
+                'tanggal' => ''
+            ]
+        ];
+
+        // return $regular;
+
+        // input data regular dimulai
+        // input data regular perhari
+        $data_regular = Kunjungan::select(DB::raw('count(*) as jumlah'), 'poli', 'tanggal')
+            // ->where('tanggal', '=', 1)
+            ->groupBy('tanggal')
+            ->groupBy('poli')
+            ->whereDay('tanggal', tanggal_now())
+            ->whereMonth('tanggal', bulan_angka())
+            ->where('jaminan', 'regular')
+            ->get();
+
+        // return $data_regular;
+
+        // input data regular perbulan
+        $data_perbulan = Kunjungan::select(DB::raw('count(*) as jumlah_perbulan'), 'poli')
+            ->groupBy('poli')
+            ->whereMonth('tanggal', bulan_angka())
+            ->where('jaminan', 'regular')
+            ->get();
+
+        // return $data_perbulan;
+
+        // memasukkan data perbulan ke data perhari
+        for ($i = 0; $i < count($data_perbulan); $i++) {
+            $data_regular[$i]['perbulan'] = '';
+            for ($j = 0; $j < count($data_regular); $j++) {
+                if ($data_perbulan[$i]['poli'] == $data_regular[$j]['poli']) {
+                    // $regular[$j] = $data_regular[$i];
+                    $data_regular[$j]['perbulan'] = $data_perbulan[$i]['jumlah_perbulan'];
+                }
+            }
+        }
+
+        // return $data_regular;
+
+        // memasukkan data perhari ke template
+        for ($i = 0; $i < count($data_regular); $i++) {
+            for ($j = 0; $j < count($regular); $j++) {
+                if ($data_regular[$i]['poli'] == $regular[$j]['poli']) {
+                    $regular[$j] = $data_regular[$i];
+                }
+            }
+        }
+
+        // return $regular;
+
+        // end input data regular
+
+
+        // input data bpjs dimulai
+        // template data bpjs
+        $bpjs = [
+            [
+                'jumlah' => 0,
+                'poli' => 'home care',
+                'perbulan' => 0,
+                'tanggal' => ''
+            ],
+            [
+                'jumlah' => 0,
+                'poli' => 'umum',
+                'perbulan' => 0,
+                'tanggal' => ''
+            ],
+            [
+                'jumlah' => 0,
+                'poli' => 'kb',
+                'perbulan' => 0,
+                'tanggal' => ''
+            ],
+            [
+                'jumlah' => 0,
+                'poli' => 'gigi',
+                'perbulan' => 0,
+                'tanggal' => ''
+            ]
+        ];
+
+        // input data bpjs perhari
+        $data_bpjs = Kunjungan::select(DB::raw('count(*) as jumlah'), 'poli', 'tanggal')
+            // ->where('tanggal', '=', 1)
+            ->groupBy('tanggal')
+            ->groupBy('poli')
+            ->whereDay('tanggal', tanggal_now())
+            ->whereMonth('tanggal', bulan_angka())
+            ->where('jaminan', 'BPJS')
+            ->get();
+        // return $data_bpjs;
+
+        // input data perbulan bpjs
+        $data_perbulan_bpjs = Kunjungan::select(DB::raw('count(*) as jumlah_perbulan'), 'poli')
+            ->groupBy('poli')
+            ->whereMonth('tanggal', bulan_angka())
+            ->where('jaminan', 'BPJS')
+            ->get();
+
+        // return $data_perbulan_bpjs;
+
+        // memasukkan data perbulan ke data perhari bpjs
+        for ($i = 0; $i < count($data_perbulan_bpjs); $i++) {
+            $data_bpjs[$i]['perbulan'] = '';
+            for ($j = 0; $j < count($data_bpjs); $j++) {
+                if ($data_perbulan_bpjs[$i]['poli'] == $data_bpjs[$j]['poli']) {
+                    $data_bpjs[$j]['perbulan'] = $data_perbulan_bpjs[$i]['jumlah_perbulan'];
+                }
+            }
+        }
+
+        // memasukkan data perhari bpjs ke template
+        for ($i = 0; $i < count($data_bpjs); $i++) {
+            for ($j = 0; $j < count($bpjs); $j++) {
+                if ($data_bpjs[$i]['poli'] == $bpjs[$j]['poli']) {
+                    $bpjs[$j] = $data_bpjs[$i];
+                }
+            }
+        }
+        // return $bpjs;
+
+        $jumlah_perhari = Kunjungan::select(DB::raw('count(*) as jumlah'))
+            ->whereDay('tanggal', tanggal_now())
+            ->whereMonth('tanggal', bulan_angka())
+            ->where('jaminan', 'regular')
+            ->first();
+
+        $jumlah_perhari_bpjs = Kunjungan::select(DB::raw('count(*) as jumlah'))
+            ->whereDay('tanggal', tanggal_now())
+            ->whereMonth('tanggal', bulan_angka())
+            ->where('jaminan', 'bpjs')
+            ->first();
+
+        $jumlah_perbulan = Kunjungan::select(DB::raw('count(*) as jumlah'))
+            ->whereMonth('tanggal', bulan_angka())
+            ->where('jaminan', 'regular')
+            ->first();
+
+        $jumlah_perbulan_bpjs = Kunjungan::select(DB::raw('count(*) as jumlah'))
+            ->whereMonth('tanggal', bulan_angka())
+            ->where('jaminan', 'bpjs')
+            ->first();
+        // return $jumlah_perbulan;
+
+
+        $pdf = App::make('dompdf.wrapper');
+        $pdf->loadView('kunjungan.cetakLaporan', ['regular' => $regular, 'jumlah_perhari' => $jumlah_perhari, 'jumlah_perhari_bpjs' => $jumlah_perhari_bpjs, 'jumlah_perbulan' => $jumlah_perbulan, 'jumlah_perbulan_bpjs' => $jumlah_perbulan_bpjs, 'bpjs' => $bpjs])->setPaper('a4', 'portrait');;
+        // $pdf->loadHTML('<h1>Test</h1>');
+        return $pdf->stream();
+
+        // return PDF::loadFile(public_path() . '/myfile.html')->save('/path-to/my_stored_file.pdf')->stream('download.pdf');
     }
 
     public function laporanKeuangan(Kunjungan $kunjungan)
