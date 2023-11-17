@@ -34,35 +34,19 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <th scope="row">Poli Umum</th>
-                                <td>Rp. 300.000</td>
-                                <td>Rp. 1.000.000</td>
-                                <td>1%</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">KB</th>
-                                <td>Rp. 100.000</td>
-                                <td>Rp. 500.000</td>
-                                <td>2%</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">Home Care</th>
-                                <td >-</td>
-                                <td>-</td>
-                                <td>0%</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">Poli Gigi</th>
-                                <td >Rp. 15.000</td>
-                                <td>Rp. 100.000</td>
-                                <td>-1%</td>
-                            </tr>
+                            @foreach ($regular as $item)
+                                <tr>
+                                    <th scope="row" align="right">{{ ucfirst(trans($item['poli'])) }}</th>
+                                    <td valign="top" align="right">Rp. {{ $item['jumlah'] }}</td>
+                                    <td valign="top" align="right">Rp. {{ $item['perbulan'] }}</td>
+                                    <td valign="top" align="right">%</td>
+                                </tr>
+                            @endforeach
                             <tr class="table-primary">
                                 <th scope="row">Total</th>
-                                <td >Rp. 415.000</td>
-                                <td>Rp. 1.600.000</td>
-                                <td>2%</td>
+                                <td valign="top" align="right">Rp. {{ $jumlah_perhari->total_perhari }}</td>
+                                <td valign="top" align="right">Rp. {{ $jumlah_perbulan->total_perbulan }}</td>
+                                <td valign="top" align="right">2%</td>
                             </tr>
                         </tbody>
                     </table>
@@ -77,13 +61,15 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <th scope="row">Poli Umum</th>
-                                <td>Rp. 300.000</td>
-                                <td>Rp. 1.000.000</td>
-                                <td>1%</td>
-                            </tr>
-                            <tr>
+                            @foreach ($regular as $item)
+                                <tr>
+                                    <th scope="row">{{ $item['poli'] }}</th>
+                                    <td>Rp. {{ $item['jumlah'] }}</td>
+                                    <td>Rp. {{ $item['perbulan'] }}</td>
+                                    <td>%</td>
+                                </tr>
+                            @endforeach
+                            {{-- <tr>
                                 <th scope="row">KB</th>
                                 <td>Rp. 100.000</td>
                                 <td>Rp. 500.000</td>
@@ -100,7 +86,7 @@
                                 <td >Rp. 15.000</td>
                                 <td>Rp. 100.000</td>
                                 <td>-1%</td>
-                            </tr>
+                            </tr> --}}
                             <tr class="table-primary">
                                 <th scope="row">Total</th>
                                 <td >Rp. 415.000</td>
