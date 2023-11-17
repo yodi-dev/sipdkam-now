@@ -602,18 +602,77 @@ class KunjunganController extends Controller
             }
         }
 
-        // return $data_regular;
-        // return $regular;
+        $bpjs = [
+            [
+                'jumlah' => 0,
+                'poli' => 'home care',
+                'perbulan' => 0,
+                'tanggal' => ''
+            ],
+            [
+                'jumlah' => 0,
+                'poli' => 'umum',
+                'perbulan' => 0,
+                'tanggal' => ''
+            ],
+            [
+                'jumlah' => 0,
+                'poli' => 'kb',
+                'perbulan' => 0,
+                'tanggal' => ''
+            ],
+            [
+                'jumlah' => 0,
+                'poli' => 'gigi',
+                'perbulan' => 0,
+                'tanggal' => ''
+            ]
+        ];
 
-        // $biaya = $biaya->select('*')
-        //     ->with('kunjungans')
-        //     ->whereDay('kunjungans.tanggal', tanggal_now())
-        //     ->get();
+        $data_bpjs = $kunjungan->rightJoin('biayas', 'kunjungans.biaya_id', '=', 'biayas.id')
+            ->select(DB::raw('sum(total) as jumlah'), 'tanggal', 'poli')
+            ->groupBy('kunjungans.tanggal')
+            ->groupBy('kunjungans.poli')
+            ->where('kunjungans.jaminan', 'bpjs')
+            ->where('kunjungans.tanggal', tanggal(now()))
+            ->get();
+
+        for ($i = 0; $i < count($bpjs); $i++) {
+            for ($j = 0; $j < count($data_bpjs); $j++) {
+                if ($bpjs[$i]['poli'] == $data_bpjs[$j]['poli']) {
+                    $bpjs[$i] = $data_bpjs[$j];
+                }
+            }
+        }
+
+        $data_perbulan_bpjs = $kunjungan->rightJoin('biayas', 'kunjungans.biaya_id', '=', 'biayas.id')
+            ->select(DB::raw('sum(total) as perbulan'), 'poli')
+            ->groupBy('kunjungans.poli')
+            ->where('kunjungans.jaminan', 'bpjs')
+            ->whereMonth('kunjungans.tanggal', bulan_angka())
+            ->get();
+
+        // return $data_perbulan_bpjs;
+
+        for ($i = 0; $i < count($bpjs); $i++) {
+            for ($j = 0; $j < count($data_perbulan_bpjs); $j++) {
+                if ($bpjs[$i]['poli'] == $data_perbulan_bpjs[$j]['poli']) {
+                    $bpjs[$i]['perbulan'] = $data_perbulan_bpjs[$j]['perbulan'];
+                }
+            }
+        }
+
 
         // return $biaya;
         $jumlah_perhari = $kunjungan->rightJoin('biayas', 'kunjungans.biaya_id', '=', 'biayas.id')
             ->select(DB::raw('sum(total) as total_perhari'))
             ->where('kunjungans.jaminan', 'regular')
+            ->whereDay('kunjungans.tanggal', cuma_tanggal(now()))
+            ->get()->first();
+
+        $jumlah_perhari_bpjs = $kunjungan->rightJoin('biayas', 'kunjungans.biaya_id', '=', 'biayas.id')
+            ->select(DB::raw('sum(total) as total_perhari'))
+            ->where('kunjungans.jaminan', 'bpjs')
             ->whereDay('kunjungans.tanggal', cuma_tanggal(now()))
             ->get()->first();
 
@@ -625,9 +684,15 @@ class KunjunganController extends Controller
             ->whereMonth('kunjungans.tanggal', bulan_angka())
             ->get()->first();
 
+        $jumlah_perbulan_bpjs = $kunjungan->rightJoin('biayas', 'kunjungans.biaya_id', '=', 'biayas.id')
+            ->select(DB::raw('sum(total) as total_perbulan'))
+            ->where('kunjungans.jaminan', 'bpjs')
+            ->whereMonth('kunjungans.tanggal', bulan_angka())
+            ->get()->first();
 
 
-        return view('kunjungan.laporanKeuangan', compact('regular', 'jumlah_perbulan', 'jumlah_perhari'));
+
+        return view('kunjungan.laporanKeuangan', compact('regular', 'bpjs', 'jumlah_perbulan', 'jumlah_perbulan_bpjs',  'jumlah_perhari',  'jumlah_perhari_bpjs'));
     }
 
     public function biaya(Kunjungan $kunjungan, $id)
