@@ -38,7 +38,7 @@
                         <tbody>
                             @foreach($data as $item)
                             <tr>
-                                <td>{{ $item->created_at }}</td>
+                                <td>{{ $item->created_at->format('d-M-Y') }}</td>
                                 <td>{{ $item->shift }}</td>
                                 <td>{{ $item->jaminan }}</td>
                                 <td>{{ $item->no_rm }}</td>
@@ -120,6 +120,7 @@
                 [10, 25, 50, -1],
                 [10, 25, 50, "All"]
             ],
+            "pageLength": "100",
             responsive: true,
             language: {
                 search: "_INPUT_",
