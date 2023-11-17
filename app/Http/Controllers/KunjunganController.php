@@ -562,13 +562,13 @@ class KunjunganController extends Controller
             ->where('biayas.id', $id)
             ->get();
 
-        foreach ($biaya as $item) {
-            $total = $item->adm + $item->obat + $item->tuslah + $item->jasa_dokter + $item->injeksi + $item->jasa_tindakan + $item->bahp + $item->lab + $item->pasang_infus + $item->cairan_infus + $item->akomodasi + $item->jasa_perawat + $item->diit + $item->lain_lain + $item->pembulat;
-        }
+        // foreach ($biaya as $item) {
+        //     $total = $item->adm + $item->obat + $item->tuslah + $item->jasa_dokter + $item->injeksi + $item->jasa_tindakan + $item->bahp + $item->lab + $item->pasang_infus + $item->cairan_infus + $item->akomodasi + $item->jasa_perawat + $item->diit + $item->lain_lain + $item->pembulat;
+        // }
 
         // return $total;
         // return $biaya;
-        return view('kunjungan.Printbiaya', compact('kunjungan', 'biaya', 'id', 'total'));
+        return view('kunjungan.Printbiaya', compact('kunjungan', 'biaya', 'id'));
     }
 
     /**

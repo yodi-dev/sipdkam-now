@@ -6,12 +6,17 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Laporan Kunjungan</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <style>
+        .table th td {
+            border: 1px solid;  border-collapse: collapse;
+        }
+    </style>
 </head>
 <body>
     <h4 class="card-title">{{ format_tanggal(now()) }}</h4>
     <br>
     <br>
-    <table class="table table-hover mb-5 bordered">
+    <table class="table table-hover mb-5">
         <thead>
             <tr class="table-primary">
                 <th scope="col"><strong># Reguler</strong></th>

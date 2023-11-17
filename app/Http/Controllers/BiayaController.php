@@ -20,6 +20,14 @@ class BiayaController extends Controller
 
     public function store(Request $request, Biaya $model, Kunjungan $kunjungan)
     {
+
+        $request['total'] = $request['adm'] + $request['obat'] + $request['tuslah'] + $request['jasa_dokter'] + $request['injeksi'] + $request['jasa_tindakan'] + $request['bahp'] + $request['lab'] + $request['pasang_infus'] + $request['cairan_infus'] + $request['akomodasi'] + $request['jasa_perawat'] + $request['diit'] + $request['lain_lain'] + $request['pembulat'];
+        // foreach ($request as $item) {
+        //     return $itemtotal;
+        // }
+
+        // return $request;
+
         $request['created_at'] = now();
         $request['updated_at'] = now();
 
