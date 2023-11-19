@@ -12,13 +12,8 @@
     <div class="row">
         <div class="col-md-12" id="roles-table">
             <div class="card">
-                <div class="card-header">
+                <div class="card-header d-flex justify-content-md-end">
                     <a class="btn btn-primary btn-round text-white" href="{{ route('rekam.create') }}">{{ __('Baru') }}</a>
-                    {{-- <h4 class="card-title">{{ __('Rekam Medis') }}</h4> --}}
-                    <div class="col-12 mt-2">
-                        {{-- @include('alerts.success')
-                        @include('alerts.errors') --}}
-                    </div>
                 </div>
                 <div class="card-body">
                     <div class="toolbar">

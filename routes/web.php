@@ -17,6 +17,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/kunjungan/laporanKeuangan', 'KunjunganController@laporanKeuangan')->name('laporanKeuangan.kunjungan');
     Route::get('/kunjungan/alldata', 'KunjunganController@alldata')->name('alldata.kunjungan');
     Route::get('/kunjungan/laporanCetak', 'kunjunganController@laporanCetak')->name('cetak.kunjungan');;
+    Route::get('/kunjungan/printlaporankeuangan', 'kunjunganController@laporanKeuanganCetak')->name('printkeuangan.kunjungan');;
     Route::get('/utang/alldata', 'UtangController@alldata')->name('alldata.utang');
     Route::resources([
         'rekam' => RekamController::class,
