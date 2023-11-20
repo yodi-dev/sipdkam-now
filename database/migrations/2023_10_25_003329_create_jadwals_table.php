@@ -15,6 +15,10 @@ return new class extends Migration
     {
         Schema::create('jadwals', function (Blueprint $table) {
             $table->id();
+            $table->date('tanggal');
+            $table->string('bagian');
+            $table->string('shift');
+            $table->string('nama');
             $table->timestamps();
         });
     }

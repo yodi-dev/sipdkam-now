@@ -15,7 +15,7 @@
                 <div class="card-header">
                     <a class="btn btn-info btn-round pull-right text-white" href="#">{{ __('Tambah Jadwal') }}</a>
                     <a class="btn btn-primary btn-round pull-right text-white" href="#">{{ __('impor Jadwal') }}</a>
-                    <h4 class="card-title">Oktober 2023</h4>
+                    <h4 class="card-title">{{ bulan_now() }} {{ tahun_now() }}</h4>
                     <div class="col-12 mt-2">
                         {{-- @include('alerts.success')
                         @include('alerts.errors') --}}

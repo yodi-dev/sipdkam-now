@@ -21,13 +21,13 @@ class UtangController extends Controller
 
     public function index(Utang $utang)
     {
+        $this->authorize('manage-items', User::class);
         $bulan = bulan_angka();
         // return $bulan;
 
         $data = Utang::whereMonth('tanggal', $bulan)->get();
         // return $data;
 
-        $this->authorize('manage-items', User::class);
 
         return view('utang.index', compact('data', 'bulan'));
     }

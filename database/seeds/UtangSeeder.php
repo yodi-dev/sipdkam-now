@@ -17,7 +17,7 @@ class UtangSeeder extends Seeder
     public function run()
     {
         DB::table('utangs')->insert([
-            'tanggal' => '2023-10-10',
+            'tanggal' => now(),
             'nama' => 'Diaz',
             'utang' => 100000,
             'created_at' => now(),
