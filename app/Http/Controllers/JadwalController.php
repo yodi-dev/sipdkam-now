@@ -15,14 +15,15 @@ class JadwalController extends Controller
 
     public function __construct()
     {
-        $this->authorizeResource(Rekam::class);
+        $this->authorizeResource(Jadwal::class);
     }
 
-    public function index()
+    public function index(Jadwal $jadwal)
     {
         $this->authorize('manage-items', User::class);
 
-        return view('jadwal.index');
+        $jadwal = $jadwal->all();
+        return view('jadwal.index', compact('jadwal'));
     }
 
     /**

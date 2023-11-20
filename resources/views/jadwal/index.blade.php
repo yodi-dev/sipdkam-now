@@ -36,43 +36,32 @@
                             </tr>
                         </thead>
                         <tbody>
-                            {{-- @foreach($rekams as $rms) --}}
+                            @foreach($jadwal as $item)
                             <tr>
-                                <td>1</td>
-                                <td>Dokter Umum</td>
-                                <td>1</td>
-                                <td>Dr. Wahid</td>
-                                {{-- <td> {{$rms->desa}}</td> --}}
-                                {{-- @can('manage-items', App\User::class) --}}
+                                <td> {{ cuma_tanggal($item->tanggal) }}</td>
+                                <td>{{ $item->bagian }}</td>
+                                <td>{{ $item->shift }}</td>
+                                <td>{{$item->nama}}</td>
                                 <td class="text-right">
-                                    <a type="button" href="#" rel="tooltip"
-                                    class="btn btn-info btn-icon btn-sm " data-original-title="" title="">
-                                    <i class="now-ui-icons design_bullet-list-67"></i>
-                                    </a>
-                                    {{-- @if (auth()->user()->can('update', $rms) || auth()->user()->can('delete', $rms))
-                                    @can('update', $rms) --}}
-                                    <a type="button" href="#" rel="tooltip"
+                                    <a type="button" href="{{ route('utang.edit',$item) }}" rel="tooltip"
                                         class="btn btn-success btn-icon btn-sm " data-original-title="" title="">
                                         <i class="now-ui-icons ui-2_settings-90"></i>
                                     </a>
-                                    {{-- @endcan
-                                    @can('delete', $rms) --}}
-                                    {{-- <form action="{{ route('rekam.destroy', $rms) }}" method="post"
+                                    @can('delete', $item)
+                                    <form action="{{ route('utang.destroy', $item) }}" method="post"
                                     style="display:inline-block;" class="delete-form">
-                                    @csrf
-                                    @method('delete')
-                                    <button type="button" rel="tooltip"
-                                    class="btn btn-danger btn-icon btn-sm delete-button" data-original-title=""
-                                    title="" onclick="demo.showSwal('warning-message-and-confirmation')">
-                                        <i class="now-ui-icons ui-1_simple-remove"></i>
-                                    </button>
+                                        @csrf
+                                        @method('delete')
+                                        <button type="button" rel="tooltip"
+                                        class="btn btn-danger btn-icon btn-sm delete-button" data-original-title=""
+                                        title="" onclick="demo.showSwal('warning-message-and-confirmation')">
+                                            <i class="now-ui-icons ui-1_simple-remove"></i>
+                                        </button>
                                     </form>
                                     @endcan
-                                    @endif --}}
                                 </td>
-                                {{-- @endcan --}}
                             </tr>
-                            {{-- @endforeach --}}
+                            @endforeach
                         </tbody>
                     </table>
                 </div>

@@ -8,6 +8,7 @@ use App\Item;
 use App\Role;
 use App\User;
 use App\Category;
+use App\Jadwal;
 use App\Kunjungan;
 use App\Policies\AlatmedisPolicy;
 use App\Policies\TagPolicy;
@@ -37,6 +38,7 @@ class AuthServiceProvider extends ServiceProvider
         Rekam::class => RekamPolicy::class,
         Kunjungan::class => KunjunganPolicy::class,
         Alatmedis::class => AlatmedisPolicy::class,
+        // Jadwal::class => JadwalPolicy::class,
     ];
 
     /**
