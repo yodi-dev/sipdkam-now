@@ -33,7 +33,7 @@ class JadwalController extends Controller
      */
     public function create()
     {
-        //
+        return view('jadwal.create');
     }
 
     /**
@@ -42,9 +42,16 @@ class JadwalController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, Jadwal $model)
     {
-        //
+        // return $request;
+
+        $request['created_at'] = now();
+        $request['updated_at'] = now();
+        $model->create($request->all());
+        // return $request;
+
+        return redirect()->route('jadwal.index')->withStatus(__('Jadwal successfully created.'));
     }
 
     /**
