@@ -43,12 +43,12 @@
                                 <td>{{ $item->shift }}</td>
                                 <td>{{$item->nama}}</td>
                                 <td class="text-right">
-                                    <a type="button" href="{{ route('utang.edit',$item) }}" rel="tooltip"
+                                    <a type="button" href="{{ route('jadwal.edit',$item) }}" rel="tooltip"
                                         class="btn btn-success btn-icon btn-sm " data-original-title="" title="">
                                         <i class="now-ui-icons ui-2_settings-90"></i>
                                     </a>
                                     @can('delete', $item)
-                                    <form action="{{ route('utang.destroy', $item) }}" method="post"
+                                    <form action="{{ route('jadwal.destroy', $item) }}" method="post"
                                     style="display:inline-block;" class="delete-form">
                                         @csrf
                                         @method('delete')
