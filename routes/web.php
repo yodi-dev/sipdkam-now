@@ -19,6 +19,8 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/kunjungan/laporanCetak', 'kunjunganController@laporanCetak')->name('cetak.kunjungan');;
     Route::get('/kunjungan/printlaporankeuangan', 'kunjunganController@laporanKeuanganCetak')->name('printkeuangan.kunjungan');;
     Route::get('/utang/alldata', 'UtangController@alldata')->name('alldata.utang');
+    Route::post('/jadwal/import', 'JadwalController@import_jadwal')->name('import.jadwal');
+    // Route::post('/jadwal/import', 'JadwalController@import');
     Route::resources([
         'rekam' => RekamController::class,
         'kunjungan' => KunjunganController::class,

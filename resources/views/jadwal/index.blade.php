@@ -14,7 +14,10 @@
             <div class="card">
                 <div class="card-header">
                     <a class="btn btn-info btn-round pull-right text-white" href="{{ route('jadwal.create') }}">{{ __('Tambah Jadwal') }}</a>
-                    <a class="btn btn-primary btn-round pull-right text-white" href="">{{ __('impor Jadwal') }}</a>
+                    <button type="button" class="btn btn-primary btn-round pull-right " data-toggle="modal" data-target="#importExcel">
+                        Import
+                    </button>
+                    
                     <h4 class="card-title">{{ bulan_now() }} {{ tahun_now() }}</h4>
                     <div class="col-12 mt-2">
                         {{-- @include('alerts.success')
@@ -76,9 +79,54 @@
     </div>
     <!-- end row -->
 </div>
+
+<div class="modal fade" id="importExcel" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <form method="post" action="{{ route('import.jadwal') }}" enctype="multipart/form-data">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Import Excel</h5>
+                </div>
+                <div class="modal-body">
+                    @csrf
+                    <div class="mb-3">
+                        <label for="formFile" class="form-label">Default file input example</label>
+                        <input class="form-control" name="file" type="file" id="formFile">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Import</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+{{-- <form method="post" action="{{ route('import.jadwal') }}" enctype="multipart/form-data">
+	<div class="modal-content">
+		<div class="modal-header">
+			<h5 class="modal-title" id="exampleModalLabel">Import Excel</h5>
+		</div>
+		<div class="modal-body">
+			{{ csrf_field() }}
+			<label>Pilih file excel</label>
+			<div class="form-group">
+				<input type="file" name="file" required="required">
+			</div>
+		</div>
+		<div class="modal-footer">
+			<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+			<button type="submit" class="btn btn-primary">Import</button>
+		</div>
+	</div>
+</form> --}}
 @endsection
 
 @push('js')
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 <script>
     $(document).ready(function () {
         $(".delete-button").click(function () {
