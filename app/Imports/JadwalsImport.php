@@ -15,10 +15,12 @@ class JadwalsImport implements ToModel
     public function model(array $row)
     {
         return new Jadwal([
-            'tanggal'     => $row[1],
-            'bagian'    => $row[2],
-            'shift' => $row[3],
-            'nama' => $row[4],
+            'tanggal' => \PhpOffice\PhpSpreadsheet\Shared\Date::excelToDateTimeObject($row[0]),
+            'bagian' => $row[1],
+            'shift' => $row[2],
+            'nama' => $row[3],
+            'created_at' => now(),
+            'updated_at' => now(),
         ]);
     }
 }

@@ -9,5 +9,5 @@ class Jadwal extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['nama', 'bagian', 'shift', 'tanggal'];
+    protected $fillable = ['nama', 'bagian', 'shift', 'tanggal', 'created_at', 'updated_at'];
 }

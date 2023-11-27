@@ -58,19 +58,36 @@ class JadwalController extends Controller
 
     public function import_jadwal(Request $request)
     {
-        return $request;
+        // return $request;
         // Validate the uploaded file
-        $request->validate([
-            'file' => 'required|mimes:xlsx,xls',
-        ]);
+        // $request->validate([
+        //     'file' => 'required|mimes:xlsx,xls',
+        // ]);
 
         // Get the uploaded file
-        $file = $request->file('file');
+        // $file = $request->file('file');
 
         // Process the Excel file
-        Excel::import(new JadwalsImport, $file);
 
-        return redirect()->back()->with('success', 'Excel file imported successfully!');
+        $this->validate($request, [
+            'file' => 'required|mimes:csv,xls,xlsx'
+        ]);
+
+        // menangkap file excel
+        $file = $request->file('file');
+
+        // membuat nama file unik
+        $nama_file = rand() . $file->getClientOriginalName();
+
+        // upload ke folder file_siswa di dalam folder public
+        $file->move('file_jadwal', $nama_file);
+
+        // import data
+        Excel::import(new JadwalsImport, public_path('/file_jadwal/' . $nama_file));
+
+        // Excel::import(new JadwalsImport, $request->file);
+        return redirect()->route('jadwal.index')->withStatus(__('Excel file imported successfully!'));
+        // return redirect()->back()->with('success', 'Excel file imported successfully!');
     }
 
     /**
