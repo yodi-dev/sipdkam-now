@@ -215,6 +215,9 @@
   });
 </script> --}}
 <script>
+  var regulars = '{!! json_encode($regular) !!}';
+  var bpjs = '{!! json_encode($bpjs) !!}';
+
   var e = document.getElementById("barChartMultipleBarsNoGradient").getContext("2d");
 
   var a = {
@@ -226,12 +229,12 @@
           datasets: [{
                 label: 'Reguler',
                 backgroundColor: "#f96332",
-                data: [40, 56, 28, 45, 20 ]
+                data: JSON.parse(regulars)
               },
               {
                 label: 'BPJS',
                 backgroundColor: "#2CA8FF",
-                data: [15, 20, 25, 30, 25]
+                data: JSON.parse(bpjs)
               }
           ]
       },
@@ -295,7 +298,7 @@
           datasets: [{
                 label: 'Reguler',
                 backgroundColor: "#48dbfb",
-                data: [40, 56, 28, 45, 20 ]
+                data: JSON.parse(regulars)
               },
               {
                 label: 'BPJS',

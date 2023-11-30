@@ -74,8 +74,60 @@ class HomeController extends Controller
             ->where('bagian', 'keamanan')
             ->get();
 
-        // return $keamanan;
+        $data_regular = Kunjungan::select(DB::raw('count(*) as jumlah'), 'poli')
+            ->groupBy('poli')
+            ->whereDay('tanggal', tanggal_now())
+            ->where('jaminan', 'regular')
+            ->get();
 
-        return view('home', compact('dokters', 'petugass', 'rumahtanggas', 'keamanan'), ['rekams' => $rekam->count(), 'kunjung' => $kunjung->count()]);
+        $total_regular = Kunjungan::select(DB::raw('count(*) as jumlah'))
+            ->whereDay('tanggal', tanggal_now())
+            ->where('jaminan', 'regular')
+            ->get()->first();
+
+
+        $regular = [0, 0, 0, 0, $total_regular->jumlah];
+
+        foreach ($data_regular as $key => $value) {
+            if ($value->poli == 'umum') {
+                $regular[0] = $value->jumlah;
+            } else if ($value->poli == 'gigi') {
+                $regular[1] = $value->jumlah;
+            } else if ($value->poli == 'kb') {
+                $regular[2] = $value->jumlah;
+            } else if ($value->poli == 'home care') {
+                $regular[3] = $value->jumlah;
+            }
+        }
+
+        $data_bpjs = Kunjungan::select(DB::raw('count(*) as jumlah'), 'poli')
+            ->groupBy('poli')
+            ->whereDay('tanggal', tanggal_now())
+            ->where('jaminan', 'bpjs')
+            ->get();
+
+        $total_bpjs = Kunjungan::select(DB::raw('count(*) as jumlah'))
+            ->whereDay('tanggal', tanggal_now())
+            ->where('jaminan', 'bpjs')
+            ->get()->first();
+
+
+        $bpjs = [0, 0, 0, 0, $total_bpjs->jumlah];
+
+        foreach ($data_bpjs as $key => $value) {
+            if ($value->poli == 'umum') {
+                $bpjs[0] = $value->jumlah;
+            } else if ($value->poli == 'gigi') {
+                $bpjs[1] = $value->jumlah;
+            } else if ($value->poli == 'kb') {
+                $bpjs[2] = $value->jumlah;
+            } else if ($value->poli == 'home care') {
+                $bpjs[3] = $value->jumlah;
+            }
+        }
+
+        // return $bpjs;
+
+        return view('home', compact('dokters', 'petugass', 'rumahtanggas', 'keamanan', 'regular', 'bpjs'), ['rekams' => $rekam->count(), 'kunjung' => $kunjung->count()]);
     }
 }
