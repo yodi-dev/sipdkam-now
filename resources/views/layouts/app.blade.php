@@ -182,6 +182,8 @@
     <script src="{{ asset('now') }}/js/plugins/perfect-scrollbar.jquery.min.js"></script>
     <script src="{{ asset('now') }}/js/plugins/moment.min.js"></script>
     <script src="{{ asset('now') }}/demo/demo.js"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+
     {{-- <script src="https://unpkg.com/vue@next" defer></script> --}}
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
         <!--  Plugin for Switches, full documentation here: http://www.jque.re/plugins/version3/bootstrap.switch/ -->
@@ -423,6 +425,7 @@
             });
         });
     </script>
+
     @stack('js')
 </body>
 </html>

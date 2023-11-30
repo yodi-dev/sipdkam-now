@@ -34,20 +34,15 @@
                 <div class="card-header bg-secondary text-center text-white d-flex align-items-center justify-content-center" style="height: 5em">
                   <h5 class="card-title" style="margin-top: -0.5em">Dokter Umum</h5>
                 </div>
-                <div class="card-body" style="height: 15em">
+                <div class="card-body" style="height: 20em">
                   <table class="table">
-                    <tr>
-                      <th>Shift 1</th>
-                      <td> Dr. Wahid</td>
-                    </tr>
-                    <tr>
-                      <th>Shift 2</th>
-                      <td> Dr. Citra</td>
-                    </tr>
-                    <tr>
-                      <th>Shift 3</th>
-                      <td> Dr. Rendy</td>
-                    </tr>
+                    @foreach ($dokters as $item)
+                      <tr>
+                        <th>Shift {{ $item->shift }}</th>
+                        <td> {{ $item->nama }}</td>
+                      </tr>
+                    @endforeach
+
                   </table>
                 </div>
               </div>
@@ -57,26 +52,16 @@
                 <div class="card-header bg-secondary text-center text-white d-flex align-items-center justify-content-center" style="height: 5em">
                   <h5 class="card-title" style="margin-top: -0.5em">Petugas</h5>
                 </div>
-                <div class="card-body" style="height: 15em">
+                <div class="card-body" style="height: 20em">
                   <table class="table">
-                    <tr>
-                      <th>Shift 1</th>
-                      <td>
-                        Luthfi <br>
-                        Tika
-                      </td>
-                    </tr>
-                    <tr>
-                      <th>Shift 2</th>
-                      <td>
-                        Tika <br>
-                        Luthfi
-                      </td>
-                    </tr>
-                    <tr>
-                      <th>Shift 3</th>
-                      <td>Tika</td>
-                    </tr>
+                    @foreach ($petugass as $item)
+                      <tr>
+                        <th>Shift {{ $item->shift }}</th>
+                        <td>
+                          {{ $item->nama }}
+                        </td>
+                      </tr>
+                    @endforeach
                   </table>
                 </div>
               </div>
@@ -86,12 +71,14 @@
                 <div class="card-header bg-secondary text-center text-white d-flex align-items-center justify-content-center" style="height: 5em">
                   <h5 class="card-title" style="margin-top: -0.5em; width: 95%;">Kerumahtanggaan</h5>
                 </div>
-                <div class="card-body" style="height: 15em">
+                <div class="card-body" style="height: 20em">
                   <table class="table">
-                    <tr>
-                      <th>Shift 2</th>
-                      <td>Warsinah</td>
-                    </tr>
+                    @foreach ($rumahtanggas as $item)
+                      <tr>
+                        <th>Shift {{ $item->shift }}</th>
+                        <td>{{ $item->nama }}</td>
+                      </tr>
+                    @endforeach
                   </table>
                 </div>
               </div>
@@ -101,12 +88,14 @@
                 <div class="card-header bg-secondary text-center text-white d-flex align-items-center justify-content-center" style="height: 5em">
                   <h5 class="card-title" style="margin-top: -0.5em">Keamanan</h5>
                 </div>
-                <div class="card-body" style="height: 15em">
+                <div class="card-body" style="height: 20em">
                   <table class="table">
-                    <tr>
-                      <th>Shift 3</th>
-                      <td>Surawat</td>
-                    </tr>
+                    @foreach ($keamanan as $item)
+                      <tr>
+                        <th>Shift {{ $item->shift }}</th>
+                        <td>{{ $item->nama }}</td>
+                      </tr>
+                    @endforeach
                   </table>
                 </div>
               </div>

@@ -23,6 +23,7 @@ use App\Rekam;
 use App\RekamMedis;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
 {
@@ -48,6 +49,33 @@ class HomeController extends Controller
             return redirect('kunjungan');
         }
 
-        return view('home', ['rekams' => $rekam->count(), 'kunjung' => $kunjung->count()]);
+
+        $dokters = DB::table('jadwals')
+            ->select('nama', 'shift')
+            ->whereDay('tanggal', tanggal_now())
+            ->where('bagian', 'dokter umum')
+            ->get();
+
+        $petugass = DB::table('jadwals')
+            ->select('shift', 'nama')
+            ->whereDay('tanggal', tanggal_now())
+            ->where('bagian', 'petugas')
+            ->get();
+
+        $rumahtanggas = DB::table('jadwals')
+            ->select('shift', 'nama')
+            ->whereDay('tanggal', tanggal_now())
+            ->where('bagian', 'kerumahtanggaan')
+            ->get();
+
+        $keamanan = DB::table('jadwals')
+            ->select('shift', 'nama')
+            ->whereDay('tanggal', tanggal_now())
+            ->where('bagian', 'keamanan')
+            ->get();
+
+        // return $keamanan;
+
+        return view('home', compact('dokters', 'petugass', 'rumahtanggas', 'keamanan'), ['rekams' => $rekam->count(), 'kunjung' => $kunjung->count()]);
     }
 }
