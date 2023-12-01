@@ -1,8 +1,8 @@
 @extends('layouts.app', [
-'namePage' => 'Create Utang',
+'namePage' => 'Create Jadwal',
 'class' => '',
-'activePage' => 'utang',
-'activeNav' => 'operasional',
+'activePage' => 'jadwal',
+'activeNav' => 'klinik',
 ])
 
 @section('content')

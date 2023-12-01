@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Imports\JadwalsImport;
 use App\Jadwal;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Maatwebsite\Excel\Facades\Excel;
 
 class JadwalController extends Controller
@@ -24,7 +25,17 @@ class JadwalController extends Controller
     {
         $this->authorize('manage-items', User::class);
 
-        $jadwal = $jadwal->all();
+        // $jadwal = DB::table('jadwals')
+        //     ->select('*')
+        //     ->whereMonth('tanggal', bulan_angka())
+        //     ->get();
+
+        // return $jadwal;
+
+        $jadwal = $jadwal
+            ->whereMonth('tanggal', bulan_angka())
+            ->get();
+
         return view('jadwal.index', compact('jadwal'));
     }
 

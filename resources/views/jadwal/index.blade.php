@@ -46,7 +46,7 @@
                                 <td>{{ $item->shift }}</td>
                                 <td>{{$item->nama}}</td>
                                 <td class="text-right">
-                                    <a type="button" href="{{ route('jadwal.edit',$item) }}" rel="tooltip"
+                                    <a type="button" href="{{ route('jadwal.edit',$item->id) }}" rel="tooltip"
                                         class="btn btn-success btn-icon btn-sm " data-original-title="" title="">
                                         <i class="now-ui-icons ui-2_settings-90"></i>
                                     </a>
