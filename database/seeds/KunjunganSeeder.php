@@ -17,43 +17,87 @@ class KunjunganSeeder extends Seeder
     {
         DB::table('kunjungans')->insert([
             'tanggal' => now(),
-            'shift' => '1',
-            'jaminan' => 'bpjs',
-            'poli' => 'gigi',
-            'rekam_id' => '1',
-            'dokter_id' => '3',
-            'sis' => 'tes',
-            'created_at' => now(),
-            'updated_at' => now()
-        ]);
-        DB::table('kunjungans')->insert([
-            'tanggal' => now(),
-            'shift' => '1',
-            'jaminan' => 'bpjs',
-            'poli' => 'kb',
-            'rekam_id' => '1',
-            'dokter_id' => '3',
-            'sis' => 'tes',
-            'created_at' => now(),
-            'updated_at' => now()
-        ]);
-        DB::table('kunjungans')->insert([
-            'tanggal' => now(),
-            'shift' => '1',
-            'jaminan' => 'bpjs',
-            'poli' => 'gigi',
-            'rekam_id' => '1',
-            'dokter_id' => '3',
-            'sis' => 'tes',
-            'created_at' => now(),
-            'updated_at' => now()
-        ]);
-        DB::table('kunjungans')->insert([
-            'tanggal' => now(),
-            'shift' => '1',
+            'shift' => '3',
             'jaminan' => 'bpjs',
             'poli' => 'home care',
-            'rekam_id' => '1',
+            'rekam_id' => '3',
+            'dokter_id' => '3',
+            'sis' => 'tes',
+            'created_at' => now(),
+            'updated_at' => now()
+        ]);
+        DB::table('kunjungans')->insert([
+            'tanggal' => now(),
+            'shift' => '3',
+            'jaminan' => 'bpjs',
+            'poli' => 'umum',
+            'rekam_id' => '3',
+            'dokter_id' => '3',
+            'sis' => 'tes',
+            'created_at' => now(),
+            'updated_at' => now()
+        ]);
+        DB::table('kunjungans')->insert([
+            'tanggal' => now(),
+            'shift' => '3',
+            'jaminan' => 'bpjs',
+            'poli' => 'gigi',
+            'rekam_id' => '3',
+            'dokter_id' => '3',
+            'sis' => 'tes',
+            'created_at' => now(),
+            'updated_at' => now()
+        ]);
+        DB::table('kunjungans')->insert([
+            'tanggal' => now(),
+            'shift' => '3',
+            'jaminan' => 'bpjs',
+            'poli' => 'home care',
+            'rekam_id' => '3',
+            'dokter_id' => '3',
+            'sis' => 'tes',
+            'created_at' => now(),
+            'updated_at' => now()
+        ]);
+        DB::table('kunjungans')->insert([
+            'tanggal' => now(),
+            'shift' => '3',
+            'jaminan' => 'regular',
+            'poli' => 'umum',
+            'rekam_id' => '3',
+            'dokter_id' => '3',
+            'sis' => 'tes',
+            'created_at' => now(),
+            'updated_at' => now()
+        ]);
+        DB::table('kunjungans')->insert([
+            'tanggal' => now(),
+            'shift' => '3',
+            'jaminan' => 'regular',
+            'poli' => 'umum',
+            'rekam_id' => '3',
+            'dokter_id' => '3',
+            'sis' => 'tes',
+            'created_at' => now(),
+            'updated_at' => now()
+        ]);
+        DB::table('kunjungans')->insert([
+            'tanggal' => now(),
+            'shift' => '3',
+            'jaminan' => 'regular',
+            'poli' => 'gigi',
+            'rekam_id' => '3',
+            'dokter_id' => '3',
+            'sis' => 'tes',
+            'created_at' => now(),
+            'updated_at' => now()
+        ]);
+        DB::table('kunjungans')->insert([
+            'tanggal' => now(),
+            'shift' => '3',
+            'jaminan' => 'regular',
+            'poli' => 'home care',
+            'rekam_id' => '3',
             'dokter_id' => '3',
             'sis' => 'tes',
             'created_at' => now(),

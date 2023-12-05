@@ -217,6 +217,9 @@
 <script>
   var regulars = '{!! json_encode($regular) !!}';
   var bpjs = '{!! json_encode($bpjs) !!}';
+  var shift1 = '{!! json_encode($shift1) !!}';
+  var shift2 = '{!! json_encode($shift2) !!}';
+  var shift3 = '{!! json_encode($shift3) !!}';
 
   var e = document.getElementById("barChartMultipleBarsNoGradient").getContext("2d");
 
@@ -296,19 +299,19 @@
               "Poli Umum", "Poli Gigi", "KB", "Home Care", "Total"
           ],
           datasets: [{
-                label: 'Reguler',
+                label: 'Shift 1',
                 backgroundColor: "#48dbfb",
-                data: JSON.parse(regulars)
+                data: JSON.parse(shift1)
               },
               {
-                label: 'BPJS',
+                label: 'Shift 2',
                 backgroundColor: "#1B9CFC",
-                data: [15, 20, 25, 30, 25]
+                data: JSON.parse(shift2)
               },
               {
-                label: 'BPJS',
+                label: 'Shift 3',
                 backgroundColor: "#3B3B98",
-                data: [25, 40, 15, 10, 05]
+                data: JSON.parse(shift3)
               }
           ]
       },

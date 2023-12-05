@@ -126,8 +126,98 @@ class HomeController extends Controller
             }
         }
 
-        // return $bpjs;
+        // data per shift
+        // data shift 1 
+        $data_shift1 = DB::table('kunjungans')
+            ->select(DB::raw('count(*) as jumlah'), 'poli', 'shift')
+            ->groupBy('poli')
+            ->groupBy('shift')
+            ->whereDay('tanggal', tanggal_now())
+            ->where('shift', '1')
+            ->get();
 
-        return view('home', compact('dokters', 'petugass', 'rumahtanggas', 'keamanan', 'regular', 'bpjs'), ['rekams' => $rekam->count(), 'kunjung' => $kunjung->count()]);
+        $total_shift1 = DB::table('kunjungans')
+            ->select(DB::raw('count(*) as jumlah'))
+            ->whereDay('tanggal', tanggal_now())
+            ->where('shift', '1')
+            ->get()->first();;
+
+        $shift1 = [null, null, null, null, $total_shift1->jumlah];
+
+        foreach ($data_shift1 as $key => $value) {
+            if ($value->poli == 'umum') {
+                $shift1[0] = $value->jumlah;
+            } else if ($value->poli == 'gigi') {
+                $shift1[1] = $value->jumlah;
+            } else if ($value->poli == 'kb') {
+                $shift1[2] = $value->jumlah;
+            } else if ($value->poli == 'home care') {
+                $shift1[3] = $value->jumlah;
+            }
+        }
+
+        // data shift 2 
+        $data_shift2 = DB::table('kunjungans')
+            ->select(DB::raw('count(*) as jumlah'), 'poli', 'shift')
+            ->groupBy('poli')
+            ->groupBy('shift')
+            ->whereDay('tanggal', tanggal_now())
+            ->where('shift', '2')
+            ->get();
+
+        $total_shift2 = DB::table('kunjungans')
+            ->select(DB::raw('count(*) as jumlah'))
+            ->whereDay('tanggal', tanggal_now())
+            ->where('shift', '2')
+            ->get()->first();;
+
+        $shift2 = [null, null, null, null, $total_shift2->jumlah];
+
+        foreach ($data_shift2 as $key => $value) {
+            if ($value->poli == 'umum') {
+                $shift2[0] = $value->jumlah;
+            } else if ($value->poli == 'gigi') {
+                $shift2[1] = $value->jumlah;
+            } else if ($value->poli == 'kb') {
+                $shift2[2] = $value->jumlah;
+            } else if ($value->poli == 'home care') {
+                $shift2[3] = $value->jumlah;
+            }
+        }
+
+        // data shift 3
+        $data_shift3 = DB::table('kunjungans')
+            ->select(DB::raw('count(*) as jumlah'), 'poli', 'shift')
+            ->groupBy('poli')
+            ->groupBy('shift')
+            ->whereDay('tanggal', tanggal_now())
+            ->where('shift', '3')
+            ->get();
+
+        $total_shift3 = DB::table('kunjungans')
+            ->select(DB::raw('count(*) as jumlah'))
+            ->whereDay('tanggal', tanggal_now())
+            ->where('shift', '3')
+            ->get()->first();;
+
+        $shift3 = [null, null, null, null, $total_shift3->jumlah];
+
+        foreach ($data_shift3 as $key => $value) {
+            if ($value->poli == 'umum') {
+                $shift3[0] = $value->jumlah;
+            } else if ($value->poli == 'gigi') {
+                $shift3[1] = $value->jumlah;
+            } else if ($value->poli == 'kb') {
+                $shift3[2] = $value->jumlah;
+            } else if ($value->poli == 'home care') {
+                $shift3[3] = $value->jumlah;
+            }
+        }
+
+
+
+        // return $shift3;
+
+        return view('home', compact('shift1', 'shift2', 'shift3', 'dokters', 'petugass', 'rumahtanggas', 'keamanan', 'regular', 'bpjs'), ['rekams' => $rekam->count(), 'kunjung' => $kunjung->count()]);
     }
 }
