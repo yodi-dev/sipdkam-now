@@ -46,7 +46,7 @@
                                 <th scope="row">Total</th>
                                 <td valign="top" align="right">Rp. {{ $jumlah_perhari->total_perhari }}</td>
                                 <td valign="top" align="right">Rp. {{ $jumlah_perbulan->total_perbulan }}</td>
-                                <td valign="top" align="right">2%</td>
+                                <td valign="top" align="right">%</td>
                             </tr>
                         </tbody>
                     </table>
@@ -73,7 +73,7 @@
                                 <th scope="row">Total</th>
                                 <td valign="top" align="right">Rp. {{ $jumlah_perhari_bpjs->total_perhari }}</td>
                                 <td valign="top" align="right">Rp. {{ $jumlah_perbulan_bpjs->total_perbulan }}</td>
-                                <td valign="top" align="right">2%</td>
+                                <td valign="top" align="right">%</td>
                             </tr>
                         </tbody>
                     </table>

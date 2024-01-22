@@ -49,19 +49,16 @@ class KunjunganController extends Controller
      */
     public function create(Rekam $rekamModel, User $userModel)
     {
-        $date = now()->format('H:i:s');
-        if ($date >= '00:00:00' && $date <= '08:00:00') {
-            $shift = 1;
-        } else if ($date >= '08:00:01' && $date <= '16:00:00') {
-            $shift = 2;
-        } else {
-            $shift = 3;
-        }
+        $shift = shift();
+        $data_dokter = Kunjungan::get_jadwal_dokter();
+
+        // return $data_dokter;
 
         // return $shift;
         return view('kunjungan.create', [
             'rekams' => $rekamModel->get(['id', 'no_rm', 'nama']),
             'dokters' => $userModel->where('role_id', 3)->get(['id', 'name']),
+            'jadwal_dokter' => $data_dokter,
         ], compact('shift'));
     }
 
@@ -141,6 +138,7 @@ class KunjunganController extends Controller
         $jml = Kunjungan::select(DB::raw('count(*) as jml_kunjungan'), 'tanggal')
             // ->where('tanggal', '=', 1)
             ->groupBy('tanggal')
+            ->whereMonth('tanggal', bulan_angka())
             ->get();
 
         // return $jml;
@@ -175,7 +173,7 @@ class KunjunganController extends Controller
         $regular = [
             [
                 'jumlah' => 0,
-                'poli' => 'home_care',
+                'poli' => 'home care',
                 'perbulan' => 0,
                 'tanggal' => ''
             ],
@@ -925,6 +923,7 @@ class KunjunganController extends Controller
 
         $biaya = Kunjungan::select('biayas.*')
             ->Join('biayas', 'kunjungans.biaya_id', '=', 'biayas.id')
+            // ->whereNotNull('updated_at')
             ->where('biayas.id', $id)
             ->get();
 

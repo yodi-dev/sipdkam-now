@@ -2,7 +2,7 @@
 'namePage' => 'Kunjungan',
 'class' => '',
 'activePage' => 'kunjungan',
-'activeNav' => 'pasien',
+'activeNav' => 'datapasien',
 ])
 
 @section('content')

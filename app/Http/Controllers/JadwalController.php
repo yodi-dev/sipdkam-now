@@ -46,7 +46,8 @@ class JadwalController extends Controller
      */
     public function create()
     {
-        return view('jadwal.create');
+        $shift = shift();
+        return view('jadwal.create', compact('shift'));
     }
 
     /**

@@ -29,10 +29,9 @@
                         @csrf
                         <div class="row">
                             <label class="col-md-2 col-form-label required" for="input_tanggal">{{ __('Tanggal') }}</label>
-                            <div class="col-md-9">
+                            <div class="col-md-3">
                                 <div class="form-group{{ $errors->has('tanggal') ? ' has-danger' : '' }}">
-                                    <input type="date" name="tanggal" id="input_tanggal"
-                                    class="form-control{{ $errors->has('tanggal') ? ' is-invalid' : '' }}" autofocus required>
+                                    <input type="date" name="tanggal" id="input_tanggal" class="form-control{{ $errors->has('tanggal') ? ' is-invalid' : '' }}" autofocus required>
                                     @include('alerts.feedback', ['field' => 'tanggal'])
                                 </div>
                             </div>
@@ -41,8 +40,17 @@
                             <label class="col-md-2 col-form-label required" for="input_bagian">{{ __('Bagian') }}</label>
                             <div class="col-md-9">
                                 <div class="form-group{{ $errors->has('bagian') ? ' has-danger' : '' }}">
-                                    <input type="text" name="bagian" id="input_bagian"
-                                    class="form-control{{ $errors->has('bagian') ? ' is-invalid' : '' }}" autofocus required>
+                                    {{-- <input type="text" name="bagian" id="input_bagian" class="form-control{{ $errors->has('bagian') ? ' is-invalid' : '' }}" autofocus required> --}}
+                                    <select title="{{ __('Pilih bagian') }}" data-style="btn btn-info btn-round"
+                                    name="bagian" data-size="7"
+                                    class="selectpicker{{ $errors->has('bagian') ? ' is-invalid' : '' }} select2"
+                                    required>
+                                        {{-- <option {{ $shift == 1 ? 'selected' : '' }} value="1">1</option> --}}
+                                        <option value="Dokter Umum">Dokter Umum</option>
+                                        <option value="Petugas">Petugas</option>
+                                        <option value="Kerumahtanggaan">Kerumahtanggaan</option>
+                                        <option value="Keamanan">Keamanan</option>
+                                    </select>
                                     @include('alerts.feedback', ['field' => 'bagian'])
                                 </div>
                             </div>
@@ -51,8 +59,15 @@
                             <label class="col-md-2 col-form-label required" for="input_shift">{{ __('Shift') }}</label>
                             <div class="col-md-9">
                                 <div class="form-group{{ $errors->has('shift') ? ' has-danger' : '' }}">
-                                    <input type="text" name="shift" id="input_shift"
-                                    class="form-control{{ $errors->has('shift') ? ' is-invalid' : '' }}" autofocus required>
+                                    {{-- <input type="text" name="shift" id="input_shift" class="form-control{{ $errors->has('shift') ? ' is-invalid' : '' }}" autofocus required> --}}
+                                    <select title="{{ __('Pilih Shift') }}" data-style="btn btn-info btn-round"
+                                    name="shift" data-size="7"
+                                    class="selectpicker{{ $errors->has('shift') ? ' is-invalid' : '' }} select2"
+                                    required>
+                                        <option {{ $shift == 1 ? 'selected' : '' }} value="1">1</option>
+                                        <option {{ $shift == 2 ? 'selected' : '' }} value="2">2</option>
+                                        <option {{ $shift == 3 ? 'selected' : '' }} value="3">3</option>
+                                    </select>
                                     @include('alerts.feedback', ['field' => 'shift'])
                                 </div>
                             </div>
@@ -61,8 +76,13 @@
                             <label class="col-md-2 col-form-label required" for="input_nama">{{ __('Nama') }}</label>
                             <div class="col-md-9">
                                 <div class="form-group{{ $errors->has('nama') ? ' has-danger' : '' }}">
-                                    <input type="text" name="nama" id="input_nama"
-                                    class="form-control{{ $errors->has('nama') ? ' is-invalid' : '' }}" autofocus required>
+                                    {{-- <input type="text" name="nama" id="input_nama" class="form-control{{ $errors->has('nama') ? ' is-invalid' : '' }}" autofocus required> --}}
+                                    <select title="{{ __('Pilih nama') }}" data-style="btn btn-info btn-round"
+                                    name="nama" data-size="7"
+                                    class="selectpicker{{ $errors->has('nama') ? ' is-invalid' : '' }} select2"
+                                    required>
+                                        <option value="Irza">Irza</option>
+                                    </select>
                                     @include('alerts.feedback', ['field' => 'nama'])
                                 </div>
                             </div>

@@ -95,17 +95,25 @@
                 </a>
                 <div class="collapse @if ($activeNav == 'klinik') show @endif" id="klinik">
                     <ul class="nav">
-                        <li class="@if ($activePage == 'dataObat') active @endif">
+                        {{-- <li class="@if ($activePage == 'dataObat') active @endif">
                             <a href="{{ route('obat.index') }}">
                                 <span class="sidebar-mini-icon">{{ __("DO") }}</span>
                                 <span class="sidebar-normal"> {{ __("Data Obat") }} </span>
                             </a>
-                        </li>
-                        @can('manage-items', App\User::class)
+                        </li> --}}
+                        {{-- @can('manage-items', App\User::class)
                         <li class="@if ($activePage == 'alatMedis') active @endif">
                             <a href="{{ route('alatmedik.index') }}">
                                 <span class="sidebar-mini-icon">{{ __("AM") }}</span>
                                 <span class="sidebar-normal"> {{ __("Alat Medis") }} </span>
+                            </a>
+                        </li>
+                        @endcan --}}
+                        @can('manage-items', App\User::class)
+                        <li class="@if ($activePage == 'alatMedis') active @endif">
+                            <a href="{{ route('alatmedik.index') }}">
+                                <span class="sidebar-mini-icon">{{ __("I") }}</span>
+                                <span class="sidebar-normal"> {{ __("Inventaris") }} </span>
                             </a>
                         </li>
                         @endcan

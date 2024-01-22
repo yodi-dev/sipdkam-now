@@ -52,24 +52,28 @@ class HomeController extends Controller
 
         $dokters = DB::table('jadwals')
             ->select('nama', 'shift')
+            ->whereMonth('tanggal', bulan_angka())
             ->whereDay('tanggal', tanggal_now())
             ->where('bagian', 'dokter umum')
             ->get();
 
         $petugass = DB::table('jadwals')
             ->select('shift', 'nama')
+            ->whereMonth('tanggal', bulan_angka())
             ->whereDay('tanggal', tanggal_now())
             ->where('bagian', 'petugas')
             ->get();
 
         $rumahtanggas = DB::table('jadwals')
             ->select('shift', 'nama')
+            ->whereMonth('tanggal', bulan_angka())
             ->whereDay('tanggal', tanggal_now())
             ->where('bagian', 'kerumahtanggaan')
             ->get();
 
         $keamanan = DB::table('jadwals')
             ->select('shift', 'nama')
+            ->whereMonth('tanggal', bulan_angka())
             ->whereDay('tanggal', tanggal_now())
             ->where('bagian', 'keamanan')
             ->get();

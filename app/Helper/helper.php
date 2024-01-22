@@ -40,3 +40,15 @@ function tgl()
 {
     return now()->format('d-M-Y');
 }
+
+function shift()
+{
+    $date = now()->format('H:i:s');
+    if ($date >= '00:00:00' && $date <= '08:00:00') {
+        return 1;
+    } else if ($date >= '08:00:01' && $date <= '16:00:00') {
+        return 2;
+    } else {
+        return 3;
+    }
+}

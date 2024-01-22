@@ -15,9 +15,9 @@
             <div class="card">
                 <div class="card-header">
                     @can('manage-items', App\User::class)
-                        <a class="btn btn-primary btn-round pull-right text-white" href="{{ route('rekam.create') }}">{{ __('RM Baru') }}</a>
+                        <a class="btn btn-primary btn-round pull-right text-white" href="{{ route('rekam.create') }}">{{ __('Kunjungan Baru') }}</a>
                         <a class="btn btn-primary btn-round pull-right text-white "
-                        href="{{ route('kunjungan.create') }}">{{ __('Kunjungan Baru') }}</a>
+                        href="{{ route('kunjungan.create') }}">{{ __('Tambah Kunjungan') }}</a>
                     @endcan
                     <h4 class="card-title">{{ bulan_now() }} {{ tahun_now() }}</h4>
                     <div class="col-12 mt-2">

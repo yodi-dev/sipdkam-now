@@ -17,7 +17,7 @@ class KunjunganSeeder extends Seeder
     {
         DB::table('kunjungans')->insert([
             'tanggal' => now(),
-            'shift' => '3',
+            'shift' => '1',
             'jaminan' => 'bpjs',
             'poli' => 'home care',
             'rekam_id' => '3',
@@ -28,7 +28,7 @@ class KunjunganSeeder extends Seeder
         ]);
         DB::table('kunjungans')->insert([
             'tanggal' => now(),
-            'shift' => '3',
+            'shift' => '1',
             'jaminan' => 'bpjs',
             'poli' => 'umum',
             'rekam_id' => '3',
@@ -39,7 +39,7 @@ class KunjunganSeeder extends Seeder
         ]);
         DB::table('kunjungans')->insert([
             'tanggal' => now(),
-            'shift' => '3',
+            'shift' => '2',
             'jaminan' => 'bpjs',
             'poli' => 'gigi',
             'rekam_id' => '3',
@@ -50,7 +50,7 @@ class KunjunganSeeder extends Seeder
         ]);
         DB::table('kunjungans')->insert([
             'tanggal' => now(),
-            'shift' => '3',
+            'shift' => '2',
             'jaminan' => 'bpjs',
             'poli' => 'home care',
             'rekam_id' => '3',
@@ -61,7 +61,7 @@ class KunjunganSeeder extends Seeder
         ]);
         DB::table('kunjungans')->insert([
             'tanggal' => now(),
-            'shift' => '3',
+            'shift' => '1',
             'jaminan' => 'regular',
             'poli' => 'umum',
             'rekam_id' => '3',
@@ -83,7 +83,7 @@ class KunjunganSeeder extends Seeder
         ]);
         DB::table('kunjungans')->insert([
             'tanggal' => now(),
-            'shift' => '3',
+            'shift' => '2',
             'jaminan' => 'regular',
             'poli' => 'gigi',
             'rekam_id' => '3',

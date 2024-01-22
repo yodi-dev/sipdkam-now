@@ -2,7 +2,7 @@
 'namePage' => 'Create Rekam Medis',
 'class' => '',
 'activePage' => 'rekammedis',
-'activeNav' => '',
+'activeNav' => 'datapasien',
 ])
 
 @section('content')
