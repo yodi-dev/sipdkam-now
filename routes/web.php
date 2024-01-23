@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\PegawaiController;
+
 Route::get('/', function () {
     return redirect()->route('login');
 });
@@ -28,7 +30,8 @@ Route::group(['middleware' => 'auth'], function () {
         'role' => RoleController::class,
         'biaya' => BiayaController::class,
         'obat' => ObatController::class,
-        'alatmedik' => AlatmedikController::class,
+        'pegawai' => PegawaiController::class,
+        'inventori' => InventoriController::class,
         'jadwal' => JadwalController::class,
         'utang' => UtangController::class,
     ]);

@@ -111,7 +111,7 @@
                         @endcan --}}
                         @can('manage-items', App\User::class)
                         <li class="@if ($activePage == 'alatMedis') active @endif">
-                            <a href="{{ route('alatmedik.index') }}">
+                            <a href="{{ route('inventori.index') }}">
                                 <span class="sidebar-mini-icon">{{ __("I") }}</span>
                                 <span class="sidebar-normal"> {{ __("Inventaris") }} </span>
                             </a>
@@ -128,6 +128,12 @@
                             <a href="{{ route('utang.index') }}">
                                 <span class="sidebar-mini-icon">{{ __("U") }}</span>
                                 <span class="sidebar-normal"> {{ __("Utang") }} </span>
+                            </a>
+                        </li>
+                        <li class="@if ($activePage == 'datapegawai') active @endif">
+                            <a href="{{ route('pegawai.index') }}">
+                                <span class="sidebar-mini-icon">{{ __("P") }}</span>
+                                <span class="sidebar-normal"> {{ __("Pegawai") }} </span>
                             </a>
                         </li>
                         @endcan
