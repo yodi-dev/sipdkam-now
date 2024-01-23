@@ -81,7 +81,7 @@ class UserPolicy
      */
     public function manageItems(User $user)
     {
-        return $user->isAdmin() || $user->isCreator();
+        return $user->isCreator();
     }
 
     public function manageDokter(User $user)

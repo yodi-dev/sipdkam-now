@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Inventori;
+use App\User;
 use Illuminate\Http\Request;
 
 class InventoriController extends Controller
@@ -12,9 +13,16 @@ class InventoriController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+
+    public function __construct()
     {
-        //
+        $this->authorizeResource(Inventori::class);
+    }
+
+    public function index(Inventori $data)
+    {
+        $this->authorize('manage-items', User::class);
+        return view('inventori.index', ['data' => $data->all()]);
     }
 
     /**
@@ -24,7 +32,7 @@ class InventoriController extends Controller
      */
     public function create()
     {
-        //
+        return view('inventori.create');
     }
 
     /**
@@ -33,9 +41,14 @@ class InventoriController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, Inventori $model)
     {
-        //
+        $request['created_at'] = now();
+        $request['updated_at'] = now();
+        $model->create($request->all());
+        // return $request;
+
+        return redirect()->route('inventori.index')->withStatus(__('Inventori successfully created.'));
     }
 
     /**
@@ -46,7 +59,6 @@ class InventoriController extends Controller
      */
     public function show(Inventori $inventori)
     {
-        //
     }
 
     /**
@@ -57,7 +69,7 @@ class InventoriController extends Controller
      */
     public function edit(Inventori $inventori)
     {
-        //
+        return view('inventori.edit', compact('inventori'));
     }
 
     /**
@@ -69,7 +81,9 @@ class InventoriController extends Controller
      */
     public function update(Request $request, Inventori $inventori)
     {
-        //
+        $inventori->update($request->all());
+
+        return redirect()->route('inventori.index')->withStatus(__('Inventori successfully updated.'));
     }
 
     /**
@@ -80,6 +94,8 @@ class InventoriController extends Controller
      */
     public function destroy(Inventori $inventori)
     {
-        //
+        $inventori->delete();
+
+        return redirect()->route('inventori.index')->withStatus(__('Inventori successfully deleted.'));
     }
 }

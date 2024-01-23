@@ -19,7 +19,9 @@ use App\Policies\CategoryPolicy;
 use App\Policies\KunjunganPolicy;
 use App\Policies\RekamPolicy;
 use App\Policies\JadwalPolicy;
+use App\Policies\UtangPolicy;
 use App\Rekam;
+use App\Utang;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 
@@ -40,6 +42,7 @@ class AuthServiceProvider extends ServiceProvider
         Kunjungan::class => KunjunganPolicy::class,
         Alatmedis::class => AlatmedisPolicy::class,
         Jadwal::class => JadwalPolicy::class,
+        Utang::class => UtangPolicy::class,
     ];
 
     /**

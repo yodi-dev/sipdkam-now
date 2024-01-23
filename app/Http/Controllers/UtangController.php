@@ -21,7 +21,6 @@ class UtangController extends Controller
 
     public function index(Utang $utang)
     {
-        $this->authorize('manage-items', User::class);
         $bulan = bulan_angka();
         // return $bulan;
 

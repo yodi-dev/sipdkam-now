@@ -50,14 +50,13 @@
             </div>
         </div>
         <ul class="nav">
-            @can('manage-items', App\User::class)
             <li class="@if ($activePage == 'home') active @endif">
                 <a href="{{ route('home') }}">
                     <i class="now-ui-icons design_app"></i>
                     <p>{{ __("Dashboard") }}</p>
                 </a>
             </li>
-            @endcan
+            @can('manage-items', App\User::class)
             <li>
                 <a data-toggle="collapse" href="#dataPasien">
                     <i class="now-ui-icons education_agenda-bookmark"></i>
@@ -74,17 +73,16 @@
                                 <span class="sidebar-normal"> {{ __("Kunjungan") }} </span>
                             </a>
                         </li>
-                        @can('manage-items', App\User::class)
                         <li class="@if ($activePage == 'rekammedis') active @endif">
                             <a href="{{ route('rekam.index') }}">
                                 <span class="sidebar-mini-icon">{{ __("RM") }}</span>
                                 <span class="sidebar-normal"> {{ __("Rekam Medis") }} </span>
                             </a>
                         </li>
-                        @endcan
                     </ul>
                 </div>
             </li>
+            @endcan
             <li>
                 <a data-toggle="collapse" href="#klinik">
                     <i class="now-ui-icons health_ambulance"></i>
@@ -95,39 +93,17 @@
                 </a>
                 <div class="collapse @if ($activeNav == 'klinik') show @endif" id="klinik">
                     <ul class="nav">
-                        {{-- <li class="@if ($activePage == 'dataObat') active @endif">
-                            <a href="{{ route('obat.index') }}">
-                                <span class="sidebar-mini-icon">{{ __("DO") }}</span>
-                                <span class="sidebar-normal"> {{ __("Data Obat") }} </span>
-                            </a>
-                        </li> --}}
-                        {{-- @can('manage-items', App\User::class)
-                        <li class="@if ($activePage == 'alatMedis') active @endif">
-                            <a href="{{ route('alatmedik.index') }}">
-                                <span class="sidebar-mini-icon">{{ __("AM") }}</span>
-                                <span class="sidebar-normal"> {{ __("Alat Medis") }} </span>
-                            </a>
-                        </li>
-                        @endcan --}}
                         @can('manage-items', App\User::class)
-                        <li class="@if ($activePage == 'alatMedis') active @endif">
+                        <li class="@if ($activePage == 'datainventori') active @endif">
                             <a href="{{ route('inventori.index') }}">
                                 <span class="sidebar-mini-icon">{{ __("I") }}</span>
                                 <span class="sidebar-normal"> {{ __("Inventaris") }} </span>
                             </a>
                         </li>
-                        @endcan
                         <li class="@if ($activePage == 'jadwal') active @endif">
                             <a href="{{ route('jadwal.index') }}">
                                 <span class="sidebar-mini-icon">{{ __("J") }}</span>
                                 <span class="sidebar-normal"> {{ __("Jadwal") }} </span>
-                            </a>
-                        </li>
-                        @can('manage-items', App\User::class)
-                        <li class="@if ($activePage == 'utang') active @endif">
-                            <a href="{{ route('utang.index') }}">
-                                <span class="sidebar-mini-icon">{{ __("U") }}</span>
-                                <span class="sidebar-normal"> {{ __("Utang") }} </span>
                             </a>
                         </li>
                         <li class="@if ($activePage == 'datapegawai') active @endif">
@@ -137,6 +113,12 @@
                             </a>
                         </li>
                         @endcan
+                        <li class="@if ($activePage == 'utang') active @endif">
+                            <a href="{{ route('utang.index') }}">
+                                <span class="sidebar-mini-icon">{{ __("U") }}</span>
+                                <span class="sidebar-normal"> {{ __("Utang") }} </span>
+                            </a>
+                        </li>
                         <li class="@if ($activePage == 'statistikKunjungan') active @endif">
                             <a href="{{ route('statistik.kunjungan') }}">
                                 <span class="sidebar-mini-icon">{{ __("SK") }}</span>
@@ -162,14 +144,12 @@
                                 <span class="sidebar-normal"> {{ __("Laporan Kunjungan") }} </span>
                             </a>
                         </li>
-                        @can('manage-items', App\User::class)
                         <li class="@if ($activePage == 'laporanKeuangan') active @endif">
                             <a href="{{ route('laporanKeuangan.kunjungan') }}">
                                 <span class="sidebar-mini-icon">{{ __("LKU") }}</span>
                                 <span class="sidebar-normal"> {{ __("Laporan Keuangan") }} </span>
                             </a>
                         </li>
-                        @endcan
                     </ul>
                 </div>
             </li>
