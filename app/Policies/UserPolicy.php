@@ -84,6 +84,11 @@ class UserPolicy
         return $user->isCreator();
     }
 
+    public function adminPetugas(User $user)
+    {
+        return $user->isCreator() || $user->isAdmin();
+    }
+
     public function manageDokter(User $user)
     {
         return $user->isMember();

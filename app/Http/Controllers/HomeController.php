@@ -45,9 +45,9 @@ class HomeController extends Controller
     public function index(Rekam $rekam, Kunjungan $kunjung)
     {
         // return auth()->user()->role_id;
-        if (auth()->user()->role_id == 3) {
-            return redirect('kunjungan');
-        }
+        // if (auth()->user()->role_id == 3) {
+        //     return redirect('kunjungan');
+        // }
 
 
         $dokters = DB::table('jadwals')

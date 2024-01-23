@@ -56,6 +56,27 @@
                     <p>{{ __("Dashboard") }}</p>
                 </a>
             </li>
+            @can('manage-dokter', App\User::class)
+            <li>
+                <a data-toggle="collapse" href="#dataPasien">
+                    <i class="now-ui-icons education_agenda-bookmark"></i>
+                    <p>
+                        {{ __("Pasien") }}
+                        <b class="caret"></b>
+                    </p>
+                </a>
+                <div class="collapse @if ($activeNav == 'datapasien') show @endif" id="dataPasien">
+                    <ul class="nav">
+                        <li class="@if ($activePage == 'kunjungan') active @endif">
+                            <a href="{{ route('kunjungan.index') }}">
+                                <span class="sidebar-mini-icon">{{ __("K") }}</span>
+                                <span class="sidebar-normal"> {{ __("Kunjungan") }} </span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+            @endcan
             @can('manage-items', App\User::class)
             <li>
                 <a data-toggle="collapse" href="#dataPasien">
@@ -128,6 +149,7 @@
                     </ul>
                 </div>
             </li>
+            @can('admin-petugas', App\User::class)
             <li>
                 <a data-toggle="collapse" href="#laporan">
                     <i class="now-ui-icons business_briefcase-24"></i>
@@ -153,6 +175,7 @@
                     </ul>
                 </div>
             </li>
+            @endcan
             <li>
                 @can('manage-users', App\User::class)
                 <a data-toggle="collapse" href="#dataMaster">

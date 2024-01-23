@@ -18,7 +18,7 @@ class UtangPolicy
      */
     public function viewAny(User $user)
     {
-        return $user->isAdmin() || $user->isCreator();
+        return $user->isAdmin() || $user->isCreator() || $user->isMember();
     }
 
     /**
