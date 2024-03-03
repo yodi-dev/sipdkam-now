@@ -15,29 +15,29 @@ class JadwalSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('jadwals')->insert([
-            'tanggal' => now(),
-            'bagian' => 'petugas',
-            'shift' => '1',
-            'nama' => 'Diaz',
-            'created_at' => now(),
-            'updated_at' => now(),
-        ]);
-        DB::table('jadwals')->insert([
-            'tanggal' => now(),
-            'bagian' => 'petugas',
-            'shift' => '2',
-            'nama' => 'Diaz',
-            'created_at' => now(),
-            'updated_at' => now(),
-        ]);
-        DB::table('jadwals')->insert([
-            'tanggal' => now(),
-            'bagian' => 'petugas',
-            'shift' => '3',
-            'nama' => 'Andy',
-            'created_at' => now(),
-            'updated_at' => now(),
-        ]);
+        // DB::table('jadwals')->insert([
+        //     'tanggal' => now(),
+        //     'bagian' => 'petugas',
+        //     'shift' => '1',
+        //     'nama' => 'Diaz',
+        //     'created_at' => now(),
+        //     'updated_at' => now(),
+        // ]);
+        // DB::table('jadwals')->insert([
+        //     'tanggal' => now(),
+        //     'bagian' => 'petugas',
+        //     'shift' => '2',
+        //     'nama' => 'Diaz',
+        //     'created_at' => now(),
+        //     'updated_at' => now(),
+        // ]);
+        // DB::table('jadwals')->insert([
+        //     'tanggal' => now(),
+        //     'bagian' => 'petugas',
+        //     'shift' => '3',
+        //     'nama' => 'Andy',
+        //     'created_at' => now(),
+        //     'updated_at' => now(),
+        // ]);
     }
 }

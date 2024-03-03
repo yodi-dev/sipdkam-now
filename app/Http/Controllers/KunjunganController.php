@@ -2,15 +2,16 @@
 
 namespace App\Http\Controllers;
 
-use App\Biaya;
 use App\User;
+use App\Biaya;
 use App\Rekam;
 use App\Kunjungan;
-use Barryvdh\DomPDF\PDF;
 use Carbon\Carbon;
+use Barryvdh\DomPDF\PDF;
+use Illuminate\Support\Arr;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\App;
 
 class KunjunganController extends Controller
 {
@@ -33,11 +34,19 @@ class KunjunganController extends Controller
         $rekams = $rekamModel->get(['id', 'no_rm', 'nama']);
         $dokters = $dokterModel->where('role_id', 3)->get(['id', 'name']);
 
-        $data = Kunjungan::select('kunjungans.id', 'kunjungans.created_at', 'kunjungans.shift', 'kunjungans.jaminan', 'rekams.no_rm', 'rekams.nama')
+        $data = Kunjungan::select('kunjungans.id', 'kunjungans.created_at', 'kunjungans.shift', 'kunjungans.jaminan', 'rekams.no_rm', 'rekams.nama', 'tanggal')
             ->Join('rekams', 'kunjungans.rekam_id', '=', 'rekams.id')
-            ->orderBy('kunjungans.created_at', 'asc')
-            ->whereMonth('kunjungans.created_at', $bulan)
+            ->orderBy('kunjungans.tanggal', 'asc')
+            ->whereMonth('kunjungans.tanggal', $bulan)
             ->get();
+
+        // $rekam = DB::table('rekams')
+        //     ->select('no_rm')
+        //     ->get()->toArray();
+
+        // $random = Arr::random($rekam);
+
+        // return strval($random->no_rm);
 
         return view('kunjungan.index', compact('data', 'rekams', 'dokters'));
     }
@@ -207,7 +216,7 @@ class KunjunganController extends Controller
             ->groupBy('poli')
             ->whereDay('tanggal', tanggal_now())
             ->whereMonth('tanggal', bulan_angka())
-            ->where('jaminan', 'regular')
+            ->where('jaminan', 'reguler')
             ->get();
 
         // return $data_regular;
@@ -227,7 +236,7 @@ class KunjunganController extends Controller
         $data_perbulan = Kunjungan::select(DB::raw('count(*) as jumlah_perbulan'), 'poli')
             ->groupBy('poli')
             ->whereMonth('tanggal', bulan_angka())
-            ->where('jaminan', 'regular')
+            ->where('jaminan', 'reguler')
             ->get();
 
         // return $data_perbulan;
@@ -328,7 +337,7 @@ class KunjunganController extends Controller
         $jumlah_perhari = Kunjungan::select(DB::raw('count(*) as jumlah'))
             ->whereDay('tanggal', tanggal_now())
             ->whereMonth('tanggal', bulan_angka())
-            ->where('jaminan', 'regular')
+            ->where('jaminan', 'reguler')
             ->first();
 
         $jumlah_perhari_bpjs = Kunjungan::select(DB::raw('count(*) as jumlah'))
@@ -339,7 +348,7 @@ class KunjunganController extends Controller
 
         $jumlah_perbulan = Kunjungan::select(DB::raw('count(*) as jumlah'))
             ->whereMonth('tanggal', bulan_angka())
-            ->where('jaminan', 'regular')
+            ->where('jaminan', 'reguler')
             ->first();
 
         $jumlah_perbulan_bpjs = Kunjungan::select(DB::raw('count(*) as jumlah'))
@@ -398,7 +407,7 @@ class KunjunganController extends Controller
             ->groupBy('poli')
             ->whereDay('tanggal', tanggal_now())
             ->whereMonth('tanggal', bulan_angka())
-            ->where('jaminan', 'regular')
+            ->where('jaminan', 'reguler')
             ->get();
 
         // memasukkan data perhari ke template
@@ -416,7 +425,7 @@ class KunjunganController extends Controller
         $data_perbulan = Kunjungan::select(DB::raw('count(*) as jumlah_perbulan'), 'poli')
             ->groupBy('poli')
             ->whereMonth('tanggal', bulan_angka())
-            ->where('jaminan', 'regular')
+            ->where('jaminan', 'reguler')
             ->get();
 
         // return $data_perbulan;
@@ -516,7 +525,7 @@ class KunjunganController extends Controller
         $jumlah_perhari = Kunjungan::select(DB::raw('count(*) as jumlah'))
             ->whereDay('tanggal', tanggal_now())
             ->whereMonth('tanggal', bulan_angka())
-            ->where('jaminan', 'regular')
+            ->where('jaminan', 'reguler')
             ->first();
 
         $jumlah_perhari_bpjs = Kunjungan::select(DB::raw('count(*) as jumlah'))
@@ -527,7 +536,7 @@ class KunjunganController extends Controller
 
         $jumlah_perbulan = Kunjungan::select(DB::raw('count(*) as jumlah'))
             ->whereMonth('tanggal', bulan_angka())
-            ->where('jaminan', 'regular')
+            ->where('jaminan', 'reguler')
             ->first();
 
         $jumlah_perbulan_bpjs = Kunjungan::select(DB::raw('count(*) as jumlah'))
@@ -590,7 +599,7 @@ class KunjunganController extends Controller
             ->groupBy('poli')
             ->whereDay('tanggal', tanggal_now())
             ->whereMonth('tanggal', bulan_angka())
-            ->where('jaminan', 'regular')
+            ->where('jaminan', 'reguler')
             ->get();
 
         // memasukkan data perhari ke template
@@ -608,7 +617,7 @@ class KunjunganController extends Controller
         $data_perbulan = Kunjungan::select(DB::raw('count(*) as jumlah_perbulan'), 'poli')
             ->groupBy('poli')
             ->whereMonth('tanggal', bulan_angka())
-            ->where('jaminan', 'regular')
+            ->where('jaminan', 'reguler')
             ->get();
 
         // return $data_perbulan;
@@ -708,7 +717,7 @@ class KunjunganController extends Controller
         $jumlah_perhari = Kunjungan::select(DB::raw('count(*) as jumlah'))
             ->whereDay('tanggal', tanggal_now())
             ->whereMonth('tanggal', bulan_angka())
-            ->where('jaminan', 'regular')
+            ->where('jaminan', 'reguler')
             ->first();
 
         $jumlah_perhari_bpjs = Kunjungan::select(DB::raw('count(*) as jumlah'))
@@ -719,7 +728,7 @@ class KunjunganController extends Controller
 
         $jumlah_perbulan = Kunjungan::select(DB::raw('count(*) as jumlah'))
             ->whereMonth('tanggal', bulan_angka())
-            ->where('jaminan', 'regular')
+            ->where('jaminan', 'reguler')
             ->first();
 
         $jumlah_perbulan_bpjs = Kunjungan::select(DB::raw('count(*) as jumlah'))
@@ -778,7 +787,7 @@ class KunjunganController extends Controller
             ->select(DB::raw('sum(total) as jumlah'), 'tanggal', 'poli')
             ->groupBy('kunjungans.tanggal')
             ->groupBy('kunjungans.poli')
-            ->where('kunjungans.jaminan', 'regular')
+            ->where('kunjungans.jaminan', 'reguler')
             ->where('kunjungans.tanggal', tanggal(now()))
             ->get();
 
@@ -797,7 +806,7 @@ class KunjunganController extends Controller
         $data_perbulan = $kunjungan->rightJoin('biayas', 'kunjungans.biaya_id', '=', 'biayas.id')
             ->select(DB::raw('sum(total) as perbulan'), 'poli')
             ->groupBy('kunjungans.poli')
-            ->where('kunjungans.jaminan', 'regular')
+            ->where('kunjungans.jaminan', 'reguler')
             ->whereMonth('kunjungans.tanggal', bulan_angka())
             ->get();
 
@@ -875,7 +884,7 @@ class KunjunganController extends Controller
         // return $biaya;
         $jumlah_perhari = $kunjungan->rightJoin('biayas', 'kunjungans.biaya_id', '=', 'biayas.id')
             ->select(DB::raw('sum(total) as total_perhari'))
-            ->where('kunjungans.jaminan', 'regular')
+            ->where('kunjungans.jaminan', 'reguler')
             ->whereDay('kunjungans.tanggal', cuma_tanggal(now()))
             ->get()->first();
 
@@ -889,7 +898,7 @@ class KunjunganController extends Controller
 
         $jumlah_perbulan = $kunjungan->rightJoin('biayas', 'kunjungans.biaya_id', '=', 'biayas.id')
             ->select(DB::raw('sum(total) as total_perbulan'))
-            ->where('kunjungans.jaminan', 'regular')
+            ->where('kunjungans.jaminan', 'reguler')
             ->whereMonth('kunjungans.tanggal', bulan_angka())
             ->get()->first();
 

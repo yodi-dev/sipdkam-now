@@ -45,7 +45,7 @@
                         <tbody>
                             @foreach ($data as $item)
                             <tr>
-                                <td>{{ cuma_tanggal($item->created_at) }}</td>
+                                <td>{{ cuma_tanggal($item->tanggal) }}</td>
                                 <td>{{ $item->shift }}</td>
                                 <td>{{ $item->jaminan }}</td>
                                 <td>{{ $item->no_rm }}</td>

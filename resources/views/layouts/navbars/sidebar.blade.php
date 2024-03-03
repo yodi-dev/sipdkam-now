@@ -4,7 +4,7 @@
     -->
     <div class="logo">
         <a href="{{ route('home') }}" class="simple-text logo-mini">
-            {{ __("SIPD") }}
+            {{ __("SIM") }}
         </a>
         <a href="{{ route('home') }}" class="simple-text logo-normal">
             {{ __("K. Al Mubarok") }}
@@ -127,19 +127,19 @@
                                 <span class="sidebar-normal"> {{ __("Jadwal") }} </span>
                             </a>
                         </li>
-                        <li class="@if ($activePage == 'datapegawai') active @endif">
+                        {{-- <li class="@if ($activePage == 'datapegawai') active @endif">
                             <a href="{{ route('pegawai.index') }}">
                                 <span class="sidebar-mini-icon">{{ __("P") }}</span>
                                 <span class="sidebar-normal"> {{ __("Pegawai") }} </span>
                             </a>
-                        </li>
+                        </li> --}}
                         @endcan
-                        <li class="@if ($activePage == 'utang') active @endif">
+                        {{-- <li class="@if ($activePage == 'utang') active @endif">
                             <a href="{{ route('utang.index') }}">
                                 <span class="sidebar-mini-icon">{{ __("U") }}</span>
                                 <span class="sidebar-normal"> {{ __("Utang") }} </span>
                             </a>
-                        </li>
+                        </li> --}}
                         <li class="@if ($activePage == 'statistikKunjungan') active @endif">
                             <a href="{{ route('statistik.kunjungan') }}">
                                 <span class="sidebar-mini-icon">{{ __("SK") }}</span>

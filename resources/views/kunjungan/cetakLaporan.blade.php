@@ -22,7 +22,6 @@
                 <th scope="col"><strong># Reguler</strong></th>
                 <th scope="col">Harian</th>
                 <th scope="col">Periode</th>
-                <th scope="col">Growth</th>
             </tr>
         </thead>
         <tbody>
@@ -31,14 +30,12 @@
                     <th scope="row">{{ ucfirst(trans($item['poli'])) }}</th>
                     <td>{{ $item['jumlah'] }}</td>
                     <td>{{ $item['perbulan'] }}</td>
-                    <td></td>
                 </tr>
             @endforeach
             <tr class="table-primary">
                 <th scope="row">Total</th>
                 <td >{{ $jumlah_perhari->jumlah }}</td>
                 <td>{{ $jumlah_perbulan->jumlah }}</td>
-                <td>4%</td>
             </tr>
         </tbody>
     </table>
@@ -49,7 +46,6 @@
             <th scope="col"><strong># BPJS</strong></th>
             <th scope="col">Harian</th>
             <th scope="col">Periode</th>
-            <th scope="col">Growth</th>
             </tr>
         </thead>
         <tbody>

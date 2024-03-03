@@ -30,7 +30,7 @@
                                 <th scope="col"><strong># Reguler</strong></th>
                                 <th scope="col">Harian</th>
                                 <th scope="col">Periode</th>
-                                <th scope="col">Growth</th>
+                                {{-- <th scope="col">Growth</th> --}}
                             </tr>
                         </thead>
                         <tbody>
@@ -39,14 +39,14 @@
                                     <th scope="row">{{ ucfirst(trans($item['poli'])) }}</th>
                                     <td valign="top" align="right">Rp. {{ $item['jumlah'] }}</td>
                                     <td valign="top" align="right">Rp. {{ $item['perbulan'] }}</td>
-                                    <td valign="top" align="right">%</td>
+                                    {{-- <td valign="top" align="right">%</td> --}}
                                 </tr>
                             @endforeach
                             <tr class="table-primary">
                                 <th scope="row">Total</th>
                                 <td valign="top" align="right">Rp. {{ $jumlah_perhari->total_perhari }}</td>
                                 <td valign="top" align="right">Rp. {{ $jumlah_perbulan->total_perbulan }}</td>
-                                <td valign="top" align="right">%</td>
+                                {{-- <td valign="top" align="right">%</td> --}}
                             </tr>
                         </tbody>
                     </table>
@@ -57,7 +57,7 @@
                                 <th scope="col"><strong># BPJS</strong></th>
                                 <th scope="col">Harian</th>
                                 <th scope="col">Periode</th>
-                                <th scope="col">Growth</th>
+                                {{-- <th scope="col">Growth</th> --}}
                             </tr>
                         </thead>
                         <tbody>
@@ -66,14 +66,14 @@
                                     <th scope="row">{{ ucfirst(trans($item['poli'])) }}</th>
                                     <td valign="top" align="right">Rp. {{ $item['jumlah'] }}</td>
                                     <td valign="top" align="right">Rp. {{ $item['perbulan'] }}</td>
-                                    <td valign="top" align="right">%</td>
+                                    {{-- <td valign="top" align="right">%</td> --}}
                                 </tr>
                             @endforeach
                             <tr class="table-primary">
                                 <th scope="row">Total</th>
                                 <td valign="top" align="right">Rp. {{ $jumlah_perhari_bpjs->total_perhari }}</td>
                                 <td valign="top" align="right">Rp. {{ $jumlah_perbulan_bpjs->total_perbulan }}</td>
-                                <td valign="top" align="right">%</td>
+                                {{-- <td valign="top" align="right">%</td> --}}
                             </tr>
                         </tbody>
                     </table>
